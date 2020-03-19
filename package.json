@@ -24,6 +24,9 @@
     ]
   },
   "dependencies": {
+    "@iconify/icons-entypo-social": "^1.0.3",
+    "@iconify/icons-fa-brands": "^1.0.10",
+    "@iconify/icons-fa-solid": "^1.0.7",
     "@iconify/icons-feather": "^1.0.7",
     "@iconify/react": "^1.1.3",
     "axios": "^0.19.2",
