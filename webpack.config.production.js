@@ -3,6 +3,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const path = require('path');
@@ -45,8 +46,9 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title:
-        'Comlogik Business Systems Inc. - The leading healthcare system provider in the Philippines',
-      template: './public/index.html'
+        'Comlogik Business Systems - The leading healthcare system provider in the Philippines',
+      template: './public/index.html',
+      minify: true
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',
@@ -61,6 +63,17 @@ module.exports = {
         context: './public/',
         from: '.htaccess'
       }
-    ])
+    ]),
+    new ImageminPlugin({
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      optipng: {
+        optimizationLevel: 7,
+        interlaced: true
+      },
+      gifsicle: {
+        optimizationLevel: 3,
+        interlaced: true
+      }
+    })
   ]
 };

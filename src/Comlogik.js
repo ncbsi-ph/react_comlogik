@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Index from './pages/Index';
+import About from './pages/About';
+import Clients from './pages/Clients';
 
 export default class Comlogik extends Component {
   render() {
@@ -14,9 +17,13 @@ export default class Comlogik extends Component {
             <Index></Index>
           </Route>
           <Route path="/about">
-            <h1>Bruh</h1>
+            <About></About>
+          </Route>
+          <Route path="/clients">
+            <Clients></Clients>
           </Route>
         </Switch>
+        <Footer></Footer>
       </Router>
     );
   }

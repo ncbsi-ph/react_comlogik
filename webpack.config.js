@@ -8,7 +8,7 @@ module.exports = {
   mode: 'development',
   watch: true,
   watchOptions: {
-    ignored: [/node_modules/, /dist/, /vendor/, /public/]
+    ignored: [/node_modules/, /dist/, /vendor/]
   },
   entry: {
     comlogik: './src/index.js'
@@ -37,7 +37,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title:
-        '[Dev] Comlogik Business Systems Inc. - The leading healthcare system provider in the Philippines',
+        '[Dev] Comlogik Business Systems - The leading healthcare system provider in the Philippines',
       hash: true,
       template: './public/index.html'
     }),

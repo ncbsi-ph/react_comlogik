@@ -41,21 +41,25 @@ export default class Navbar extends Component {
         </div>
         <div id="navigation" data-uk-offcanvas="flip: true; overlay: true">
           <div className="uk-offcanvas-bar">
-            <button className="uk-offcanvas-close" type="button" data-uk-close></button>
+            <button
+              className="uk-offcanvas-close"
+              type="button"
+              data-uk-close
+            ></button>
             <div className="uk-child-width-1-1" data-uk-grid>
               <div>
                 <ul className="uk-nav uk-nav-default">
-                  <li className="uk-active">
-                    <a>Home</a>
+                  <li className="uk-parent">
+                    <Link to="/">Home</Link>
                   </li>
                   <li className="uk-parent">
-                    <a>About</a>
+                    <Link to="/about">About</Link>
                   </li>
                   <li className="uk-parent">
                     <a>Solutions</a>
                   </li>
                   <li className="uk-parent">
-                    <a>Clients</a>
+                    <Link to="/clients">Clients</Link>
                   </li>
                   <li className="uk-parent">
                     <a>Insights</a>

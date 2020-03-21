@@ -7,7 +7,6 @@ import Team from '../components/Index/Team';
 import Testimonials from '../components/Index/Testimonials';
 import CTA from '../components/CTA';
 import Map from '../components/Map';
-import Footer from '../components/Footer';
 
 export default class Index extends Component {
   render() {
@@ -20,7 +19,6 @@ export default class Index extends Component {
         <Testimonials></Testimonials>
         <CTA></CTA>
         <Map></Map>
-        <Footer></Footer>
       </>
     );
   }
