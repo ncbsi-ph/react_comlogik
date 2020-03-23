@@ -6,6 +6,8 @@ import Footer from './components/Footer';
 import Index from './pages/Index';
 import About from './pages/About';
 import Clients from './pages/Clients';
+import Support from './pages/Support';
+import Contact from './pages/Contact';
 
 export default class Comlogik extends Component {
   render() {
@@ -21,6 +23,12 @@ export default class Comlogik extends Component {
           </Route>
           <Route path="/clients">
             <Clients></Clients>
+          </Route>
+          <Route path="/support">
+            <Support></Support>
+          </Route>
+          <Route path="/contact-us">
+            <Contact></Contact>
           </Route>
         </Switch>
         <Footer></Footer>

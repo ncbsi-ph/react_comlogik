@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Grid, Column } from '../Grid';
 
-export default class ClientsCarousel extends Component {
+export default class LogoCarousel extends Component {
   render() {
     return (
       <Grid childWidth="1-1">

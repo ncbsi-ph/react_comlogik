@@ -31,6 +31,7 @@
     "@iconify/icons-feather": "^1.0.7",
     "@iconify/react": "^1.1.3",
     "axios": "^0.19.2",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-loadable": "^5.5.0",

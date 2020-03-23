@@ -65,10 +65,10 @@ export default class Navbar extends Component {
                     <a>Insights</a>
                   </li>
                   <li className="uk-parent">
-                    <a>Support</a>
+                    <Link to="/support">Support</Link>
                   </li>
                   <li className="uk-parent">
-                    <a>Contact</a>
+                    <Link to="/contact-us">Contact us</Link>
                   </li>
                   <li className="uk-parent">
                     <a>Careers</a>

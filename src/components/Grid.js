@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Section extends Component {
   constructor(props) {
@@ -66,6 +67,28 @@ class Column extends Component {
   }
 }
 
+// Property types
+
+Section.propTypes = {
+  removePadding: PropTypes.string,
+  container: PropTypes.bool
+};
+
+Grid.propTypes = {
+  className: PropTypes.string,
+  childWidth: PropTypes.string,
+  gap: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  masonry: PropTypes.bool,
+  parallax: PropTypes.number
+};
+
+Column.propTypes = {
+  className: PropTypes.string,
+  width: PropTypes.string
+};
+
+// Default values for properties
+
 Section.defaultProps = {
   removePadding: '',
   container: true
@@ -73,7 +96,10 @@ Section.defaultProps = {
 
 Grid.defaultProps = {
   className: '',
-  childWidth: ''
+  childWidth: '',
+  gap: '',
+  masonry: false,
+  parallax: 0
 };
 
 Column.defaultProps = {

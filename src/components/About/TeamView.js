@@ -16,41 +16,74 @@ export default class TeamView extends Component {
               competitive individual bonded by our goal to innovate.
             </p>
           </Column>
-          <Column className="uk-flex-">
-            <ul data-uk-tab="">
-              <li>
-                <a>Management</a>
-              </li>
-              <li>
-                <a>Development</a>
-              </li>
-              <li>
-                <a>Implementation</a>
-              </li>
-              <li>
-                <a>Technical</a>
-              </li>
-              <li>
-                <a>Administration</a>
-              </li>
-            </ul>
+          <Column>
+            <div className="uk-flex uk-flex-center" data-uk-switcher="animation: uk-animation-fade; toggle: > *">
+              <button className="uk-button uk-button-primary" type="button">
+                Management
+              </button>
+              <button className="uk-button uk-button-primary" type="button">
+                Development
+              </button>
+              <button className="uk-button uk-button-primary" type="button">
+                Implementation
+              </button>
+              <button className="uk-button uk-button-primary" type="button">
+                Technical
+              </button>
+              <button className="uk-button uk-button-primary" type="button">
+                Administration
+              </button>
+            </div>
             <ul className="uk-switcher uk-margin">
               <li>
-                <Grid childWidth="expand">
+                <Grid childWidth="1-4">
                   <Column>
-                    <img src="https://picsum.photos/200"></img>
+                    <div
+                      className="uk-inline-clip uk-transition-toggle"
+                      tabIndex="0"
+                    >
+                      <img src="https://picsum.photos/300/250"></img>
+                      <div className="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
+                        <h5 className="uk-margin-remove">Juan Dela Cruz</h5>
+                        <p>Chief Executive Officer</p>
+                      </div>
+                    </div>
                   </Column>
                   <Column>
-                    <img src="https://picsum.photos/200"></img>
+                    <div
+                      className="uk-inline-clip uk-transition-toggle"
+                      tabIndex="0"
+                    >
+                      <img src="https://picsum.photos/300/250"></img>
+                      <div className="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
+                        <h5 className="uk-margin-remove">Juan Dela Cruz</h5>
+                        <p>Chief Executive Officer</p>
+                      </div>
+                    </div>
                   </Column>
                   <Column>
-                    <img src="https://picsum.photos/200"></img>
+                    <div
+                      className="uk-inline-clip uk-transition-toggle"
+                      tabIndex="0"
+                    >
+                      <img src="https://picsum.photos/300/250"></img>
+                      <div className="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
+                        <h5 className="uk-margin-remove">Juan Dela Cruz</h5>
+                        <p>Chief Executive Officer</p>
+                      </div>
+                    </div>
                   </Column>
                   <Column>
-                    <img src="https://picsum.photos/200"></img>
-                  </Column>
-                  <Column>
-                    <img src="https://picsum.photos/200"></img>
+                    <div
+                      className="uk-inline-clip uk-transition-toggle"
+                      tabIndex="0"
+                    >
+                      <img src="https://picsum.photos/300/250"></img>
+                      <div className="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
+                        <h5 className="uk-margin-remove">Juan Dela Cruz</h5>
+                        <p>Chief Executive Officer</p>
+                      </div>
+                    </div>
                   </Column>
                 </Grid>
               </li>
