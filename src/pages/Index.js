@@ -14,7 +14,7 @@ export default class Index extends Component {
       <>
         <Landing></Landing>
         <Advantages></Advantages>
-        <Products></Products>
+        <Products target="test"></Products>
         <Team></Team>
         <Testimonials></Testimonials>
         <CTA></CTA>
