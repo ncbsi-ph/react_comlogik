@@ -56,7 +56,7 @@ export default class Navbar extends Component {
                     <Link to="/about">About</Link>
                   </li>
                   <li className="uk-parent">
-                    <a>Solutions</a>
+                    <Link to="/solutions">Solutions</Link>
                   </li>
                   <li className="uk-parent">
                     <Link to="/clients">Clients</Link>

@@ -8,6 +8,7 @@ import About from './pages/About';
 import Clients from './pages/Clients';
 import Support from './pages/Support';
 import Contact from './pages/Contact';
+import Solutions from './pages/Solutions';
 
 export default class Comlogik extends Component {
   render() {
@@ -29,6 +30,9 @@ export default class Comlogik extends Component {
           </Route>
           <Route path="/contact-us">
             <Contact></Contact>
+          </Route>
+          <Route path="/solutions">
+            <Solutions></Solutions>
           </Route>
         </Switch>
         <Footer></Footer>
