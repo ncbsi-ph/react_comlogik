@@ -5,26 +5,13 @@ import { Section, Grid, Column } from '../Grid';
 export default class Testimonials extends Component {
   render() {
     return (
-<<<<<<< HEAD
-      <div className="uk-section testimonials-bg">
-        <div className="uk-container">
-          <div className="uk-child-width-1-1" data-uk-grid>
-            <div>
-              <div
-                className="uk-grid-medium uk-child-width-expand uk-flex-middle"
-                data-uk-grid
-              >
-                <div className="uk-width-1-2 uk-flex uk-flex-column">
-                  <h5 className="meta uk-margin-remove-bottom">TESTIMONIALS</h5>
-                  <h1 className="margin-top-30">Your success is our success too</h1>
-=======
-      <Section>
+      <Section className="testimonials-bg">
         <Grid childWidth="1-1">
           <Column>
             <Grid childWidth="expand" className="uk-grid-medium uk-flex-middle">
               <Column width="1-2" className="uk-flex uk-flex-column">
-                <h5>TESTIMONIALS</h5>
-                <h1 className="uk-margin-remove">
+                <h5 className="meta uk-margin-remove-bottom">TESTIMONIALS</h5>
+                <h1 className="margin-top-30">
                   Your success is our success too
                 </h1>
               </Column>
@@ -109,7 +96,6 @@ export default class Testimonials extends Component {
                       <a>View Full Story</a>
                     </Column>
                   </Grid>
->>>>>>> 2d3cb4f0a52a4b724dabfb923f7d02fb4723bdf5
                 </div>
               </Column>
               <Column>
