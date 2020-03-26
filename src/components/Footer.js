@@ -10,12 +10,12 @@ import linkedIn from '@iconify/icons-entypo-social/linkedin-with-circle';
 export default class Footer extends Component {
   render() {
     return (
-      <footer>
-        <div className="uk-container uk-section uk-padding-remove-top">
+      <footer className="footer-bg">
+        <div className="uk-container uk-section">
           <div className="uk-child-width-expand" data-uk-grid>
             <div className="uk-width-1-1">
               <Link to="/" className="uk-logo">
-                Comlogik
+                <img className="logo" src="static/logo.png" />
               </Link>
             </div>
             <div>
@@ -81,22 +81,22 @@ export default class Footer extends Component {
                   <h5>QUICK LINKS</h5>
                 </li>
                 <li>
-                  <a>About us</a>
+                  <a className="link">About us</a>
                 </li>
                 <li>
-                  <a>Clients</a>
+                  <a className="link">Clients</a>
                 </li>
                 <li>
-                  <a>Solutions</a>
+                  <a className="link">Solutions</a>
                 </li>
                 <li>
-                  <a>News</a>
+                  <a className="link">News</a>
                 </li>
                 <li>
-                  <a>Support</a>
+                  <a className="link">Support</a>
                 </li>
                 <li>
-                  <a>Contact us</a>
+                  <a className="link">Contact us</a>
                 </li>
               </ul>
             </div>
@@ -111,31 +111,31 @@ export default class Footer extends Component {
                 <li>
                   <ul className="uk-list uk-list-bullet uk-column-1-2">
                     <li>
-                      <a>Hospital Information Management System</a>
+                      <a className="link">Hospital Information Management System</a>
                     </li>
                     <li>
-                      <a>Clinic Information Management System</a>
+                      <a className="link">Clinic Information Management System</a>
                     </li>
                     <li>
-                      <a>ClaimsAssure</a>
+                      <a className="link">ClaimsAssure</a>
                     </li>
                     <li>
-                      <a>Comlogik EMR</a>
+                      <a className="link">Comlogik EMR</a>
                     </li>
                     <li>
-                      <a>WorkbenchMD</a>
+                      <a className="link">WorkbenchMD</a>
                     </li>
                     <li>
-                      <a>Comlogik Connect</a>
+                      <a className="link">Comlogik Connect</a>
                     </li>
                     <li>
-                      <a>Financeforte</a>
+                      <a className="link">Financeforte</a>
                     </li>
                     <li>
-                      <a>PayManager</a>
+                      <a className="link">PayManager</a>
                     </li>
                     <li>
-                      <a>WorkForce</a>
+                      <a className="link">WorkForce</a>
                     </li>
                   </ul>
                 </li>
@@ -143,8 +143,8 @@ export default class Footer extends Component {
             </div>
           </div>
         </div>
-        <div>
-          <h6 className="uk-text-center">
+        <div className="ribbon-bg uk-padding-small">
+          <h6 className="uk-text-center uk-margin-remove-bottom">
             COPYRIGHT © 2020, COMLOGIK BUSINESS SYSTEMS INC.
           </h6>
         </div>

@@ -1,13 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap');
 
 // 1. Your custom variables and variable overwrites.
+$global-secondary-background: #CC3396;
 $global-font-family: Poppins, sans-serif;
 $base-heading-font-weight: 600;
 $inverse-global-color-mode: none;
+$navbar-nav-item-color: #2E67B2;
+$navbar-nav-item-hover-color: #2E67B2;
 
 // 2. Import default variables and available mixins.
-@import 'node_modules/uikit/src/scss/variables-theme.scss';
-@import 'node_modules/uikit/src/scss/mixins-theme.scss';
+@import '../node_modules/uikit/src/scss/variables-theme.scss';
+@import '../node_modules/uikit/src/scss/mixins-theme.scss';
 
 // 3. Your custom mixin overwrites.
 @mixin hook-card-media-top() {
@@ -15,11 +18,135 @@ $inverse-global-color-mode: none;
   position: relative;
 }
 
+@mixin hook-button() {
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+@mixin hook-button-secondary() {
+  box-shadow: 1px 3px 10px rgba(230, 153, 203, 0.53);
+}
+
+@mixin hook-button-primary() {
+  background-color: #4983D0;
+  box-shadow: 1px 3px 10px rgba(73, 131, 208, 0.5);
+}
+
 // 4. Import UIkit.
-@import 'node_modules/uikit/src/scss/uikit-theme.scss';
+@import '../node_modules/uikit/src/scss/uikit-theme.scss';
 
 // 5. Your custom CSS.
 .uk-cover {
   min-height: 100%;
   object-fit: cover;
+}
+
+h1 {
+  color: #2E67B2;
+  margin-bottom: 0;
+}
+
+p {
+  color: #495057;
+}
+
+.sub-header {
+  margin-bottom: 40px;
+}
+
+.primary-outline {
+  border: 2px solid #2E67B2;
+  background-color: transparent;
+  color: #2E67B2;
+}
+
+.secondary-outline {
+  border: 2px solid #CC3396;
+  background-color: transparent;
+  color: #CC3396;
+}
+
+.logo {
+  width: 12rem;
+}
+
+.logo-bg {
+  position: absolute;
+}
+
+.landing-bg-1 {
+  position: absolute;
+  right: 0;
+  z-index: -2;
+  width: 59rem;
+}
+
+h5 {
+  color: #394049;
+  font-weight: 600;
+}
+
+.meta {
+  font-weight: bold;
+  color: #808A97 !important;
+  letter-spacing: 0.155em;
+}
+
+.landing-clouds-1 {
+  position: absolute;
+  width: 25rem;
+  left: 5%;
+}
+
+.landing-clouds-2 {
+  position: absolute;
+  right: 5%;
+  margin-top: 8%;
+}
+
+.margin-top-30 {
+  margin-top: 30px !important;
+}
+
+.products-bg {
+  background: rgb(187,226,243);
+  background: linear-gradient(331deg, rgba(187,226,243,1) 0%, rgba(233,246,251,1) 100%);
+}
+
+.active-product {
+  background-color: white;
+  padding: 15px;
+  box-shadow: 4px 5px 8px rgba(77, 189, 254, 0.15);
+  border-radius: 5px;
+}
+
+.team-bg {
+  position: absolute;
+  z-index: -2;
+  width: 40rem;
+}
+
+.testimonials-bg {
+  background-color: #F1F5F9;
+}
+
+.footer-bg {
+  background-color: #E9F6FB;
+}
+
+.ribbon-bg {
+  background-color: white;
+}
+
+.link {
+  color: #495057;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: #2E67B2;
 }

@@ -1,9 +1,177 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { Section, Grid, Column } from '../Grid';
 
-export default class TeamView extends Component {
+class TeamTab extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    return (
+      <button className="uk-button uk-button-primary" type="button">
+        {this.props.label}
+      </button>
+    );
+  }
+}
+
+class Profile extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className="uk-inline-clip uk-transition-toggle" tabIndex="0">
+        <img src={this.props.image}></img>
+        <div className="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
+          <h5 className="uk-margin-remove">{this.props.name}</h5>
+          <p>{this.props.role}</p>
+        </div>
+      </div>
+    );
+  }
+}
+
+class TeamView extends Component {
+  render() {
+    const data = {
+      Management: [
+        {
+          image: 'https://picsum.photos/300/250?random=1',
+          name: 'Employee 1',
+          role: 'Placeholder Role (PR)'
+        },
+        {
+          image: 'https://picsum.photos/300/250?random=2',
+          name: 'Employee 2',
+          role: 'Placeholder Role (PR)'
+        },
+        {
+          image: 'https://picsum.photos/300/250?random=3',
+          name: 'Employee 3',
+          role: 'Placeholder Role (PR)'
+        },
+        {
+          image: 'https://picsum.photos/300/250?random=4',
+          name: 'Employee 4',
+          role: 'Placeholder Role (PR)'
+        }
+      ],
+      Development: [
+        {
+          image: 'https://picsum.photos/300/250?random=5',
+          name: 'Employee 1',
+          role: 'Placeholder Role (PR)'
+        },
+        {
+          image: 'https://picsum.photos/300/250?random=6',
+          name: 'Employee 2',
+          role: 'Placeholder Role (PR)'
+        },
+        {
+          image: 'https://picsum.photos/300/250?random=7',
+          name: 'Employee 3',
+          role: 'Placeholder Role (PR)'
+        },
+        {
+          image: 'https://picsum.photos/300/250?random=8',
+          name: 'Employee 4',
+          role: 'Placeholder Role (PR)'
+        }
+      ],
+      Implementation: [
+        {
+          image: 'https://picsum.photos/300/250?random=9',
+          name: 'Employee 1',
+          role: 'Placeholder Role (PR)'
+        },
+        {
+          image: 'https://picsum.photos/300/250?random=10',
+          name: 'Employee 2',
+          role: 'Placeholder Role (PR)'
+        },
+        {
+          image: 'https://picsum.photos/300/250?random=11',
+          name: 'Employee 3',
+          role: 'Placeholder Role (PR)'
+        },
+        {
+          image: 'https://picsum.photos/300/250?random=12',
+          name: 'Employee 4',
+          role: 'Placeholder Role (PR)'
+        }
+      ],
+      Technical: [
+        {
+          image: 'https://picsum.photos/300/250?random=13',
+          name: 'Employee 1',
+          role: 'Placeholder Role (PR)'
+        },
+        {
+          image: 'https://picsum.photos/300/250?random=14',
+          name: 'Employee 2',
+          role: 'Placeholder Role (PR)'
+        },
+        {
+          image: 'https://picsum.photos/300/250?random=15',
+          name: 'Employee 3',
+          role: 'Placeholder Role (PR)'
+        },
+        {
+          image: 'https://picsum.photos/300/250?random=16',
+          name: 'Employee 4',
+          role: 'Placeholder Role (PR)'
+        }
+      ],
+      Administration: [
+        {
+          image: 'https://picsum.photos/300/250?random=17',
+          name: 'Employee 1',
+          role: 'Placeholder Role (PR)'
+        },
+        {
+          image: 'https://picsum.photos/300/250?random=18',
+          name: 'Employee 2',
+          role: 'Placeholder Role (PR)'
+        },
+        {
+          image: 'https://picsum.photos/300/250?random=19',
+          name: 'Employee 3',
+          role: 'Placeholder Role (PR)'
+        },
+        {
+          image: 'https://picsum.photos/300/250?random=20',
+          name: 'Employee 4',
+          role: 'Placeholder Role (PR)'
+        }
+      ]
+    };
+    const tabs = [];
+    const employees = [];
+    for (const [key, value] of Object.entries(data)) {
+      tabs.push(<TeamTab key={tabs.length} label={key}></TeamTab>);
+      const content = [];
+      value.forEach(_content => {
+        content.push(
+          <Column key={content.length}>
+            <Profile
+              image={_content.image}
+              name={_content.name}
+              role={_content.role}
+            ></Profile>
+          </Column>
+        );
+      });
+      employees.push(
+        <li key={employees.length}>
+          <Grid childWidth="1-4">{content}</Grid>
+        </li>
+      );
+    }
+
     return (
       <Section>
         <Grid childWidth="1-1">
@@ -17,96 +185,28 @@ export default class TeamView extends Component {
             </p>
           </Column>
           <Column>
-            <div className="uk-flex uk-flex-center" data-uk-switcher="animation: uk-animation-fade; toggle: > *">
-              <button className="uk-button uk-button-primary" type="button">
-                Management
-              </button>
-              <button className="uk-button uk-button-primary" type="button">
-                Development
-              </button>
-              <button className="uk-button uk-button-primary" type="button">
-                Implementation
-              </button>
-              <button className="uk-button uk-button-primary" type="button">
-                Technical
-              </button>
-              <button className="uk-button uk-button-primary" type="button">
-                Administration
-              </button>
+            <div
+              className="uk-flex uk-flex-center"
+              data-uk-switcher="animation: uk-animation-fade; toggle: > *"
+            >
+              {tabs}
             </div>
-            <ul className="uk-switcher uk-margin">
-              <li>
-                <Grid childWidth="1-4">
-                  <Column>
-                    <div
-                      className="uk-inline-clip uk-transition-toggle"
-                      tabIndex="0"
-                    >
-                      <img src="https://picsum.photos/300/250"></img>
-                      <div className="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
-                        <h5 className="uk-margin-remove">Juan Dela Cruz</h5>
-                        <p>Chief Executive Officer</p>
-                      </div>
-                    </div>
-                  </Column>
-                  <Column>
-                    <div
-                      className="uk-inline-clip uk-transition-toggle"
-                      tabIndex="0"
-                    >
-                      <img src="https://picsum.photos/300/250"></img>
-                      <div className="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
-                        <h5 className="uk-margin-remove">Juan Dela Cruz</h5>
-                        <p>Chief Executive Officer</p>
-                      </div>
-                    </div>
-                  </Column>
-                  <Column>
-                    <div
-                      className="uk-inline-clip uk-transition-toggle"
-                      tabIndex="0"
-                    >
-                      <img src="https://picsum.photos/300/250"></img>
-                      <div className="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
-                        <h5 className="uk-margin-remove">Juan Dela Cruz</h5>
-                        <p>Chief Executive Officer</p>
-                      </div>
-                    </div>
-                  </Column>
-                  <Column>
-                    <div
-                      className="uk-inline-clip uk-transition-toggle"
-                      tabIndex="0"
-                    >
-                      <img src="https://picsum.photos/300/250"></img>
-                      <div className="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
-                        <h5 className="uk-margin-remove">Juan Dela Cruz</h5>
-                        <p>Chief Executive Officer</p>
-                      </div>
-                    </div>
-                  </Column>
-                </Grid>
-              </li>
-              <li>
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.
-              </li>
-              <li>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur, sed do eiusmod.
-              </li>
-              <li>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur, sed do eiusmod.
-              </li>
-              <li>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur, sed do eiusmod.
-              </li>
-            </ul>
+            <ul className="uk-switcher uk-margin-medium-top">{employees}</ul>
           </Column>
         </Grid>
       </Section>
     );
   }
 }
+
+TeamTab.propTypes = {
+  label: PropTypes.string.isRequired
+};
+
+Profile.propTypes = {
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired
+};
+
+export default TeamView;

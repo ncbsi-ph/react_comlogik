@@ -42,7 +42,10 @@ class Grid extends Component {
     }
 
     return (
-      <div className={classes} data-uk-grid="">
+      <div
+        className={classes}
+        data-uk-grid={`masonry: ${this.props.masonry}; parallax: ${this.props.parallax}`}
+      >
         {this.props.children}
       </div>
     );
@@ -63,7 +66,11 @@ class Column extends Component {
         .concat(`uk-width-${width}`)
         .trim();
     }
-    return <div className={classes}>{this.props.children}</div>;
+    return (
+      <div className={classes} style={this.props.style}>
+        {this.props.children}
+      </div>
+    );
   }
 }
 
@@ -84,6 +91,7 @@ Grid.propTypes = {
 
 Column.propTypes = {
   className: PropTypes.string,
+  style: PropTypes.object,
   width: PropTypes.string
 };
 
@@ -104,6 +112,7 @@ Grid.defaultProps = {
 
 Column.defaultProps = {
   className: '',
+  style: {},
   width: ''
 };
 

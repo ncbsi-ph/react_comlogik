@@ -14,7 +14,7 @@ export default class Navbar extends Component {
             <div className="uk-container" data-uk-navbar>
               <div className="uk-navbar-left">
                 <Link to="/" className="uk-navbar-item uk-logo">
-                  Comlogik
+                  <img className="logo" src="static/logo.png" />
                 </Link>
               </div>
               <div className="uk-navbar-right">
@@ -52,11 +52,11 @@ export default class Navbar extends Component {
                   <li className="uk-parent">
                     <Link to="/">Home</Link>
                   </li>
-                  <li className="uk-parent">
+                  <li className="uk-parent link">
                     <Link to="/about">About</Link>
                   </li>
                   <li className="uk-parent">
-                    <a>Solutions</a>
+                    <Link to="/solutions">Solutions</Link>
                   </li>
                   <li className="uk-parent">
                     <Link to="/clients">Clients</Link>

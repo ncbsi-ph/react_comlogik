@@ -26,7 +26,7 @@
   "dependencies": {
     "@iconify/icons-entypo-social": "^1.0.3",
     "@iconify/icons-fa-brands": "^1.0.10",
-    "@iconify/icons-fa-solid": "^1.0.7",
+    "@iconify/icons-fa-solid": "^1.0.8",
     "@iconify/icons-fe": "^1.0.3",
     "@iconify/icons-feather": "^1.0.7",
     "@iconify/react": "^1.1.3",
@@ -41,8 +41,8 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
-    "@babel/preset-react": "^7.9.1",
-    "autoprefixer": "^9.7.4",
+    "@babel/preset-react": "^7.9.4",
+    "autoprefixer": "^9.7.5",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
@@ -56,7 +56,7 @@
     "postcss-loader": "^3.0.0",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.1.3",
-    "webpack": "^4.42.0",
+    "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   }
 }

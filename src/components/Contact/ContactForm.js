@@ -12,123 +12,131 @@ export default class ContactForm extends Component {
           </Column>
           <Column>
             <Grid childWidth="1-1">
-              <div>
-                <div
-                  className="uk-child-width-expand"
-                  data-uk-grid=""
-                >
-                  <div className="uk-width-1-4 uk-text-right">
-                    <label className="uk-form-label" htmlFor="name">
-                      Name
-                    </label>
-                  </div>
-                  <div>
-                    <input
-                      className="uk-input"
-                      type="text"
-                      name="name"
-                      id="name"
-                      autoComplete="off"
-                      required
-                    ></input>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div
-                  className="uk-flex-middle uk-child-width-expand"
-                  data-uk-grid=""
-                >
-                  <div className="uk-width-1-4 uk-text-right">
-                    <label className="uk-form-label" htmlFor="email">
-                      Email address
-                    </label>
-                  </div>
-                  <div>
-                    <input
-                      className="uk-input"
-                      type="email"
-                      name="email"
-                      id="email"
-                      autoComplete="off"
-                      required
-                    ></input>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div
-                  className="uk-flex-middle uk-child-width-expand"
-                  data-uk-grid=""
-                >
-                  <div className="uk-width-1-4 uk-text-right">
-                    <label className="uk-form-label" htmlFor="phone">
-                      Contact no.
-                    </label>
-                  </div>
-                  <div>
-                    <input
-                      className="uk-input"
-                      type="text"
-                      name="phone"
-                      id="phone"
-                      autoComplete="off"
-                      required
-                    ></input>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div
-                  className="uk-flex-middle uk-child-width-expand"
-                  data-uk-grid=""
-                >
-                  <div className="uk-width-1-4 uk-text-right">
-                    <label className="uk-form-label" htmlFor="subject">
-                      Subject
-                    </label>
-                  </div>
-                  <div>
-                    <select
-                      id="subject"
-                      name="subject"
-                      className="uk-select"
-                      required
+              <Column className="uk-flex uk-flex-column">
+                <h5>CONTACT US</h5>
+                <h1 className="uk-margin-remove-top">
+                  For more questions about our products and pricing, send us a
+                  message
+                </h1>
+              </Column>
+              <Column>
+                <Grid childWidth="1-1">
+                  <Column>
+                    <Column
+                      className="uk-padding"
+                      style={{ backgroundColor: '#F1F5F9' }}
                     >
-                      <option value="" selected disabled hidden>
-                        Select a subject
-                      </option>
-                      <option value="inquiry">Inquiry</option>
-                      <option value="request for a demo">
-                        Request for a demo
-                      </option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="uk-child-width-expand" data-uk-grid="">
-                  <div className="uk-width-1-4 uk-text-right">
-                    <label className="uk-form-label" htmlFor="message">
-                      Message
-                    </label>
-                  </div>
-                  <div>
-                    <textarea
-                      className="uk-textarea"
-                      name="message"
-                      id="message"
-                      rows="4"
-                      required
-                    ></textarea>
-                  </div>
-                </div>
-              </div>
-              <div className="uk-text-right">
-                <button name="submit" className="uk-button uk-button-primary">
-                  Send message
-                </button>
-              </div>
+                      <Grid childWidth="1-1">
+                        <Column>
+                          <Grid childWidth="expand" className="uk-flex-middle">
+                            <Column width="1-4">
+                              <label
+                                className="uk-form-label"
+                                htmlFor="fullName"
+                              >
+                                Full name
+                              </label>
+                            </Column>
+                            <Column>
+                              <input
+                                type="text"
+                                id="fullName"
+                                className="uk-input"
+                                autoComplete="off"
+                              ></input>
+                            </Column>
+                          </Grid>
+                        </Column>
+                        <Column>
+                          <Grid childWidth="expand" className="uk-flex-middle">
+                            <Column width="1-4">
+                              <label className="uk-form-label" htmlFor="email">
+                                Email address
+                              </label>
+                            </Column>
+                            <Column>
+                              <input
+                                type="email"
+                                id="email"
+                                className="uk-input"
+                                autoComplete="off"
+                                required
+                              ></input>
+                            </Column>
+                          </Grid>
+                        </Column>
+                        <Column>
+                          <Grid childWidth="expand" className="uk-flex-middle">
+                            <Column width="1-4">
+                              <label
+                                className="uk-form-label"
+                                htmlFor="contactNumber"
+                              >
+                                Contact number
+                              </label>
+                            </Column>
+                            <Column>
+                              <input
+                                className="uk-input"
+                                type="text"
+                                id="contactNumber"
+                                autoComplete="off"
+                                required
+                              ></input>
+                            </Column>
+                          </Grid>
+                        </Column>
+                        <Column>
+                          <Grid childWidth="expand" className="uk-flex-middle">
+                            <Column width="1-4">
+                              <label
+                                className="uk-form-label"
+                                htmlFor="company"
+                              >
+                                Company
+                              </label>
+                            </Column>
+                            <Column>
+                              <input
+                                className="uk-input"
+                                type="text"
+                                id="company"
+                                autoComplete="off"
+                                required
+                              ></input>
+                            </Column>
+                          </Grid>
+                        </Column>
+                        <Column>
+                          <Grid childWidth="expand" className="uk-flex-middle">
+                            <Column width="1-4">
+                              <label
+                                className="uk-form-label"
+                                htmlFor="message"
+                              >
+                                Message
+                              </label>
+                            </Column>
+                            <Column>
+                              <textarea
+                                className="uk-textarea"
+                                id="message"
+                                rows="4"
+                                required
+                              ></textarea>
+                            </Column>
+                          </Grid>
+                        </Column>
+                        <Column className="uk-text-right">
+                          <button className="uk-button uk-button-primary">
+                            Send message
+                          </button>
+                        </Column>
+                      </Grid>
+                    </Column>
+                  </Column>
+                </Grid>
+              </Column>
             </Grid>
           </Column>
         </Grid>

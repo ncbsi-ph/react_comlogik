@@ -15,7 +15,7 @@ export default class CTA extends Component {
               <button className="uk-button uk-button-primary uk-margin-right">
                 Request for a demo
               </button>
-              <button className="uk-button uk-button-default">
+              <button className="uk-button primary-outline">
                 Send an inquiry
               </button>
             </div>
