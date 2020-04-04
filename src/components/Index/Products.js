@@ -94,8 +94,8 @@ const Products = props => {
 
   return (
     <Section>
-      <Grid childWidth="expand">
-        <Column width="1-2">
+      <Grid childWidth="1-1 1-2@m">
+        <Column>
           <Grid childWidth="1-1">
             <Column className="uk-flex uk-flex-column">
               <h5>PRODUCTS</h5>
@@ -110,7 +110,7 @@ const Products = props => {
             </Column>
             <Column>
               <ul
-                className="uk-child-width-1-3"
+                className="uk-child-width-1-2 uk-child-width-1-3@s"
                 data-uk-switcher={`connect: #${props.target}; animation: uk-animation-fade`}
                 data-uk-grid=""
               >

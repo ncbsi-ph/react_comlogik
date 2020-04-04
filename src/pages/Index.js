@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Landing from '../components/Index/Landing';
 import Advantages from '../components/Index/Advantages';
@@ -8,18 +8,18 @@ import Testimonials from '../components/Index/Testimonials';
 import CTA from '../components/CTA';
 import Map from '../components/Map';
 
-export default class Index extends Component {
-  render() {
-    return (
-      <>
-        <Landing></Landing>
-        <Advantages></Advantages>
-        <Products target="products"></Products>
-        <Team></Team>
-        <Testimonials></Testimonials>
-        <CTA></CTA>
-        <Map></Map>
-      </>
-    );
-  }
-}
+const Index = () => {
+  return (
+    <>
+      <Landing />
+      <Advantages />
+      <Products target="products" />
+      <Team />
+      <Testimonials />
+      <CTA />
+      <Map />
+    </>
+  );
+};
+
+export default Index;

@@ -1,90 +1,79 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class Section extends Component {
-  constructor(props) {
-    super(props);
+const Section = props => {
+  let removePadding = '';
+  if (props.removePadding !== null && props.removePadding !== '') {
+    removePadding = `uk-padding-remove-${props.removePadding}`;
   }
 
-  render() {
-    let removePadding = '';
-    if (this.props.removePadding !== null && this.props.removePadding !== '') {
-      removePadding = `uk-padding-remove-${this.props.removePadding}`;
-    }
-    if (!this.props.container) {
-      return (
-        <div className={`uk-section ${removePadding}`}>
-          {this.props.children}
-        </div>
-      );
-    }
+  if (!props.container) {
     return (
-      <div className={`uk-section ${removePadding}`}>
-        <div className="uk-container">{this.props.children}</div>
+      <div className={`uk-section ${removePadding}`} style={props.style}>
+        {props.children}
       </div>
     );
   }
-}
 
-class Grid extends Component {
-  constructor(props) {
-    super(props);
-  }
+  return (
+    <div className={`uk-section ${removePadding}`} style={props.style}>
+      <div className="uk-container">{props.children}</div>
+    </div>
+  );
+};
 
-  render() {
-    const childWidth = this.props.childWidth.toString();
-    let classes = this.props.className.toString();
-    if (childWidth !== null && childWidth !== '') {
-      classes = classes
-        .concat(' ')
-        .concat(`uk-child-width-${childWidth}`)
-        .trim();
+const Grid = props => {
+  let classes = props.className;
+  if (props.childWidth !== '') {
+    const childWidth = props.childWidth.split(' ');
+    if (childWidth.length) {
+      childWidth.forEach(width => {
+        classes = classes.concat(' ').concat(`uk-child-width-${width}`);
+      });
     }
-
-    return (
-      <div
-        className={classes}
-        data-uk-grid={`masonry: ${this.props.masonry}; parallax: ${this.props.parallax}`}
-      >
-        {this.props.children}
-      </div>
-    );
   }
-}
+  classes = classes.trim();
 
-class Column extends Component {
-  constructor(props) {
-    super(props);
-  }
+  return (
+    <div
+      className={classes}
+      data-uk-grid={`masonry: ${props.masonry}; parallax: ${props.parallax}`}
+    >
+      {props.children}
+    </div>
+  );
+};
 
-  render() {
-    const width = this.props.width.toString();
-    let classes = this.props.className.toString();
-    if (width !== null && width !== '') {
-      classes = classes
-        .concat(' ')
-        .concat(`uk-width-${width}`)
-        .trim();
+const Column = props => {
+  let classes = props.className;
+  if (props.width !== '') {
+    const width = props.width.split(' ');
+    if (width.length) {
+      width.forEach(_width => {
+        classes = classes.concat(' ').concat(`uk-width-${_width}`);
+      });
     }
-    return (
-      <div className={classes} style={this.props.style}>
-        {this.props.children}
-      </div>
-    );
   }
-}
+  classes = classes.trim();
+
+  return (
+    <div className={classes} style={props.style}>
+      {props.children}
+    </div>
+  );
+};
 
 // Property types
 
 Section.propTypes = {
   removePadding: PropTypes.string,
+  style: PropTypes.object,
   container: PropTypes.bool
 };
 
 Grid.propTypes = {
   className: PropTypes.string,
   childWidth: PropTypes.string,
-  gap: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   masonry: PropTypes.bool,
   parallax: PropTypes.number
 };
@@ -99,13 +88,13 @@ Column.propTypes = {
 
 Section.defaultProps = {
   removePadding: '',
+  style: {},
   container: true
 };
 
 Grid.defaultProps = {
   className: '',
   childWidth: '',
-  gap: '',
   masonry: false,
   parallax: 0
 };

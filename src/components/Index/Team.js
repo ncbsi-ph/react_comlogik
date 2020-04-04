@@ -5,7 +5,7 @@ import { Section, Grid, Column } from '../Grid';
 const Team = () => {
   return (
     <Section>
-      <Grid childWidth="1-2" className="uk-flex-middle">
+      <Grid childWidth="1-1 1-2@m" className="uk-flex-middle">
         <Column>
           <img src="static/team.gif"></img>
         </Column>

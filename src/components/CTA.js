@@ -1,25 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import { Section } from './Grid';
+import { Section, Grid, Column } from './Grid';
 
 const CTA = () => {
   return (
     <Section>
-      <div className="uk-flex uk-flex-column uk-text-center">
-        <h1>Let's grab a coffee together</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-          congue nunc ac odio pulvinar, at varius nisl blandit.
-        </p>
-        <div>
-          <button className="uk-button uk-button-primary uk-margin-right">
-            Request for a demo
-          </button>
-          <button className="uk-button uk-button-default">
-            Send an inquiry
-          </button>
-        </div>
-      </div>
+      <Grid childWidth="1-1" className="uk-grid-medium uk-text-center">
+        <Column>
+          <h1 className="uk-margin-remove">Let's grab a coffee together</h1>
+        </Column>
+        <Column>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+            congue nunc ac odio pulvinar, at varius nisl blandit.
+          </p>
+        </Column>
+        <Column>
+          <Grid childWidth="auto" className="uk-grid-small uk-flex-center">
+            <Column>
+              <button className="uk-button uk-button-primary">
+                Request for a demo
+              </button>
+            </Column>
+            <Column>
+              <button className="uk-button uk-button-default">
+                Send an inquiry
+              </button>
+            </Column>
+          </Grid>
+        </Column>
+      </Grid>
     </Section>
   );
 };
