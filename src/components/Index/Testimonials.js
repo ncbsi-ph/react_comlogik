@@ -5,7 +5,7 @@ import { Section, Grid, Column } from '../Grid';
 export default class Testimonials extends Component {
   render() {
     return (
-      <Section>
+      <Section className="testimonials-bg">
         <Grid childWidth="1-1">
           <Column>
             <Grid childWidth="1-1 1-2@m" className="uk-grid-medium uk-flex-middle">
