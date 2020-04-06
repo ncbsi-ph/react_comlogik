@@ -31,6 +31,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      ENVIRONMENT: JSON.stringify('dev')
+    }),
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin({
       cleanStaleWebpackAssets: false

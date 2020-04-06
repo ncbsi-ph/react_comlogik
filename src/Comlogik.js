@@ -15,8 +15,11 @@ import NewsContent from './pages/NewsContent';
 import ProductContent from './pages/ProductContent';
 
 const Comlogik = () => {
+  const devBasename = '/react_comlogik/dist';
+  const productionBasename = '/new';
+
   return (
-    <Router basename="react_comlogik/dist">
+    <Router basename={ENVIRONMENT === 'dev' ? devBasename : productionBasename}>
       <Navbar />
       <Switch>
         <Route exact path="/">
