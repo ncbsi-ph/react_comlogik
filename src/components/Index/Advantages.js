@@ -30,7 +30,7 @@ const Advantages = () => {
           <p>Unbeatable advantages over any provider</p>
         </Column>
         <Column>
-          <Grid childWidth="1-3">
+          <Grid childWidth="1-1 1-2@s 1-3@l">
             <Advantage
               icon="static/advantage-1.svg"
               advantage="Over 20 years of providing quality healthcare software"

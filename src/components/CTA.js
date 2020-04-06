@@ -1,28 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import { Section } from './Grid';
+import { Section, Grid, Column } from './Grid';
 
 const CTA = () => {
   return (
-  <div className="uk-section gradient-bg-dark">
-    <div className="uk-container">
-      <div className="uk-flex uk-flex-column uk-text-center">
-        <h1 className="text-white">Let's grab a coffee together</h1>
-        <p className="text-white">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-          congue nunc ac odio pulvinar, at varius nisl blandit.
-        </p>
-        <div>
-          <button className="uk-button uk-button-primary uk-margin-right white-button">
-            Request for a demo
-          </button>
-          <button className="uk-button white-outline">
-            Send an inquiry
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+    <Section className="gradient-bg-dark">
+      <Grid childWidth="1-1" className="uk-grid-medium uk-text-center">
+        <Column>
+          <h1 className="uk-margin-remove text-white">Let's grab a coffee together</h1>
+        </Column>
+        <Column>
+          <p className="text-white">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+            congue nunc ac odio pulvinar, at varius nisl blandit.
+          </p>
+        </Column>
+        <Column>
+          <Grid childWidth="auto" className="uk-grid-small uk-flex-center">
+            <Column>
+              <button className="uk-button uk-button-primary white-button">
+                Request for a demo
+              </button>
+            </Column>
+            <Column>
+              <button className="uk-button white-outline">
+                Send an inquiry
+              </button>
+            </Column>
+          </Grid>
+        </Column>
+      </Grid>
+    </Section>
   );
 };
 

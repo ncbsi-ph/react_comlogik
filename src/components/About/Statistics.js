@@ -1,65 +1,55 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Stat extends Component {
-  constructor(props) {
-    super(props);
-  }
+import { Section, Grid, Column } from '../Grid';
 
-  render() {
-    return (
-      <div>
-        <div
-          className="uk-grid-small uk-child-width-1-1 uk-flex-column uk-flex-center"
-          data-uk-grid
-        >
-          <div className="uk-text-center">
-            <img
-              className="uk-preserve"
-              src={this.props.image}
-              data-uk-svg=""
-            ></img>
-          </div>
-          <div>
-            <h2 className="uk-text-center text-bold text-primary">{this.props.count}</h2>
-          </div>
-          <div>
-            <h5 className="uk-text-center text-primary">{this.props.caption}</h5>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+const Stat = props => {
+  return (
+    <Column>
+      <Grid
+        childWidth="1-1"
+        className="uk-grid-small uk-flex-column uk-text-center"
+      >
+        <Column>
+          <img className="uk-preserve" src={props.image} data-uk-svg=""></img>
+        </Column>
+        <Column>
+          <h2 className="uk-text-center text-bold text-primary">{props.count}</h2>
+        </Column>
+        <Column>
+          <h5 className="uk-text-center text-primary">{props.caption}</h5>
+        </Column>
+      </Grid>
+    </Column>
+  );
+};
 
-export default class Statistics extends Component {
-  render() {
-    return (
-      <div className="uk-section gray-bg">
-        <div className="uk-container">
-          <div className="uk-child-width-expand" data-uk-grid>
-            <Stat
-              image="static/stat-1.svg"
-              count="200+"
-              caption="PARTNER HOSPITALS & CLINICS"
-            ></Stat>
-            <Stat
-              image="static/stat-2.svg"
-              count="20"
-              caption="SUCCESSFUL YEARS IN THE INDUSTRY"
-            ></Stat>
-            <Stat
-              image="static/stat-3.svg"
-              count="300+"
-              caption="DOCTORS TRUST OUR SERVICES"
-            ></Stat>
-            <Stat
-              image="static/stat-4.svg"
-              count="20+"
-              caption="AWARDS & RECOGNITIONS RECEIVED"
-            ></Stat>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+const Statistics = () => {
+  return (
+    <Section className="gray-bg">
+      <Grid childWidth="1-2 expand@m">
+        <Stat
+          image="static/stat-1.svg"
+          count="200+"
+          caption="PARTNER HOSPITALS & CLINICS"
+        />
+        <Stat
+          image="static/stat-2.svg"
+          count="20"
+          caption="SUCCESSFUL YEARS IN THE INDUSTRY"
+        />
+        <Stat
+          image="static/stat-3.svg"
+          count="300+"
+          caption="DOCTORS TRUST OUR SERVICES"
+        />
+        <Stat
+          image="static/stat-4.svg"
+          count="20+"
+          caption="AWARDS & RECOGNITIONS RECEIVED"
+        />
+      </Grid>
+    </Section>
+  );
+};
+
+export default Statistics;

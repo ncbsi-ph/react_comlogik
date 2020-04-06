@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
@@ -6,37 +6,56 @@ import Footer from './components/Footer';
 import Index from './pages/Index';
 import About from './pages/About';
 import Clients from './pages/Clients';
+import CaseStudyContent from './pages/CaseStudyContent';
 import Support from './pages/Support';
 import Contact from './pages/Contact';
 import Solutions from './pages/Solutions';
+import News from './pages/News';
+import NewsContent from './pages/NewsContent';
+import ProductContent from './pages/ProductContent';
 
-export default class Comlogik extends Component {
-  render() {
-    return (
-      <Router basename="react_comlogik/dist">
-        <Navbar></Navbar>
-        <Switch>
-          <Route exact path="/">
-            <Index></Index>
-          </Route>
-          <Route path="/about">
-            <About></About>
-          </Route>
-          <Route path="/clients">
-            <Clients></Clients>
-          </Route>
-          <Route path="/support">
-            <Support></Support>
-          </Route>
-          <Route path="/contact-us">
-            <Contact></Contact>
-          </Route>
-          <Route path="/solutions">
-            <Solutions></Solutions>
-          </Route>
-        </Switch>
-        <Footer></Footer>
-      </Router>
-    );
-  }
-}
+const Comlogik = () => {
+  const devBasename = '/react_comlogik/dist';
+  const productionBasename = '/new';
+
+  return (
+    <Router basename={ENVIRONMENT === 'dev' ? devBasename : productionBasename}>
+      <Navbar />
+      <Switch>
+        <Route exact path="/">
+          <Index />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/clients">
+          <Clients />
+        </Route>
+        <Route path="/support">
+          <Support />
+        </Route>
+        <Route path="/contact-us">
+          <Contact />
+        </Route>
+        <Route path="/solutions">
+          <Solutions />
+        </Route>
+        <Route path="/news">
+          <News />
+        </Route>
+        <Route path="/news-content">
+          <NewsContent />
+        </Route>
+        <Route path="/case-study-content">
+          <CaseStudyContent />
+        </Route>
+        <Route path="/product-content">
+          <ProductContent />
+        </Route>
+      </Switch>
+      <Footer />
+    </Router>
+  );
+};
+
+export default Comlogik;

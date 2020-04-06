@@ -11,7 +11,7 @@ export default class Navbar extends Component {
       <>
         <div data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-position-sticky uk-navbar-transparent">
           <div className="uk-navbar-container">
-            <div className="uk-container" data-uk-navbar>
+            <div className="uk-container" data-uk-navbar="">
               <div className="uk-navbar-left">
                 <Link to="/" className="uk-navbar-item uk-logo">
                   <img className="logo" src="static/logo.png" />
@@ -62,7 +62,7 @@ export default class Navbar extends Component {
                     <Link to="/clients">Clients</Link>
                   </li>
                   <li className="uk-parent">
-                    <a>Insights</a>
+                    <Link to="/news">News</Link>
                   </li>
                   <li className="uk-parent">
                     <Link to="/support">Support</Link>

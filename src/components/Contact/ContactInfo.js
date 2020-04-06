@@ -6,9 +6,9 @@ export default class ContactInfo extends Component {
   render() {
     return (
       <Section>
-        <Grid childWidth="1-2" className="uk-flex-middle">
+        <Grid childWidth="1-1 1-2@m" className="uk-flex-middle">
           <Column>
-            <Grid childWidth="1-1">
+            <Grid childWidth="1-1" className="uk-grid-large">
               <Column>
                 <Grid childWidth="expand">
                   <Column width="auto">
@@ -68,7 +68,7 @@ export default class ContactInfo extends Component {
             </Grid>
           </Column>
           <Column>
-            <Grid childWidth="1-1">
+            <Grid childWidth="1-1" className="uk-grid-large">
               <Column>
                 <Grid childWidth="expand">
                   <Column width="auto">

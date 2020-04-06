@@ -6,8 +6,8 @@ export default class ContactForm extends Component {
   render() {
     return (
       <Section>
-        <Grid childWidth="expand">
-          <Column width="1-2">
+        <Grid childWidth="1-1 1-2@m">
+          <Column>
             <img src="static/contact-hero.gif"></img>
           </Column>
           <Column>

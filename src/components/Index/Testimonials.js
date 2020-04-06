@@ -8,10 +8,10 @@ export default class Testimonials extends Component {
       <Section className="testimonials-bg">
         <Grid childWidth="1-1">
           <Column>
-            <Grid childWidth="expand" className="uk-grid-medium uk-flex-middle">
-              <Column width="1-2" className="uk-flex uk-flex-column">
-                <h5 className="meta uk-margin-remove-bottom">TESTIMONIALS</h5>
-                <h1 className="margin-top-30">
+            <Grid childWidth="1-1 1-2@m" className="uk-grid-medium uk-flex-middle">
+              <Column className="uk-flex uk-flex-column">
+                <h5>TESTIMONIALS</h5>
+                <h1 className="uk-margin-remove">
                   Your success is our success too
                 </h1>
               </Column>
@@ -29,7 +29,7 @@ export default class Testimonials extends Component {
             </Grid>
           </Column>
           <Column>
-            <Grid childWidth="1-3">
+            <Grid childWidth="1-1 1-3@m">
               <Column>
                 <div className="uk-card uk-card-body uk-card-default">
                   <Grid
