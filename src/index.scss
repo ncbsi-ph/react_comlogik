@@ -95,9 +95,11 @@ p {
 }
 
 .secondary-outline {
-  border: 2px solid #CC3396;
   background-color: transparent;
   color: #CC3396;
+  -webkit-box-shadow:inset 0px 0px 0px 2px #CC3396;
+  -moz-box-shadow:inset 0px 0px 0px 2px #CC3396;
+  box-shadow:inset 0px 0px 0px 2px #CC3396;
 }
 
 .tab-button {
@@ -140,11 +142,12 @@ p {
   left: 0rem;
 }
 
-.landing-bg-1 {
+.landing-bg {
   position: absolute;
   right: 0;
+  top: 0;
   z-index: -2;
-  width: 59rem;
+  width: 55rem;
 }
 
 h5 {
