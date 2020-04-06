@@ -20,10 +20,10 @@ class Stat extends Component {
             ></img>
           </div>
           <div>
-            <h2 className="uk-text-center">{this.props.count}</h2>
+            <h2 className="uk-text-center text-bold text-primary">{this.props.count}</h2>
           </div>
           <div>
-            <h5 className="uk-text-center">{this.props.caption}</h5>
+            <h5 className="uk-text-center text-primary">{this.props.caption}</h5>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@ class Stat extends Component {
 export default class Statistics extends Component {
   render() {
     return (
-      <div className="uk-section">
+      <div className="uk-section gray-bg">
         <div className="uk-container">
           <div className="uk-child-width-expand" data-uk-grid>
             <Stat

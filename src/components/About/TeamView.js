@@ -10,7 +10,7 @@ class TeamTab extends Component {
 
   render() {
     return (
-      <button className="uk-button uk-button-primary" type="button">
+      <button className="uk-button tab-button" type="button">
         {this.props.label}
       </button>
     );
@@ -26,9 +26,9 @@ class Profile extends Component {
     return (
       <div className="uk-inline-clip uk-transition-toggle" tabIndex="0">
         <img src={this.props.image}></img>
-        <div className="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
-          <h5 className="uk-margin-remove">{this.props.name}</h5>
-          <p>{this.props.role}</p>
+        <div className="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
+          <h5 className="uk-margin-remove text-white">{this.props.name}</h5>
+          <p className="text-white uk-margin-small-top">{this.props.role}</p>
         </div>
       </div>
     );
@@ -173,28 +173,30 @@ class TeamView extends Component {
     }
 
     return (
-      <Section>
-        <Grid childWidth="1-1">
-          <Column className="uk-flex uk-flex-column uk-flex-center">
-            <h5 className="uk-text-center">WHO WE ARE</h5>
-            <h1 className="uk-text-center">Meet our awesome team</h1>
-            <p className="uk-text-center">
-              Our team consists of the most dynamic, talented people in the
-              industry. We have passion on what we do, and are highly
-              competitive individual bonded by our goal to innovate.
-            </p>
-          </Column>
-          <Column>
-            <div
-              className="uk-flex uk-flex-center"
-              data-uk-switcher="animation: uk-animation-fade; toggle: > *"
-            >
-              {tabs}
-            </div>
-            <ul className="uk-switcher uk-margin-medium-top">{employees}</ul>
-          </Column>
-        </Grid>
-      </Section>
+      <div className="uk-section gradient-bg-light">
+        <div className="uk-container">
+          <Grid childWidth="1-1">
+            <Column className="uk-flex uk-flex-column uk-flex-center">
+              <h5 className="uk-text-center meta uk-margin-remove-bottom">WHO WE ARE</h5>
+              <h1 className="uk-text-center margin-top-30">Meet our awesome team</h1>
+              <p className="uk-text-center">
+                Our team consists of the most dynamic, talented people in the
+                industry. We have passion on what we do, and are highly
+                competitive individual bonded by our goal to innovate.
+              </p>
+            </Column>
+            <Column>
+              <div
+                className="uk-flex uk-flex-center"
+                data-uk-switcher="animation: uk-animation-fade; toggle: > *"
+              >
+                {tabs}
+              </div>
+              <ul className="uk-switcher uk-margin-medium-top">{employees}</ul>
+            </Column>
+          </Grid>
+        </div>
+      </div>
     );
   }
 }

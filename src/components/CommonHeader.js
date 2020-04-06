@@ -13,12 +13,13 @@ const CommonHeader = props => {
 
   return (
     <Section>
+      <img className="logo-bg" src="static/logo-bg.svg" />
       <Grid childWidth="expand" className="uk-grid-large uk-flex-middle">
         <Column width="1-2">{image}</Column>
         <Column className="uk-flex uk-flex-column">
-          <h5>{props.label}</h5>
-          <h1 className="uk-margin-remove">{props.heading}</h1>
-          <p>{props.sentence}</p>
+          <h5 className="meta uk-margin-remove-bottom">{props.label}</h5>
+          <h1 className="margin-top-30">{props.heading}</h1>
+          <p className="uk-margin-medium-top">{props.sentence}</p>
         </Column>
       </Grid>
     </Section>

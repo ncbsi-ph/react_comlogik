@@ -15,7 +15,7 @@ const Landing = () => {
             healthcare information technology needs.
           </p>
           <div>
-            <button className="uk-button uk-button-secondary uk-margin-right">
+            <button className="uk-button secondary-button uk-margin-right">
               Request a demo
             </button>
             <button className="uk-button secondary-outline">

@@ -14,7 +14,7 @@ export default class Values extends Component {
                 data-uk-grid
               >
                 <div className="uk-width-1-3">
-                  <h2>Our Vision</h2>
+                  <h2 className="text-primary">Our Vision</h2>
                 </div>
                 <div>
                   <p>
@@ -30,7 +30,7 @@ export default class Values extends Component {
                 data-uk-grid
               >
                 <div className="uk-width-1-3">
-                  <h2>Our Mission</h2>
+                  <h2 className="text-primary">Our Mission</h2>
                 </div>
                 <div>
                   <p>
@@ -46,7 +46,7 @@ export default class Values extends Component {
             <div>
               <div className="uk-grid-small uk-child-width-expand" data-uk-grid>
                 <div className="uk-width-1-3">
-                  <h2>Our Core Values</h2>
+                  <h2 className="text-primary">Our Core Values</h2>
                 </div>
                 <div>
                   <div className="uk-child-width-1-1" data-uk-grid>
@@ -65,7 +65,7 @@ export default class Values extends Component {
                         </div>
                         <div className="uk-flex uk-flex-column">
                           <h5 className="uk-margin-remove">Change the game</h5>
-                          <p>
+                          <p className="uk-margin-small-top">
                             Deliver innovation that matters. Be what's next.
                           </p>
                         </div>
@@ -88,7 +88,7 @@ export default class Values extends Component {
                           <h5 className="uk-margin-remove">
                             Elevate its purpose
                           </h5>
-                          <p>
+                          <p className="uk-margin-small-top">
                             Build solutions to make people’s lives better while
                             making it beneficial to our customers.
                           </p>
@@ -112,7 +112,7 @@ export default class Values extends Component {
                           <h5 className="uk-margin-remove">
                             ‘Wow’ every customer
                           </h5>
-                          <p>
+                          <p className="uk-margin-small-top">
                             Put the consumer at the center of everything we do.
                             Surpass expectations, every time.
                           </p>
@@ -136,7 +136,7 @@ export default class Values extends Component {
                           <h5 className="uk-margin-remove">
                             Make a difference every day
                           </h5>
-                          <p>
+                          <p className="uk-margin-small-top">
                             Constantly push ourselves to be our best, focus on
                             solutions, and arrive every day inspired to make an
                             impact through our talents, passion and hard work.

@@ -6,8 +6,8 @@ export default class CareerCTA extends Component {
       <div className="uk-section">
         <div className="uk-container">
           <div className="uk-width-1-1 uk-flex uk-flex-column">
-            <h5>CAREERS</h5>
-            <h1>Looking for a rewarding career with us?</h1>
+            <h5 className="meta uk-margin-remove-bottom">CAREERS</h5>
+            <h1 className="margin-top-30">Looking for a rewarding career with us?</h1>
             <p>
               Bonded by our mission and propelled by our innovative spirit, our
               work at Comlogik is collaborative, transformative, and above all,
@@ -16,7 +16,7 @@ export default class CareerCTA extends Component {
               Philippine healthcare system better for everyone that may have an
               effect with your friends, family or even you.
             </p>
-            <div>
+            <div className="uk-margin-medium-top">
               <a className="uk-button uk-button-primary">View careers</a>
             </div>
           </div>

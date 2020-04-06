@@ -21,7 +21,7 @@ const ProductDescription = props => {
           <img data-src={props.image} data-uk-cover="" data-uk-img=""></img>
         </div>
         <div className="uk-card-body uk-flex uk-flex-column">
-          <h4>{props.productName}</h4>
+          <h4 className="uk-margin-remove-bottom">{props.productName}</h4>
           <p>{props.productDescription}</p>
           <div>
             <a className="uk-button uk-button-primary">Learn more</a>
@@ -93,16 +93,16 @@ const Products = props => {
   });
 
   return (
-    <Section>
+    <Section className="uk-padding products-bg">
       <Grid childWidth="expand">
         <Column width="1-2">
           <Grid childWidth="1-1">
             <Column className="uk-flex uk-flex-column">
-              <h5>PRODUCTS</h5>
-              <h1 className="uk-margin-remove">
+              <h5 className="meta uk-margin-remove-bottom">PRODUCTS</h5>
+              <h1 className="margin-top-30">
                 Software that really gets the job done
               </h1>
-              <p>
+              <p className="uk-margin-medium-bottom">
                 Out well-thought-out software solutions give you the tools to
                 get higher patient satisfaction and greater employee
                 productivity, in a way that will keep drive profitability.

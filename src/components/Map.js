@@ -2,7 +2,7 @@ import React from 'react';
 
 const Map = () => {
   return (
-    <div className="uk-section">
+    <div className="uk-section uk-padding-remove-bottom">
       <iframe
         width="100%"
         height="400"
