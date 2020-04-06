@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
 // 1. Your custom variables and variable overwrites.
-$global-secondary-background: #CC3396;
 $global-font-family: Poppins, sans-serif;
 $base-heading-font-weight: 600;
 $inverse-global-color-mode: none;
@@ -27,10 +26,6 @@ $navbar-nav-item-hover-color: #2E67B2;
   letter-spacing: 0.5px;
 }
 
-@mixin hook-button-secondary() {
-  box-shadow: 1px 3px 10px rgba(230, 153, 203, 0.53);
-}
-
 @mixin hook-button-primary() {
   background-color: #4983D0;
   box-shadow: 1px 3px 10px rgba(73, 131, 208, 0.5);
@@ -54,8 +49,37 @@ p {
   color: #495057;
 }
 
+.text-bold {
+  font-weight: bold;
+}
+
+.text-primary {
+  color: #2E67B2;
+}
+
+.text-white {
+  color: white !important;
+}
+
 .sub-header {
   margin-bottom: 40px;
+}
+
+//BUTTONS
+.white-button {
+  background-color: white;
+  color: #019CF8;
+}
+
+.white-button:hover {
+  background-color: #f1f3f5;
+  color: #019CF8;
+}
+
+.white-outline {
+  border: 2px solid white;
+  color: white;
+  background-color: transparent;
 }
 
 .primary-outline {
@@ -64,11 +88,46 @@ p {
   color: #2E67B2;
 }
 
+.secondary-button {
+  background-color: #CC3396;
+  color: white;
+  box-shadow: 1px 3px 10px rgba(230, 153, 203, 0.53);
+}
+
 .secondary-outline {
   border: 2px solid #CC3396;
   background-color: transparent;
   color: #CC3396;
 }
+
+.tab-button {
+  background-color: transparent;
+}
+
+.tab-button:hover {
+  border: 2px solid #2E67B2;
+  background-color: transparent;
+  color: #2E67B2;
+}
+
+.tab-button .uk-active {
+  border: 2px solid #2E67B2;
+  background-color: transparent;
+  color: #2E67B2;
+}
+
+
+// Background
+.gradient-bg-light {
+  background: rgb(187,226,243);
+  background: linear-gradient(331deg, rgba(187,226,243,1) 0%, rgba(233,246,251,1) 100%);
+}
+
+.gradient-bg-dark {
+  background: #4DBDFE;
+  background: linear-gradient(98.1deg, #4DBDFE -0.66%, #019CF8 100%);
+}
+
 
 .logo {
   width: 12rem;
@@ -76,6 +135,9 @@ p {
 
 .logo-bg {
   position: absolute;
+  z-index: -2;
+  top: -1rem;
+  left: 0rem;
 }
 
 .landing-bg-1 {
@@ -96,25 +158,20 @@ h5 {
   letter-spacing: 0.155em;
 }
 
-.landing-clouds-1 {
+.cloud-1 {
   position: absolute;
   width: 25rem;
   left: 5%;
 }
 
-.landing-clouds-2 {
+.cloud-2 {
   position: absolute;
-  right: 5%;
-  margin-top: 8%;
+  right: 4%;
+  margin-top: 6%;
 }
 
 .margin-top-30 {
   margin-top: 30px !important;
-}
-
-.products-bg {
-  background: rgb(187,226,243);
-  background: linear-gradient(331deg, rgba(187,226,243,1) 0%, rgba(233,246,251,1) 100%);
 }
 
 .active-product {
@@ -149,4 +206,9 @@ h5 {
 .link:hover {
   text-decoration: none;
   color: #2E67B2;
+}
+
+
+.gray-bg {
+  background-color: #F1F5F9;
 }

@@ -13,10 +13,10 @@ const Stat = props => {
           <img className="uk-preserve" src={props.image} data-uk-svg=""></img>
         </Column>
         <Column>
-          <h2 className="uk-text-center">{props.count}</h2>
+          <h2 className="uk-text-center text-bold text-primary">{props.count}</h2>
         </Column>
         <Column>
-          <h5 className="uk-text-center">{props.caption}</h5>
+          <h5 className="uk-text-center text-primary">{props.caption}</h5>
         </Column>
       </Grid>
     </Column>
@@ -25,7 +25,7 @@ const Stat = props => {
 
 const Statistics = () => {
   return (
-    <Section>
+    <Section className="gray-bg">
       <Grid childWidth="1-2 expand@m">
         <Stat
           image="static/stat-1.svg"

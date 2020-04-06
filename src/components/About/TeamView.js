@@ -6,7 +6,7 @@ import { Section, Grid, Column } from '../Grid';
 const TeamTab = props => {
   return (
     <Column>
-      <button className="uk-button uk-button-primary" type="button">
+      <button className="uk-button tab-button" type="button">
         {props.label}
       </button>
     </Column>
@@ -18,9 +18,9 @@ const Profile = props => {
     <Column>
       <div className="uk-inline-clip uk-transition-toggle" tabIndex="0">
         <img src={props.image}></img>
-        <div className="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
-          <h5 className="uk-margin-remove">{props.name}</h5>
-          <p>{props.role}</p>
+        <div className="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
+          <h5 className="uk-margin-remove text-white">{props.name}</h5>
+          <p className="text-white uk-margin-small-top">{props.role}</p>
         </div>
       </div>
     </Column>

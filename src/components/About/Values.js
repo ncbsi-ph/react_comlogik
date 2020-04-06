@@ -8,7 +8,7 @@ const Vision = () => {
   return (
     <Grid childWidth="1-1" className="uk-grid-small uk-flex-middle">
       <Column width="1-3@m">
-        <h2>Our Vision</h2>
+        <h2 className="text-primary">Our Vision</h2>
       </Column>
       <Column width="expand@m">
         <p>
@@ -23,7 +23,7 @@ const Mission = () => {
   return (
     <Grid childWidth="1-1" className="uk-grid-small uk-flex-middle">
       <Column width="1-3@m">
-        <h2>Our Mission</h2>
+        <h2 className="text-primary">Our Mission</h2>
       </Column>
       <Column width="expand@m">
         <p>
@@ -57,7 +57,7 @@ const CoreValues = () => {
   return (
     <Grid childWidth="1-1">
       <Column width="1-3@m">
-        <h2>Our Core Values</h2>
+        <h2 className="text-primary">Our Core Values</h2>
       </Column>
       <Column width="expand@m">
         <Grid childWidth="1-1">

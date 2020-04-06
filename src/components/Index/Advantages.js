@@ -21,10 +21,12 @@ const Advantage = props => {
 const Advantages = () => {
   return (
     <Section>
+      <img className="cloud-1" src="static/cloud-1.svg" />
+      <img className="cloud-2" src="static/cloud-2.svg" />
       <Grid childWidth="1-1">
-        <Column className="uk-flex uk-flex-column uk-text-center">
-          <h5>ADVANTAGES</h5>
-          <h1 className="uk-margin-remove">Why choose us?</h1>
+        <Column className="uk-flex uk-flex-column uk-text-center uk-margin-large-bottom uk-margin-large-top">
+          <h5 className="meta uk-margin-remove-bottom">ADVANTAGES</h5>
+          <h1 className="margin-top-30">Why choose us?</h1>
           <p>Unbeatable advantages over any provider</p>
         </Column>
         <Column>
