@@ -8,13 +8,13 @@ const CaseStudy = props => {
     <Column>
       <Grid
         childWidth="expand"
-        className="uk-card uk-card-default uk-grid-collapse"
+        className="uk-card uk-card-default rounded uk-grid-collapse"
       >
         <Column
           width="1-3"
           className="uk-card-media-left uk-cover-container uk-visible@s"
         >
-          <img src={props.image} data-uk-cover=""></img>
+          <img src={props.image} data-uk-cover="" className="rounded-testimonials"></img>
         </Column>
         <Column className="uk-card-body uk-flex-column">
           <h5>{props.hospitalName}</h5>
@@ -35,10 +35,10 @@ const CaseStudy = props => {
 
 const CaseStudies = () => {
   return (
-    <Section>
+    <Section className="gradient-bg-light">
       <Grid childWidth="1-1 1-2@l" className="uk-flex-middle">
         <Column className="uk-flex uk-flex-column">
-          <h1 className="uk-margin-remove">Client successes</h1>
+          <h1 className="uk-margin-remove">Client Successes</h1>
           <p>
             Congratulations to our clients for their recent successes. Our
             clients are some of the most innovative in health care. They range

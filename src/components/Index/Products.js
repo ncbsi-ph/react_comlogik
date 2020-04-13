@@ -93,7 +93,7 @@ const Products = props => {
   });
 
   return (
-    <Section className="products-bg">
+    <Section className="gradient-bg-light">
       <Grid childWidth="1-1 1-2@m">
         <Column>
           <Grid childWidth="1-1">

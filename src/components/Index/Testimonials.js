@@ -10,8 +10,8 @@ export default class Testimonials extends Component {
           <Column>
             <Grid childWidth="1-1 1-2@m" className="uk-grid-medium uk-flex-middle">
               <Column className="uk-flex uk-flex-column">
-                <h5>TESTIMONIALS</h5>
-                <h1 className="uk-margin-remove">
+                <h5 className="meta uk-margin-remove-bottom">TESTIMONIALS</h5>
+                <h1 className="margin-top-30">
                   Your success is our success too
                 </h1>
               </Column>

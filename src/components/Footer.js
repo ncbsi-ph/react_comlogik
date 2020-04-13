@@ -13,16 +13,10 @@ const Address = () => {
   return (
     <Grid childWidth="1-1" className="uk-grid-row-small">
       <Column>
-        <h5>ADDRESS</h5>
+        <h5 className="meta">ADDRESS</h5>
       </Column>
       <Column>
-        <p>2/F F & L Centre 2211 Commonwealth Avenue</p>
-      </Column>
-      <Column>
-        <p>Brgy. Holy Spirit, Quezon City</p>
-      </Column>
-      <Column>
-        <p>Philippines 1127</p>
+        <p>2/F F & L Centre 2211 Commonwealth Avenue<br></br>Brgy. Holy Spirit, Quezon City<br></br>Philippines 1127</p>
       </Column>
       <Column>
         <Icon icon={phoneAlt} className="uk-margin-small-right"></Icon>
@@ -64,25 +58,25 @@ const QuickLinks = () => {
   return (
     <Grid childWidth="1-1" className="uk-grid-small">
       <Column>
-        <h5>QUICK LINKS</h5>
+        <h5 className="meta">QUICK LINKS</h5>
       </Column>
       <Column>
-        <a>About us</a>
+        <a className="link">About us</a>
       </Column>
       <Column>
-        <a>Clients</a>
+        <a className="link">Clients</a>
       </Column>
       <Column>
-        <a>Solutions</a>
+        <a className="link">Solutions</a>
       </Column>
       <Column>
-        <a>News</a>
+        <a className="link">News</a>
       </Column>
       <Column>
-        <a>Support</a>
+        <a className="link">Support</a>
       </Column>
       <Column>
-        <a>Contact us</a>
+        <a className="link">Contact us</a>
       </Column>
     </Grid>
   );
@@ -92,36 +86,36 @@ const Solutions = () => {
   return (
     <Grid childWidth="1-1" className="uk-grid-row-small">
       <Column>
-        <h5>OUR SOLUTIONS</h5>
+        <h5 className="meta">OUR SOLUTIONS</h5>
       </Column>
       <Column>
         <ul className="uk-list uk-list-bullet uk-column-1-2@m">
           <li>
-            <a>Hospital Information Management System</a>
+            <a className="link">Hospital Information Management System</a>
           </li>
           <li>
-            <a>Clinic Information Management System</a>
+            <a className="link">Clinic Information Management System</a>
           </li>
           <li>
-            <a>ClaimsAssure</a>
+            <a className="link">ClaimsAssure</a>
           </li>
           <li>
-            <a>Comlogik EMR</a>
+            <a className="link">Comlogik EMR</a>
           </li>
           <li>
-            <a>WorkbenchMD</a>
+            <a className="link">WorkbenchMD</a>
           </li>
           <li>
-            <a>Comlogik Connect</a>
+            <a className="link">Comlogik Connect</a>
           </li>
           <li>
-            <a>Financeforte</a>
+            <a className="link">Financeforte</a>
           </li>
           <li>
-            <a>PayManager</a>
+            <a className="link">PayManager</a>
           </li>
           <li>
-            <a>WorkForce</a>
+            <a className="link">WorkForce</a>
           </li>
         </ul>
       </Column>
@@ -132,11 +126,11 @@ const Solutions = () => {
 const Footer = () => {
   return (
     <footer>
-      <Section removePadding="top">
+      <Section removePadding="top" className="footer-bg">
         <Grid childWidth="1-1">
-          <Column>
+          <Column className="uk-margin-large-top">
             <Link to="/" className="uk-logo">
-              Comlogik
+              <img src="static/logo.png" className="logo" />
             </Link>
           </Column>
           <Column>
@@ -155,7 +149,7 @@ const Footer = () => {
         </Grid>
       </Section>
       <div>
-        <h6 className="uk-text-center">
+        <h6 className="uk-text-center uk-margin-top">
           COPYRIGHT © 2020, COMLOGIK BUSINESS SYSTEMS INC.
         </h6>
       </div>

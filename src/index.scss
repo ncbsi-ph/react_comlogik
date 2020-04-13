@@ -65,6 +65,16 @@ p {
   margin-bottom: 40px;
 }
 
+.uk-breadcrumb {
+  li {
+    color: #495057;  
+  }
+
+  span {
+    font-weight: bold;
+  }
+}
+
 //BUTTONS
 .white-button {
   background-color: white;
@@ -130,6 +140,9 @@ p {
   background: linear-gradient(98.1deg, #4DBDFE -0.66%, #019CF8 100%);
 }
 
+.case-study-bg {
+  background-color: red;
+}
 
 .logo {
   width: 12rem;
@@ -207,11 +220,37 @@ h5 {
 }
 
 .link:hover {
+  font-weight: bold;
   text-decoration: none;
   color: #2E67B2;
 }
 
-
 .gray-bg {
   background-color: #F1F5F9;
+}
+
+.rounded {
+  border-radius: 5px;
+}
+
+.rounded-testimonials {
+  border-top-left-radius: 5px !important;
+  border-bottom-left-radius: 5px !important;
+}
+
+.date-overlay {
+  background-color: #2E67B2;
+  font-weight: 600;
+  
+  p {
+    color: white !important;
+  }
+}
+
+.news-tag {
+  background-color: #E699CB;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 10px;
 }

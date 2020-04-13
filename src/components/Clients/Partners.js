@@ -21,9 +21,9 @@ const Partners = () => {
     <Section>
       <Grid childWidth="1-1">
         <Column className="uk-flex uk-flex-column">
-          <h5>PARTNERS</h5>
-          <h1 className="uk-margin-remove">Our company's good partners</h1>
-          <p>
+          <h5 className="meta uk-margin-remove-bottom">PARTNERS</h5>
+          <h1 className="margin-top-30">Our company's good partners</h1>
+          <p className="uk-margin-medium-bottom">
             Etiam ut pellentesque lectus, et euismod magna. Nulla neque mi,
             euismod et eleifend eu, scelerisque ac velit. Sed placerat imperdiet
             elementum.

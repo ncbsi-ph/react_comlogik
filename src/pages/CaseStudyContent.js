@@ -6,18 +6,28 @@ import CTA from '../components/CTA';
 const CaseStudyContent = () => {
   return (
     <>
+      <Section className="gradient-bg-light">
+        <h1 className="uk-text-center">Case Study</h1>
+        <div className="uk-flex uk-flex-center uk-margin-top">
+          <ul class="uk-breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Clients</a></li>
+            <li><span className="active">Nazareth General Hospital</span></li>
+          </ul>
+        </div>
+      </Section>
       <Section>
         <Grid childWidth="1-1">
-          <Column>
+          <Column className="uk-margin-medium-top">
             <Grid childWidth="1-1 expand@l">
               <Column width="2-3@l" className="uk-flex uk-flex-column">
-                <h5>CLIENT</h5>
+                <h5 className="meta">CLIENT</h5>
                 <h1 className="uk-margin-remove">Nazareth General Hospital</h1>
                 <span className="uk-text-lead uk-margin-top">
                   Nazareth General Hospital increases income with Comlogik’s
                   just-in-time inventory and quality reporting solution
                 </span>
-                <h6>The challenge</h6>
+                <h6 className="uk-margin-large-top">The Challenge</h6>
                 <p className="uk-margin-remove">
                   Due to increasing medicines and supplies cost, managing and
                   securing the hospitals stock and central inventory is a major
@@ -33,7 +43,7 @@ const CaseStudyContent = () => {
                   produce an accurate inventory then generate the necessary
                   reports needed by the hospital.
                 </p>
-                <h6>The solution</h6>
+                <h6 className="uk-margin-large-top">The Solution</h6>
                 <p className="uk-margin-remove">
                   After deliberating and taking time to see all existing
                   providers who can meet the needs and expectations of the
@@ -50,13 +60,13 @@ const CaseStudyContent = () => {
                 </p>
               </Column>
               <Column>
-                <div className="uk-card uk-card-default">
+                <div className="uk-card uk-card-default testimonials-bg uk-border-rounded">
                   <div className="uk-card-body uk-flex-column">
                     <div className="uk-text-center">
                       <img src="static/logos/Nazareth-General-Hospital.png"></img>
                     </div>
-                    <h5>The client</h5>
-                    <p>
+                    <h5>The Client</h5>
+                    <p className="uk-margin-remove">
                       Nazareth General Hospital has been providing quality
                       health care in Dagupan City and the region for more than
                       50 years. Since its inception in 1959 asa two-bedlying in
@@ -66,7 +76,7 @@ const CaseStudyContent = () => {
                       employees to a comprehensive health care leader in the
                       region with over 150 employees and 250 physicians.
                     </p>
-                    <div>
+                    <div className="uk-margin-medium-top">
                       <a className="uk-button uk-button-primary">
                         View website
                       </a>
@@ -79,7 +89,7 @@ const CaseStudyContent = () => {
           <Column>
             <div className="uk-card uk-card-body uk-card-primary uk-flex-column">
               <h4 style={{ color: 'white' }}>The result</h4>
-              <p>
+              <p className="text-white">
                 Currently, NGH is undergoing a major upgrade in facilities and
                 new buildings are being built to accommodate more patients and
                 house additional services that will be offered soon. This turn
