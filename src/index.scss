@@ -6,6 +6,8 @@ $base-heading-font-weight: 600;
 $inverse-global-color-mode: none;
 $navbar-nav-item-color: #2E67B2;
 $navbar-nav-item-hover-color: #2E67B2;
+$global-danger-background: #CC3396;
+$global-primary-background: #4983D0;
 
 // 2. Import default variables and available mixins.
 @import '../node_modules/uikit/src/scss/variables-theme.scss';
@@ -15,6 +17,10 @@ $navbar-nav-item-hover-color: #2E67B2;
 @mixin hook-card-media-top() {
   overflow: hidden;
   position: relative;
+}
+
+@mixin hook-button-danger() {
+  border: 2px solid #CC3396;
 }
 
 @mixin hook-button() {
@@ -29,6 +35,24 @@ $navbar-nav-item-hover-color: #2E67B2;
 @mixin hook-button-primary() {
   background-color: #4983D0;
   box-shadow: 1px 3px 10px rgba(73, 131, 208, 0.5);
+}
+
+@mixin hook-button-default() {
+  background-color: transparent;
+  color: #CC3396;
+  border: 2px solid #CC3396;
+}
+
+@mixin hook-button-default-hover() {
+  background-color: transparent;
+  color: #b82e87;
+  border: 2px solid #b82e87;
+}
+
+@mixin hook-button-default-active() {
+  background-color: transparent;
+  color: #a32978;
+  border: 2px solid #a32978;
 }
 
 // 4. Import UIkit.
@@ -77,6 +101,7 @@ p {
 
 //BUTTONS
 .white-button {
+  border: 2px solid white;
   background-color: white;
   color: #019CF8;
 }
@@ -98,19 +123,19 @@ p {
   color: #2E67B2;
 }
 
-.secondary-button {
-  background-color: #CC3396;
-  color: white;
-  box-shadow: 1px 3px 10px rgba(230, 153, 203, 0.53);
-}
+// .secondary-button {
+//   background-color: #CC3396;
+//   color: white;
+//   box-shadow: 1px 3px 10px rgba(230, 153, 203, 0.53);
+// }
 
-.secondary-outline {
-  background-color: transparent;
-  color: #CC3396;
-  -webkit-box-shadow:inset 0px 0px 0px 2px #CC3396;
-  -moz-box-shadow:inset 0px 0px 0px 2px #CC3396;
-  box-shadow:inset 0px 0px 0px 2px #CC3396;
-}
+// .secondary-outline {
+//   background-color: transparent;
+//   color: #CC3396;
+//   -webkit-box-shadow:inset 0px 0px 0px 2px #CC3396;
+//   -moz-box-shadow:inset 0px 0px 0px 2px #CC3396;
+//   box-shadow:inset 0px 0px 0px 2px #CC3396;
+// }
 
 .tab-button {
   background-color: transparent;
@@ -192,9 +217,14 @@ h5 {
 
 .active-product {
   background-color: white;
-  padding: 15px;
+  min-height: 70px;
+  padding: 10px;
   box-shadow: 4px 5px 8px rgba(77, 189, 254, 0.15);
   border-radius: 5px;
+  
+  img {
+    cursor: wait;
+  }
 }
 
 .team-bg {
@@ -253,4 +283,8 @@ h5 {
   text-transform: uppercase;
   font-weight: 600;
   padding: 10px;
+}
+
+.uk-slider-items {
+  max-height: 400px;
 }

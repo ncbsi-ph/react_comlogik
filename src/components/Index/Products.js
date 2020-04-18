@@ -6,9 +6,11 @@ import { Section, Grid, Column } from '../Grid';
 const Product = props => {
   return (
     <li>
-      <a>
-        <img data-src={props.image} data-uk-img=""></img>
-      </a>
+      <div className="active-product uk-flex uk-flex-middle">
+        <a>
+          <img data-src={props.image} data-uk-img=""></img>
+        </a>
+      </div>
     </li>
   );
 };
@@ -102,7 +104,7 @@ const Products = props => {
               <h1 className="margin-top-30">
                 Software that really gets the job done
               </h1>
-              <p className="uk-margin-medium-bottom">
+              <p className="uk-margin-bottom">
                 Out well-thought-out software solutions give you the tools to
                 get higher patient satisfaction and greater employee
                 productivity, in a way that will keep drive profitability.
@@ -110,7 +112,7 @@ const Products = props => {
             </Column>
             <Column>
               <ul
-                className="uk-child-width-1-2 uk-child-width-1-3@s"
+                className="uk-child-width-1-2 uk-child-width-1-3@s uk-grid-small"
                 data-uk-switcher={`connect: #${props.target}; animation: uk-animation-fade`}
                 data-uk-grid=""
               >

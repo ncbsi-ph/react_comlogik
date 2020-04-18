@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { Icon } from '@iconify/react';
 import { Section, Grid, Column } from '../Grid';
+
+import arrowUp from '@iconify/icons-feather/arrow-up';
+<Icon icon={arrowUp} width={24} height={24}></Icon>
 
 const CaseStudy = props => {
   return (
@@ -53,12 +56,24 @@ const CaseStudies = () => {
           </p>
         </Column>
         <Column>
-          <Grid childWidth="1-1">
-            <CaseStudy
-              image="https://picsum.photos/500"
-              hospitalName="Nazareth General Hospital"
-              description="Nazareth General Hospital increases income with Comlogik’s just-in-time inventory and quality reporting solution"
-            ></CaseStudy>
+          <Grid className="uk-grid-small">
+            <Column className="uk-width-expand">
+              <Grid childWidth="1-1" className="uk-grid-small">
+                <CaseStudy
+                  image="https://picsum.photos/200"
+                  hospitalName="Nazareth General Hospital"
+                  description="Nazareth General Hospital increases income with Comlogik’s just-in-time inventory and quality reporting solution"
+                ></CaseStudy>
+                <CaseStudy
+                  image="https://picsum.photos/200"
+                  hospitalName="Nazareth General Hospital"
+                  description="Nazareth General Hospital increases income with Comlogik’s just-in-time inventory and quality reporting solution"
+                ></CaseStudy>
+              </Grid>
+            </Column>
+            <Column className="uk-width-auto">
+              <Icon icon={arrowUp} width={24} height={24}></Icon>
+            </Column>
           </Grid>
         </Column>
       </Grid>

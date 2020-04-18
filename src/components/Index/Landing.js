@@ -22,12 +22,12 @@ const Landing = () => {
             <Column>
               <Grid childWidth="auto" className="uk-grid-small">
                 <Column>
-                  <button className="uk-button secondary-button uk-margin-remove-right">
+                  <button className="uk-button uk-button-danger uk-margin-remove-right">
                     Request a demo
                   </button>
                 </Column>
                 <Column>
-                  <button className="uk-button secondary-outline">
+                  <button className="uk-button uk-button-default">
                     Comlogik Ecosystem
                   </button>
                 </Column>

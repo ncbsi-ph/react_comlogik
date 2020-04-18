@@ -99,21 +99,32 @@ const CaseStudyContent = () => {
                 that would be theft are now deterred in committing crimes since
                 everything is now automated.
               </p>
-              <div data-uk-slider="">
-                <ul
-                  className="uk-slider-items uk-child-width-1-1 uk-child-width-1-3@m"
-                  data-uk-grid=""
-                >
-                  <li>
-                    <img src="https://picsum.photos/400"></img>
+
+              <div class="uk-position-relative uk-visible-toggle uk-light" data-uk-tabindex="-1" data-uk-slider="center: true;">
+                <ul class="uk-slider-items uk-grid">
+                  <li class="uk-width-3-4">
+                    <div class="uk-panel">
+                      <img src="https://cdn.thewirecutter.com/wp-content/uploads/2018/07/catadoption-lowres-06052-2x1-1.jpg"></img>
+                    </div>
                   </li>
-                  <li>
-                    <img src="https://picsum.photos/400"></img>
+                  <li class="uk-width-3-4">
+                    <div class="uk-panel">
+                      <img src="https://static.toiimg.com/photo/msid-68523832/68523832.jpg?1137762"></img>
+                    </div>
                   </li>
-                  <li>
-                    <img src="https://picsum.photos/400"></img>
+                  <li class="uk-width-3-4">
+                    <div class="uk-panel">
+                      <img src="https://facts.net/wp-content/uploads/2015/10/cat-4282123_1920.jpg"></img>
+                    </div>
+                  </li>
+                  <li class="uk-width-3-4">
+                    <div class="uk-panel">
+                      <img src="https://www.iams.com/images/default-source/article-image/article_kitten-basics-do-kittens-get-hairballs_header.jpg"></img>
+                    </div>
                   </li>
                 </ul>
+                <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-previous data-uk-slider-item="previous"></a>
+                <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-next data-uk-slider-item="next"></a>
               </div>
             </div>
           </Column>
