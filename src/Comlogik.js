@@ -1,18 +1,67 @@
 import React from 'react';
+import Loadable from 'react-loadable';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Index from './pages/Index';
-import About from './pages/About';
-import Clients from './pages/Clients';
-import CaseStudyContent from './pages/CaseStudyContent';
-import Support from './pages/Support';
-import Contact from './pages/Contact';
-import Solutions from './pages/Solutions';
-import News from './pages/News';
-import NewsContent from './pages/NewsContent';
-import ProductContent from './pages/ProductContent';
+
+const Loading = () => {
+  return (
+    <div>
+      <h1>Loading...</h1>
+    </div>
+  );
+};
+
+const Index = Loadable({
+  loader: () => import('./pages/Index'),
+  loading: Loading,
+});
+
+const About = Loadable({
+  loader: () => import('./pages/About'),
+  loading: Loading,
+});
+
+const Clients = Loadable({
+  loader: () => import('./pages/Clients'),
+  loading: Loading,
+});
+
+const CaseStudyContent = Loadable({
+  loader: () => import('./pages/CaseStudyContent'),
+  loading: Loading,
+});
+
+const Support = Loadable({
+  loader: () => import('./pages/Support'),
+  loading: Loading,
+});
+
+const Contact = Loadable({
+  loader: () => import('./pages/Contact'),
+  loading: Loading,
+});
+
+const Solutions = Loadable({
+  loader: () => import('./pages/Solutions'),
+  loading: Loading,
+});
+
+const News = Loadable({
+  loader: () => import('./pages/News'),
+  loading: Loading,
+});
+
+const NewsContent = Loadable({
+  loader: () => import('./pages/NewsContent'),
+  loading: Loading,
+});
+
+const ProductContent = Loadable({
+  loader: () => import('./pages/ProductContent'),
+  loading: Loading,
+});
 
 const Comlogik = () => {
   const devBasename = '/react_comlogik/dist';

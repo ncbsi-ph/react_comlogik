@@ -4,8 +4,8 @@
 $global-font-family: Poppins, sans-serif;
 $base-heading-font-weight: 600;
 $inverse-global-color-mode: none;
-$navbar-nav-item-color: #2E67B2;
-$navbar-nav-item-hover-color: #2E67B2;
+$navbar-nav-item-color: #2e67b2;
+$navbar-nav-item-hover-color: #2e67b2;
 
 // 2. Import default variables and available mixins.
 @import '../node_modules/uikit/src/scss/variables-theme.scss';
@@ -27,7 +27,7 @@ $navbar-nav-item-hover-color: #2E67B2;
 }
 
 @mixin hook-button-primary() {
-  background-color: #4983D0;
+  background-color: #4983d0;
   box-shadow: 1px 3px 10px rgba(73, 131, 208, 0.5);
 }
 
@@ -41,7 +41,7 @@ $navbar-nav-item-hover-color: #2E67B2;
 }
 
 h1 {
-  color: #2E67B2;
+  color: #2e67b2;
   margin-bottom: 0;
 }
 
@@ -54,7 +54,7 @@ p {
 }
 
 .text-primary {
-  color: #2E67B2;
+  color: #2e67b2;
 }
 
 .text-white {
@@ -68,12 +68,12 @@ p {
 //BUTTONS
 .white-button {
   background-color: white;
-  color: #019CF8;
+  color: #019cf8;
 }
 
 .white-button:hover {
   background-color: #f1f3f5;
-  color: #019CF8;
+  color: #019cf8;
 }
 
 .white-outline {
@@ -83,23 +83,23 @@ p {
 }
 
 .primary-outline {
-  border: 2px solid #2E67B2;
+  border: 2px solid #2e67b2;
   background-color: transparent;
-  color: #2E67B2;
+  color: #2e67b2;
 }
 
 .secondary-button {
-  background-color: #CC3396;
+  background-color: #cc3396;
   color: white;
   box-shadow: 1px 3px 10px rgba(230, 153, 203, 0.53);
 }
 
 .secondary-outline {
   background-color: transparent;
-  color: #CC3396;
-  -webkit-box-shadow:inset 0px 0px 0px 2px #CC3396;
-  -moz-box-shadow:inset 0px 0px 0px 2px #CC3396;
-  box-shadow:inset 0px 0px 0px 2px #CC3396;
+  color: #cc3396;
+  -webkit-box-shadow: inset 0px 0px 0px 2px #cc3396;
+  -moz-box-shadow: inset 0px 0px 0px 2px #cc3396;
+  box-shadow: inset 0px 0px 0px 2px #cc3396;
 }
 
 .tab-button {
@@ -107,29 +107,31 @@ p {
 }
 
 .tab-button:hover {
-  border: 2px solid #2E67B2;
+  border: 2px solid #2e67b2;
   background-color: transparent;
-  color: #2E67B2;
+  color: #2e67b2;
 }
 
 .tab-button .uk-active {
-  border: 2px solid #2E67B2;
+  border: 2px solid #2e67b2;
   background-color: transparent;
-  color: #2E67B2;
+  color: #2e67b2;
 }
-
 
 // Background
 .gradient-bg-light {
-  background: rgb(187,226,243);
-  background: linear-gradient(331deg, rgba(187,226,243,1) 0%, rgba(233,246,251,1) 100%);
+  background: rgb(187, 226, 243);
+  background: linear-gradient(
+    331deg,
+    rgba(187, 226, 243, 1) 0%,
+    rgba(233, 246, 251, 1) 100%
+  );
 }
 
 .gradient-bg-dark {
-  background: #4DBDFE;
-  background: linear-gradient(98.1deg, #4DBDFE -0.66%, #019CF8 100%);
+  background: #4dbdfe;
+  background: linear-gradient(98.1deg, #4dbdfe -0.66%, #019cf8 100%);
 }
-
 
 .logo {
   width: 12rem;
@@ -157,7 +159,7 @@ h5 {
 
 .meta {
   font-weight: bold;
-  color: #808A97 !important;
+  color: #808a97 !important;
   letter-spacing: 0.155em;
 }
 
@@ -191,11 +193,11 @@ h5 {
 }
 
 .testimonials-bg {
-  background-color: #F1F5F9;
+  background-color: #f1f5f9;
 }
 
 .footer-bg {
-  background-color: #E9F6FB;
+  background-color: #e9f6fb;
 }
 
 .ribbon-bg {
@@ -208,10 +210,9 @@ h5 {
 
 .link:hover {
   text-decoration: none;
-  color: #2E67B2;
+  color: #2e67b2;
 }
 
-
 .gray-bg {
-  background-color: #F1F5F9;
+  background-color: #f1f5f9;
 }
