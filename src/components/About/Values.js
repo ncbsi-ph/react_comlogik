@@ -46,7 +46,7 @@ const CoreValue = props => {
         </Column>
         <Column className="uk-flex uk-flex-column">
           <h5 className="uk-margin-remove">{props.label}</h5>
-          <p>{props.description}</p>
+          <p className="uk-margin-small-top">{props.description}</p>
         </Column>
       </Grid>
     </Column>

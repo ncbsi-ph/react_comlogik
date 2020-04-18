@@ -164,11 +164,11 @@ const TeamView = () => {
   }
 
   return (
-    <Section>
+    <Section className="gradient-bg-light">
       <Grid childWidth="1-1">
         <Column className="uk-flex uk-flex-column uk-text-center">
-          <h5>WHO WE ARE</h5>
-          <h1 className="uk-margin-remove">Meet our awesome team</h1>
+          <h5 className="meta uk-margin-remove-bottom">WHO WE ARE</h5>
+          <h1 className="margin-top-30">Meet our awesome team</h1>
           <p>
             Our team consists of the most dynamic, talented people in the
             industry. We have passion on what we do, and are highly competitive

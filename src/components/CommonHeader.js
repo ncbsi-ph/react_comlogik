@@ -13,6 +13,7 @@ const CommonHeader = props => {
 
   return (
     <Section>
+      <img className="logo-bg" src="static/logo-bg.svg" />
       <Grid childWidth="1-1 1-2@m" className="uk-grid-large uk-flex-middle">
         <Column>{image}</Column>
         <Column className="uk-flex uk-flex-column">
