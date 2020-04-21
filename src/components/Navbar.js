@@ -9,6 +9,10 @@ import UIkit from 'uikit';
 const Navbar = () => {
   const offcanvasClick = () => {
     UIkit.offcanvas(document.getElementById('navigation')).hide();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   return (

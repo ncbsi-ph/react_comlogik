@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Section, Grid, Column } from '../Grid';
 
-const Advantage = props => {
+const Advantage = (props) => {
   return (
     <Column>
       <Grid>
@@ -21,8 +21,8 @@ const Advantage = props => {
 const Advantages = () => {
   return (
     <Section>
-      <img className="cloud-1" src="static/cloud-1.svg" />
-      <img className="cloud-2" src="static/cloud-2.svg" />
+      <img className="cloud-1" src="static/cloud-1.svg" hidden />
+      <img className="cloud-2" src="static/cloud-2.svg" hidden />
       <Grid childWidth="1-1">
         <Column className="uk-flex uk-flex-column uk-text-center uk-margin-large-bottom uk-margin-large-top">
           <h5 className="meta uk-margin-remove-bottom">ADVANTAGES</h5>

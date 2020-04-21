@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 
 import { Section, Grid, Column } from '../Grid';
 
-const NewsArticle = props => {
+const NewsArticle = (props) => {
   return (
     <Column>
       <Link to="/news-content" className="uk-card uk-card-default">
         <div className="uk-card-media-top uk-height-small">
-          <div class="uk-inline">
+          <div className="uk-inline">
             <img data-src={props.image} data-uk-img=""></img>
-            <div class="uk-overlay date-overlay uk-position-top-left uk-padding-small">
+            <div className="uk-overlay date-overlay uk-position-top-left uk-padding-small">
               <p className="uk-margin-remove uk-text-center">{props.month}</p>
               <p className="uk-margin-remove uk-text-center">{props.day}</p>
             </div>
@@ -86,8 +86,13 @@ const AllNews = () => {
                   </select>
                 </Column>
                 <Column>
-                  <label className="uk-form-label uk-text-bold">Filter Tags</label>
-                  <Grid childWidth="1-1" className="uk-grid-small uk-margin-small-top">
+                  <label className="uk-form-label uk-text-bold">
+                    Filter Tags
+                  </label>
+                  <Grid
+                    childWidth="1-1"
+                    className="uk-grid-small uk-margin-small-top"
+                  >
                     <label>
                       <input
                         className="uk-checkbox uk-margin-right"

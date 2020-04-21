@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Section, Grid, Column } from '../Grid';
 
-const Product = props => {
+const Product = (props) => {
   return (
     <li>
       <div className="active-product uk-flex uk-flex-middle">
@@ -15,7 +15,7 @@ const Product = props => {
   );
 };
 
-const ProductDescription = props => {
+const ProductDescription = (props) => {
   return (
     <li>
       <div className="uk-card uk-card-default">
@@ -34,60 +34,68 @@ const ProductDescription = props => {
   );
 };
 
-const Products = props => {
+const Products = (props) => {
   const data = [
     {
       image: 'static/product-1.png',
-      productName: 'Product 1',
-      productDescription: 'Description 1'
+      productName: 'Hospital Information & Management System',
+      productDescription:
+        'HIMS™ is a comprehensive, fully integrated, yet easy to use hospital information system for all hospital levels. HIMS™ is the first DOH Validated System and PhilHealth Certified that can be customized and can adapt to various hospital setup.',
     },
     {
       image: 'static/product-2.png',
-      productName: 'Product 2',
-      productDescription: 'Description 2'
+      productName: 'Clinic Information & Management System',
+      productDescription:
+        'CIMS™ is an all-in-one clinic information system that is both a turnkey and customizable solution for your clinic or diagnostic center. CIMS™ guarantees billing efficiency while storing real- time patient data resulting to a more improved patient and users experience.',
     },
     {
       image: 'static/product-3.png',
-      productName: 'Product 3',
-      productDescription: 'Description 3'
+      productName: 'Claims Assure™',
+      productDescription:
+        'Claims Assure™ is a PhilHealth certified electronic claims transmittal software that enables any healthcare accredited institution to send paperless patient claims. It allows users to manage and track receivables while monitoring status of claims all in a single window.',
     },
     {
       image: 'static/product-4.png',
-      productName: 'Product 4',
-      productDescription: 'Description 4'
+      productName: 'Comlogik EMR™',
+      productDescription:
+        'Comlogik EMR™ is the industry leading solution that meets the stringent requirements of the Department of Health and likewise holds the distinction of being the FIRST DOH VALIDATED SOFTWARE. Be compliant and get expert advice from our team of experts.',
     },
     {
       image: 'static/product-5.png',
-      productName: 'Product 5',
-      productDescription: 'Description 5'
+      productName: 'WorkBenchMD™',
+      productDescription:
+        'WorkBenchMD™ is a revolutionary way of managing your clinic and gets you ready before your patient enters your door. From reception, it allows you to view patients records, history, medical images and results, appointments, create billing, SOAP and more.',
     },
     {
       image: 'static/product-6.png',
-      productName: 'Product 6',
-      productDescription: 'Description 6'
+      productName: 'Connect™',
+      productDescription:
+        'Comlogik Connect™ is designed to run on a mobile device which remotely access key information from HIMS™. If you are a patient, doctor or owner of the hospital, Connect™ allows each one to do specific task without the hassle.',
     },
     {
       image: 'static/product-7.png',
-      productName: 'Product 7',
-      productDescription: 'Description 7'
+      productName: 'Financeforte™ (Accounting System)',
+      productDescription:
+        'Financeforte™ is a full suite accounting and process- driven workflow software solutions for hospitals or healthcare companies, industries like School and other services. The system consists of a cohesive set of modules that can run on its own or seamlessly integrate with HIMS™.',
     },
     {
       image: 'static/product-8.png',
-      productName: 'Product 8',
-      productDescription: 'Description 8'
-    }
+      productName: 'Paymanager™',
+      productDescription:
+        'Paymanager™ is your go to application when you want an end to end payroll system. Paymanager™ lets you manage unlimited schedules with multi- scheduling function, accommodate leave requests or generate needed reports in compliance with all government requirements.',
+    },
   ];
   const productIcons = [];
   const products = [];
 
-  data.forEach(value => {
+  data.forEach((value) => {
     productIcons.push(
       <Product key={productIcons.length} image={value.image}></Product>
     );
     products.push(
       <ProductDescription
         key={products.length}
-        image="https://picsum.photos/500"
+        image={`https://picsum.photos/500?random=${products.length}`}
         productName={value.productName}
         productDescription={value.productDescription}
       ></ProductDescription>
@@ -132,17 +140,17 @@ const Products = props => {
 };
 
 Product.propTypes = {
-  image: PropTypes.string.isRequired
+  image: PropTypes.string.isRequired,
 };
 
 ProductDescription.propTypes = {
   image: PropTypes.string.isRequired,
   productName: PropTypes.string.isRequired,
-  productDescription: PropTypes.string.isRequired
+  productDescription: PropTypes.string.isRequired,
 };
 
 Products.propTypes = {
-  target: PropTypes.string.isRequired
+  target: PropTypes.string.isRequired,
 };
 
 export default Products;

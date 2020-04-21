@@ -4,10 +4,10 @@
 $global-font-family: Poppins, sans-serif;
 $base-heading-font-weight: 600;
 $inverse-global-color-mode: none;
-$navbar-nav-item-color: #2E67B2;
-$navbar-nav-item-hover-color: #2E67B2;
-$global-danger-background: #CC3396;
-$global-primary-background: #4983D0;
+$navbar-nav-item-color: #2e67b2;
+$navbar-nav-item-hover-color: #2e67b2;
+$global-danger-background: #cc3396;
+$global-primary-background: #4983d0;
 
 // 2. Import default variables and available mixins.
 @import '../node_modules/uikit/src/scss/variables-theme.scss';
@@ -20,7 +20,7 @@ $global-primary-background: #4983D0;
 }
 
 @mixin hook-button-danger() {
-  border: 2px solid #CC3396;
+  border: 2px solid #cc3396;
 }
 
 @mixin hook-button() {
@@ -39,8 +39,8 @@ $global-primary-background: #4983D0;
 
 @mixin hook-button-default() {
   background-color: transparent;
-  color: #CC3396;
-  border: 2px solid #CC3396;
+  color: #cc3396;
+  border: 2px solid #cc3396;
 }
 
 @mixin hook-button-default-hover() {
@@ -91,7 +91,7 @@ p {
 
 .uk-breadcrumb {
   li {
-    color: #495057;  
+    color: #495057;
   }
 
   span {
@@ -224,10 +224,6 @@ h5 {
   padding: 10px;
   box-shadow: 4px 5px 8px rgba(77, 189, 254, 0.15);
   border-radius: 5px;
-  
-  img {
-    cursor: wait;
-  }
 }
 
 .team-bg {
@@ -259,7 +255,7 @@ h5 {
 }
 
 .gray-bg {
-  background-color: #F1F5F9;
+  background-color: #f1f5f9;
 }
 
 .rounded {
@@ -272,22 +268,22 @@ h5 {
 }
 
 .date-overlay {
-  background-color: #2E67B2;
+  background-color: #2e67b2;
   font-weight: 600;
-  
+
   p {
     color: white !important;
   }
 }
 
 .news-tag {
-  background-color: #E699CB;
+  background-color: #e699cb;
   border-radius: 5px;
   text-transform: uppercase;
   font-weight: 600;
   padding: 10px;
 }
 
-.uk-slider-items {
-  max-height: 400px;
-}
+// .uk-slider-items {
+//   max-height: 400px;
+// }

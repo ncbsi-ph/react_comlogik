@@ -8,52 +8,52 @@ const Showcase = () => {
   const data = [
     {
       id: '1',
-      productName: 'Comlogik EMR',
-      image: 'https://via.placeholder.com/500',
+      productName: 'Hospital Information & Management System',
+      image: 'static/product-1.png',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        'HIMS™ is a comprehensive, fully integrated, yet easy to use hospital information system for all hospital levels. HIMS™ is the first DOH Validated System and PhilHealth Certified that can be customized and can adapt to various hospital setup.',
     },
     {
       id: '2',
-      productName: 'ClaimsAssure',
-      image: 'https://via.placeholder.com/500',
+      productName: 'Clinic Information & Management System',
+      image: 'static/product-2.png',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        'CIMS™ is an all-in-one clinic information system that is both a turnkey and customizable solution for your clinic or diagnostic center. CIMS™ guarantees billing efficiency while storing real- time patient data resulting to a more improved patient and users experience.',
     },
     {
       id: '3',
-      productName: 'Hospital Information Management System',
-      image: 'https://via.placeholder.com/500',
+      productName: 'Claims Assure™',
+      image: 'static/product-3.png',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        'Claims Assure™ is a PhilHealth certified electronic claims transmittal software that enables any healthcare accredited institution to send paperless patient claims. It allows users to manage and track receivables while monitoring status of claims all in a single window.',
     },
     {
       id: '4',
-      productName: 'Clinic Management System',
-      image: 'https://via.placeholder.com/500',
+      productName: 'Comlogik EMR™',
+      image: 'static/product-4.png',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        'Comlogik EMR™ is the industry leading solution that meets the stringent requirements of the Department of Health and likewise holds the distinction of being the FIRST DOH VALIDATED EMR SOFTWARE.',
     },
     {
       id: '5',
-      productName: 'Hotel Management System',
-      image: 'https://via.placeholder.com/500',
+      productName: 'WorkBenchMD™',
+      image: 'static/product-5.png',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        'WorkBenchMD™ is a revolutionary way of managing your clinic and gets you ready before your patient enters your door. From reception, it allows you to view patients records, history, medical images and results, appointments, create billing, SOAP and more.',
     },
     {
       id: '6',
-      productName: 'Booking Web System',
-      image: 'https://via.placeholder.com/500',
+      productName: 'Connect™',
+      image: 'static/product-6.png',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-    }
+        'Comlogik Connect™ is designed to run on a mobile device which remotely access key information from HIMS™. If you are a patient, doctor or owner of the hospital, Connect™ allows each one to do specific task without the hassle.',
+    },
   ];
   const links = [];
   const parallaxShowcase = [];
   const sliderItems = [];
 
-  data.forEach(product => {
+  data.forEach((product) => {
     const id = `${idPrefix}${product.id}`;
     links.push(
       <li key={links.length}>
@@ -114,14 +114,18 @@ const Showcase = () => {
     <Section>
       <Grid childWidth="1-1">
         <Column className="uk-hidden@m">
-          <div
-            className="uk-position-relative uk-visible-toggle uk-light"
-            tabIndex="-1"
-            data-uk-slider="center: true"
-          >
-            <ul className="uk-slider-items uk-child-width-3-4" data-uk-grid="">
-              {sliderItems}
-            </ul>
+          <div data-uk-slider="center: true">
+            <div
+              className="uk-position-relative uk-visible-toggle uk-light"
+              tabIndex="-1"
+            >
+              <ul
+                className="uk-slider-items uk-child-width-1-1"
+                data-uk-grid=""
+              >
+                {sliderItems}
+              </ul>
+            </div>
             <ul className="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
           </div>
         </Column>
