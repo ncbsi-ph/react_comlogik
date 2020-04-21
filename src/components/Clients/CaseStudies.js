@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react';
 import { Section, Grid, Column } from '../Grid';
 
 import arrowUp from '@iconify/icons-feather/arrow-up';
-<Icon icon={arrowUp} width={24} height={24}></Icon>
+import arrowDown from '@iconify/icons-feather/arrow-down';
 
 const CaseStudy = props => {
   return (
@@ -56,7 +56,7 @@ const CaseStudies = () => {
           </p>
         </Column>
         <Column>
-          <Grid className="uk-grid-small">
+          <Grid className="uk-grid-small" data-uk-height-match="target: > div">
             <Column className="uk-width-expand">
               <Grid childWidth="1-1" className="uk-grid-small">
                 <CaseStudy
@@ -72,7 +72,16 @@ const CaseStudies = () => {
               </Grid>
             </Column>
             <Column className="uk-width-auto">
-              <Icon icon={arrowUp} width={24} height={24}></Icon>
+              <div className="uk-flex uk-flex-bottom uk-height-1-1">
+                <div className="uk-flex uk-flex-column">
+                  <div>
+                    <Icon icon={arrowUp} width={24} height={24} color={"#2e67b2"}></Icon>
+                  </div>
+                  <div>
+                    <Icon icon={arrowDown} width={24} height={24} color={"#2e67b2"}></Icon>
+                  </div>
+                </div>
+              </div>
             </Column>
           </Grid>
         </Column>
