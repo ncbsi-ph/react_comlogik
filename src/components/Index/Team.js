@@ -13,13 +13,16 @@ const Team = () => {
           <h5 className="meta uk-margin-remove-bottom">ABOUT</h5>
           <h1 className="margin-top-30">Meet our awesome team</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-            finibus nulla quis ligula auctor, at pretium orci eleifend. Maecenas
-            non lacus eget massa pretium ornare in at ante. Cras id posuere
-            eros. Ut tempus ex ut mi tristique mollis. Suspendisse ac elit non
-            nunc consequat molestie quis in nisl.
+            Some say skill is the most important quality one has when joining a
+            company, but in Comlogik, we consider character to be just as
+            important. Put together superb talent and outstanding character and
+            you’ve got a winner!
+            <br />
+            <br />
+            Our values is the heart of Comlogik. From here stems the quality of
+            our performance and work today, and in the future.
           </p>
-          <div className="uk-margin-medium-top">
+          <div className="uk-margin-small-top">
             <a className="uk-button uk-button-primary">Join our team</a>
           </div>
         </Column>

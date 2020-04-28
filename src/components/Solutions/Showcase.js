@@ -48,6 +48,20 @@ const Showcase = () => {
       description:
         'Comlogik Connect™ is designed to run on a mobile device which remotely access key information from HIMS™. If you are a patient, doctor or owner of the hospital, Connect™ allows each one to do specific task without the hassle.',
     },
+    {
+      id: '7',
+      productName: 'Financeforte™',
+      image: 'static/product-7.png',
+      description:
+        'Financeforte™ is a full suite accounting and process- driven workflow software solutions for hospitals or healthcare companies, industries like School and other services. The system consists of a cohesive set of modules that can run on its own or seamlessly integrate with HIMS™.',
+    },
+    {
+      id: '8',
+      productName: 'Paymanager™',
+      image: 'static/product-8.png',
+      description:
+        'Paymanager™ is your go to application when you want an end to end payroll system. Paymanager™ lets you manage unlimited schedules with multi- scheduling function, accommodate leave requests or generate needed reports in compliance with all government requirements.',
+    },
   ];
   const links = [];
   const parallaxShowcase = [];

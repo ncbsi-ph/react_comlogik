@@ -26,8 +26,10 @@ const Advantages = () => {
       <Grid childWidth="1-1">
         <Column className="uk-flex uk-flex-column uk-text-center uk-margin-large-bottom uk-margin-large-top">
           <h5 className="meta uk-margin-remove-bottom">ADVANTAGES</h5>
-          <h1 className="margin-top-30">Why choose us?</h1>
-          <p>Unbeatable advantages over any provider</p>
+          <h1 className="margin-top-30">
+            9 reasons why we’re the right healthcare software provider for you
+          </h1>
+          <p>Unbeatable advantages and value over any other provider</p>
         </Column>
         <Column>
           <Grid childWidth="1-1 1-2@s 1-3@l">

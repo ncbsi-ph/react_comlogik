@@ -104,7 +104,7 @@ const Products = (props) => {
 
   return (
     <Section className="gradient-bg-light">
-      <Grid childWidth="1-1 1-2@m">
+      <Grid childWidth="1-1 1-2@m" className="uk-flex-middle">
         <Column>
           <Grid childWidth="1-1">
             <Column className="uk-flex uk-flex-column">
@@ -124,6 +124,9 @@ const Products = (props) => {
                 data-uk-switcher={`connect: #${props.target}; animation: uk-animation-fade`}
                 data-uk-grid=""
               >
+                <li className="uk-hidden">
+                  <a>Hidden</a>
+                </li>
                 {productIcons}
               </ul>
             </Column>
@@ -131,6 +134,30 @@ const Products = (props) => {
         </Column>
         <Column>
           <ul id={props.target} className="uk-switcher">
+            <li>
+              <div className="uk-card uk-card-default">
+                <div className="uk-card-media-top uk-height-medium uk-cover-container">
+                  <iframe
+                    src="https://www.youtube.com/embed/EmaCoql7iWg"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    data-uk-cover=""
+                  ></iframe>
+                </div>
+                <div className="uk-card-body uk-flex uk-flex-column">
+                  <p>
+                    Our comprehensive suite of solutions and services provides
+                    your organization with the integrated clinical, financial
+                    and operational tools you need to provide better outcomes
+                    across your entire system
+                  </p>
+                  <div>
+                    <a className="uk-button uk-button-primary">Learn more</a>
+                  </div>
+                </div>
+              </div>
+            </li>
             {products}
           </ul>
         </Column>
