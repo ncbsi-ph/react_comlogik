@@ -17,7 +17,10 @@ const Navbar = () => {
 
   return (
     <>
-      <div data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-position-sticky uk-navbar-transparent">
+      <div
+        data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-position-sticky uk-navbar-transparent"
+        style={{ zIndex: 1000 }}
+      >
         <div className="uk-navbar-container">
           <div className="uk-container" data-uk-navbar="">
             <div className="uk-navbar-left">
