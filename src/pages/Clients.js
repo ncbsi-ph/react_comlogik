@@ -9,40 +9,69 @@ import CTA from '../components/CTA';
 
 const Clients = () => {
   const logos_1 = [
-    'Adventist-Medical-Center-Iligan.png',
-    'Alabang-Medical-Center.jpg',
-    'Alaminos-Doctors-Hospital.png',
     'Angeles-Medical-Center.jpg',
+    'blessed-family-doctors-hospital.jpg',
+    'Dagupan-Doctors-Villaflor-Memorial-Medical-Center.png',
+    'Divine-Word-Hospital.jpg',
+    'Jecsons-Medical-Center.jpg',
+    'medical-center-of-taguig.png',
+    'Medicus-Medical-Center.png',
+    'Mercy-Community-Hospital.jpg',
+    'Metro-Antipolo-Hospital-Medical-Center.png',
+    'MMG-Palawan.png',
+    'Nueva-Ecija-Doctors-Hospital.png',
+    'Pines-City-Doctors-Hospital.jpg',
+    //'SOCSARGEN County Hospital',
+    'Southeast-Asian-Medical--Center.jpg',
+    'St-Clares-Medical-Center.png',
+    //'Sto. Niño Medical Center',
+    'UERM-Medical-Center.png',
+    'UST-Hospital-of-Legazpi.png',
+    'Virgen-Milagrosa-Medical-Center.png',
+    'Visayas-Community-Medical-Center.png',
+  ];
+  const logos_2 = [
+    'Adventist-Medical-Center-Iligan.png',
     'ASCCOM-Medical-Center.png',
     'Baguio-Medical-Center.jpg',
     'Bataan-Doctors-General-Hospital.jpg',
     'Bicol-Access-Health-Centrum.jpg',
     'Binakayan-Doctors-Hospital.jpg',
-    'blessed-family-doctors-hospital.jpg'
-  ];
-  const logos_2 = [
     'Daet-Doctors-Hospital.png',
-    'Dagupan-Doctors-Villaflor-Memorial-Medical-Center.png',
-    'Divine-Word-Hospital.jpg',
     'Dr-Amando-Garcia-Medical-Center.jpg',
-    'Dr-Yangas-Hospital.png',
     'Floridablanca-Doctors-Hospital.jpg',
     'Heramil-General-Hospital.jpg',
     'Iligan-Medical-Center.jpg',
     'Infant-Jesus-Medical-Center.png',
-    'Jecsons-Medical-Center.jpg'
-  ];
-  const logos_3 = [
     'La-Union-Medical-Diagnostic-Hospital.png',
     'Lopez-St-Jude-Hospital.png',
-    'medical-center-of-taguig.png',
-    'Medicus-Medical-Center.png',
-    'Mercy-Community-Hospital.jpg',
-    'Metro-Antipolo-Hospital-Medical-Center.png',
     'Metro-Lemery-Medical-Center.png',
     'Meycauayan-Doctors-Hospital.png',
-    'MMG-Palawan.png',
-    'MMG-Tagum.png'
+    'Premiere-General-Hospital-of-NE.png',
+    'Santiago-City-Hospital.png',
+    //'St. James Medical Center',
+    'St-Joseph-Hospital.jpg'
+  ];
+  const logos_3 = [
+    'Alabang-Medical-Center.jpg',
+    'Alaminos-Doctors-Hospital.png',
+    //'Borja Medical Center',
+    //'Cabiao General Hospital',
+    //'Corpuz Medical Center',
+    'Dr-Yangas-Hospital.png',
+    //'Gabriela Silang Medical Center',
+    'MMG-Tagum.png',
+    'Mt-Carmel-Diocesan-General-Hospital.jpg',
+    'Nazareth-General-Hospital.png',
+    'Pamana-Medical-Center.jpg',
+    'Queen-Mary-Help-of-Christian-Hospital.jpg',
+    'Ramos-General-Hospital.png',
+    'Rayos-Valentin-Hospital.png',
+    'St-Gabriel-Medical-Center.jpg',
+    'Tarlac-Provincial-Hospital.png',
+    'Tayug-Family-Hospital.jpg',
+    //'Trinity Women’s &amp; Child Hospital',
+    'Urdaneta-Sacred-Heart-Hospital.jpg'
   ];
 
   return (
@@ -51,18 +80,20 @@ const Clients = () => {
         svg={true}
         image="static/clients.svg"
         label="CLIENTS"
-        heading="Placeholder client heading"
-        sentence="Etiam ut pellentesque lectus, et euismod magna. Nulla neque mi, euismod et eleifend eu, scelerisque ac velit. Sed placerat imperdiet elementum. Cras blandit nulla magna, sed malesuada ante laoreet sit amet. Maecenas non blandit justo. Donec velit ante, varius id libero sit amet, dictum tempor risus."
+        heading="Learn from the best – Our customers"
+        sentence="We wish we have the space to list all our satisfied and delighted customers here. We have some who have
+        been with us from the beginning and some who has truly embraced the company’s core values and considered
+        us their partners in growth and success."
       ></CommonHeader>
       <Section removePadding="horizontal" container={false}>
         <LogoCarousel
-          logos={logos_1.map(logo => `static/logos/${logo}`)}
+          logos={logos_1.map((logo) => `static/logos/${logo}`)}
         ></LogoCarousel>
         <LogoCarousel
-          logos={logos_2.map(logo => `static/logos/${logo}`)}
+          logos={logos_2.map((logo) => `static/logos/${logo}`)}
         ></LogoCarousel>
         <LogoCarousel
-          logos={logos_3.map(logo => `static/logos/${logo}`)}
+          logos={logos_3.map((logo) => `static/logos/${logo}`)}
         ></LogoCarousel>
       </Section>
       <CaseStudies></CaseStudies>

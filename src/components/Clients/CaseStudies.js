@@ -6,7 +6,7 @@ import { Section, Grid, Column } from '../Grid';
 import arrowUp from '@iconify/icons-feather/arrow-up';
 import arrowDown from '@iconify/icons-feather/arrow-down';
 
-const CaseStudy = props => {
+const CaseStudy = (props) => {
   return (
     <Column>
       <Grid
@@ -17,7 +17,11 @@ const CaseStudy = props => {
           width="1-3"
           className="uk-card-media-left uk-cover-container uk-visible@s"
         >
-          <img src={props.image} data-uk-cover="" className="rounded-testimonials"></img>
+          <img
+            src={props.image}
+            data-uk-cover=""
+            className="rounded-testimonials"
+          ></img>
         </Column>
         <Column className="uk-card-body uk-flex-column">
           <h5>{props.hospitalName}</h5>
@@ -43,16 +47,17 @@ const CaseStudies = () => {
         <Column className="uk-flex uk-flex-column">
           <h1 className="uk-margin-remove">Client Successes</h1>
           <p>
-            Congratulations to our clients for their recent successes. Our
-            clients are some of the most innovative in health care. They range
-            from industry-leading accountable care organizations, to top
-            academic medical institutions, to critical access hospitals
-            providing quality rural care. Some clients are multi-province health
-            systems, and others one-doc practices.<br></br>
-            <br></br> When they move the meter in health care – increasing
-            quality of care, reducing waste, and lowering costs – we celebrate
-            their efforts and share the wisdom gained by their success.<br></br>
-            <br></br> Contact us about your achievements; you could be the next.
+            It’s always personal for us when we hear success stories of our
+            customers. Such news brings joy and satisfaction which motivates us
+            to continue what we do – provide outstanding products, exceptional
+            services that delights and supports their intentions in bringing
+            care back to healthcare.
+            <br />
+            <br />
+            When we see our them transforming from when we first came to their
+            organization – adding more facilities, increasing quality of care,
+            reducing waste, lowering costs and growing clientele - we celebrate
+            their efforts and share the wisdom they gained by their success.
           </p>
         </Column>
         <Column>
@@ -75,10 +80,20 @@ const CaseStudies = () => {
               <div className="uk-flex uk-flex-bottom uk-height-1-1">
                 <div className="uk-flex uk-flex-column">
                   <div>
-                    <Icon icon={arrowUp} width={24} height={24} color={"#2e67b2"}></Icon>
+                    <Icon
+                      icon={arrowUp}
+                      width={24}
+                      height={24}
+                      color={'#2e67b2'}
+                    ></Icon>
                   </div>
                   <div>
-                    <Icon icon={arrowDown} width={24} height={24} color={"#2e67b2"}></Icon>
+                    <Icon
+                      icon={arrowDown}
+                      width={24}
+                      height={24}
+                      color={'#2e67b2'}
+                    ></Icon>
                   </div>
                 </div>
               </div>

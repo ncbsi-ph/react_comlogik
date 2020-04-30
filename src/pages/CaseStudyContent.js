@@ -9,10 +9,16 @@ const CaseStudyContent = () => {
       <Section className="gradient-bg-light">
         <h1 className="uk-text-center">Case Study</h1>
         <div className="uk-flex uk-flex-center uk-margin-top">
-          <ul class="uk-breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Clients</a></li>
-            <li><span className="active">Nazareth General Hospital</span></li>
+          <ul className="uk-breadcrumb">
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">Clients</a>
+            </li>
+            <li>
+              <span className="active">Nazareth General Hospital</span>
+            </li>
           </ul>
         </div>
       </Section>
@@ -99,32 +105,73 @@ const CaseStudyContent = () => {
                 that would be theft are now deterred in committing crimes since
                 everything is now automated.
               </p>
-
-              <div class="uk-position-relative uk-visible-toggle uk-light" data-uk-tabindex="-1" data-uk-slider="center: true;">
-                <ul class="uk-slider-items uk-grid">
-                  <li class="uk-width-3-4">
-                    <div class="uk-panel">
-                      <img src="https://cdn.thewirecutter.com/wp-content/uploads/2018/07/catadoption-lowres-06052-2x1-1.jpg"></img>
+              <div
+                className="uk-position-relative uk-visible-toggle uk-light"
+                tabIndex="-1"
+                data-uk-slider="center: true"
+              >
+                <ul className="uk-slider-items uk-flex-middle" data-uk-grid="">
+                  <li className="uk-width-3-4">
+                    <div className="uk-panel">
+                      <img src="static/nazareth-1.jpg"></img>
                     </div>
                   </li>
-                  <li class="uk-width-3-4">
-                    <div class="uk-panel">
-                      <img src="https://static.toiimg.com/photo/msid-68523832/68523832.jpg?1137762"></img>
+                  <li className="uk-width-3-4">
+                    <div className="uk-panel">
+                      <img src="static/nazareth-2.jpg"></img>
                     </div>
                   </li>
-                  <li class="uk-width-3-4">
-                    <div class="uk-panel">
-                      <img src="https://facts.net/wp-content/uploads/2015/10/cat-4282123_1920.jpg"></img>
+                  <li className="uk-width-3-4">
+                    <div className="uk-panel">
+                      <img src="static/nazareth-3.jpg"></img>
                     </div>
                   </li>
-                  <li class="uk-width-3-4">
-                    <div class="uk-panel">
-                      <img src="https://www.iams.com/images/default-source/article-image/article_kitten-basics-do-kittens-get-hairballs_header.jpg"></img>
+                  <li className="uk-width-3-4">
+                    <div className="uk-panel">
+                      <img src="static/nazareth-4.jpg"></img>
+                    </div>
+                  </li>
+                  <li className="uk-width-3-4">
+                    <div className="uk-panel">
+                      <img src="static/nazareth-5.jpg"></img>
+                    </div>
+                  </li>
+                  <li className="uk-width-3-4">
+                    <div className="uk-panel">
+                      <img src="static/nazareth-6.jpg"></img>
+                    </div>
+                  </li>
+                  <li className="uk-width-3-4">
+                    <div className="uk-panel">
+                      <img src="static/nazareth-7.jpg"></img>
+                    </div>
+                  </li>
+                  <li className="uk-width-3-4">
+                    <div className="uk-panel">
+                      <img src="static/nazareth-8.jpg"></img>
+                    </div>
+                  </li>
+                  <li className="uk-width-3-4">
+                    <div className="uk-panel">
+                      <img src="static/nazareth-9.jpg"></img>
+                    </div>
+                  </li>
+                  <li className="uk-width-3-4">
+                    <div className="uk-panel">
+                      <img src="static/nazareth-10.jpg"></img>
                     </div>
                   </li>
                 </ul>
-                <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-previous data-uk-slider-item="previous"></a>
-                <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-next data-uk-slider-item="next"></a>
+                <a
+                  className="uk-position-center-left uk-position-small uk-hidden-hover"
+                  data-uk-slidenav-previous=""
+                  data-uk-slider-item="previous"
+                ></a>
+                <a
+                  className="uk-position-center-right uk-position-small uk-hidden-hover"
+                  data-uk-slidenav-next=""
+                  data-uk-slider-item="next"
+                ></a>
               </div>
             </div>
           </Column>
