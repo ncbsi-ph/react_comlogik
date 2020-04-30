@@ -27,10 +27,10 @@ const CommonHeader = props => {
 };
 
 CommonHeader.propTypes = {
-  image: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  heading: PropTypes.string.isRequired,
-  sentence: PropTypes.string.isRequired,
+  image: PropTypes.string,
+  label: PropTypes.string,
+  heading: PropTypes.string,
+  sentence: PropTypes.string,
   svg: PropTypes.bool
 };
 

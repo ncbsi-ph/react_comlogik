@@ -7,16 +7,29 @@ import WorkProcess from '../components/About/WorkProcess';
 import TeamView from '../components/About/TeamView';
 import CareerCTA from '../components/About/CareerCTA';
 
+import { Section, Grid, Column } from '../components/Grid';
+
 const About = () => {
   return (
     <>
       <CommonHeader
         image="static/about-hero.gif"
         label="ABOUT US"
-        heading="We are one of the leading hospital systems provider in the Philippines"
-        sentence="Comlogik Business Systems, Inc. is a Philippine based software development company that established its operation in the year 1999, with a vision to be a Global Technology Company.
-      Comlogik led the way in developing innovative applications like online hospital services wherein patients can access their billing as well as the examination results, while your Administrators can access their reports and your Doctors their patient's records anywhere and anytime they need to."
+        heading="We are on a mission to help you solve your operational problems by delivering powerful healthcare solutions that's affordable."
+        sentence={null}
       />
+      <Section className="uk-section-small">
+        <Grid childWidth="1-1">
+          <Column>
+            Since 1999, Comlogik has been existing with the primary goal of
+            helping healthcare institutions and other medical businesses
+            eliminate redundant processes that are costly and time consuming. To
+            do away with outdated practices and adopt the best processes applied
+            by successful healthcare companies and focus on what is crucial -
+            managing and growing your business.
+          </Column>
+        </Grid>
+      </Section>
       <Statistics />
       <Values />
       <WorkProcess />
