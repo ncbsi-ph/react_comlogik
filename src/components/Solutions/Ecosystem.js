@@ -35,8 +35,8 @@ const Ecosystem = () => {
 
   return (
     <Section>
-      <Grid childWidth="1-1" className="uk-flex-middle">
-        <Column className="uk-flex-column">
+      <Grid childWidth="1-1 expand@m" className="uk-flex-middle">
+        <Column width="1-3@m" className="uk-flex-column">
           <h2>Comlogik Ecosystem</h2>
           <p>
             Comlogik’s ecosystem goes beyond just interoperability. It involves
