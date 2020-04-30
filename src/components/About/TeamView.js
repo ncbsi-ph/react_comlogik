@@ -29,7 +29,7 @@ const Profile = props => {
 
 const TeamView = () => {
   const data = {
-    Management: [
+    Leadership: [
       {
         image: 'https://picsum.photos/300/250?random=1',
         name: 'Employee 1',

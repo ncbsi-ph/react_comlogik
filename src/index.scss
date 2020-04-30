@@ -64,7 +64,7 @@ $global-primary-background: #4983d0;
   object-fit: cover;
 }
 
-h1 {
+h2, h1 {
   color: #2e67b2;
   margin-bottom: 0;
 }
@@ -122,20 +122,6 @@ p {
   background-color: transparent;
   color: #2e67b2;
 }
-
-// .secondary-button {
-//   background-color: #CC3396;
-//   color: white;
-//   box-shadow: 1px 3px 10px rgba(230, 153, 203, 0.53);
-// }
-
-// .secondary-outline {
-//   background-color: transparent;
-//   color: #CC3396;
-//   -webkit-box-shadow:inset 0px 0px 0px 2px #CC3396;
-//   -moz-box-shadow:inset 0px 0px 0px 2px #CC3396;
-//   box-shadow:inset 0px 0px 0px 2px #CC3396;
-// }
 
 .tab-button {
   background-color: transparent;
@@ -284,6 +270,3 @@ h5 {
   padding: 10px;
 }
 
-// .uk-slider-items {
-//   max-height: 400px;
-// }

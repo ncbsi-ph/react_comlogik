@@ -8,7 +8,7 @@ const CareerCTA = () => {
       <Column width="1-1" className="uk-flex uk-flex-column">
         <h5 className="meta uk-margin-remove-bottom">CAREERS</h5>
         <h1 className="margin-top-30">
-          Looking for a rewarding career with us?
+          Come work with us
         </h1>
         <p>
           Bonded by our mission and propelled by our innovative spirit, our work
