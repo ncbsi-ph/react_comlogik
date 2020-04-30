@@ -18,7 +18,7 @@ const CommonHeader = props => {
         <Column>{image}</Column>
         <Column className="uk-flex uk-flex-column">
           <h5 className="meta uk-margin-remove-bottom">{props.label}</h5>
-          <h1 className="margin-top-30">{props.heading}</h1>
+          <h2 className="margin-top-30">{props.heading}</h2>
           <p className="uk-margin-medium-top">{props.sentence}</p>
         </Column>
       </Grid>
