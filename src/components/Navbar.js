@@ -67,7 +67,7 @@ const Navbar = () => {
                 </li>
                 <li className="uk-parent link">
                   <Link onClick={offcanvasClick} to="/about">
-                    About
+                    About us
                   </Link>
                 </li>
                 <li className="uk-parent">
@@ -94,9 +94,6 @@ const Navbar = () => {
                   <Link onClick={offcanvasClick} to="/contact-us">
                     Contact us
                   </Link>
-                </li>
-                <li className="uk-parent">
-                  <a>Careers</a>
                 </li>
               </ul>
             </div>

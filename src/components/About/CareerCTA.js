@@ -6,7 +6,7 @@ const CareerCTA = () => {
   return (
     <Section>
       <Column width="1-1" className="uk-flex uk-flex-column">
-        <h5 className="meta uk-margin-remove-bottom">CAREERS</h5>
+        <h5 className="meta uk-margin-remove-bottom">JOIN OUR TEAM</h5>
         <h1 className="margin-top-30">
           Come work with us
         </h1>
@@ -18,7 +18,7 @@ const CareerCTA = () => {
           healthcare system better for everyone that may have an effect with
           your friends, family or even you.
         </p>
-        <div className="uk-margin-medium-top">
+        <div className="uk-margin-small-top">
           <a className="uk-button uk-button-primary">View careers</a>
         </div>
       </Column>
