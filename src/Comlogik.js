@@ -23,6 +23,11 @@ const About = Loadable({
   loading: Loading,
 });
 
+const Careers = Loadable({
+  loader: () => import('./pages/Careers'),
+  loading: Loading,
+});
+
 const Clients = Loadable({
   loader: () => import('./pages/Clients'),
   loading: Loading,
@@ -64,11 +69,12 @@ const ProductContent = Loadable({
 });
 
 const Comlogik = () => {
-  const devBasename = '/react_comlogik/dist';
-  const productionBasename = '/new';
-
   return (
-    <Router basename={ENVIRONMENT === 'dev' ? devBasename : productionBasename}>
+    <Router
+      basename={
+        process.env.NODE_ENV === 'development' ? process.env.ROUTER_BASENAME : ''
+      }
+    >
       <Navbar />
       <Switch>
         <Route exact path="/">
@@ -76,6 +82,9 @@ const Comlogik = () => {
         </Route>
         <Route path="/about">
           <About />
+        </Route>
+        <Route path="/careers">
+          <Careers />
         </Route>
         <Route path="/clients">
           <Clients />
@@ -89,10 +98,10 @@ const Comlogik = () => {
         <Route path="/solutions">
           <Solutions />
         </Route>
-        <Route path="/news">
+        <Route exact path="/news">
           <News />
         </Route>
-        <Route path="/news-content">
+        <Route exact path="/news/:keyword">
           <NewsContent />
         </Route>
         <Route path="/case-study-content">

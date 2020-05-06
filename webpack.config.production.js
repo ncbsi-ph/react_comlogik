@@ -1,3 +1,4 @@
+require('dotenv').config();
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -11,19 +12,19 @@ const path = require('path');
 module.exports = {
   mode: 'production',
   entry: {
-    comlogik: './src/index.js'
+    comlogik: './src/index.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist/'),
     filename: '[name].[hash].js',
-    chunkFilename: '[chunkhash].js'
+    chunkFilename: '[chunkhash].js',
   },
   module: {
     rules: [
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        use: 'babel-loader',
       },
       {
         test: /\.(s*)css$/,
@@ -33,17 +34,17 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [autoprefixer, cssnano]
-            }
+              plugins: [autoprefixer, cssnano],
+            },
           },
-          'sass-loader'
-        ]
-      }
-    ]
+          'sass-loader',
+        ],
+      },
+    ],
   },
   plugins: [
     new webpack.DefinePlugin({
-      ENVIRONMENT: JSON.stringify('build')
+      ENVIRONMENT: JSON.stringify('build'),
     }),
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
@@ -51,32 +52,33 @@ module.exports = {
       title:
         'Comlogik Business Systems - The leading healthcare system provider in the Philippines',
       template: './public/index.html',
-      minify: true
+      minify: true,
+      base: process.env.BASE,
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',
-      chunkFilename: '[name].[chunkhash].css'
+      chunkFilename: '[name].[chunkhash].css',
     }),
     new CopyWebpackPlugin([
       {
         context: './public/',
-        from: '**/*.!(html)'
+        from: '**/*.!(html)',
       },
       {
         context: './public/',
-        from: '.htaccess'
-      }
+        from: '.htaccess',
+      },
     ]),
     new ImageminPlugin({
       test: /\.(jpe?g|png|gif|svg)$/i,
       optipng: {
         optimizationLevel: 7,
-        interlaced: true
+        interlaced: true,
       },
       gifsicle: {
         optimizationLevel: 3,
-        interlaced: true
-      }
-    })
-  ]
+        interlaced: true,
+      },
+    }),
+  ],
 };

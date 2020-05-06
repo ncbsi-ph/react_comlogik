@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Section, Column } from '../Grid';
 
@@ -7,9 +8,7 @@ const CareerCTA = () => {
     <Section>
       <Column width="1-1" className="uk-flex uk-flex-column">
         <h5 className="meta uk-margin-remove-bottom">JOIN OUR TEAM</h5>
-        <h1 className="margin-top-30">
-          Come work with us
-        </h1>
+        <h1 className="margin-top-30">Come work with us</h1>
         <p>
           Bonded by our mission and propelled by our innovative spirit, our work
           at Comlogik is collaborative, transformative, and above all, it’s
@@ -19,7 +18,9 @@ const CareerCTA = () => {
           your friends, family or even you.
         </p>
         <div className="uk-margin-small-top">
-          <a className="uk-button uk-button-primary">View careers</a>
+          <Link to="/careers" className="uk-button uk-button-primary">
+            View careers
+          </Link>
         </div>
       </Column>
     </Section>
