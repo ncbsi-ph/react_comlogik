@@ -43,18 +43,9 @@ module.exports = {
       title:
         '[Dev] Comlogik Business Systems - The leading healthcare system provider in the Philippines',
       hash: true,
-      template: './public/index.html',
+      template: './template/index.html',
       base: process.env.BASE,
     }),
-    new CopyWebpackPlugin([
-      {
-        context: './public/',
-        from: '**/*.!(html)',
-      },
-      {
-        context: './public/',
-        from: '.htaccess',
-      },
-    ]),
+    new CopyWebpackPlugin([{ from: 'public/' }]),
   ],
 };

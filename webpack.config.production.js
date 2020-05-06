@@ -51,7 +51,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title:
         'Comlogik Business Systems - The leading healthcare system provider in the Philippines',
-      template: './public/index.html',
+      template: './template/index.html',
       minify: true,
       base: process.env.PROD_BASE,
     }),
@@ -59,16 +59,7 @@ module.exports = {
       filename: '[name].[hash].css',
       chunkFilename: '[name].[chunkhash].css',
     }),
-    new CopyWebpackPlugin([
-      {
-        context: './public/',
-        from: '**/*.!(html)',
-      },
-      {
-        context: './public/',
-        from: '.htaccess',
-      },
-    ]),
+    new CopyWebpackPlugin([{ from: 'public/' }]),
     new ImageminPlugin({
       test: /\.(jpe?g|png|gif|svg)$/i,
       optipng: {
