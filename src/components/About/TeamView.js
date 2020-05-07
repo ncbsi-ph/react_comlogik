@@ -18,7 +18,7 @@ const TeamView = () => {
           </p>
         </Column>
         <Column>
-          <Grid childWidth="1-4" className="uk-margin-small-top">
+          <Grid childWidth="1-2 1-4@m" className="uk-margin-small-top">
             <Column>
               <div style={{ height: 200 }}>
                 <div

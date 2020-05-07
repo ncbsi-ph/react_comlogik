@@ -27,7 +27,7 @@ const CTA = () => {
             </Column>
             <Column>
               <button className="uk-button white-outline">
-                Send an inquiry
+                Contact us
               </button>
             </Column>
           </Grid>

@@ -1,11 +1,11 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Section, Grid, Column } from '../components/Grid';
+import { Section, Grid } from '../components/Grid';
 import Breadcrumb from '../components/NewsContent/Breadcrumb';
 import Content from '../components/NewsContent/Content';
 
-const NewsContent = (props) => {
+const NewsContent = () => {
   const { keyword } = useParams();
 
   return (
@@ -78,7 +78,7 @@ const NewsContent = (props) => {
             <Content
               date="MAY 4, 2020"
               title="Comlogik announces the release of AnywhereMed – A simple but powerful Telemedicine App"
-              image="static/product-9.jpg"
+              image="static/news/news-3.jpg"
               content={`Comlogik, a healthcare software company building physician-first solutions, announced today the launch of its web app, available for all browsers. In addition to the other recently developed app, Comlogik’s new web app will now let physicians provide remote consultations to their patients via web portal with internet connection. Participating physicians can simply access the link to any browser and connect in real-time for diagnosis and treatment of a variety of medical issues.
 
               An easy-to-use, telemedicine app designed by physicians, for physicians, Comlogik solution helps healthcare providers raise patient satisfaction and boost practice revenue. Patients get convenient, accessible care for minor injuries, illnesses, or follow-ups from the comfort of their homes. And healthcare providers improve their own experience: by supplementing in-office patient visits with remote video visits using third party video app (Zoom, Meetings, Teams etc.), physicians can reduce no-shows, optimize their appointment calendars, and get reimbursed before or after-hours consults.

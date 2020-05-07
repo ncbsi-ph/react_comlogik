@@ -49,7 +49,7 @@ const LatestNews = () => {
               <Grid childWidth="1-1 1-2@m 1-3@l">
                 <NewsArticle
                   keyword="3"
-                  image="static/product-9.jpg"
+                  image="static/news/news-3.jpg"
                   title="Comlogik announces the release of AnywhereMed – A simple but powerful Telemedicine App"
                   summary="New Telemedicine App Lets Patients Connect with Their Doctor via Secure System.
                   Comlogik, a healthcare software company building physician-first solutions, announced today

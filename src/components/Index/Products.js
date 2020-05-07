@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { Section, Grid, Column } from '../Grid';
 
@@ -15,18 +16,28 @@ const Product = (props) => {
   );
 };
 
-const ProductDescription = (props) => {
+const ProductDescription = ({
+  image,
+  productName,
+  productDescription,
+  link = null,
+}) => {
   return (
     <li>
       <div className="uk-card uk-card-default">
         <div className="uk-card-media-top uk-height-medium">
-          <img data-src={props.image} data-uk-cover="" data-uk-img=""></img>
+          <img data-src={image} data-uk-img=""></img>
         </div>
         <div className="uk-card-body uk-flex uk-flex-column">
-          <h4 className="uk-margin-remove-bottom">{props.productName}</h4>
-          <p>{props.productDescription}</p>
+          <h4 className="uk-margin-remove-bottom">{productName}</h4>
+          <p>{productDescription}</p>
           <div>
-            <a className="uk-button uk-button-primary">Learn more</a>
+            <Link
+              to={link !== null ? `/solutions${link}` : '/contact-us'}
+              className="uk-button uk-button-primary"
+            >
+              Learn more
+            </Link>
           </div>
         </div>
       </div>
@@ -41,6 +52,7 @@ const Products = (props) => {
       productName: 'Hospital Information & Management System',
       productDescription:
         'HIMS™ is a comprehensive, fully integrated, yet easy to use hospital information system for all hospital levels. HIMS™ is the first DOH Validated System and PhilHealth Certified that can be customized and can adapt to various hospital setup.',
+      link: '/hims',
     },
     {
       image: 'static/product-2.png',
@@ -53,12 +65,14 @@ const Products = (props) => {
       productName: 'Claims Assure™',
       productDescription:
         'Claims Assure™ is a PhilHealth certified electronic claims transmittal software that enables any healthcare accredited institution to send paperless patient claims. It allows users to manage and track receivables while monitoring status of claims all in a single window.',
+      link: '/claims-assure',
     },
     {
       image: 'static/product-4.png',
       productName: 'Comlogik EMR™',
       productDescription:
         'Comlogik EMR™ is the industry leading solution that meets the stringent requirements of the Department of Health and likewise holds the distinction of being the FIRST DOH VALIDATED SOFTWARE. Be compliant and get expert advice from our team of experts.',
+      link: '/emr',
     },
     {
       image: 'static/product-5.png',
@@ -71,18 +85,19 @@ const Products = (props) => {
       productName: 'Connect™',
       productDescription:
         'Comlogik Connect™ is designed to run on a mobile device which remotely access key information from HIMS™. If you are a patient, doctor or owner of the hospital, Connect™ allows each one to do specific task without the hassle.',
-    },
-    {
-      image: 'static/product-7.png',
-      productName: 'Financeforte™ (Accounting System)',
-      productDescription:
-        'Financeforte™ is a full suite accounting and process- driven workflow software solutions for hospitals or healthcare companies, industries like School and other services. The system consists of a cohesive set of modules that can run on its own or seamlessly integrate with HIMS™.',
+      link: '/connect',
     },
     {
       image: 'static/product-8.png',
       productName: 'Paymanager™',
       productDescription:
         'Paymanager™ is your go to application when you want an end to end payroll system. Paymanager™ lets you manage unlimited schedules with multi- scheduling function, accommodate leave requests or generate needed reports in compliance with all government requirements.',
+    },
+    {
+      image: 'static/product-9.jpg',
+      productName: 'AnywhereMed Telemedicine',
+      productDescription:
+        'AnywhereMed is a fast and convenient way for patients to call and get in touch with a network of doctors affiliated to a hospital, explain your symptoms and get immediate medical advice before actually going to the hospital. This Telemedicine web- based application is developed to ensure that patient concerns are met especially in difficult situations such as inability to go to the hospital due to scheduling, distance, or critical conditions like the COVID-19 epidemic.',
     },
   ];
   const productIcons = [];
@@ -95,9 +110,10 @@ const Products = (props) => {
     products.push(
       <ProductDescription
         key={products.length}
-        image={`https://picsum.photos/500?random=${products.length}`}
+        image={value.image}
         productName={value.productName}
         productDescription={value.productDescription}
+        link={value.link}
       ></ProductDescription>
     );
   });
@@ -153,7 +169,12 @@ const Products = (props) => {
                     across your entire system
                   </p>
                   <div>
-                    <a className="uk-button uk-button-primary">Learn more</a>
+                    <Link
+                      to="/solutions"
+                      className="uk-button uk-button-primary"
+                    >
+                      Learn more
+                    </Link>
                   </div>
                 </div>
               </div>

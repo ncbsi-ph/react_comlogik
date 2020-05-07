@@ -1,6 +1,7 @@
 import React from 'react';
 import Loadable from 'react-loadable';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import CookieConsent from 'react-cookie-consent';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -72,9 +73,28 @@ const Comlogik = () => {
   return (
     <Router
       basename={
-        process.env.NODE_ENV === 'development' ? process.env.ROUTER_BASENAME : ''
+        process.env.NODE_ENV === 'development'
+          ? process.env.ROUTER_BASENAME
+          : ''
       }
     >
+      <CookieConsent
+        location="bottom"
+        buttonText="I understand"
+        cookieName="ComlogikConsent"
+        style={{ backgroundColor: '#394049' }}
+        buttonClasses="uk-button uk-button-small uk-button-primary"
+        buttonStyle={{
+          color: 'white',
+          backgroundColor: '#cc3396',
+          fontSize: '13px',
+          borderRadius: '4px',
+        }}
+        debug={true}
+        expires={150}
+      >
+        Our website uses cookies to enhance your browsing experience.
+      </CookieConsent>
       <Navbar />
       <Switch>
         <Route exact path="/">
@@ -95,8 +115,11 @@ const Comlogik = () => {
         <Route path="/contact-us">
           <Contact />
         </Route>
-        <Route path="/solutions">
+        <Route exact path="/solutions">
           <Solutions />
+        </Route>
+        <Route exact path="/solutions/:product">
+          <ProductContent />
         </Route>
         <Route exact path="/news">
           <News />
@@ -106,9 +129,6 @@ const Comlogik = () => {
         </Route>
         <Route path="/case-study-content">
           <CaseStudyContent />
-        </Route>
-        <Route path="/product-content">
-          <ProductContent />
         </Route>
       </Switch>
       <Footer />

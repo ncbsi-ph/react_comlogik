@@ -5,6 +5,7 @@ import { Section, Grid, Column } from './Grid';
 
 const CommonHeader = props => {
   let image = <img src={props.image}></img>;
+  
   if (props.svg) {
     image = (
       <img src={props.image} className="uk-preserve" data-uk-svg=""></img>

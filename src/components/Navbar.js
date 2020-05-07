@@ -36,9 +36,9 @@ const Navbar = () => {
                   </a>
                 </li>
                 <li className="uk-parent">
-                  <a>
+                  <Link to="/contact-us">
                     <Icon icon={mail} width={24} height={24}></Icon>
-                  </a>
+                  </Link>
                 </li>
                 <li className="uk-parent">
                   <a data-uk-toggle="target: #navigation">

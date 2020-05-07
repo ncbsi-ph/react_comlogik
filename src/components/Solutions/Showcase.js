@@ -12,6 +12,7 @@ const Showcase = () => {
       image: 'static/product-1.png',
       description:
         'HIMS™ is a comprehensive, fully integrated, yet easy to use hospital information system for all hospital levels. HIMS™ is the first DOH Validated System and PhilHealth Certified that can be customized and can adapt to various hospital setup.',
+      link: '/solutions/hims',
     },
     {
       id: '2',
@@ -26,6 +27,7 @@ const Showcase = () => {
       image: 'static/product-3.png',
       description:
         'Claims Assure™ is a PhilHealth certified electronic claims transmittal software that enables any healthcare accredited institution to send paperless patient claims. It allows users to manage and track receivables while monitoring status of claims all in a single window.',
+      link: '/solutions/claims-assure',
     },
     {
       id: '4',
@@ -33,6 +35,7 @@ const Showcase = () => {
       image: 'static/product-4.png',
       description:
         'Comlogik EMR™ is the industry leading solution that meets the stringent requirements of the Department of Health and likewise holds the distinction of being the FIRST DOH VALIDATED EMR SOFTWARE.',
+      link: '/solutions/emr',
     },
     {
       id: '5',
@@ -47,13 +50,7 @@ const Showcase = () => {
       image: 'static/product-6.png',
       description:
         'Comlogik Connect™ is designed to run on a mobile device which remotely access key information from HIMS™. If you are a patient, doctor or owner of the hospital, Connect™ allows each one to do specific task without the hassle.',
-    },
-    {
-      id: '7',
-      productName: 'Financeforte™',
-      image: 'static/product-7.png',
-      description:
-        'Financeforte™ is a full suite accounting and process- driven workflow software solutions for hospitals or healthcare companies, industries like School and other services. The system consists of a cohesive set of modules that can run on its own or seamlessly integrate with HIMS™.',
+      link: '/solutions/connect',
     },
     {
       id: '8',
@@ -61,6 +58,13 @@ const Showcase = () => {
       image: 'static/product-8.png',
       description:
         'Paymanager™ is your go to application when you want an end to end payroll system. Paymanager™ lets you manage unlimited schedules with multi- scheduling function, accommodate leave requests or generate needed reports in compliance with all government requirements.',
+    },
+    {
+      id: '9',
+      productName: 'AnywhereMed Telemedicine',
+      image: 'static/product-9.jpg',
+      description:
+        'AnywhereMed is a fast and convenient way for patients to call and get in touch with a network of doctors affiliated to a hospital, explain your symptoms and get immediate medical advice before actually going to the hospital. This Telemedicine web- based application is developed to ensure that patient concerns are met especially in difficult situations such as inability to go to the hospital due to scheduling, distance, or critical conditions like the COVID-19 epidemic.',
     },
   ];
   const links = [];
@@ -96,7 +100,9 @@ const Showcase = () => {
             </div>
             <div>
               <Link
-                to="/product-content"
+                to={
+                  product.hasOwnProperty('link') ? product.link : '/contact-us'
+                }
                 className="uk-button uk-button-primary uk-margin-top"
               >
                 Learn more
@@ -115,7 +121,10 @@ const Showcase = () => {
           <div className="uk-card-body">
             <h3 className="uk-card-title">{product.productName}</h3>
             <p>{product.description}</p>
-            <Link to="/product-content" className="uk-button uk-button-primary">
+            <Link
+              to={product.hasOwnProperty('link') ? product.link : '/contact-us'}
+              className="uk-button uk-button-primary"
+            >
               Learn more
             </Link>
           </div>
