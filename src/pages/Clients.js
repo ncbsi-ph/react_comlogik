@@ -50,7 +50,7 @@ const Clients = () => {
     'Premiere-General-Hospital-of-NE.png',
     'Santiago-City-Hospital.png',
     //'St. James Medical Center',
-    'St-Joseph-Hospital.jpg'
+    'St-Joseph-Hospital.jpg',
   ];
   const logos_3 = [
     'Alabang-Medical-Center.jpg',
@@ -71,7 +71,7 @@ const Clients = () => {
     'Tarlac-Provincial-Hospital.png',
     'Tayug-Family-Hospital.jpg',
     //'Trinity Women’s &amp; Child Hospital',
-    'Urdaneta-Sacred-Heart-Hospital.jpg'
+    'Urdaneta-Sacred-Heart-Hospital.jpg',
   ];
 
   return (
@@ -95,9 +95,17 @@ const Clients = () => {
         <LogoCarousel
           logos={logos_3.map((logo) => `static/logos/${logo}`)}
         ></LogoCarousel>
+        <div className="uk-padding uk-padding-remove-bottom">
+          <small className="uk-text-muted">
+            *All product names, logos, brands, trademarks and registered
+            trademarks are property of their respective owners. All company,
+            product and service names used in this website are for
+            identification purposes only.
+          </small>
+        </div>
       </Section>
       <CaseStudies></CaseStudies>
-      <Partners></Partners>
+      {/* <Partners></Partners> */}
       <CTA></CTA>
     </>
   );

@@ -1,12 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Icon } from '@iconify/react';
+
 import { Section, Grid, Column } from '../Grid';
 
-import arrowUp from '@iconify/icons-feather/arrow-up';
-import arrowDown from '@iconify/icons-feather/arrow-down';
-
-const CaseStudy = (props) => {
+const CaseStudy = ({ image, hospitalName, description, link }) => {
   return (
     <Column>
       <Grid
@@ -18,20 +15,17 @@ const CaseStudy = (props) => {
           className="uk-card-media-left uk-cover-container uk-visible@s"
         >
           <img
-            src={props.image}
+            src={image}
             data-uk-cover=""
             className="rounded-testimonials"
           ></img>
         </Column>
         <Column className="uk-card-body uk-flex-column">
-          <h5>{props.hospitalName}</h5>
-          <p>{props.description}</p>
+          <h5>{hospitalName}</h5>
+          <p>{description}</p>
           <div>
-            <Link
-              to="/case-study-content"
-              className="uk-button uk-button-primary"
-            >
-              View story
+            <Link to={link} className="uk-button uk-button-primary">
+              Learn more
             </Link>
           </div>
         </Column>
@@ -63,40 +57,20 @@ const CaseStudies = () => {
         <Column>
           <Grid className="uk-grid-small" data-uk-height-match="target: > div">
             <Column className="uk-width-expand">
-              <Grid childWidth="1-1" className="uk-grid-small">
+              <Grid childWidth="1-1">
                 <CaseStudy
-                  image="https://picsum.photos/200"
+                  image="https://live.staticflickr.com/2800/4471874520_880346341d_b.jpg"
                   hospitalName="Nazareth General Hospital"
                   description="Nazareth General Hospital increases income with Comlogik’s just-in-time inventory and quality reporting solution"
+                  link="/clients/ngh"
                 ></CaseStudy>
                 <CaseStudy
-                  image="https://picsum.photos/200"
-                  hospitalName="Nazareth General Hospital"
-                  description="Nazareth General Hospital increases income with Comlogik’s just-in-time inventory and quality reporting solution"
+                  image="https://scontent.fmnl6-2.fna.fbcdn.net/v/t31.0-8/p720x720/14125071_127803054338249_6779958521245930604_o.jpg?_nc_cat=111&_nc_sid=e007fa&_nc_ohc=QDCCUTT0CQkAX_9bd46&_nc_ht=scontent.fmnl6-2.fna&_nc_tp=6&oh=bef61b88bdd44cf6dd93933eb1784355&oe=5ED9B473"
+                  hospitalName="Medical Mission Group Hospital Health Services Cooperative Palawan"
+                  description="Defying the naysayers against new technology and the little known solutions provider"
+                  link="/clients/mmghhscp"
                 ></CaseStudy>
               </Grid>
-            </Column>
-            <Column className="uk-width-auto">
-              <div className="uk-flex uk-flex-bottom uk-height-1-1">
-                <div className="uk-flex uk-flex-column">
-                  <div>
-                    <Icon
-                      icon={arrowUp}
-                      width={24}
-                      height={24}
-                      color={'#2e67b2'}
-                    ></Icon>
-                  </div>
-                  <div>
-                    <Icon
-                      icon={arrowDown}
-                      width={24}
-                      height={24}
-                      color={'#2e67b2'}
-                    ></Icon>
-                  </div>
-                </div>
-              </div>
             </Column>
           </Grid>
         </Column>

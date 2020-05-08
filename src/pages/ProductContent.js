@@ -33,7 +33,7 @@ const ProductContent = () => {
           />
           <Section>
             <Section removePadding="vertical">
-              <h3>FEATURES</h3>
+              <h3 className="uk-text-primary uk-text-center uk-text-left@s">FEATURES</h3>
             </Section>
             <Feature
               image="static/products/hims/feature-1.jpg"
@@ -101,7 +101,7 @@ const ProductContent = () => {
           />
           <Section>
             <Section removePadding="vertical">
-              <h3>FEATURES</h3>
+              <h3 className="uk-text-primary uk-text-center uk-text-left@s">FEATURES</h3>
             </Section>
             <Feature
               image="static/products/emr/feature-1.png"
@@ -148,7 +148,9 @@ const ProductContent = () => {
           />
           <Section>
             <Section removePadding="vertical">
-              <h3>FEATURES</h3>
+              <h3 className="uk-text-primary uk-text-center uk-text-left@s">
+                FEATURES
+              </h3>
             </Section>
             <Feature
               image="static/products/connect/feature-1.jpg"
@@ -196,7 +198,9 @@ const ProductContent = () => {
           />
           <Section>
             <Section removePadding="vertical">
-              <h3>FEATURES</h3>
+              <h3 className="uk-text-primary uk-text-center uk-text-left@s">
+                FEATURES
+              </h3>
             </Section>
             <CAFeature
               number="1"

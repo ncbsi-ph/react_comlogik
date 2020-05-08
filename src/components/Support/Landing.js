@@ -12,8 +12,8 @@ export default class Landing extends Component {
           </Column>
           <Column className="uk-flex uk-flex-column">
             <h5>SUPPORT</h5>
-            <h1 className="uk-margin-remove">Support placeholder heading</h1>
-            <p>
+            <h1 className="uk-margin-remove">We're here to help</h1>
+            {/* <p>
               Etiam ut pellentesque lectus, et euismod magna. Nulla neque mi,
               euismod et eleifend eu, scelerisque ac velit. Sed placerat
               imperdiet elementum.
@@ -22,7 +22,7 @@ export default class Landing extends Component {
               <a className="uk-button uk-button-primary">
                 Redirect to OS Ticket
               </a>
-            </div>
+            </div> */}
           </Column>
         </Grid>
       </Section>

@@ -48,9 +48,9 @@ const Ecosystem = () => {
           <img ref={imgRef} src="static/ecosystem.svg" hidden />
           <canvas
             ref={canvasRef}
-            className="uk-width-1-1 uk-visible@m"
+            className="uk-width-1-1"
           ></canvas>
-          <div className="uk-card uk-card-default uk-card-body uk-hidden@m">
+          {/* <div className="uk-card uk-card-default uk-card-body uk-hidden@m">
             <h4>MAIN SOFTWARE</h4>
             <img src="static/product-1.png" width={400} />
           </div>
@@ -80,7 +80,7 @@ const Ecosystem = () => {
               logo="static/product-2.png"
               type="Test type"
             />
-          </ul>
+          </ul> */}
         </Column>
       </Grid>
     </Section>

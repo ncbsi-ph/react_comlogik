@@ -3,6 +3,7 @@ import Loadable from 'react-loadable';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import CookieConsent from 'react-cookie-consent';
 
+import Scroll from './components/Scroll';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -78,6 +79,7 @@ const Comlogik = () => {
           : ''
       }
     >
+      <Scroll />
       <CookieConsent
         location="bottom"
         buttonText="I understand"
@@ -90,7 +92,7 @@ const Comlogik = () => {
           fontSize: '13px',
           borderRadius: '4px',
         }}
-        debug={true}
+        debug={process.env.NODE_ENV === 'development' ? true : false}
         expires={150}
       >
         Our website uses cookies to enhance your browsing experience.
@@ -106,8 +108,11 @@ const Comlogik = () => {
         <Route path="/careers">
           <Careers />
         </Route>
-        <Route path="/clients">
+        <Route exact path="/clients">
           <Clients />
+        </Route>
+        <Route exact path="/clients/:client">
+          <CaseStudyContent />
         </Route>
         <Route path="/support">
           <Support />
@@ -126,9 +131,6 @@ const Comlogik = () => {
         </Route>
         <Route exact path="/news/:keyword">
           <NewsContent />
-        </Route>
-        <Route path="/case-study-content">
-          <CaseStudyContent />
         </Route>
       </Switch>
       <Footer />

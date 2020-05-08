@@ -5,7 +5,7 @@ import { Section, Grid, Column } from '../Grid';
 const HIMSStats = () => {
   return (
     <Section className="uk-section-small">
-      <Grid childWidth="1-3" className="uk-flex-middle uk-grid-collapse">
+      <Grid childWidth="1-1 1-3@m" className="uk-flex-middle uk-grid-column-collapse">
         <Column className="uk-flex uk-flex-center uk-flex-middle uk-flex-column">
           <div
             className="uk-background-primary uk-text-center uk-flex uk-flex-column uk-flex-middle uk-flex-center"

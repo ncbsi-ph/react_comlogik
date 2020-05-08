@@ -5,8 +5,8 @@ import { Section, Grid, Column } from '../Grid';
 const ProductHeader = ({ image, name, description }) => {
   return (
     <Section>
-      <Grid childWidth="expand" className="uk-flex-middle">
-        <Column width="1-2">
+      <Grid childWidth="1-1 expand@m" className="uk-flex-middle">
+        <Column width="1-2@m">
           <img src={image} />
         </Column>
         <Column className="uk-flex uk-flex-column">

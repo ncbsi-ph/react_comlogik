@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Section, Grid, Column } from './Grid';
 
@@ -21,14 +22,17 @@ const CTA = () => {
         <Column>
           <Grid childWidth="auto" className="uk-grid-small uk-flex-center">
             <Column>
-              <button className="uk-button uk-button-primary white-button">
+              <Link
+                to="/contact-us"
+                className="uk-button uk-button-primary white-button"
+              >
                 Request for a demo
-              </button>
+              </Link>
             </Column>
             <Column>
-              <button className="uk-button white-outline">
+              <Link to="/contact-us" className="uk-button white-outline">
                 Contact us
-              </button>
+              </Link>
             </Column>
           </Grid>
         </Column>

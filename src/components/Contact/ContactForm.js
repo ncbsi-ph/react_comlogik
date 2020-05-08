@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import Recaptcha from 'react-recaptcha';
@@ -6,6 +6,10 @@ import Recaptcha from 'react-recaptcha';
 import { Section, Grid, Column } from '../Grid';
 
 const ContactForm = () => {
+  const env = process.env.NODE_ENV;
+  const [isSending, setIsSending] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
   const {
     register,
     handleSubmit,
@@ -14,7 +18,36 @@ const ContactForm = () => {
     triggerValidation,
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data, e) => {
+    setIsSending(true);
+    const _data = new FormData();
+    _data.append('environment', env);
+    _data.append('fullName', data.fullName);
+    _data.append('emailAddress', data.email);
+    _data.append('contactNumber', data.contactNumber);
+    _data.append('company', data.company);
+    _data.append('message', data.message);
+    axios
+      .post('https://new.casaalmarenzo.com/comlogik_api/v1/mail.php', _data)
+      .then((response) => {
+        const success = response.data.success;
+        if (success) {
+          e.target.reset();
+          setIsSending(false);
+          setIsSuccess(true);
+          setTimeout(() => {
+            setIsSuccess(false);
+          }, 3000);
+        }
+      })
+      .catch((error) => {
+        setIsSending(false);
+        setIsError(true);
+        setTimeout(() => {
+          setIsError(false);
+        }, 3000);
+      });
+  };
 
   const handleVerify = (response) => {
     setValue('captcha', response);
@@ -114,7 +147,7 @@ const ContactForm = () => {
                             <Column>
                               <input
                                 className="uk-input"
-                                type="number"
+                                type="text"
                                 id="contactNumber"
                                 name="contactNumber"
                                 autoComplete="off"
@@ -204,11 +237,43 @@ const ContactForm = () => {
                             </Column>
                           </Grid>
                         </Column>
+                        {isSuccess ? (
+                          <Column>
+                            <div className="uk-alert-success" data-uk-alert="">
+                              <a
+                                className="uk-alert-close"
+                                data-uk-close=""
+                              ></a>
+                              <p>Your inquiry has been sent!</p>
+                            </div>
+                          </Column>
+                        ) : null}
+                        {isError ? (
+                          <Column>
+                            <div className="uk-alert-danger" data-uk-alert="">
+                              <a
+                                className="uk-alert-close"
+                                data-uk-close=""
+                              ></a>
+                              <p>
+                                Sending of inquiry failed. Please try again
+                                later.
+                              </p>
+                            </div>
+                          </Column>
+                        ) : null}
                         <Column className="uk-text-right">
                           <button
+                            disabled={isSending ? true : false}
                             type="submit"
                             className="uk-button uk-button-primary"
                           >
+                            {isSending ? (
+                              <div
+                                className="uk-margin-small-right"
+                                data-uk-spinner=""
+                              ></div>
+                            ) : null}
                             Send message
                           </button>
                         </Column>
