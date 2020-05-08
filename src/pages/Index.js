@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Grid, Column } from '../components/Grid';
 
 import Landing from '../components/Index/Landing';
+import Clients from '../components/Index/Clients';
 import Advantages from '../components/Index/Advantages';
 import Products from '../components/Index/Products';
 import Team from '../components/Index/Team';
@@ -75,10 +76,11 @@ const Index = () => {
         </Grid>
       </ReactModal>
       <Landing />
+      <Clients />
       <Advantages />
       <Products target="products" />
       <Team />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <CTA />
       <Map />
     </>

@@ -23,7 +23,7 @@ const Team = () => {
             our performance and work today, and in the future.
           </p>
           <div className="uk-margin-small-top">
-            <a className="uk-button uk-button-primary">Join our team</a>
+            <a className="uk-button uk-button-primary">Meet our team</a>
           </div>
         </Column>
       </Grid>
