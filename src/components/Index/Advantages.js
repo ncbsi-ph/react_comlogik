@@ -9,8 +9,26 @@ const Advantage = (props) => {
         <Column width="auto">
           <img className="uk-preserve" src={props.icon} data-uk-svg=""></img>
         </Column>
-        <Column width="expand" className="uk-flex uk-flex-column">
-          <h5 className="uk-margin-remove-bottom">{props.advantage}</h5>
+        <Column
+          width="expand"
+          className="uk-flex uk-flex-column"
+          style={{ position: 'relative' }}
+        >
+          <span
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              transform: 'translate(-50%, -50%)',
+              fontSize: '10rem',
+              color: '#cc3396',
+              zIndex: '-1000',
+              opacity: 0.1,
+            }}
+          >
+            {props.number}
+          </span>
+          <h3 className="uk-margin-remove">{props.advantage}</h3>
           <p>{props.description}</p>
         </Column>
       </Grid>
@@ -37,46 +55,55 @@ const Advantages = () => {
               icon="static/advantage-1.svg"
               advantage="Over 20 years of providing quality healthcare software"
               description="With more than 20 years of providing the best quality software for the healthcare industry."
+              number="1"
             ></Advantage>
             <Advantage
               icon="static/advantage-2.svg"
               advantage="Widely used by 5000+ Doctors, Hospitals and Healthcare Facilities"
               description="Used by more than 5000 Doctors and Medical Practitioners with hundreds of hospital and healthcare facilities installations nationwide and growing."
+              number="2"
             ></Advantage>
             <Advantage
               icon="static/advantage-3.svg"
               advantage="DOH & PhilHealth Certified Provider"
               description="Comlogik is the 1st Independent Software Provider to be validated by DOH and the most reliable eClaims Software Provider Certified by PhilHealth."
+              number="3"
             ></Advantage>
             <Advantage
               icon="static/advantage-4.svg"
               advantage="24/7 Live Support"
               description="By constantly staying in contact with our clients through our live support app, we can answer questions and address problems easily. Customer comes first in everything we do and offer the next level service to create a seamless and the best experience possible."
+              number="4"
             ></Advantage>
             <Advantage
               icon="static/advantage-5.svg"
               advantage="Tailor-fitted Implementation"
               description="Personalized implementation according to your own phasing and environment means a higher success of adaptability and a more relaxed way in learning a new system."
+              number="5"
             ></Advantage>
             <Advantage
               icon="static/advantage-6.svg"
               advantage="Fast Transition"
               description="With a well-developed implementation process combined with our highly trained implementation team that will help you navigate the complex process of transitioning to a new system swiftly and with ease."
+              number="6"
             ></Advantage>
             <Advantage
               icon="static/advantage-7.svg"
               advantage="Money Back Guarantee"
               description="We believe in our products that’s why we are very confident and we can back this up by offering a ‘Money Back Guarantee’ Agreement which no provider in the industry can match."
+              number="7"
             ></Advantage>
             <Advantage
               icon="static/advantage-8.svg"
               advantage="Lifetime Software Warranty"
               description="Lifetime Software Warranty enables you to use the software as long as you want and not worry of having to pay extra for maintenance or additional cost on support and after sales services."
+              number="8"
             ></Advantage>
             <Advantage
               icon="static/advantage-9.svg"
               advantage="Lifetime License and Maintenance"
               description="You only pay once for your software and no need to pay a monthly or yearly maintenance fee. The longer you use your software the more it pays off."
+              number="9"
             ></Advantage>
           </Grid>
         </Column>
