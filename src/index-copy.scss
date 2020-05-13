@@ -2,113 +2,144 @@
 
 // 1. Your custom variables and variable overwrites.
 $inverse-global-color-mode: none;
-$global-font-family: Poppins, sans-serif;
-$global-primary-background: #4983d0;
-$global-secondary-background: #cc3396;
 $base-heading-font-weight: 600;
-$base-heading-color: #2e67b2;
-$button-default-background: white;
-$button-default-color: #019cf8;
-$button-default-hover-color: $button-default-color;
-$button-default-active-color: $button-default-color;
+
+$global-font-family: Poppins, sans-serif;
+
+$global-danger-background: #cc3396;
+$global-primary-background: #4983d0;
+
 $navbar-nav-item-color: #2e67b2;
 $navbar-nav-item-hover-color: #2e67b2;
+
 $nav-primary-item-font-size: 20px;
+
 $list-margin-top: 1.25rem;
-$offcanvas-bar-background: white;
-$offcanvas-overlay-background: rgba(#212529, 0.5);
-$form-padding-horizontal: 14px;
 
 // 2. Import default variables and available mixins.
 @import '../node_modules/uikit/src/scss/variables.scss';
 @import '../node_modules/uikit/src/scss/mixins.scss';
 
 // 3. Your custom mixin overwrites.
-@mixin hook-navbar-sticky() {
-  transition: ease-in-out;
-  transition-property: background-color, box-shadow;
-  transition-duration: 0.5s;
-  background-color: white !important;
+@mixin hook-card-media-top() {
+  overflow: hidden;
+  position: relative;
 }
 
 @mixin hook-button() {
   transition: all ease-in-out 0.1s;
-  font-size: 0.875rem;
-  font-weight: 500;
+  border-radius: 0.25rem;
   text-transform: uppercase;
+  font-weight: 500;
+  padding-top: 4px;
+  padding-bottom: 4px;
   letter-spacing: 0.5px;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 6px;
-  padding: {
-    top: 4px;
-    bottom: 4px;
-  }
 }
 
 @mixin hook-button-default() {
-  border-color: white;
-
-  &.uk-button-default-outline {
-    background-color: transparent;
-    color: white;
-  }
-}
-
-@mixin hook-button-secondary() {
+  background-color: transparent;
+  color: #cc3396;
   border-color: #cc3396;
-
-  &.uk-button-secondary-outline {
-    background-color: transparent;
-    color: #cc3396;
-  }
 }
 
 @mixin hook-button-default-hover() {
-  border-color: $button-default-hover-background;
+  background-color: #cc3396;
+  color: white;
+  border-color: #cc3396;
 }
 
 @mixin hook-button-default-active() {
-  border-color: $button-default-active-background;
-}
-
-@mixin hook-button-secondary-hover() {
-  border-color: $button-secondary-hover-background;
-}
-
-@mixin hook-button-secondary-active() {
-  border-color: $button-secondary-active-background;
-}
-
-@mixin hook-form-single-line() {
-  transition: border ease-in-out 0.3s;
-  border: 1px solid #dee2e6;
-  border-radius: 6px;
-  padding: {
-    top: 8px;
-    bottom: 8px;
-  }
-}
-
-@mixin hook-form-multi-line() {
-  transition: border ease-in-out 0.3s;
-  border: 1px solid #dee2e6;
-  border-radius: 6px;
-  padding: {
-    top: 8px;
-    bottom: 8px;
-  }
-}
-
-@mixin hook-form-focus() {
-  border-color: #2e67b2;
+  background-color: transparent;
+  color: #cc3396;
+  border-color: #cc3396;
 }
 
 // 4. Import UIkit.
 @import '../node_modules/uikit/src/scss/uikit.scss';
 
 // 5. Your custom CSS.
+.uk-cover {
+  min-height: 100%;
+  object-fit: cover;
+}
 
+h2,
+h1 {
+  color: #2e67b2;
+  margin-bottom: 0;
+}
+
+p {
+  color: #495057;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-primary {
+  color: #2e67b2;
+}
+
+.text-white {
+  color: white !important;
+}
+
+.sub-header {
+  margin-bottom: 40px;
+}
+
+.uk-breadcrumb {
+  li {
+    color: #495057;
+  }
+
+  span {
+    font-weight: bold;
+  }
+}
+
+//BUTTONS
+// .white-button {
+//   border: 2px solid white;
+//   background-color: white;
+//   color: #019cf8;
+// }
+
+// .white-button:hover {
+//   background-color: #f1f3f5;
+//   color: #019cf8;
+// }
+
+// .white-outline {
+//   border: 2px solid white;
+//   color: white;
+//   background-color: transparent;
+// }
+
+// .primary-outline {
+//   border: 2px solid #2e67b2;
+//   background-color: transparent;
+//   color: #2e67b2;
+// }
+
+// .tab-button {
+//   background-color: transparent;
+// }
+
+// .tab-button:hover {
+//   border: 2px solid #2e67b2;
+//   background-color: transparent;
+//   color: #2e67b2;
+// }
+
+// .tab-button .uk-active {
+//   border: 2px solid #2e67b2;
+//   background-color: transparent;
+//   color: #2e67b2;
+// }
+
+// Background
 .gradient-bg-light {
   background: rgb(187, 226, 243);
   background: linear-gradient(
@@ -237,9 +268,4 @@ h5 {
   text-transform: uppercase;
   font-weight: 600;
   padding: 10px;
-}
-
-.offcanvas-active {
-  color: #2e67b2 !important;
-  font-weight: 500;
 }

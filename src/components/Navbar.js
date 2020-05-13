@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import search from '@iconify/icons-feather/search';
 import mail from '@iconify/icons-feather/mail';
@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <>
       <div
-        data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-position-sticky uk-navbar-transparent"
+        data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky uk-box-shadow-small; cls-inactive: uk-position-sticky uk-navbar-transparent"
         style={{ zIndex: 1000 }}
       >
         <div className="uk-navbar-container">
@@ -47,7 +47,7 @@ const Navbar = () => {
         </div>
       </div>
       <div id="navigation" data-uk-offcanvas="flip: true; overlay: true">
-        <div className="uk-offcanvas-bar">
+        <div className="uk-offcanvas-bar uk-box-shadow-medium">
           <button
             className="uk-offcanvas-close"
             type="button"
@@ -57,39 +57,68 @@ const Navbar = () => {
             <div>
               <ul className="uk-nav uk-nav-default">
                 <li className="uk-parent">
-                  <Link onClick={offcanvasClick} to="/">
+                  <NavLink
+                    exact
+                    onClick={offcanvasClick}
+                    to="/"
+                    activeClassName="offcanvas-active"
+                  >
                     Home
-                  </Link>
+                  </NavLink>
                 </li>
-                <li className="uk-parent link">
-                  <Link onClick={offcanvasClick} to="/about">
+                <li className="uk-parent">
+                  <NavLink
+                    onClick={offcanvasClick}
+                    to="/about"
+                    activeClassName="offcanvas-active"
+                  >
                     About us
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="uk-parent">
-                  <Link onClick={offcanvasClick} to="/solutions">
+                  <NavLink
+                    onClick={offcanvasClick}
+                    to="/solutions"
+                    activeClassName="offcanvas-active"
+                  >
                     Solutions
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="uk-parent">
-                  <Link onClick={offcanvasClick} to="/clients">
+                  <NavLink
+                    onClick={offcanvasClick}
+                    to="/clients"
+                    activeClassName="offcanvas-active"
+                  >
                     Clients
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="uk-parent">
-                  <Link onClick={offcanvasClick} to="/news">
+                  <NavLink
+                    onClick={offcanvasClick}
+                    to="/news"
+                    activeClassName="offcanvas-active"
+                  >
                     News
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="uk-parent">
-                  <Link onClick={offcanvasClick} to="/support">
+                  <NavLink
+                    onClick={offcanvasClick}
+                    to="/support"
+                    activeClassName="offcanvas-active"
+                  >
                     Support
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="uk-parent">
-                  <Link onClick={offcanvasClick} to="/contact-us">
+                  <NavLink
+                    onClick={offcanvasClick}
+                    to="/contact-us"
+                    activeClassName="offcanvas-active"
+                  >
                     Contact us
-                  </Link>
+                  </NavLink>
                 </li>
               </ul>
             </div>

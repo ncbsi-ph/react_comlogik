@@ -11,44 +11,54 @@ import { Section, Grid, Column } from './Grid';
 
 const Address = () => {
   return (
-    <Grid childWidth="1-1" className="uk-grid-row-small">
+    <Grid childWidth="1-1">
       <Column>
         <h5 className="meta">ADDRESS</h5>
       </Column>
       <Column>
-        <p>2/F F & L Centre 2211 Commonwealth Avenue<br></br>Brgy. Holy Spirit, Quezon City<br></br>Philippines 1127</p>
-      </Column>
-      <Column>
-        <Icon icon={phoneAlt} className="uk-margin-small-right"></Icon>
-        8952-2589
-      </Column>
-      <Column>
-        <Icon icon={phoneAlt} className="uk-margin-small-right"></Icon>
-        8932-9421
-      </Column>
-      <Column>
-        <Grid childWidth="auto" className="uk-grid-small">
-          <Column>
-            <a>
-              <Icon icon={facebook} width={36} height={36}></Icon>
-            </a>
-          </Column>
-          <Column>
-            <a>
-              <Icon icon={youtube} width={36} height={36}></Icon>
-            </a>
-          </Column>
-          <Column>
-            <a>
-              <Icon icon={skype} width={36} height={36}></Icon>
-            </a>
-          </Column>
-          <Column>
-            <a>
-              <Icon icon={linkedIn} width={36} height={36}></Icon>
-            </a>
-          </Column>
-        </Grid>
+        <ul className="uk-list">
+          <li>
+            <p className="uk-display-inline-block">
+              2/F F & L Centre 2211 Commonwealth Avenue
+              <br />
+              Brgy. Holy Spirit, Quezon City
+              <br />
+              Philippines 1127
+            </p>
+          </li>
+          <li>
+            <Icon icon={phoneAlt} className="uk-margin-small-right"></Icon>
+            8952-2589
+          </li>
+          <li>
+            <Icon icon={phoneAlt} className="uk-margin-small-right"></Icon>
+            8932-9421
+          </li>
+          <li>
+            <Grid childWidth="auto" className="uk-grid-small">
+              <Column>
+                <a>
+                  <Icon icon={facebook} width={36} height={36}></Icon>
+                </a>
+              </Column>
+              <Column>
+                <a>
+                  <Icon icon={youtube} width={36} height={36}></Icon>
+                </a>
+              </Column>
+              <Column>
+                <a>
+                  <Icon icon={skype} width={36} height={36}></Icon>
+                </a>
+              </Column>
+              <Column>
+                <a>
+                  <Icon icon={linkedIn} width={36} height={36}></Icon>
+                </a>
+              </Column>
+            </Grid>
+          </li>
+        </ul>
       </Column>
     </Grid>
   );
@@ -56,27 +66,43 @@ const Address = () => {
 
 const QuickLinks = () => {
   return (
-    <Grid childWidth="1-1" className="uk-grid-small">
+    <Grid childWidth="1-1">
       <Column>
         <h5 className="meta">QUICK LINKS</h5>
       </Column>
       <Column>
-        <a className="link">About us</a>
-      </Column>
-      <Column>
-        <a className="link">Clients</a>
-      </Column>
-      <Column>
-        <a className="link">Solutions</a>
-      </Column>
-      <Column>
-        <a className="link">News</a>
-      </Column>
-      <Column>
-        <a className="link">Support</a>
-      </Column>
-      <Column>
-        <a className="link">Contact us</a>
+        <ul className="uk-list">
+          <li>
+            <Link to="/about" className="link">
+              About us
+            </Link>
+          </li>
+          <li>
+            <Link to="/solutions" className="link">
+              Solutions
+            </Link>
+          </li>
+          <li>
+            <Link to="/clients" className="link">
+              Clients
+            </Link>
+          </li>
+          <li>
+            <Link to="/news" className="link">
+              News
+            </Link>
+          </li>
+          <li>
+            <Link to="/support" className="link">
+              Support
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact-us" className="link">
+              Contact us
+            </Link>
+          </li>
+        </ul>
       </Column>
     </Grid>
   );
@@ -84,38 +110,51 @@ const QuickLinks = () => {
 
 const Solutions = () => {
   return (
-    <Grid childWidth="1-1" className="uk-grid-row-small">
+    <Grid childWidth="1-1">
       <Column>
-        <h5 className="meta">OUR SOLUTIONS</h5>
+        <h5 className="meta">SOLUTIONS</h5>
       </Column>
       <Column>
-        <ul className="uk-list uk-list-bullet uk-column-1-2@m">
+        <ul className="uk-list">
           <li>
-            <a className="link">Hospital Information Management System</a>
+            <Link to="/solutions/hims" className="link">
+              Hospital Information Management System
+            </Link>
           </li>
           <li>
-            <a className="link">Clinic Information Management System</a>
+            <Link to="/solutions" className="link">
+              Clinic Information Management System
+            </Link>
           </li>
           <li>
-            <a className="link">ClaimsAssure</a>
+            <Link to="/solutions/claims-assure" className="link">
+              ClaimsAssure
+            </Link>
           </li>
           <li>
-            <a className="link">Comlogik EMR</a>
+            <Link to="/solutions/emr" className="link">
+              Comlogik EMR
+            </Link>
           </li>
           <li>
-            <a className="link">WorkbenchMD</a>
+            <Link to="/solutions" className="link">
+              WorkbenchMD
+            </Link>
           </li>
           <li>
-            <a className="link">Comlogik Connect</a>
+            <Link to="/solutions/connect" className="link">
+              Comlogik Connect
+            </Link>
           </li>
           <li>
-            <a className="link">Financeforte</a>
+            <Link to="/solutions" className="link">
+              PayManager
+            </Link>
           </li>
           <li>
-            <a className="link">PayManager</a>
-          </li>
-          <li>
-            <a className="link">WorkForce</a>
+            <Link to="/solutions" className="link">
+              WorkForce
+            </Link>
           </li>
         </ul>
       </Column>
@@ -128,20 +167,20 @@ const Footer = () => {
     <footer>
       <Section removePadding="top" className="footer-bg">
         <Grid childWidth="1-1">
-          <Column className="uk-margin-large-top">
+          <Column className="uk-margin-large-top uk-text-center">
             <Link to="/" className="uk-logo">
               <img src="static/logo.png" className="logo" />
             </Link>
           </Column>
           <Column>
-            <Grid childWidth="1-1">
+            <Grid childWidth="1-1" className="uk-flex-center">
               <Column width="1-2@m 1-3@l">
                 <Address />
               </Column>
               <Column width="1-2@m 1-5@l">
                 <QuickLinks />
               </Column>
-              <Column width="expand@l">
+              <Column width="1-3@l">
                 <Solutions />
               </Column>
             </Grid>

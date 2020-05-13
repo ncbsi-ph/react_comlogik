@@ -102,10 +102,10 @@ const Comlogik = () => {
         <Route exact path="/">
           <Index />
         </Route>
-        <Route path="/about">
+        <Route exact path="/about">
           <About />
         </Route>
-        <Route path="/careers">
+        <Route exact path="/careers">
           <Careers />
         </Route>
         <Route exact path="/clients">
@@ -114,10 +114,10 @@ const Comlogik = () => {
         <Route exact path="/clients/:client">
           <CaseStudyContent />
         </Route>
-        <Route path="/support">
+        <Route exact path="/support">
           <Support />
         </Route>
-        <Route path="/contact-us">
+        <Route exact path="/contact-us">
           <Contact />
         </Route>
         <Route exact path="/solutions">

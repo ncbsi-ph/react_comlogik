@@ -10,7 +10,15 @@ const Landing = () => {
         <Column>
           <Grid childWidth="1-1">
             <Column>
-              <img className="logo-bg" src="static/logo-bg.svg" />
+              <img
+                src="static/logo-bg.svg"
+                style={{
+                  position: 'absolute',
+                  zIndex: -2,
+                  top: '-1rem',
+                  left: 0,
+                }}
+              />
               <img className="landing-bg" src="static/landing-bg.svg" />
               <h1>Beyond Just Information</h1>
             </Column>
@@ -25,13 +33,16 @@ const Landing = () => {
                 <Column>
                   <Link
                     to="/contact-us"
-                    className="uk-button uk-button-danger uk-margin-remove-right"
+                    className="uk-button uk-button-secondary"
                   >
                     Request a demo
                   </Link>
                 </Column>
                 <Column>
-                  <Link to="/solutions" className="uk-button uk-button-default">
+                  <Link
+                    to="/solutions"
+                    className="uk-button uk-button-secondary uk-button-secondary-outline"
+                  >
                     Comlogik Ecosystem
                   </Link>
                 </Column>
