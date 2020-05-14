@@ -2,6 +2,7 @@ import React from 'react';
 import Loadable from 'react-loadable';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import CookieConsent from 'react-cookie-consent';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 import Scroll from './components/Scroll';
 import Navbar from './components/Navbar';
@@ -79,6 +80,13 @@ const Comlogik = () => {
           : ''
       }
     >
+      <MessengerCustomerChat
+        pageId="138923622799419"
+        appId="2542856289298560"
+        themeColor="#4983d0"
+        loggedInGreeting="Hello there! We're here to help. What can we do for you?"
+        loggedOutGreeting="Hello there! We're here to help. What can we do for you?"
+      />
       <Scroll />
       <CookieConsent
         location="bottom"

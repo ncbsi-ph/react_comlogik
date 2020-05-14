@@ -152,13 +152,13 @@ const Products = (props) => {
           <ul id={props.target} className="uk-switcher">
             <li>
               <div className="uk-card uk-card-default">
-                <div className="uk-card-media-top uk-height-medium uk-cover-container">
+                <div className="uk-card-media-top uk-height-medium">
                   <iframe
+                    className="uk-height-1-1 uk-width-1-1"
                     src="https://www.youtube.com/embed/EmaCoql7iWg"
                     frameBorder="0"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                    data-uk-cover=""
                   ></iframe>
                 </div>
                 <div className="uk-card-body uk-flex uk-flex-column">
