@@ -94,6 +94,12 @@ const Products = (props) => {
         'Paymanager™ is your go to application when you want an end to end payroll system. Paymanager™ lets you manage unlimited schedules with multi- scheduling function, accommodate leave requests or generate needed reports in compliance with all government requirements.',
     },
     {
+      image: 'static/product-10.png',
+      productName: 'HRIS WorkForce™',
+      productDescription:
+        'HRIS WorkForce™ provides you a modern way of managing your people, from the way you recruit, onboard and develop talent to the way you retain them. Be the employer you want to stay and grow with and foster a culture of high performance and career mobility through ongoing, consistent feedback, reviews, rewards and recognition.',
+    },
+    {
       image: 'static/product-9.jpg',
       productName: 'AnywhereMed Telemedicine',
       productDescription:
@@ -129,7 +135,7 @@ const Products = (props) => {
                 Software that really gets the job done
               </h1>
               <p className="uk-margin-bottom">
-                Out well-thought-out software solutions give you the tools to
+                Our well-thought-out software solutions give you the tools to
                 get higher patient satisfaction and greater employee
                 productivity, in a way that will keep drive profitability.
               </p>

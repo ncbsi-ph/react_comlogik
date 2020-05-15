@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Section, Grid, Column } from '../Grid';
 
@@ -23,7 +24,9 @@ const Team = () => {
             our performance and work today, and in the future.
           </p>
           <div className="uk-margin-small-top">
-            <a className="uk-button uk-button-primary">Meet our team</a>
+            <Link to="/about" className="uk-button uk-button-primary">
+              Meet our team
+            </Link>
           </div>
         </Column>
       </Grid>

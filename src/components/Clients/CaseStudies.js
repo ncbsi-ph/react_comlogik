@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Section, Grid, Column } from '../Grid';
 
-const CaseStudy = ({ image, hospitalName, description, link }) => {
+const CaseStudy = ({ image, date, hospitalName, description, link }) => {
   return (
     <Column>
       <Grid
@@ -21,7 +21,8 @@ const CaseStudy = ({ image, hospitalName, description, link }) => {
           ></img>
         </Column>
         <Column className="uk-card-body uk-flex-column">
-          <h5>{hospitalName}</h5>
+          <small className="uk-display-block uk-text-muted uk-margin-bottom">{date}</small>
+          <h4 className="uk-margin-remove">{hospitalName}</h4>
           <p>{description}</p>
           <div>
             <Link to={link} className="uk-button uk-button-primary">
@@ -37,8 +38,8 @@ const CaseStudy = ({ image, hospitalName, description, link }) => {
 const CaseStudies = () => {
   return (
     <Section className="gradient-bg-light">
-      <Grid childWidth="1-1 1-2@l" className="uk-flex-middle">
-        <Column className="uk-flex uk-flex-column">
+      <Grid childWidth="1-1 expand@l" className="uk-flex-middle">
+        <Column width="1-3@l" className="uk-flex uk-flex-column">
           <h1 className="uk-margin-remove">Client Successes</h1>
           <p>
             It’s always personal for us when we hear success stories of our
@@ -60,14 +61,17 @@ const CaseStudies = () => {
               <Grid childWidth="1-1">
                 <CaseStudy
                   image="https://live.staticflickr.com/2800/4471874520_880346341d_b.jpg"
-                  hospitalName="Nazareth General Hospital"
-                  description="Nazareth General Hospital increases income with Comlogik’s just-in-time inventory and quality reporting solution"
+                  date="JANUARY 2020 / CLIENT SUCCESSES"
+                  hospitalName="Achieving better outcomes thru just - in - time inventory and operational efficiency"
+                  description="In 2004, Nazareth General Hospital was using manual process and paper based records which resulted in laborious workflow"
                   link="/clients/ngh"
                 ></CaseStudy>
                 <CaseStudy
-                  image="https://scontent.fmnl6-2.fna.fbcdn.net/v/t31.0-8/p720x720/14125071_127803054338249_6779958521245930604_o.jpg?_nc_cat=111&_nc_sid=e007fa&_nc_ohc=QDCCUTT0CQkAX_9bd46&_nc_ht=scontent.fmnl6-2.fna&_nc_tp=6&oh=bef61b88bdd44cf6dd93933eb1784355&oe=5ED9B473"
-                  hospitalName="Medical Mission Group Hospital Health Services Cooperative Palawan"
-                  description="Defying the naysayers against new technology and the little known solutions provider"
+                  image="https://scontent.fmnl6-2.fna.fbcdn.net/v/t31.0-8/p720x720/
+                  14125071_127803054338249_6779958521245930604_o.jpg?_nc_cat=111&_nc_sid=e007fa&_nc_ohc=QDCCUTT0CQkAX_9bd46&_nc_ht=scontent.fmnl6-2.fna&_nc_tp=6&oh=bef61b88bdd44cf6dd93933eb1784355&oe=5ED9B473"
+                  date="FEBRUARY 2020 / CLIENT SUCCESSES"
+                  hospitalName="Defying the naysayers against new technology and little known solutions provider"
+                  description="MMMHHSC Palawan’s decision to use a technology that’s new and untried made the big difference in their future."
                   link="/clients/mmghhscp"
                 ></CaseStudy>
               </Grid>
