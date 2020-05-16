@@ -50,7 +50,7 @@ const Advantages = () => {
           <p>Unbeatable advantages and value over any other provider</p>
         </Column>
         <Column>
-          <Grid childWidth="1-1 1-2@s 1-3@l">
+          <div className="uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@l" data-uk-grid="" data-uk-scrollspy="cls: uk-animation-scale-up; target: > div; delay:500; repeat: false">
             <Advantage
               icon="static/advantage-1.svg"
               advantage="Over 20 years of providing quality healthcare software"
@@ -99,13 +99,7 @@ const Advantages = () => {
               description="Lifetime Software Warranty enables you to use the software as long as you want and not worry of having to pay extra for maintenance or additional cost on support and after sales services."
               number="8"
             ></Advantage>
-            <Advantage
-              icon="static/advantage-9.svg"
-              advantage="Lifetime License and Maintenance"
-              description="You only pay once for your software and no need to pay a monthly or yearly maintenance fee. The longer you use your software the more it pays off."
-              number="9"
-            ></Advantage>
-          </Grid>
+          </div>
         </Column>
       </Grid>
     </Section>
