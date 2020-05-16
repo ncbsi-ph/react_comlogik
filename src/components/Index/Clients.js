@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 const Clients = () => {
   return (
     <>
-      <Section container={false} className="uk-padding-remove-bottom">
-        <Section container={false} className="gradient-bg-dark">
-          <h2 className="uk-text-center" style={{ color: 'white' }}>
+      <Section container={false} className="uk-padding-remove-bottom uk-margin-large-top">
+        <Section className="gradient-bg-light">
+          <h2 className="uk-text-center">
             Since 1999, we’ve helped hundreds of healthcare institutions,
             thousands of physicians and medical workers accelerate their growth
             by providing them with the right tools and knowledge.
@@ -18,10 +18,7 @@ const Clients = () => {
       <Section>
         <Grid childWidth="1-1" className="uk-grid-row-large">
           <Column>
-            <Grid
-              childWidth="expand"
-              className="uk-flex-middle uk-flex-center uk-text-center"
-            >
+            <div className="uk-child-width-1-5 uk-flex-middle uk-flex-center uk-text-center" data-uk-grid="" data-uk-scrollspy="cls: uk-animation-fade; target: div; delay: 300; repeat: false">
               <Column>
                 <img src="static/clients/image6.png" />
               </Column>
@@ -37,13 +34,10 @@ const Clients = () => {
               <Column>
                 <img src="static/clients/image10.png" />
               </Column>
-            </Grid>
+            </div>
           </Column>
           <Column>
-            <Grid
-              childWidth="1-4"
-              className="uk-flex-middle uk-flex-center uk-text-center"
-            >
+            <div className="uk-child-width-1-5 uk-flex-middle uk-flex-center uk-text-center" data-uk-grid="" data-uk-scrollspy="cls: uk-animation-fade; target: div; delay: 300; repeat: true">
               <Column>
                 <img src="static/clients/image15.png" />
               </Column>
@@ -53,14 +47,14 @@ const Clients = () => {
               <Column>
                 <img src="static/clients/image14.png" />
               </Column>
-            </Grid>
+            </div>
           </Column>
           <Column>
-            <Grid childWidth="1-1" className="uk-flex-middle uk-flex-center">
-              <Column className="uk-text-center">
+            <div className="uk-child-width-1-1 uk-flex-middle uk-flex-center uk-text-center" data-uk-grid="" data-uk-scrollspy="cls: uk-animation-fade; target: div; delay: 300; repeat: true">
+              <Column>
                 <img src="static/clients/image16.png" />
               </Column>
-            </Grid>
+            </div>
           </Column>
           <Column className="uk-flex uk-flex-center">
             <Link to="/clients" className="uk-button uk-button-primary">

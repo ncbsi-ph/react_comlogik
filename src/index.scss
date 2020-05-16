@@ -209,6 +209,16 @@ h5 {
   color: #2e67b2;
 }
 
+.link-pink {
+  color: #495057;
+}
+
+.link-pink:hover {
+  font-weight: bold;
+  text-decoration: none;
+  color: #cc3396;
+}
+
 .gray-bg {
   background-color: #f1f5f9;
 }
@@ -295,4 +305,269 @@ h5 {
 
 .react-autosuggest__suggestion--highlighted {
   background-color: #ddd;
+}
+.text-white {
+  color: white !important; 
+}
+
+/*ECOSYSTEM*/
+
+.ecosystem-container {
+  position: relative;
+  height: 850px;
+}
+
+.ecosystem {
+  height: 500px;
+  width: 500px;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  position: absolute;
+  margin-top: 100px;
+  margin-left: 200px;
+}
+
+.hims {
+  margin: auto;
+  margin-top: 150px;
+  background-color: white;
+  width: 160px;
+  height: 150px;
+  padding: 20px;
+  border-radius: 100%;
+}
+
+.rotate {
+  margin: 0;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  position: absolute;  /* add this */
+}
+
+.counter-rotate {
+  width: 200px;
+}
+
+.logo-container {
+  width: 200px;
+  height: 140px;
+  padding: 30px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 100%;
+  display: table-cell;
+  background-color: white;
+}
+
+.claimsassure {
+  -webkit-animation: circle1 10s infinite linear;
+  animation: circle1 10s infinite linear;
+}
+
+.claimsassure .counter-rotate {
+  -webkit-animation: circle11 10s infinite linear;
+  animation: circle11 10s infinite linear;
+}
+
+.emr {
+  -webkit-animation: circle2 10s infinite linear;
+  animation: circle2 10s infinite linear;
+}
+.emr .counter-rotate {
+  -webkit-animation: circle22 10s infinite linear;
+  animation: circle22 10s infinite linear;
+}
+
+.paymanager {
+  -webkit-animation: circle3 10s infinite linear;
+  animation: circle3 10s infinite linear;
+}
+.paymanager .counter-rotate {
+  -webkit-animation: circle33 10s infinite linear;
+  animation: circle33 10s infinite linear;
+}
+
+.workforce {
+  -webkit-animation: circle4 10s infinite linear;
+  animation: circle4 10s infinite linear;
+}
+.workforce .counter-rotate {
+  -webkit-animation: circle44 10s infinite linear;
+  animation: circle44 10s infinite linear;
+}
+
+.connect {
+  -webkit-animation: circle5 10s infinite linear;
+  animation: circle5 10s infinite linear;
+}
+.connect .counter-rotate {
+  -webkit-animation: circle55 10s infinite linear;
+  animation: circle55 10s infinite linear;
+}
+
+.anywheremed {
+  -webkit-animation: circle6 10s infinite linear;
+  animation: circle6 10s infinite linear;
+}
+.anywheremed .counter-rotate {
+  -webkit-animation: circle66 10s infinite linear;
+  animation: circle66 10s infinite linear;
+}
+
+.workbench {
+  -webkit-animation: circle7 10s infinite linear;
+  animation: circle7 10s infinite linear;
+}
+.workbench .counter-rotate {
+  -webkit-animation: circle77 10s infinite linear;
+  animation: circle77 10s infinite linear;
+}
+
+@keyframes circle1 {
+  from {
+    -webkit-transform: rotateZ(39deg);
+    transform: rotateZ(39deg);
+  }
+  to {
+    -webkit-transform: rotateZ(399deg);
+    transform: rotateZ(399deg);
+  }
+}
+@keyframes circle11 {
+  from {
+    -webkit-transform: rotateZ(-39deg);
+    transform: rotateZ(-39deg);
+  }
+  to {
+    -webkit-transform: rotateZ(-399deg);
+    transform: rotateZ(-399deg);
+  }
+}
+
+@keyframes circle2 {
+  from {
+    -webkit-transform: rotateZ(90deg);
+    transform: rotateZ(90deg);
+  }
+  to {
+    -webkit-transform: rotateZ(450deg);
+    transform: rotateZ(450deg);
+  }
+}
+@keyframes circle22 {
+  from {
+    -webkit-transform: rotateZ(-90deg);
+    transform: rotateZ(-90deg);
+  }
+  to {
+    -webkit-transform: rotateZ(-450deg);
+    transform: rotateZ(-450deg);
+  }
+}
+
+@keyframes circle3 {
+  from {
+    -webkit-transform: rotateZ(141deg);
+    transform: rotateZ(141deg);
+  }
+  to {
+    -webkit-transform: rotateZ(501deg);
+    transform: rotateZ(501deg);
+  }
+}
+@keyframes circle33 {
+  from {
+    -webkit-transform: rotateZ(-141deg);
+    transform: rotateZ(-141deg);
+  }
+  to {
+    -webkit-transform: rotateZ(-501deg);
+    transform: rotateZ(-501deg);
+  }
+}
+
+@keyframes circle4 {
+  from {
+    -webkit-transform: rotateZ(192deg);
+    transform: rotateZ(192deg);
+  }
+  to {
+    -webkit-transform: rotateZ(552deg);
+    transform: rotateZ(552deg);
+  }
+}
+@keyframes circle44 {
+  from {
+    -webkit-transform: rotateZ(-192deg);
+    transform: rotateZ(-192deg);
+  }
+  to {
+    -webkit-transform: rotateZ(-552deg);
+    transform: rotateZ(-552deg);
+  }
+}
+
+@keyframes circle5 {
+  from {
+    -webkit-transform: rotateZ(245deg);
+    transform: rotateZ(245deg);
+  }
+  to {
+    -webkit-transform: rotateZ(605deg);
+    transform: rotateZ(605deg);
+  }
+}
+@keyframes circle55 {
+  from {
+    -webkit-transform: rotateZ(-245deg);
+    transform: rotateZ(-245deg);
+  }
+  to {
+    -webkit-transform: rotateZ(-605deg);
+    transform: rotateZ(-605deg);
+  }
+}
+
+@keyframes circle6 {
+  from {
+    -webkit-transform: rotateZ(297deg);
+    transform: rotateZ(297deg);
+  }
+  to {
+    -webkit-transform: rotateZ(657deg);
+    transform: rotateZ(657deg);
+  }
+}
+@keyframes circle66 {
+  from {
+    -webkit-transform: rotateZ(-297deg);
+    transform: rotateZ(-297deg);
+  }
+  to {
+    -webkit-transform: rotateZ(-657deg);
+    transform: rotateZ(-657deg);
+  }
+}
+
+@keyframes circle7 {
+  from {
+    -webkit-transform: rotateZ(344deg);
+    transform: rotateZ(344deg);
+  }
+  to {
+    -webkit-transform: rotateZ(704deg);
+    transform: rotateZ(704deg);
+  }
+}
+@keyframes circle77 {
+  from {
+    -webkit-transform: rotateZ(-344deg);
+    transform: rotateZ(-344deg);
+  }
+  to {
+    -webkit-transform: rotateZ(-704deg);
+    transform: rotateZ(-704deg);
+  }
 }

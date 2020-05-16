@@ -18,75 +18,62 @@ const TeamView = () => {
           </p>
         </Column>
         <Column>
-          <Grid childWidth="1-2 1-4@m" className="uk-margin-small-top">
+          <Grid childWidth="1-1" className="uk-margin-small-top">
             <Column>
-              <div style={{ height: 200 }}>
-                <div
-                  className="uk-inline-clip uk-transition-toggle uk-height-1-1 uk-width-1-1"
-                  tabIndex="0"
-                  style={{ objectFit: 'cover' }}
-                >
-                  <img
-                    src="static/activities/travel.jpg"
-                    className="uk-height-1-1 uk-width-1-1"
-                  />
-                  <div className="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-                    <h5 className="uk-margin-remove text-white">Travel</h5>
-                  </div>
-                </div>
-              </div>
-            </Column>
-            <Column>
-              <div style={{ height: 200 }}>
-                <div
-                  className="uk-inline-clip uk-transition-toggle uk-height-1-1 uk-width-1-1"
-                  tabIndex="0"
-                  style={{ objectFit: 'cover' }}
-                >
-                  <img
-                    src="static/activities/teambuilding.jpg"
-                    className="uk-height-1-1 uk-width-1-1"
-                  />
-                  <div className="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-                    <h5 className="uk-margin-remove text-white">
-                      Teambuilding
-                    </h5>
-                  </div>
-                </div>
-              </div>
-            </Column>
-            <Column>
-              <div style={{ height: 200 }}>
-                <div
-                  className="uk-inline-clip uk-transition-toggle uk-height-1-1 uk-width-1-1"
-                  tabIndex="0"
-                  style={{ objectFit: 'cover' }}
-                >
-                  <img
-                    src="static/activities/celebration.jpg"
-                    className="uk-height-1-1 uk-width-1-1"
-                  />
-                  <div className="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-                    <h5 className="uk-margin-remove text-white">Celebration</h5>
-                  </div>
-                </div>
-              </div>
-            </Column>
-            <Column>
-              <div style={{ height: 200 }}>
-                <div
-                  className="uk-inline-clip uk-transition-toggle uk-height-1-1 uk-width-1-1"
-                  tabIndex="0"
-                  style={{ objectFit: 'cover' }}
-                >
-                  <img
-                    src="static/activities/play.jpg"
-                    className="uk-height-1-1 uk-width-1-1"
-                  />
-                  <div className="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-                    <h5 className="uk-margin-remove text-white">Play</h5>
-                  </div>
-                </div>
+              <div data-uk-slider="autoplay: true; autoplay-interval: 2000; pause-on-hover: true">
+                <ul className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-light">
+                  <li className="uk-transition-toggle" data-tabindex="0">
+                    <div className="uk-height-1-1 uk-width-1-1" tabIndex="0">
+                      <img src="static/activities/travel.jpg" alt="travel"/>
+                      <div className="uk-position-center uk-panel">
+                        <div className="uk-transition-slide-bottom-small uk-overlay uk-overlay-primary">
+                          <span className="text-white uk-text-bold">Travel</span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="uk-transition-toggle" tabindex="1">
+                    <div className="uk-height-1-1 uk-width-1-1" tabIndex="0">
+                      <img src="static/activities/teambuilding.jpg" alt="teambuilding"/>
+                      <div className="uk-position-center uk-panel">
+                        <div className="uk-transition-slide-bottom-small uk-overlay uk-overlay-primary">
+                          <span className="text-white uk-text-bold">Team Building</span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="uk-transition-toggle" tabindex="2">
+                    <div className="uk-height-1-1 uk-width-1-1" tabIndex="0">
+                      <img src="static/activities/celebration.jpg" alt="celebration"/>
+                      <div className="uk-position-center uk-panel">
+                        <div className="uk-transition-slide-bottom-small uk-overlay uk-overlay-primary">
+                          <span className="text-white uk-text-bold">Celebration</span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="uk-transition-toggle" tabindex="3">
+                    <div className="uk-height-1-1 uk-width-1-1" tabIndex="0">
+                      <img src="static/activities/play.jpg" alt="play"/>
+                      <div className="uk-position-center uk-panel">
+                        <div className="uk-transition-slide-bottom-small uk-overlay uk-overlay-primary">
+                          <span className="text-white uk-text-bold">Play</span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="uk-transition-toggle" tabindex="4">
+                    <div className="uk-height-1-1 uk-width-1-1" tabIndex="0">
+                      <img src="static/activities/work.jpg" alt="work"/>
+                      <div className="uk-position-center uk-panel">
+                        <div className="uk-transition-slide-bottom-small uk-overlay uk-overlay-primary">
+                          <span className="text-white uk-text-bold">Work</span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
               </div>
             </Column>
           </Grid>

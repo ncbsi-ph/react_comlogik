@@ -20,7 +20,7 @@ const CommonHeader = props => {
         <Column className="uk-flex uk-flex-column">
           <h5 className="meta uk-margin-remove-bottom">{props.label}</h5>
           <h2 className="margin-top-30">{props.heading}</h2>
-          <p className="uk-margin-medium-top">{props.sentence}</p>
+          <p className="uk-margin-small-top">{props.sentence}</p>
         </Column>
       </Grid>
     </Section>

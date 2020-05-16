@@ -86,7 +86,7 @@ const CoreValues = () => {
 const Values = () => {
   return (
     <Section>
-      <Grid childWidth="1-1">
+      <div className="uk-child-width-1-1" data-uk-grid="" data-uk-scrollspy="cls: uk-animation-fade; target: > div; delay: 300">
         <Column>
           <Vision />
         </Column>
@@ -96,7 +96,7 @@ const Values = () => {
         <Column>
           <CoreValues />
         </Column>
-      </Grid>
+      </div>
     </Section>
   );
 };

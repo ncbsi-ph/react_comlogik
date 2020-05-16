@@ -20,14 +20,9 @@ export default class ContactInfo extends Component {
                   </Column>
                   <Column className="uk-flex uk-flex-column">
                     <h2 className="uk-margin-remove">Find us at</h2>
-                    <ul className="uk-list">
-                      <li>
-                        <b>Comlogik Business Systems, Inc.</b>
-                      </li>
-                      <li>2/F F & L Centre 2211 Commonwealth Avenue</li>
-                      <li>Brgy. Holy Spirit, Quezon City</li>
-                      <li>Philippines 1127</li>
-                    </ul>
+                    <span className="uk-margin-top">
+                      <b>Comlogik Business Systems, Inc.</b><br></br>2/F F & L Centre 2211 Commonwealth Avenue<br></br>Brgy. Holy Spirit, Quezon City<br></br>Philippines 1127
+                    </span>
                   </Column>
                 </Grid>
               </Column>
@@ -45,21 +40,28 @@ export default class ContactInfo extends Component {
                     <ul className="uk-list">
                       <li>
                         <b>General comments and questions:</b>
-                        <br></br>info@comlogik.com
+                        <br></br>
+                        <a className="link-pink" href="mailto:info@comlogik.com">info@comlogik.com</a>
                       </li>
                       <li>
-                        <b>Technical support questions:</b> support@comlogik.com
+                        <b>Technical support questions:</b> 
+                        <br></br>
+                        <a className="link-pink" href="mailto:support@comlogik.com">support@comlogik.com</a>
                       </li>
                       <li>
-                        <b>Sales inquiries:</b> sales@comlogik.com
+                        <b>Sales inquiries:</b> 
+                        <br></br>
+                        <a className="link-pink" href="mailto:sales@comlogik.com">sales@comlogik.com</a>
                       </li>
                       <li>
                         <b>Request Network Partner Program information:</b>
                         <br></br>
-                        partners@comlogik.com
+                        <a className="link-pink" href="mailto:partners@comlogik.com">partners@comlogik.com</a>
                       </li>
                       <li>
-                        <b>Website recommendations:</b> marketing@comlogik.com
+                        <b>Website recommendations:</b> 
+                        <br></br>
+                        <a className="link-pink" href="mailto:marketing@comlogik.com">marketing@comlogik.com</a>
                       </li>
                     </ul>
                   </Column>
@@ -81,9 +83,9 @@ export default class ContactInfo extends Component {
                   <Column className="uk-flex uk-flex-column">
                     <h2 className="uk-margin-remove">Telephone numbers</h2>
                     <ul className="uk-list">
-                      <li>(632) 932 9421</li>
-                      <li>(632) 952 2589</li>
-                      <li>(632) 364 0509</li>
+                      <li><a href="tel:9329421" className="link-pink">(632) 932-9421</a></li>
+                      <li><a href="tel:9522589" className="link-pink">(632) 952-2589</a></li>
+                      <li><a href="tel:3640509" className="link-pink">(632) 364-0509</a></li>
                     </ul>
                   </Column>
                 </Grid>
@@ -100,7 +102,7 @@ export default class ContactInfo extends Component {
                   <Column className="uk-flex uk-flex-column">
                     <h2 className="uk-margin-remove">Fax</h2>
                     <ul className="uk-list">
-                      <li>(632) 431 5699</li>
+                      <li><a href="fax:4315699" className="link-pink">(632) 431-5699</a></li>
                     </ul>
                   </Column>
                 </Grid>
@@ -118,14 +120,13 @@ export default class ContactInfo extends Component {
                     <h2 className="uk-margin-remove">Mobile numbers</h2>
                     <ul className="uk-list">
                       <li>
-                        <b>SMS System Support Hotline:</b> (0965) 489 6050
+                        <b>SMS System Support Hotline:</b> <a href="tel:+639654896050" className="link-pink">(0965) 489 6050</a>
                       </li>
                       <li>
-                        <b>SMS Implementation Support Hotline:</b> (0965) 489
-                        6042
+                        <b>SMS Implementation Support Hotline:</b> <a href="tel:+639654896042" className="link-pink">(0965) 489 6042</a>
                       </li>
                       <li>
-                        <b>SMS Technical Support Hotline:</b> (0965) 489 6049
+                        <b>SMS Technical Support Hotline:</b> <a href="tel:+639654896049" className="link-pink">(0965) 489 6049</a>
                       </li>
                     </ul>
                   </Column>
