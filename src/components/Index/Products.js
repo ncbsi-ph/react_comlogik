@@ -8,8 +8,13 @@ const Product = (props) => {
   return (
     <li>
       <div className="active-product uk-flex uk-flex-middle">
-        <a>
-          <img data-src={props.image} data-uk-img=""></img>
+        <a style={{ height: 70 }} className="uk-text-center uk-width-1-1">
+          <img
+            className="uk-height-1-1"
+            data-src={props.image}
+            data-uk-img=""
+            style={{ objectFit: 'contain' }}
+          />
         </a>
       </div>
     </li>
@@ -25,8 +30,13 @@ const ProductDescription = ({
   return (
     <li>
       <div className="uk-card uk-card-default">
-        <div className="uk-card-media-top uk-height-medium">
-          <img data-src={image} data-uk-img=""></img>
+        <div className="uk-card-media-top uk-height-medium uk-flex uk-flex-middle uk-flex-center">
+          <img
+            data-src={image}
+            data-uk-img=""
+            className="uk-height-1-1"
+            style={{ objectFit: 'scale-down' }}
+          />
         </div>
         <div className="uk-card-body uk-flex uk-flex-column">
           <h4 className="uk-margin-remove-bottom">{productName}</h4>

@@ -37,7 +37,7 @@ const Actions = () => {
             </Column>
             <Column>
               <h4 className="uk-margin-small-bottom">
-                <a style={{ color: 'white' }}>Chat with us</a>
+                <a style={{ color: 'white' }} href="viber://add?number=%2B639457814948">Chat with us</a>
               </h4>
               <span style={{ color: 'white' }}>
                 If you have a quick question that needs immediate reply.
