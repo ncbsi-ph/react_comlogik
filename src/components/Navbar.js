@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import AutoSuggest from 'react-autosuggest';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import search from '@iconify/icons-feather/search';
 import mail from '@iconify/icons-feather/mail';
@@ -7,6 +8,82 @@ import menu from '@iconify/icons-feather/menu';
 import UIkit from 'uikit';
 
 const Navbar = () => {
+  const history = useHistory();
+  const [value, setValue] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
+
+  const _suggestions = [
+    {
+      text: 'Index',
+      link: '/',
+    },
+    {
+      text: 'About',
+      link: '/about',
+    },
+    {
+      text: 'Solutions',
+      link: '/solutions',
+    },
+    {
+      text: 'Clients',
+      link: '/clients',
+    },
+    {
+      text: 'News',
+      link: '/news',
+    },
+    {
+      text: 'Support',
+      link: '/support',
+    },
+    {
+      text: 'Contact Us',
+      link: '/contact-us',
+    },
+  ];
+
+  const getSuggestions = (value) => {
+    const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
+
+    return inputLength === 0
+      ? []
+      : _suggestions.filter(
+          (suggestion) =>
+            suggestion.text.toLowerCase().slice(0, inputLength) === inputValue
+        );
+  };
+
+  const getSuggestionValue = (suggestion) => suggestion.text;
+
+  const renderSuggestion = (suggestion) => <div>{suggestion.text}</div>;
+
+  const onChange = (event, { newValue }) => {
+    setValue(newValue);
+  };
+
+  const onSuggestionsFetchRequested = ({ value }) => {
+    setSuggestions(getSuggestions(value));
+  };
+
+  const onSuggestionsClearRequested = () => {
+    setSuggestions([]);
+  };
+
+  const onSuggestionSelected = (e, { suggestion }) => {
+    const link = suggestion.link;
+    history.push(link);
+  };
+
+  const inputProps = {
+    type: 'search',
+    className: 'uk-search-input',
+    placeholder: 'Search',
+    value: value,
+    onChange: onChange,
+  };
+
   const offcanvasClick = () => {
     UIkit.offcanvas(document.getElementById('navigation')).hide();
   };
@@ -27,9 +104,29 @@ const Navbar = () => {
             <div className="uk-navbar-right">
               <ul className="uk-navbar-nav">
                 <li className="uk-parent">
-                  <a>
+                  <a className="uk-navbar-toggle">
                     <Icon icon={search} width={24} height={24}></Icon>
                   </a>
+                  <div
+                    className="uk-drop"
+                    data-uk-drop="mode: click; pos: left-center; offset: 0"
+                  >
+                    <div className="uk-search uk-search-navbar uk-width-1-1">
+                      <AutoSuggest
+                        suggestions={suggestions}
+                        onSuggestionsFetchRequested={
+                          onSuggestionsFetchRequested
+                        }
+                        onSuggestionsClearRequested={
+                          onSuggestionsClearRequested
+                        }
+                        getSuggestionValue={getSuggestionValue}
+                        renderSuggestion={renderSuggestion}
+                        onSuggestionSelected={onSuggestionSelected}
+                        inputProps={inputProps}
+                      />
+                    </div>
+                  </div>
                 </li>
                 <li className="uk-parent">
                   <Link to="/contact-us">

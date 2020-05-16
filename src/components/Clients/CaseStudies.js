@@ -67,8 +67,7 @@ const CaseStudies = () => {
                   link="/clients/ngh"
                 ></CaseStudy>
                 <CaseStudy
-                  image="https://scontent.fmnl6-2.fna.fbcdn.net/v/t31.0-8/p720x720/
-                  14125071_127803054338249_6779958521245930604_o.jpg?_nc_cat=111&_nc_sid=e007fa&_nc_ohc=QDCCUTT0CQkAX_9bd46&_nc_ht=scontent.fmnl6-2.fna&_nc_tp=6&oh=bef61b88bdd44cf6dd93933eb1784355&oe=5ED9B473"
+                  image="https://scontent.fymy1-1.fna.fbcdn.net/v/t1.0-0/p180x540/37600707_1810522419061190_637445701608931328_n.jpg?_nc_cat=107&_nc_sid=110474&_nc_eui2=AeHzyubilCqwr14g8SOz91j8jx_CWQmxFsiPH8JZCbEWyEDom9EoI5U5HHCpkc6nPgc&_nc_oc=AQlPDIoV-mvgQdhqCQ9ATtVBDVTk5PQ03ljmU2_e99WT48hAUAVRAEJbzjUKDtnumhyYRoQjdWYTcWRIEo_5brwz&_nc_ht=scontent.fymy1-1.fna&_nc_tp=6&oh=84f8171ca2211f412c55f94efbbcf276&oe=5ED3AE6A"
                   date="FEBRUARY 2020 / CLIENT SUCCESSES"
                   hospitalName="Defying the naysayers against new technology and little known solutions provider"
                   description="MMMHHSC Palawan’s decision to use a technology that’s new and untried made the big difference in their future."
