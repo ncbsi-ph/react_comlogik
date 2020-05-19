@@ -61,6 +61,7 @@ const ContactForm = () => {
 
   return (
     <Section>
+      <img className="logo-bg" src="static/logo-bg.svg" />
       <Grid childWidth="1-1 1-2@m">
         <Column>
           <img src="static/contact-hero.gif" />
@@ -68,8 +69,8 @@ const ContactForm = () => {
         <Column>
           <Grid childWidth="1-1">
             <Column className="uk-flex uk-flex-column">
-              <h5>CONTACT US</h5>
-              <h2 className="uk-margin-remove-top">
+              <h5 className="meta uk-margin-remove-bottom">CONTACT US</h5>
+              <h2 className="margin-top-30">
                 For more questions about our products and pricing, send us a
                 message
               </h2>

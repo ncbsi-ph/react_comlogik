@@ -83,9 +83,9 @@ export default class ContactInfo extends Component {
                   <Column className="uk-flex uk-flex-column">
                     <h2 className="uk-margin-remove">Telephone numbers</h2>
                     <ul className="uk-list">
-                      <li><a href="tel:9329421" className="link-pink">(632) 932-9421</a></li>
-                      <li><a href="tel:9522589" className="link-pink">(632) 952-2589</a></li>
-                      <li><a href="tel:3640509" className="link-pink">(632) 364-0509</a></li>
+                      <li><a href="tel:89329421" className="link-pink">(632) 8932-9421</a></li>
+                      <li><a href="tel:89522589" className="link-pink">(632) 8952-2589</a></li>
+                      <li><a href="tel:83640509" className="link-pink">(632) 8364-0509</a></li>
                     </ul>
                   </Column>
                 </Grid>

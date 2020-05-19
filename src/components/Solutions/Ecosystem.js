@@ -6,23 +6,21 @@ const Ecosystem = () => {
   return (
     <Section className="ecosystem-container uk-margin-large-bottom gradient-bg-light">
       <Grid>
-        <div className="uk-width-1-3 uk-height-1-1">
-          <div>
-            <div className="ecosystem-desc">
-              <h2>Comlogik Ecosystem</h2>
-              <p>
-                Comlogik’s ecosystem goes beyond just interoperability. It involves
-                the connection between users, applications and the company, and how
-                Comlogik treats its customers.
-              </p>
-            </div>
+        <div className="uk-width-1-3 ecosystem-desc-container">
+          <div className="ecosystem-desc">
+            <h2>Comlogik Ecosystem</h2>
+            <p>
+              Comlogik’s ecosystem goes beyond just interoperability. It involves
+              the connection between users, applications and the company, and how
+              Comlogik treats its customers.
+            </p>
           </div>
         </div>
         <div className="uk-width-expand">
           <div className="ecosystem">
 
             <div className="hims uk-box-shadow-large">
-              <img src="static/hims.png" />
+              <img src="static/hims.png" style={{ marginTop: "20px" }} />
             </div>
 
             <div class="rotate claimsassure">

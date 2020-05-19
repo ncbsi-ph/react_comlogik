@@ -25,8 +25,8 @@ const TeamView = () => {
                   <li className="uk-transition-toggle" data-tabindex="0">
                     <div className="uk-height-1-1 uk-width-1-1" tabIndex="0">
                       <img src="static/activities/travel.jpg" alt="travel"/>
-                      <div className="uk-position-center uk-panel">
-                        <div className="uk-transition-slide-bottom-small uk-overlay uk-overlay-primary">
+                      <div className="uk-position-small uk-position-bottom-right uk-panel" data-uk-scrollspy="cls: uk-animation-fade; repeat: true">
+                        <div className="uk-overlay uk-overlay-primary">
                           <span className="text-white uk-text-bold">Travel</span>
                         </div>
                       </div>
@@ -35,8 +35,8 @@ const TeamView = () => {
                   <li className="uk-transition-toggle" tabindex="1">
                     <div className="uk-height-1-1 uk-width-1-1" tabIndex="0">
                       <img src="static/activities/teambuilding.jpg" alt="teambuilding"/>
-                      <div className="uk-position-center uk-panel">
-                        <div className="uk-transition-slide-bottom-small uk-overlay uk-overlay-primary">
+                      <div className="uk-position-small uk-position-bottom-right uk-panel" data-uk-scrollspy="cls: uk-animation-fade; repeat: true">
+                        <div className="uk-overlay uk-overlay-primary">
                           <span className="text-white uk-text-bold">Team Building</span>
                         </div>
                       </div>
@@ -45,8 +45,8 @@ const TeamView = () => {
                   <li className="uk-transition-toggle" tabindex="2">
                     <div className="uk-height-1-1 uk-width-1-1" tabIndex="0">
                       <img src="static/activities/celebration.jpg" alt="celebration"/>
-                      <div className="uk-position-center uk-panel">
-                        <div className="uk-transition-slide-bottom-small uk-overlay uk-overlay-primary">
+                      <div className="uk-position-small uk-position-bottom-right uk-panel" data-uk-scrollspy="cls: uk-animation-fade; repeat: true">
+                        <div className="uk-overlay uk-overlay-primary">
                           <span className="text-white uk-text-bold">Celebration</span>
                         </div>
                       </div>
@@ -55,8 +55,8 @@ const TeamView = () => {
                   <li className="uk-transition-toggle" tabindex="3">
                     <div className="uk-height-1-1 uk-width-1-1" tabIndex="0">
                       <img src="static/activities/play.jpg" alt="play"/>
-                      <div className="uk-position-center uk-panel">
-                        <div className="uk-transition-slide-bottom-small uk-overlay uk-overlay-primary">
+                      <div className="uk-position-small uk-position-bottom-right uk-panel" data-uk-scrollspy="cls: uk-animation-fade; repeat: true">
+                        <div className="uk-overlay uk-overlay-primary">
                           <span className="text-white uk-text-bold">Play</span>
                         </div>
                       </div>
@@ -65,8 +65,8 @@ const TeamView = () => {
                   <li className="uk-transition-toggle" tabindex="4">
                     <div className="uk-height-1-1 uk-width-1-1" tabIndex="0">
                       <img src="static/activities/work.jpg" alt="work"/>
-                      <div className="uk-position-center uk-panel">
-                        <div className="uk-transition-slide-bottom-small uk-overlay uk-overlay-primary">
+                      <div className="uk-position-small uk-position-bottom-right uk-panel" data-uk-scrollspy="cls: uk-animation-fade; repeat: true">
+                        <div className="uk-overlay uk-overlay-primary">
                           <span className="text-white uk-text-bold">Work</span>
                         </div>
                       </div>

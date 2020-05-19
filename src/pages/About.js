@@ -16,20 +16,8 @@ const About = () => {
         image="static/about-hero.gif"
         label="ABOUT US"
         heading="We are on a mission to help you solve your operational problems by delivering powerful healthcare solutions that's affordable."
-        sentence={null}
+        sentence="Since 1999, Comlogik has been existing with the primary goal of helping healthcare institutions and other medical businesses eliminate redundant processes that are costly and time consuming. To do away with outdated practices and adopt the best processes applied by successful healthcare companies and focus on what is crucial - managing and growing your business."
       />
-      <Section className="uk-section-small">
-        <Grid childWidth="1-1">
-          <Column>
-            Since 1999, Comlogik has been existing with the primary goal of
-            helping healthcare institutions and other medical businesses
-            eliminate redundant processes that are costly and time consuming. To
-            do away with outdated practices and adopt the best processes applied
-            by successful healthcare companies and focus on what is crucial -
-            managing and growing your business.
-          </Column>
-        </Grid>
-      </Section>
       <Statistics />
       <Values />
       <WorkProcess />

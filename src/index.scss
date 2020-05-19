@@ -258,11 +258,19 @@ h5 {
   color: white !important; 
 }
 
+.ecosystem-desc-container {
+  height: 700px;
+}
+
 /*ECOSYSTEM*/
+
+.ecosystem-desc {
+  margin-top: 250px;
+}
 
 .ecosystem-container {
   position: relative;
-  height: 850px;
+  height: 100%;
 }
 
 .ecosystem {
@@ -278,6 +286,8 @@ h5 {
 .hims {
   margin: auto;
   margin-top: 150px;
+  text-align: center;
+  vertical-align: middle;
   background-color: white;
   width: 160px;
   height: 150px;

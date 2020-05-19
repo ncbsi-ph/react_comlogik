@@ -3,35 +3,26 @@ import { Link } from 'react-router-dom';
 
 import { Section, Grid, Column } from '../Grid';
 
-const NewsArticle = ({ keyword, image, month, day, title, summary }) => {
+const NewsArticle = ({ keyword, image, title, summary }) => {
   return (
     <Column>
-      <Link
-        to={`/news/${keyword}`}
-        className="uk-card uk-card-default"
-        style={{ textDecoration: 'none' }}
-      >
-        <div className="uk-card-media-top uk-height-small">
-          <div
-            className="uk-inline uk-height-1-1 uk-width-1-1"
-            style={{ objectFit: 'cover' }}
-          >
-            <img
-              data-src={image}
-              data-uk-img=""
-              className="uk-height-1-1 uk-width-1-1"
-            />
-            <div className="uk-overlay date-overlay uk-position-top-left uk-padding-small">
-              <p className="uk-margin-remove uk-text-center">{month}</p>
-              <p className="uk-margin-remove uk-text-center">{day}</p>
-            </div>
-          </div>
+      <div className="uk-card-media-top uk-height-small">
+        <img
+          data-src={image}
+          data-uk-img=""
+          className="uk-height-1-1 uk-width-1-1"
+          style={{ objectFit: 'cover' }}
+        />
+      </div>
+      <div className="uk-card-body uk-flex uk-flex-column gray-bg uk-padding">
+        <h4 className="uk-margin-remove">{title}</h4>
+        <p>{summary}</p>
+        <div>
+          <Link to={`/news/${keyword}`} className="uk-button uk-button-primary">
+            Read more
+          </Link>
         </div>
-        <div className="uk-card-body uk-flex uk-flex-column gray-bg uk-padding">
-          <h4 className="uk-margin-remove">{title}</h4>
-          <p>{summary}</p>
-        </div>
-      </Link>
+      </div>
     </Column>
   );
 };
@@ -54,8 +45,6 @@ const LatestNews = () => {
                   summary="New Telemedicine App Lets Patients Connect with Their Doctor via Secure System.
                   Comlogik, a healthcare software company building physician-first solutions, announced today
                   the launch of its web app, available for all browsers."
-                  month="May"
-                  day="4"
                 ></NewsArticle>
                 <NewsArticle
                   keyword="2"
@@ -64,8 +53,6 @@ const LatestNews = () => {
                   summary="Comlogik recently won the bid for the installation of HIMS in Tarlac Provincial Hospital. This
                   milestone comes after having implemented the 3 District Hospitals located in Concepcion,
                   Camiling and La Paz in record time. The Provincial Government…"
-                  month="Apr"
-                  day="6"
                 ></NewsArticle>
                 <NewsArticle
                   keyword="1"
@@ -74,8 +61,6 @@ const LatestNews = () => {
                   summary="PHA Board headed by Dr. Jaime A. Almora, MD, current president of this prestigious healthcare
                   organization recently announced the cancellation of all regional conferences due to the current
                   pandemic."
-                  month="Mar"
-                  day="10"
                 ></NewsArticle>
               </Grid>
             </Column>
