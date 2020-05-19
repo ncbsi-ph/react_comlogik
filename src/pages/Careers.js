@@ -1,22 +1,28 @@
 import React from 'react';
 
+import { Section, Grid, Column } from '../components/Grid';
+import CommonHeader from '../components/CommonHeader';
+import Benefits from '../components/Careers/Benefits';
+import WorkPhotos from '../components/Careers/WorkPhotos';
+import Jobs from '../components/Careers/Jobs';
+import CTA from '../components/CTA';
+
 const Careers = () => {
   return (
-    <div>
-      <div className="uk-card uk-card-default uk-card-hover border-rounded uk-box-shadow-medium">
-        <div className="uk-card-body">
-          <h3 className="uk-margin-remove">Job Title</h3>
-          <span className="uk-text-meta">2 OPEN POSITIONS</span>
-          <p>Lorem ipsum dolor</p>
-          <button
-            className="job-details uk-button uk-button-primary uk-align-center"
-            type="button"
-          >
-            View details
-          </button>
-        </div>
-      </div>
-    </div>
+    <>
+      <CommonHeader
+        image="static/news-hero.gif"
+        label="CAREERS"
+        heading="Build your career with us"
+        sentence="Bonded by our mission and propelled by our innovative spirit, our work at Comlogik is collaborative, transformative, and above all, it’s meaningful. Our employees take pride in using technology and data-driven insights to inspire changes that will make the Philippine healthcare system better for everyone that may have an effect with your friends, family or even you."
+      />
+      <Benefits />
+      <Section container={false}>
+        <WorkPhotos />
+      </Section>
+      <Jobs />
+      <CTA />
+    </>
   );
 };
 
