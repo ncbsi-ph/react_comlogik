@@ -18,67 +18,65 @@ const Ecosystem = () => {
         </div>
         <div className="uk-width-expand">
           <div className="ecosystem">
-
             <div className="hims uk-box-shadow-large">
               <img src="static/hims.png" style={{ marginTop: "20px" }} />
             </div>
 
-            <div class="rotate claimsassure">
-              <div class="counter-rotate">
-                <div class="logo-container uk-box-shadow-large">
+            <div className="rotate claimsassure">
+              <div className="counter-rotate">
+                <div className="logo-container uk-box-shadow-large">
                   <img src="static/product-3.png" width="150" />
                 </div>
               </div>
             </div>
 
-            <div class="rotate emr">
-              <div class="counter-rotate">
-                <div class="logo-container uk-box-shadow-large">
+            <div className="rotate emr">
+              <div className="counter-rotate">
+                <div className="logo-container uk-box-shadow-large">
                   <img src="static/product-4.png" width="150" />
                 </div>
               </div>
-            </div>  
+            </div>
 
-            <div class="rotate paymanager">
-              <div class="counter-rotate">
-                <div class="logo-container uk-box-shadow-large">
+            <div className="rotate paymanager">
+              <div className="counter-rotate">
+                <div className="logo-container uk-box-shadow-large">
                   <img src="static/product-8.png" width="150" />
                 </div>
               </div>
             </div>
 
-            <div class="rotate workforce">
-              <div class="counter-rotate">
-                <div class="logo-container uk-box-shadow-large">
+            <div className="rotate workforce">
+              <div className="counter-rotate">
+                <div className="logo-container uk-box-shadow-large">
                   <img src="static/product-10.png" width="150" />
                 </div>
               </div>
             </div>
 
-            <div class="rotate connect">
-              <div class="counter-rotate">
-                <div class="logo-container uk-box-shadow-large">
+            <div className="rotate connect">
+              <div className="counter-rotate">
+                <div className="logo-container uk-box-shadow-large">
                   <img src="static/product-6.png" width="150" />
                 </div>
               </div>
             </div>
 
-            <div class="rotate anywheremed">
-              <div class="counter-rotate">
-                <div class="logo-container uk-box-shadow-large">
+            <div className="rotate anywheremed">
+              <div className="counter-rotate">
+                <div className="logo-container uk-box-shadow-large">
                   <img src="static/product-9.jpg" width="150" />
                 </div>
               </div>
             </div>
 
-            <div class="rotate workbench">
-              <div class="counter-rotate">
-                <div class="logo-container uk-box-shadow-large">
+            <div className="rotate workbench">
+              <div className="counter-rotate">
+                <div className="logo-container uk-box-shadow-large">
                   <img src="static/product-5.png" width="150" />
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </Grid>
