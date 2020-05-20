@@ -65,6 +65,7 @@ const Showcase = () => {
       image: 'static/product-9.jpg',
       description:
         'AnywhereMed is a fast and convenient way for patients to call and get in touch with a network of doctors affiliated to a hospital, explain your symptoms and get immediate medical advice before actually going to the hospital. This Telemedicine web- based application is developed to ensure that patient concerns are met especially in difficult situations such as inability to go to the hospital due to scheduling, distance, or critical conditions like the COVID-19 epidemic.',
+        link: '/solutions/anywheremed-telemedicine',
     },
   ];
   const links = [];

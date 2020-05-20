@@ -6,19 +6,26 @@ import { Link } from 'react-router-dom';
 const Clients = () => {
   return (
     <>
-      <Section container={false} className="uk-padding-remove-bottom uk-margin-large-top">
+      <Section
+        container={false}
+        className="uk-padding-remove-bottom uk-margin-large-top"
+      >
         <Section className="gradient-bg-light">
           <h2 className="uk-text-center">
-            Since 1999, we’ve helped hundreds of healthcare institutions,
-            thousands of physicians and medical workers accelerate their growth
-            by providing them with the right tools and knowledge.
+            We’ve helped hundreds of healthcare institutions, thousands of
+            physicians and medical workers accelerate their growth by providing
+            them with the right tools and knowledge.
           </h2>
         </Section>
       </Section>
       <Section>
         <Grid childWidth="1-1" className="uk-grid-row-large">
           <Column>
-            <div className="uk-child-width-1-5 uk-flex-middle uk-flex-center uk-text-center" data-uk-grid="" data-uk-scrollspy="cls: uk-animation-fade; target: div; delay: 300; repeat: false">
+            <div
+              className="uk-child-width-1-5 uk-flex-middle uk-flex-center uk-text-center"
+              data-uk-grid=""
+              data-uk-scrollspy="cls: uk-animation-fade; target: div; delay: 300; repeat: false"
+            >
               <Column>
                 <img src="static/clients/image6.png" />
               </Column>
@@ -37,7 +44,11 @@ const Clients = () => {
             </div>
           </Column>
           <Column>
-            <div className="uk-child-width-1-5 uk-flex-middle uk-flex-center uk-text-center" data-uk-grid="" data-uk-scrollspy="cls: uk-animation-fade; target: div; delay: 300; repeat: true">
+            <div
+              className="uk-child-width-1-5 uk-flex-middle uk-flex-center uk-text-center"
+              data-uk-grid=""
+              data-uk-scrollspy="cls: uk-animation-fade; target: div; delay: 300; repeat: true"
+            >
               <Column>
                 <img src="static/clients/image15.png" />
               </Column>
@@ -50,7 +61,11 @@ const Clients = () => {
             </div>
           </Column>
           <Column>
-            <div className="uk-child-width-1-1 uk-flex-middle uk-flex-center uk-text-center" data-uk-grid="" data-uk-scrollspy="cls: uk-animation-fade; target: div; delay: 300; repeat: true">
+            <div
+              className="uk-child-width-1-1 uk-flex-middle uk-flex-center uk-text-center"
+              data-uk-grid=""
+              data-uk-scrollspy="cls: uk-animation-fade; target: div; delay: 300; repeat: true"
+            >
               <Column>
                 <img src="static/clients/image16.png" />
               </Column>

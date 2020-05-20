@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 import { Section, Grid, Column } from '../components/Grid';
 import ProductHeader from '../components/ProductContent/ProductHeader';
@@ -33,7 +33,9 @@ const ProductContent = () => {
           />
           <Section>
             <Section removePadding="vertical">
-              <h3 className="uk-text-primary uk-text-center uk-text-left@s">FEATURES</h3>
+              <h3 className="uk-text-primary uk-text-center uk-text-left@s">
+                FEATURES
+              </h3>
             </Section>
             <Feature
               image="static/products/hims/feature-1.jpg"
@@ -101,7 +103,9 @@ const ProductContent = () => {
           />
           <Section>
             <Section removePadding="vertical">
-              <h3 className="uk-text-primary uk-text-center uk-text-left@s">FEATURES</h3>
+              <h3 className="uk-text-primary uk-text-center uk-text-left@s">
+                FEATURES
+              </h3>
             </Section>
             <Feature
               image="static/products/emr/feature-1.png"
@@ -232,6 +236,70 @@ const ProductContent = () => {
               feature="eCCSA Integration"
               description="All attachments are easily uploaded with eCSSA or eclaims Cloud Storage API, a PhilHealth developed application program integrated with Comlogik’s healthcare solutions which will help in easily uploading  all documentary attachments required to process the patients claims."
             />
+          </Section>
+        </>
+      ) : null}
+      {product === 'anywheremed-telemedicine' ? (
+        <>
+          <MiscHeader
+            image="static/product-9.jpg"
+            title="AnywhereMed Telemedicine"
+            description={`Comlogik, a healthcare software company building physician-first solutions, announced today the launch of its web app, available for all browsers. In addition to the other recently developed app, Comlogik’s new web app will now let physicians provide remote consultations to their patients anytime, anywhere. Participating physicians can simply access the link to any browser and connect in real-time for diagnosis and treatment of a variety of medical issues. An easy-to-use, telemedicine app designed by physicians, for physicians, Comlogik solution helps healthcare providers raise patient satisfaction and boost practice revenue. Patients get convenient, accessible care for minor injuries, illnesses, or follow-ups from the comfort of their homes. And healthcare providers improve their own experience: by supplementing in-office patient visits with remote video visits using third party video app (Zoom, Meetings, Teams etc.), physicians can reduce no-shows, optimize their appointment calendars, and get reimbursed before or after-hours consults."The release of our web app makes Comlogik’s telemedicine platform even more accessible and intuitive for patients and their healthcare providers," says Dr. Rommel Z. Dueñas, one of Comlogik’s Software Consultant. "More than ever we rely on our smartphones for everyday tasks—including getting access to healthcare. The power of telemedicine is all about getting high-quality care no matter where you are. We’re harnessing that power by connecting doctors and their patients in a safe, secure way via mobile device and web app."`}
+          />
+          <Section>
+            <Section removePadding="vertical">
+              <h3 className="uk-text-primary uk-text-center uk-text-left@s">
+                FEATURES
+              </h3>
+            </Section>
+            <CAFeature
+              number="1"
+              feature="Integrated to HIMS"
+              description="The app is built to be an integral part of Comlogik’s HIMS. Physicians can easily access patients records directly from the hospital server."
+            />
+            <CAFeature
+              number="2"
+              feature="Virtual treatment"
+              description="By using technology proven video conference app, crystal-clear video and the image upload feature allows physicians to diagnose and treat their patients remotely."
+            />
+            <CAFeature
+              number="3"
+              feature="ePrescribe"
+              description="Send prescriptions electronically to the patient. Providers can send any needed prescription electronically to patients where they present it in pharmacies or send as attachments for online medicines ordering."
+            />
+            <CAFeature
+              number="4"
+              feature="Stay-in-touch"
+              description="providers and patients get updates on the status of remote visit requests via text, call or email."
+            />
+            <CAFeature
+              number="5"
+              feature="Collect Co-pay and Bill"
+              description="providers can charge patients for the visit before or after the service."
+            />
+            <CAFeature
+              number="6"
+              feature="Patient Records"
+              description="a complete, exportable record of the visit that can be submitted for reimbursement, and easily added to a practice’s EMR."
+            />
+          </Section>
+          <Section removePadding="top">
+            <div className="uk-flex uk-flex-column">
+              <p>
+                In order to use the Anywhere Telemedicine app, private
+                physicians need to register with Comlogik to subscribe. For
+                Comlogik’s HIMS users, hospitals can apply and request for
+                volume licensing so their affiliated medical practitioners can
+                simply sign up and register to use the system. Only the patients
+                of participating physicians and hospitals can use the app.
+                Comlogik is now offering free, virtual demos to interested
+                providers. Contact our sales representative and get connected
+                today!
+              </p>
+              <div>
+                <Link to="/contact-us" className="uk-button uk-button-primary">Try AnywhereMed</Link>
+              </div>
+            </div>
           </Section>
         </>
       ) : null}
