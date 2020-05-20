@@ -18,10 +18,9 @@ const CareerCTA = () => {
           your friends, family or even you.
         </p>
         <div className="uk-margin-small-top">
-          <a className="uk-button uk-button-primary">View careers</a>
-          {/* <Link to="/careers" className="uk-button uk-button-primary">
+          <Link to="/careers" className="uk-button uk-button-primary">
             View careers
-          </Link> */}
+          </Link> 
         </div>
       </Column>
     </Section>

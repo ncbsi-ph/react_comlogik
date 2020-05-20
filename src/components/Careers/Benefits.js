@@ -11,7 +11,7 @@ const Benefit = ({ icon, benefit, description }) => {
         </Column>
         <Column className="uk-flex uk-flex-column">
           <h4 className="uk-margin-remove">{benefit}</h4>
-          <p>{description}</p>
+          <p className="uk-margin-small-top">{description}</p>
         </Column>
       </Grid>
     </Column>
@@ -20,11 +20,11 @@ const Benefit = ({ icon, benefit, description }) => {
 
 const Benefits = () => {
   return (
-    <Section>
-      <Grid childWidth="1-1">
+    <Section className="gradient-bg-light uk-margin-large-top">
+      <Grid childWidth="1-1" className="uk-margin-bottom">
         <Column className="uk-flex uk-flex-column">
-          <h1 className="uk-text-center">Working with Comlogik</h1>
-          <p className="uk-text-center">
+          <h1 className="uk-text-center uk-margin-medium-top">Working with Comlogik</h1>
+          <p className="uk-text-center uk-margin-remove-top uk-margin-bottom">
             Quisque facilisis elit enim, pretium rhoncus lacus dictum ac. Duis
             vitae dui vitae turpis bibendum ultrices at at arcu. Duis vel velit
             dui. Nulla sodales, elit id laoreet commodo, turpis nisi finibus
@@ -36,34 +36,34 @@ const Benefits = () => {
         <Column>
           <Grid childWidth="1-3">
             <Benefit
-              icon="static/advantage-1.svg"
-              benefit="Test"
-              description="Lorem ipsum"
+              icon="static/benefit-1.svg"
+              benefit="Healthcare Benefits"
+              description="Quisque facilisis elit enim, pretium rhoncus lacus dictum ac. Duis vitae dui vitae turpis bibendum ultrices at at arcu."
             />
             <Benefit
-              icon="static/advantage-1.svg"
-              benefit="Test"
-              description="Lorem ipsum"
+              icon="static/benefit-2.svg"
+              benefit="Snacks and Overflowing Coffee"
+              description="Quisque facilisis elit enim, pretium rhoncus lacus dictum ac. Duis vitae dui vitae turpis bibendum ultrices at at arcu."
             />
             <Benefit
-              icon="static/advantage-1.svg"
-              benefit="Test"
-              description="Lorem ipsum"
+              icon="static/benefit-3.svg"
+              benefit="Vacation and Sick Leave"
+              description="Quisque facilisis elit enim, pretium rhoncus lacus dictum ac. Duis vitae dui vitae turpis bibendum ultrices at at arcu."
             />
             <Benefit
-              icon="static/advantage-1.svg"
-              benefit="Test"
-              description="Lorem ipsum"
+              icon="static/benefit-3.svg"
+              benefit="Vacation and Sick Leave"
+              description="Quisque facilisis elit enim, pretium rhoncus lacus dictum ac. Duis vitae dui vitae turpis bibendum ultrices at at arcu."
             />
             <Benefit
-              icon="static/advantage-1.svg"
-              benefit="Test"
-              description="Lorem ipsum"
+              icon="static/benefit-1.svg"
+              benefit="Healthcare Benefits"
+              description="Quisque facilisis elit enim, pretium rhoncus lacus dictum ac. Duis vitae dui vitae turpis bibendum ultrices at at arcu."
             />
             <Benefit
-              icon="static/advantage-1.svg"
-              benefit="Test"
-              description="Lorem ipsum"
+              icon="static/benefit-2.svg"
+              benefit="Snacks and Overflowing Coffee"
+              description="Quisque facilisis elit enim, pretium rhoncus lacus dictum ac. Duis vitae dui vitae turpis bibendum ultrices at at arcu."
             />
           </Grid>
         </Column>
