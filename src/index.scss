@@ -151,6 +151,10 @@ h5 {
   font-weight: 600;
 }
 
+.text-black {
+  color: #394049 !important;
+}
+
 .meta {
   font-weight: bold;
   color: #808a97 !important;
@@ -306,18 +310,34 @@ h5 {
 .react-autosuggest__suggestion--highlighted {
   background-color: #ddd;
 }
+
 .text-white {
   color: white !important; 
 }
 
-.ecosystem-desc-container {
-  height: 700px;
+.job-modal {
+  color: #495057;
 }
+
+.job-modal:hover {
+  text-decoration: none;
+  color: none;
+  color: #495057;
+
+  div{
+    background-color: #E6EDF4;
+  }
+}
+
 
 /*ECOSYSTEM*/
 
 .ecosystem-desc {
   margin-top: 250px;
+}
+
+.ecosystem-desc-container {
+  height: 700px;
 }
 
 .ecosystem-container {

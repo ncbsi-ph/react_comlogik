@@ -169,7 +169,7 @@ const Navbar = () => {
                     to="/about"
                     activeClassName="offcanvas-active"
                   >
-                    About us
+                    About Us
                   </NavLink>
                 </li>
                 <li className="uk-parent">
@@ -211,10 +211,19 @@ const Navbar = () => {
                 <li className="uk-parent">
                   <NavLink
                     onClick={offcanvasClick}
+                    to="/careers"
+                    activeClassName="offcanvas-active"
+                  >
+                    Careers
+                  </NavLink>
+                </li>
+                <li className="uk-parent">
+                  <NavLink
+                    onClick={offcanvasClick}
                     to="/contact-us"
                     activeClassName="offcanvas-active"
                   >
-                    Contact us
+                    Contact Us
                   </NavLink>
                 </li>
               </ul>
