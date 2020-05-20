@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Section, Grid, Column } from '../Grid';
 
@@ -10,16 +11,16 @@ const Ecosystem = () => {
           <div className="ecosystem-desc">
             <h2>Comlogik Ecosystem</h2>
             <p>
-              Comlogik’s ecosystem goes beyond just interoperability. It involves
-              the connection between users, applications and the company, and how
-              Comlogik treats its customers.
+              Comlogik’s ecosystem goes beyond just interoperability. It
+              involves the connection between users, applications and the
+              company, and how Comlogik treats its customers.
             </p>
           </div>
         </div>
         <div className="uk-width-expand">
           <div className="ecosystem">
             <div className="hims uk-box-shadow-large">
-              <img src="static/hims.png" style={{ marginTop: "20px" }} />
+              <img src="static/hims.png" style={{ marginTop: '20px' }} />
             </div>
 
             <div className="rotate claimsassure">

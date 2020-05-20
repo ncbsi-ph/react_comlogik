@@ -41,6 +41,38 @@ const Navbar = () => {
       text: 'Contact Us',
       link: '/contact-us',
     },
+    {
+      text: 'HIMS',
+      link: '/solutions/hims',
+    },
+    {
+      text: 'Hospital Information Management System',
+      link: '/solutions/hims',
+    },
+    {
+      text: 'EMR',
+      link: '/solutions/emr',
+    },
+    {
+      text: 'AnywhereMed Telemedicine',
+      link: '/solutions/anywheremed-telemedicine',
+    },
+    {
+      text: 'eClaims',
+      link: '/solutions/claims-assure',
+    },
+    {
+      text: 'ClaimsAssure',
+      link: '/solutions/claims-assure',
+    },
+    {
+      text: 'Connect',
+      link: '/solutions/connect',
+    },
+    {
+      text: 'Mobile App',
+      link: '/solutions/connect',
+    },
   ];
 
   const getSuggestions = (value) => {
