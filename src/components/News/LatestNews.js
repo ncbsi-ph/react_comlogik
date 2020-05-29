@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { parse, compareAsc, compareDesc } from 'date-fns';
 
 import { Section, Grid, Column } from '../Grid';
 
-const NewsArticle = ({ keyword, image, title, summary }) => {
+const NewsArticle = ({ link, image, title }) => {
   return (
     <Column>
       <div className="uk-card-media-top uk-height-small">
@@ -15,10 +16,9 @@ const NewsArticle = ({ keyword, image, title, summary }) => {
         />
       </div>
       <div className="uk-card-body uk-flex uk-flex-column gray-bg uk-padding">
-        <h4 className="uk-margin-remove">{title}</h4>
-        <p>{summary}</p>
+        <h4>{title}</h4>
         <div>
-          <Link to={`/news/${keyword}`} className="uk-button uk-button-primary">
+          <Link to={`/news/${link}`} className="uk-button uk-button-primary">
             Read more
           </Link>
         </div>
@@ -27,7 +27,38 @@ const NewsArticle = ({ keyword, image, title, summary }) => {
   );
 };
 
-const LatestNews = () => {
+const LatestNews = React.memo(({ data }) => {
+  const [sort, setSort] = useState('desc');
+  let latestNews = null;
+
+  if (data.length > 0) {
+    latestNews = data
+      .sort((a, b) => {
+        if (sort === 'asc') {
+          return compareAsc(
+            parse(a.dateAdded, 'yyyy-MM-dd HH:mm:ss.SSS', new Date()),
+            parse(b.dateAdded, 'yyyy-MM-dd HH:mm:ss.SSS', new Date())
+          );
+        } else if (sort === 'desc') {
+          return compareDesc(
+            parse(a.dateAdded, 'yyyy-MM-dd HH:mm:ss.SSS', new Date()),
+            parse(b.dateAdded, 'yyyy-MM-dd HH:mm:ss.SSS', new Date())
+          );
+        }
+      })
+      .map((news) => {
+        return (
+          <li key={parseInt(news.id)}>
+            <NewsArticle image={news.image} title={news.title} link={news.id} />
+          </li>
+        );
+      });
+  }
+
+  const handleSortChange = (e) => {
+    setSort(e.target.value);
+  };
+
   return (
     <Section>
       <Grid childWidth="1-1">
@@ -35,94 +66,30 @@ const LatestNews = () => {
           <h1>Latest news</h1>
         </Column>
         <Column>
+          <Grid childWidth="auto">
+            <Column>
+              <label className="uk-form-label uk-text-bold">Order By</label>
+              <select
+                value={sort}
+                onChange={handleSortChange}
+                className="uk-select uk-margin-small-top"
+              >
+                <option value="desc">Newest first</option>
+                <option value="asc">Oldest first</option>
+              </select>
+            </Column>
+          </Grid>
+        </Column>
+        <Column>
           <Grid childWidth="1-1 expand@m">
             <Column>
-              <Grid childWidth="1-1 1-2@m 1-3@l">
-                <NewsArticle
-                  keyword="3"
-                  image="static/news/news-3.jpg"
-                  title="Comlogik announces the release of AnywhereMed – A simple but powerful Telemedicine App"
-                  summary="New Telemedicine App Lets Patients Connect with Their Doctor via Secure System.
-                  Comlogik, a healthcare software company building physician-first solutions, announced today
-                  the launch of its web app, available for all browsers."
-                ></NewsArticle>
-                <NewsArticle
-                  keyword="2"
-                  image="static/news/news-2.jpg"
-                  title="Comlogik wins bid for Tarlac Provincial Hospital HIS Project"
-                  summary="Comlogik recently won the bid for the installation of HIMS in Tarlac Provincial Hospital. This
-                  milestone comes after having implemented the 3 District Hospitals located in Concepcion,
-                  Camiling and La Paz in record time. The Provincial Government…"
-                ></NewsArticle>
-                <NewsArticle
-                  keyword="1"
-                  image="static/news/news-1.jpg"
-                  title="Cancellation of all PHA Regional Conferences due to COVID-19"
-                  summary="PHA Board headed by Dr. Jaime A. Almora, MD, current president of this prestigious healthcare
-                  organization recently announced the cancellation of all regional conferences due to the current
-                  pandemic."
-                ></NewsArticle>
-              </Grid>
+              <Grid childWidth="1-1 1-2@m 1-3@l">{latestNews}</Grid>
             </Column>
-            {/* <Column width="1-5@m" className="uk-flex-first uk-flex-last@m">
-              <Grid childWidth="1-1">
-                <Column>
-                  <label className="uk-form-label uk-text-bold">Sort By</label>
-                  <select className="uk-select uk-margin-small-top">
-                    <option>All news</option>
-                  </select>
-                </Column>
-                <Column>
-                  <label className="uk-form-label uk-text-bold">Order By</label>
-                  <select className="uk-select uk-margin-small-top">
-                    <option>Ascending</option>
-                  </select>
-                </Column>
-                <Column>
-                  <label className="uk-form-label uk-text-bold">
-                    Filter Tags
-                  </label>
-                  <Grid
-                    childWidth="1-1"
-                    className="uk-grid-small uk-margin-small-top"
-                  >
-                    <label>
-                      <input
-                        className="uk-checkbox uk-margin-right"
-                        type="checkbox"
-                      ></input>
-                      PhilHealth
-                    </label>
-                    <label>
-                      <input
-                        className="uk-checkbox uk-margin-right"
-                        type="checkbox"
-                      ></input>
-                      Products
-                    </label>
-                    <label>
-                      <input
-                        className="uk-checkbox uk-margin-right"
-                        type="checkbox"
-                      ></input>
-                      DOH
-                    </label>
-                    <label>
-                      <input
-                        className="uk-checkbox uk-margin-right"
-                        type="checkbox"
-                      ></input>
-                      Promotions
-                    </label>
-                  </Grid>
-                </Column>
-              </Grid>
-            </Column> */}
           </Grid>
         </Column>
       </Grid>
     </Section>
   );
-};
+});
 
 export default LatestNews;

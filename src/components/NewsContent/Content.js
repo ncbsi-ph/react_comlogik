@@ -5,7 +5,7 @@ const Content = ({ date, title, image, content }) => {
   return (
     <Column className="uk-width-1-1 uk-width-expand@m">
       <div>
-        <h5 className="meta">{date}</h5>
+        <h5 className="meta">{date.toUpperCase()}</h5>
         <h1 className="uk-margin-remove">{title}</h1>
         <div className="uk-width-1-1 uk-margin-medium uk-margin-remove-horizontal">
           <img src={image} />
