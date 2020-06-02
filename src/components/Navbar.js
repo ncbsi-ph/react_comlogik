@@ -258,6 +258,14 @@ const Navbar = () => {
                     Contact Us
                   </NavLink>
                 </li>
+                <li className="uk-parent">
+                  <a
+                    href="https://webmail.comlogik.com/?_task=mail&_mbox=INBOX"
+                    target="_blank"
+                  >
+                    Webmail
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

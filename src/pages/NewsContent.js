@@ -49,7 +49,7 @@ const NewsContent = () => {
       <Section>
         <Grid className="uk-grid-medium">
           {isLoaded ? data : null}
-          {id === 'covid19' ? (
+          {/* {id === 'covid19' ? (
             <Content
               date="MARCH 16, 2020"
               title="Amidst COVID-19 Pandemic, Comlogik Offers Support to Clients and Partners Nationwide"
@@ -83,7 +83,7 @@ const NewsContent = () => {
             looking forward to continuing where we left off with providing you with our best service, but
             everyone’s safety is the priority at this time. Stay safe and healthy! May God protect us all.`}
             />
-          ) : null}
+          ) : null} */}
           {/* <Column className="uk-width-1-1 uk-width-1-3@m">
             <div className="gray-bg uk-padding-small">
               <h4 className="uk-margin-small-top uk-margin-bottom">

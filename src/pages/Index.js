@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Landing from '../components/Index/Landing';
 import Clients from '../components/Index/Clients';

@@ -20,15 +20,24 @@ const ContactForm = () => {
 
   const onSubmit = (data, e) => {
     setIsSending(true);
-    const _data = new FormData();
-    _data.append('environment', env);
-    _data.append('fullName', data.fullName);
-    _data.append('emailAddress', data.email);
-    _data.append('contactNumber', data.contactNumber);
-    _data.append('company', data.company);
-    _data.append('message', data.message);
+    const _data = {
+      environment: env,
+      fullName: data.fullName,
+      emailAddress: data.email,
+      contactNumber: data.contactNumber,
+      company: data.company,
+      message: data.message,
+    };
     axios
-      .post('https://new.casaalmarenzo.com/comlogik_api/v1/mail.php', _data)
+      .post(
+        'http://40.90.179.136:8080/comlogik_api/v1/mail',
+        JSON.stringify(_data),
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
       .then((response) => {
         const success = response.data.success;
         if (success) {

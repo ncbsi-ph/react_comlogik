@@ -1,201 +1,381 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import ReactModal from 'react-modal';
+import { useForm } from 'react-hook-form';
+import people from '@iconify/icons-feather/user';
+import calendar from '@iconify/icons-feather/calendar';
+import work from '@iconify/icons-feather/briefcase';
+import frown from '@iconify/icons-feather/frown';
 
 import { Section, Grid, Column } from '../Grid';
 import { Icon } from '@iconify/react';
 
-import people from '@iconify/icons-feather/user';
-import calendar from '@iconify/icons-feather/calendar';
-import work from '@iconify/icons-feather/briefcase';
-
 const Job = ({
   title,
   openPositions,
-  openUntil,
   workExperience,
   description,
+  requirements,
 }) => {
+  const env = process.env.NODE_ENV;
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    errors,
+    setValue,
+    triggerValidation,
+  } = useForm();
+
+  const isPDF = (value) => {
+    const type = value[0].type;
+    if (type === 'application/pdf') return true;
+    else return false;
+  };
+
+  const toBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        resolve(reader.result);
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const handleModal = () => {
+    if (isOpen) setIsOpen(false);
+    else if (!isOpen) setIsOpen(true);
+  };
+
+  const onSubmit = (data, e) => {
+    toBase64(data.attachment[0]).then((value) => {
+      setIsSending(true);
+      const _data = {
+        environment: env,
+        fullName: data.fullName,
+        emailAddress: data.emailAddress,
+        attachment: value,
+        job: title,
+      };
+      axios
+        .post(
+          'http://40.90.179.136:8080/comlogik_api/v1/application',
+          JSON.stringify(_data),
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+        .then((response) => {
+          e.target.reset();
+          setIsSending(false);
+          setIsSuccess(true);
+          setTimeout(() => {
+            setIsSuccess(false);
+          }, 3000);
+        })
+        .catch((error) => {
+          setIsSending(false);
+          setIsError(true);
+          setTimeout(() => {
+            setIsError(false);
+          }, 3000);
+        });
+    });
+  };
+
   return (
-    <Column>
-      <Grid childWidth="1-1">
-        <Column>
-          <h3 className="text-black">{title}</h3>
-        </Column>
-        <Column className="uk-margin-top">
-          <Grid childWidth="auto">
-            <Column className="uk-text-bold uk-flex uk-flex-middle uk-flex-center">
-              <div className="uk-margin-small-right">
-                <Icon icon={people} width={24} height={24}></Icon>
-              </div>
-              <div>
-                {`${openPositions} positions`}
-              </div>
-            </Column>
-            <Column className="uk-text-bold uk-flex uk-flex-middle">
-              <div className="uk-margin-small-right">
-                <Icon icon={calendar} width={24} height={24}></Icon>
-              </div>
-              <div>
-                {`Open until ${openUntil}`}
-              </div>
-            </Column>
-            <Column className="uk-text-bold uk-flex uk-flex-middle">
-              <div className="uk-margin-small-right">
-                <Icon icon={work} width={24} height={24}></Icon>
-              </div>
-              <div>
-                {`Minimum of ${workExperience} years work related experience`}
-              </div>
-            </Column>
-          </Grid>
-        </Column>
-        <Column>
-          <p>{description}</p>
-        </Column>
-      </Grid>
-    </Column>
+    <>
+      <ReactModal
+        isOpen={isOpen}
+        ariaHideApp={false}
+        onRequestClose={handleModal}
+        shouldCloseOnEsc
+        shouldCloseOnOverlayClick
+        className="uk-margin-auto-vertical uk-padding uk-box-shadow-medium"
+        style={{
+          overlay: {
+            padding: '50px 30px',
+            display: 'flex',
+            alignItems: 'flex-start',
+            backgroundColor: 'rgba(0,0,0,0.6)',
+            zIndex: 1000,
+            overflowY: 'auto',
+          },
+          content: {
+            borderRadius: '4px',
+            backgroundColor: 'white',
+            outline: 0,
+            overflowY: 'auto',
+            transform: 'translateY(0)',
+            boxSizing: 'border-box',
+            top: '0',
+            bottom: '0',
+            left: '0',
+            right: '0',
+            marginTop: 'auto',
+            marginBottom: 'auto',
+            margin: '0 auto',
+            position: 'relative',
+            width: '1000px',
+            maxWidth: 'calc(100% - 0.01px)',
+          },
+        }}
+      >
+        <Grid childWidth="1-1">
+          <Column>
+            <h3 className="text-black">{title}</h3>
+          </Column>
+          <Column className="uk-margin-top">
+            <Grid childWidth="auto">
+              <Column className="uk-text-bold uk-flex uk-flex-middle uk-flex-center">
+                <div className="uk-margin-small-right">
+                  <Icon icon={people} width={24} height={24}></Icon>
+                </div>
+                <div>{openPositions} open position</div>
+              </Column>
+              <Column className="uk-text-bold uk-flex uk-flex-middle">
+                <div className="uk-margin-small-right">
+                  <Icon icon={work} width={24} height={24}></Icon>
+                </div>
+                <div>
+                  Minimum of {workExperience} years work related experience
+                </div>
+              </Column>
+            </Grid>
+          </Column>
+          <Column>
+            <h5>Job Description</h5>
+            <p>{description}</p>
+          </Column>
+          <Column>
+            <h5>Job Requirements</h5>
+            <p>{requirements}</p>
+          </Column>
+          <Column>
+            <div className="gradient-bg-light uk-padding">
+              <Grid className="uk-grid-row-small" childWidth="1-1">
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <Column>
+                    <h3>Apply for this position</h3>
+                  </Column>
+                  <Column>
+                    <div className="uk-flex uk-flex-column">
+                      <label
+                        className="uk-margin-small-bottom"
+                        htmlFor="fullName"
+                      >
+                        Full name
+                      </label>
+                      <input
+                        name="fullName"
+                        id="fullName"
+                        className="uk-input"
+                        ref={register({ required: true })}
+                      />
+                      {errors.fullName && (
+                        <span className="uk-display-block uk-text-danger uk-margin-small-top">
+                          Full name is required
+                        </span>
+                      )}
+                    </div>
+                  </Column>
+                  <Column className="uk-margin-top">
+                    <div className="uk-flex uk-flex-column">
+                      <label
+                        className="uk-margin-small-bottom"
+                        htmlFor="emailAddress"
+                      >
+                        Email address
+                      </label>
+                      <input
+                        type="text"
+                        name="emailAddress"
+                        id="emailAddress"
+                        className="uk-input"
+                        ref={register({
+                          required: true,
+                          pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                        })}
+                      />
+                      {errors.emailAddress?.type === 'required' && (
+                        <span className="uk-display-block uk-text-danger uk-margin-small-top">
+                          Email address is required
+                        </span>
+                      )}
+                      {errors.emailAddress?.type === 'pattern' && (
+                        <span className="uk-display-block uk-text-danger uk-margin-small-top">
+                          Please enter a valid email address
+                        </span>
+                      )}
+                    </div>
+                  </Column>
+                  <Column className="uk-margin-top">
+                    <div className="uk-flex uk-flex-column">
+                      <label
+                        className="uk-margin-small-bottom"
+                        htmlFor="attachment"
+                      >
+                        Resume / CV
+                      </label>
+                      <div data-uk-form-custom="target: true">
+                        <input
+                          type="file"
+                          name="attachment"
+                          id="attachment"
+                          ref={register({ required: true, validate: isPDF })}
+                          accept="application/pdf"
+                        />
+                        <input
+                          className="uk-input"
+                          placeholder="Select file"
+                          readOnly
+                        />
+                      </div>
+                    </div>
+                    {errors.attachment &&
+                      errors.attachment.type === 'required' && (
+                        <span className="uk-display-block uk-text-danger uk-margin-small-top">
+                          Please attach your resume/CV
+                        </span>
+                      )}
+                    {errors.attachment &&
+                      errors.attachment.type === 'validate' && (
+                        <span className="uk-display-block uk-text-danger uk-margin-small-top">
+                          Please attach PDF files only
+                        </span>
+                      )}
+                  </Column>
+                  {isSuccess ? (
+                    <Column className="uk-margin-top">
+                      <div className="uk-alert-success" data-uk-alert="">
+                        <a className="uk-alert-close" data-uk-close=""></a>
+                        <p>Your application has been sent!</p>
+                      </div>
+                    </Column>
+                  ) : null}
+                  {isError ? (
+                    <Column className="uk-margin-top">
+                      <div className="uk-alert-danger" data-uk-alert="">
+                        <a className="uk-alert-close" data-uk-close=""></a>
+                        <p>
+                          Sending of application failed. Please try again later.
+                        </p>
+                      </div>
+                    </Column>
+                  ) : null}
+                  <Column>
+                    <button
+                      className="uk-button uk-button-primary uk-margin-top"
+                      type="submit"
+                      disabled={isSending ? true : false}
+                    >
+                      {isSending ? (
+                        <div
+                          className="uk-margin-small-right"
+                          data-uk-spinner=""
+                        ></div>
+                      ) : null}
+                      Submit application
+                    </button>
+                  </Column>
+                </form>
+              </Grid>
+            </div>
+          </Column>
+        </Grid>
+      </ReactModal>
+      <Column>
+        <Grid childWidth="1-1">
+          <Column>
+            <h3 className="text-black">{title}</h3>
+          </Column>
+          <Column className="uk-margin-top">
+            <Grid childWidth="auto">
+              <Column className="uk-text-bold uk-flex uk-flex-middle uk-flex-center">
+                <div className="uk-margin-small-right">
+                  <Icon icon={people} width={24} height={24}></Icon>
+                </div>
+                <div>{`${openPositions} positions`}</div>
+              </Column>
+              <Column className="uk-text-bold uk-flex uk-flex-middle">
+                <div className="uk-margin-small-right">
+                  <Icon icon={work} width={24} height={24}></Icon>
+                </div>
+                <div>
+                  {`Minimum of ${workExperience} years work related experience`}
+                </div>
+              </Column>
+            </Grid>
+          </Column>
+          <Column>
+            <button
+              onClick={handleModal}
+              className="uk-button uk-button-primary"
+            >
+              View details
+            </button>
+          </Column>
+        </Grid>
+      </Column>
+    </>
   );
 };
 
 const Jobs = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('http://40.90.179.136:8080/comlogik_api/v1/careers')
+      .then((response) => {
+        const _data = [];
+        response.data.data.careers.forEach((career) => {
+          _data.push(career);
+        });
+        setData(_data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <Section>
       <Grid childWidth="1-1">
-        <Column className="uk-flex uk-flex-between uk-flex-middle">
-          <h2 className="uk-margin-remove uk-display-inline-block">
-            Open Positions
-          </h2>
-          <span>Two positions available</span>
+        <Column className="uk-flex">
+          <h2 className="uk-margin-remove">Available jobs</h2>
         </Column>
         <Column>
           <Grid childWidth="1-1">
-            <Column>
-              <a href="#job-details" data-uk-toggle="" type="button" className="job-modal">
-                <div className="gray-bg uk-padding">
-                  <Job
-                    title="HR Officer"
-                    openPositions="1"
-                    openUntil="May 30"
-                    workExperience="2-3"
-                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel purus id sapien condimentum rhoncus vel sit amet diam. Etiam dui augue, malesuada at lectus quis, scelerisque faucibus leo. In hac habitasse platea dictumst."
-                  />
-                </div>
-              </a>
-            </Column>
-            <Column>
-              <div className="gray-bg uk-padding">
-                <Job
-                  title="HR Officer"
-                  openPositions="1 "
-                  openUntil="Undefined"
-                  workExperience="2-3"
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel purus id sapien condimentum rhoncus vel sit amet diam. Etiam dui augue, malesuada at lectus quis, scelerisque faucibus leo. In hac habitasse platea dictumst."
-                />
-              </div>
-            </Column>
+            {data.length > 0 ? (
+              data.map((career) => {
+                return (
+                  <Column key={career.id}>
+                    <Job
+                      title={career.title}
+                      openPositions={career.availablePositions}
+                      workExperience={career.minimumExperience}
+                      description={career.description}
+                      requirements={career.requirements}
+                    />
+                  </Column>
+                );
+              })
+            ) : (
+              <Column>
+                <Icon icon={frown} width="32" height="32" className="uk-margin-small-right" />
+                There are no available jobs at the moment
+              </Column>
+            )}
           </Grid>
         </Column>
       </Grid>
-
-      <div id="job-details" class="uk-modal-container" data-uk-modal="">
-        <div class="uk-modal-dialog uk-modal-body">
-          <button class="uk-modal-close-default" type="button" data-uk-close=""></button>
-          <Grid childWidth="1-1">
-            <Column>
-              <h3 className="text-black">HR Officer</h3>
-            </Column>
-            <Column className="uk-margin-top">
-              <Grid childWidth="auto">
-                <Column className="uk-text-bold uk-flex uk-flex-middle uk-flex-center">
-                  <div className="uk-margin-small-right">
-                    <Icon icon={people} width={24} height={24}></Icon>
-                  </div>
-                  <div>
-                    1 open position
-                  </div>
-                </Column>
-                <Column className="uk-text-bold uk-flex uk-flex-middle">
-                  <div className="uk-margin-small-right">
-                    <Icon icon={calendar} width={24} height={24}></Icon>
-                  </div>
-                  <div>
-                    Open until May 30
-                  </div>
-                </Column>
-                <Column className="uk-text-bold uk-flex uk-flex-middle">
-                  <div className="uk-margin-small-right">
-                    <Icon icon={work} width={24} height={24}></Icon>
-                  </div>
-                  <div>
-                    Minimum of 2-3 years work related experience
-                  </div>
-                </Column>
-              </Grid>
-            </Column>
-            <Column>
-              <h5>Job Description</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis iaculis dui. In hac habitasse platea dictumst. Quisque lobortis lorem sit amet lorem sagittis, at placerat odio sollicitudin. Phasellus varius suscipit felis eget elementum. Aliquam eros risus, tempor nec odio nec, egestas vestibulum leo. Pellentesque tincidunt nulla eget nisi finibus, non congue quam vehicula. Nullam at quam lacinia, gravida tellus et, gravida lectus. Suspendisse commodo est id vulputate ultricies. Donec eget aliquet lacus. Morbi augue arcu, facilisis in est eget, dignissim malesuada turpis. Vivamus placerat justo ac leo aliquet blandit. Aliquam nunc nulla, malesuada dignissim justo a, faucibus volutpat eros. Maecenas quis eros nec felis pellentesque tristique. Proin et venenatis ipsum.</p>
-            </Column>
-            <Column>
-              <h5>Job Requirements</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis iaculis dui. In hac habitasse platea dictumst. Quisque lobortis lorem sit amet lorem sagittis, at placerat odio sollicitudin. Phasellus varius suscipit felis eget elementum. Aliquam eros risus, tempor nec odio nec, egestas vestibulum leo. Pellentesque tincidunt nulla eget nisi finibus, non congue quam vehicula. Nullam at quam lacinia, gravida tellus et, gravida lectus. Suspendisse commodo est id vulputate ultricies. Donec eget aliquet lacus. Morbi augue arcu, facilisis in est eget, dignissim malesuada turpis. Vivamus placerat justo ac leo aliquet blandit. Aliquam nunc nulla, malesuada dignissim justo a, faucibus volutpat eros. Maecenas quis eros nec felis pellentesque tristique. Proin et venenatis ipsum.</p>
-            </Column>
-            <Column>
-              <div className="gradient-bg-light uk-padding">
-                <h3>Apply for this position</h3>
-                <form>
-                  <div class="uk-grid-small" data-uk-grid="">
-                    <div class="uk-width-auto uk-flex uk-flex-right uk-flex-middle">
-                      <label class="uk-form-label" for="name">Full Name</label>
-                    </div>
-                    <div class="uk-width-expand">
-                      <input class="uk-input" type="text" id="name" />
-                    </div>
-                    <div class="uk-width-auto uk-flex uk-flex-right uk-flex-middle">
-                      <label class="uk-form-label" for="gender">Gender</label>
-                    </div>
-                    <div class="uk-width-1-5">
-                      <select class="uk-select" id="gender">
-                        <option>Male</option>
-                        <option>Female</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="uk-grid-small" data-uk-grid="">
-                    <div class="uk-width-auto uk-flex uk-flex-right uk-flex-middle">
-                      <label class="uk-form-label" for="email">Email Address</label>
-                    </div>
-                    <div class="uk-width-expand">
-                      <input class="uk-input" type="text" id="email" />
-                    </div>
-                    <div class="uk-width-auto uk-flex uk-flex-right uk-flex-middle">
-                      <label class="uk-form-label" for="mobile">Mobile Number</label>
-                    </div>
-                    <div class="uk-width-expand">
-                      <input class="uk-input" type="text" id="mobile" />
-                    </div>
-                  </div>
-                  <div class="uk-grid-small" data-uk-grid="">
-                    <div className="uk-width-expand">
-                      <input class="uk-input" type="text" placeholder="Upload your CV or Resume" disabled />
-                    </div>
-                  </div>
-                  <div class="uk-grid-small" data-uk-grid="">
-                    <div className="uk-width-expand">
-                      <label>
-                        <input class="uk-checkbox uk-margin-right" type="checkbox" checked />
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        </label>
-                    </div>
-                  </div>
-                  <div className="uk-margin-top">
-                    <button className="uk-button uk-button-primary" type="submit">Submit your application</button>
-                  </div>
-                </form>
-              </div>
-            </Column>
-          </Grid>
-        </div>
-      </div>
     </Section>
   );
 };

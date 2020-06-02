@@ -142,7 +142,7 @@ const Comlogik = () => {
             </h3>
           </Column>
           <Column className="uk-margin-top">
-            <Link to="/news/covid19" className="uk-button uk-button-primary">
+            <Link onClick={handleClose} to="/news/4" className="uk-button uk-button-primary">
               Read more
             </Link>
           </Column>
