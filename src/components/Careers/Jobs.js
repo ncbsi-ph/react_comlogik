@@ -63,7 +63,7 @@ const Job = ({
       };
       axios
         .post(
-          'https://cors-anywhere.herokuapp.com/http://40.90.179.136:8080/comlogik_api/v1/application',
+          'https://cors-anywhere.herokuapp.com/https://new.casaalmarenzo.com/comlogik_api/v1/application.php',
           JSON.stringify(_data),
           {
             headers: {
@@ -128,6 +128,13 @@ const Job = ({
         }}
       >
         <Grid childWidth="1-1">
+          <Column className="uk-flex uk-flex-right">
+            <button
+              type="button"
+              data-uk-close=""
+              onClick={handleModal}
+            ></button>
+          </Column>
           <Column>
             <h3 className="text-black">{title}</h3>
           </Column>
@@ -332,7 +339,9 @@ const Jobs = () => {
 
   useEffect(() => {
     axios
-      .get('https://cors-anywhere.herokuapp.com/http://40.90.179.136:8080/comlogik_api/v1/careers')
+      .get(
+        'https://cors-anywhere.herokuapp.com/https://new.casaalmarenzo.com/comlogik_api/v1/careers.php'
+      )
       .then((response) => {
         const _data = [];
         response.data.data.careers.forEach((career) => {
@@ -369,7 +378,12 @@ const Jobs = () => {
               })
             ) : (
               <Column>
-                <Icon icon={frown} width="32" height="32" className="uk-margin-small-right" />
+                <Icon
+                  icon={frown}
+                  width="32"
+                  height="32"
+                  className="uk-margin-small-right"
+                />
                 There are no available jobs at the moment
               </Column>
             )}

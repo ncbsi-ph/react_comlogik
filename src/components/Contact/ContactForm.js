@@ -27,10 +27,11 @@ const ContactForm = () => {
       contactNumber: data.contactNumber,
       company: data.company,
       message: data.message,
+      captcha: data.captcha,
     };
     axios
       .post(
-        'https://cors-anywhere.herokuapp.com/http://40.90.179.136:8080/comlogik_api/v1/mail',
+        'https://cors-anywhere.herokuapp.com/https://new.casaalmarenzo.com/comlogik_api/v1/mail.php',
         JSON.stringify(_data),
         {
           headers: {
@@ -226,8 +227,8 @@ const ContactForm = () => {
                         </Column>
                         <Column>
                           <Grid childWidth="expand" className="uk-flex-middle">
-                            <Column width="1-4"></Column>
-                            <Column>
+                            {/* <Column width="1-4"></Column> */}
+                            <Column className="uk-flex uk-flex-right">
                               <Recaptcha
                                 sitekey="6LdHNMMUAAAAAD6VogsJyHQ8tFPpDb1egudacj7_"
                                 size="normal"

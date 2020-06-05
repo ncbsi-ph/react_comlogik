@@ -13,7 +13,7 @@ const NewsContent = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    const link = `https://cors-anywhere.herokuapp.com/http://40.90.179.136:8080/comlogik_api/v1/news/${id}`;
+    const link = `https://cors-anywhere.herokuapp.com/https://new.casaalmarenzo.com/comlogik_api/v1/mail.php?id=${id}`;
     axios
       .get(link)
       .then((response) => {
