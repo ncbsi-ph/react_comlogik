@@ -13,11 +13,12 @@ const NewsContent = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    const link = `https://cors-anywhere.herokuapp.com/https://new.casaalmarenzo.com/comlogik_api/v1/mail.php?id=${id}`;
+    const link = `https://cors-anywhere.herokuapp.com/https://new.casaalmarenzo.com/comlogik_api/v1/news.php?id=${id}`;
     axios
       .get(link)
       .then((response) => {
         const _data = [];
+        console.log(response);
         response.data.data.news.forEach((news) => {
           _data.push(news);
         });
