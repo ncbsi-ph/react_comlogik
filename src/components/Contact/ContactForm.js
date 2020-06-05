@@ -30,7 +30,7 @@ const ContactForm = () => {
     };
     axios
       .post(
-        'http://40.90.179.136:8080/comlogik_api/v1/mail',
+        'https://cors-anywhere.herokuapp.com/http://40.90.179.136:8080/comlogik_api/v1/mail',
         JSON.stringify(_data),
         {
           headers: {

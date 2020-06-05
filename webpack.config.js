@@ -46,6 +46,6 @@ module.exports = {
       template: './template/index.html',
       base: process.env.BASE,
     }),
-    new CopyWebpackPlugin([{ from: 'public/' }]),
+    new CopyWebpackPlugin({ patterns: [{ from: 'public/' }] }),
   ],
 };

@@ -12,7 +12,7 @@ const News = () => {
 
   useEffect(() => {
     axios
-      .get('http://40.90.179.136:8080/comlogik_api/v1/news')
+      .get('https://cors-anywhere.herokuapp.com/http://40.90.179.136:8080/comlogik_api/v1/news')
       .then((response) => {
         const _breakingNews = [];
         const _latestNews = [];

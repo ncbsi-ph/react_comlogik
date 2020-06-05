@@ -59,7 +59,7 @@ module.exports = {
       filename: '[name].[hash].css',
       chunkFilename: '[name].[chunkhash].css',
     }),
-    new CopyWebpackPlugin([{ from: 'public/' }]),
+    new CopyWebpackPlugin({ patterns: [{ from: 'public/' }] }),
     new ImageminPlugin({
       test: /\.(jpe?g|png|gif|svg)$/i,
       optipng: {

@@ -63,7 +63,7 @@ const Job = ({
       };
       axios
         .post(
-          'http://40.90.179.136:8080/comlogik_api/v1/application',
+          'https://cors-anywhere.herokuapp.com/http://40.90.179.136:8080/comlogik_api/v1/application',
           JSON.stringify(_data),
           {
             headers: {
@@ -332,7 +332,7 @@ const Jobs = () => {
 
   useEffect(() => {
     axios
-      .get('http://40.90.179.136:8080/comlogik_api/v1/careers')
+      .get('https://cors-anywhere.herokuapp.com/http://40.90.179.136:8080/comlogik_api/v1/careers')
       .then((response) => {
         const _data = [];
         response.data.data.careers.forEach((career) => {
