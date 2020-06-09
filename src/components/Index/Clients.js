@@ -62,7 +62,7 @@ const Clients = () => {
           </Column>
           <Column>
             <div
-              className="uk-child-width-1-1 uk-flex-middle uk-flex-center uk-text-center"
+              className="uk-child-width-1-2 uk-flex-middle uk-flex-center uk-text-center"
               data-uk-grid=""
               data-uk-scrollspy="cls: uk-animation-fade; target: div; delay: 300; repeat: true"
             >

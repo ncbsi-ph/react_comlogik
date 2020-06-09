@@ -22,7 +22,7 @@ const TeamView = () => {
             <Column>
               <div data-uk-slider="autoplay: true; autoplay-interval: 2000; pause-on-hover: true">
                 <ul className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-light">
-                  <li className="uk-transition-toggle" data-tabIndex="0">
+                  <li className="uk-transition-toggle" tabIndex="0">
                     <div className="uk-height-1-1 uk-width-1-1" tabIndex="0">
                       <img src="static/activities/travel.jpg" alt="travel" />
                       <div

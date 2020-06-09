@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { parse, compareAsc, compareDesc } from 'date-fns';
+import { parse, format, compareAsc, compareDesc } from 'date-fns';
 
 import { Section, Grid, Column } from '../Grid';
 
-const NewsArticle = ({ link, image, title }) => {
+const NewsArticle = ({ link, date, image, title }) => {
   return (
     <Column>
       <div className="uk-card-media-top uk-height-small">
@@ -16,7 +16,13 @@ const NewsArticle = ({ link, image, title }) => {
         />
       </div>
       <div className="uk-card-body uk-flex uk-flex-column gray-bg uk-padding">
-        <h4>{title}</h4>
+        <small className="uk-text-muted">
+          {format(
+            parse(date, 'yyyy-MM-dd HH:mm:ss.SSS', new Date()),
+            'MMM dd, yyyy'
+          ).toUpperCase()}
+        </small>
+        <h4 className="uk-margin-small-top">{title}</h4>
         <div>
           <Link to={`/news/${link}`} className="uk-button uk-button-primary">
             Read more
@@ -49,7 +55,12 @@ const LatestNews = React.memo(({ data }) => {
       .map((news) => {
         return (
           <li key={parseInt(news.id)}>
-            <NewsArticle image={news.image} title={news.title} link={news.id} />
+            <NewsArticle
+              image={news.image}
+              title={news.title}
+              link={news.id}
+              date={news.dateAdded}
+            />
           </li>
         );
       });

@@ -142,7 +142,11 @@ const Comlogik = () => {
             </h3>
           </Column>
           <Column className="uk-margin-top">
-            <Link onClick={handleClose} to="/news/4" className="uk-button uk-button-primary">
+            <Link
+              onClick={handleClose}
+              to="/news/4"
+              className="uk-button uk-button-primary"
+            >
               Read more
             </Link>
           </Column>
@@ -152,8 +156,8 @@ const Comlogik = () => {
         pageId="138923622799419"
         appId="2542856289298560"
         themeColor="#4983d0"
-        loggedInGreeting="Hello there! We're here to help. What can we do for you?"
-        loggedOutGreeting="Hello there! We're here to help. What can we do for you?"
+        loggedInGreeting="Hi! How can we help you today?"
+        loggedOutGreeting="Hi! How can we help you today?"
       />
       <Scroll />
       <CookieConsent
