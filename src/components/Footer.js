@@ -3,10 +3,7 @@ import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import phoneAlt from '@iconify/icons-fa-solid/phone-alt';
 import facebook from '@iconify/icons-entypo-social/facebook-with-circle';
-import youtube from '@iconify/icons-entypo-social/youtube-with-circle';
-import skype from '@iconify/icons-entypo-social/skype-with-circle';
-import linkedIn from '@iconify/icons-entypo-social/linkedin-with-circle';
-
+import messenger from '@iconify/icons-fa-brands/facebook-messenger';
 import { Section, Grid, Column } from './Grid';
 
 const Address = () => {
@@ -37,23 +34,13 @@ const Address = () => {
           <li>
             <Grid childWidth="auto" className="uk-grid-small">
               <Column>
-                <a>
+                <a href="https://www.facebook.com/comlogikph/" target="_blank">
                   <Icon icon={facebook} width={36} height={36}></Icon>
                 </a>
               </Column>
               <Column>
-                <a>
-                  <Icon icon={youtube} width={36} height={36}></Icon>
-                </a>
-              </Column>
-              <Column>
-                <a>
-                  <Icon icon={skype} width={36} height={36}></Icon>
-                </a>
-              </Column>
-              <Column>
-                <a>
-                  <Icon icon={linkedIn} width={36} height={36}></Icon>
+                <a href="https://www.m.me/comlogikph" target="_blank">
+                  <Icon icon={messenger} width={36} height={36}></Icon>
                 </a>
               </Column>
             </Grid>

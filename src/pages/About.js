@@ -1,12 +1,10 @@
 import React from 'react';
-
 import CommonHeader from '../components/CommonHeader';
 import Statistics from '../components/About/Statistics';
 import Values from '../components/About/Values';
 import WorkProcess from '../components/About/WorkProcess';
 import TeamView from '../components/About/TeamView';
 import CareerCTA from '../components/About/CareerCTA';
-
 import { Section, Grid, Column } from '../components/Grid';
 
 const About = () => {
