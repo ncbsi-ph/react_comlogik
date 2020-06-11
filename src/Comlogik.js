@@ -158,6 +158,7 @@ const Comlogik = () => {
         themeColor="#4983d0"
         loggedInGreeting="Hi! How can we help you today?"
         loggedOutGreeting="Hi! How can we help you today?"
+        shouldShowDialog={true}
       />
       <Scroll />
       <CookieConsent
