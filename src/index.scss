@@ -109,6 +109,10 @@ $form-padding-horizontal: 14px;
 
 // 5. Your custom CSS.
 
+body {
+  text-rendering: optimizeLegibility;
+}
+
 .gradient-bg-light {
   background: rgb(187, 226, 243);
   background: linear-gradient(

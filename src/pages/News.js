@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
 import CommonHeader from '../components/CommonHeader';
 import BreakingNews from '../components/News/BreakingNews';
 import LatestNews from '../components/News/LatestNews';
 import CTA from '../components/CTA';
+import { apiUrl } from '../helpers/helpers';
 
 const News = () => {
   const [breakingNews, setBreakingNews] = useState([]);
@@ -12,7 +12,7 @@ const News = () => {
 
   useEffect(() => {
     axios
-      .get('https://cors-anywhere.herokuapp.com/https://new.casaalmarenzo.com/comlogik_api/v1/news.php')
+      .get(`${apiUrl()}news.php`)
       .then((response) => {
         const _breakingNews = [];
         const _latestNews = [];

@@ -16,7 +16,7 @@ module.exports = {
     comlogik: './src/index.js',
   },
   output: {
-    publicPath: process.env.PUBLIC_PATH,
+    publicPath: process.env.DEV_PUBLIC_PATH,
     path: path.resolve(__dirname, 'dist/'),
     filename: '[name].js',
   },
@@ -44,7 +44,7 @@ module.exports = {
         '[Dev] Comlogik Business Systems - The leading healthcare system provider in the Philippines',
       hash: true,
       template: './template/index.html',
-      base: process.env.BASE,
+      base: process.env.DEV_BASE,
     }),
     new CopyWebpackPlugin({ patterns: [{ from: 'public/' }] }),
   ],

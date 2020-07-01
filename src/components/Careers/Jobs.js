@@ -5,10 +5,9 @@ import { useForm } from 'react-hook-form';
 import { Icon } from '@iconify/react';
 import frown from '@iconify/icons-feather/frown';
 import { Section, Grid, Column } from '../Grid';
+import { apiUrl } from '../../helpers/helpers';
 
-const env = process.env.NODE_ENV;
-
-const Job = ({ title, experience, description }) => {
+const Job = ({ title, experience, description, requirements, slots, tags }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -40,24 +39,17 @@ const Job = ({ title, experience, description }) => {
     toBase64(data.attachment[0]).then((value) => {
       setIsSending(true);
       const _data = {
-        environment: env,
         fullName: data.fullName,
         emailAddress: data.emailAddress,
         attachment: value,
         job: title,
       };
       axios
-        .post(
-          env === 'development'
-            ? 'http://127.0.0.1/comlogik_api/v1/application.php'
-            : 'https://cors-anywhere.herokuapp.com/https://new.casaalmarenzo.com/comlogik_api/v1/application.php',
-          JSON.stringify(_data),
-          {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        )
+        .post(`${apiUrl()}application.php`, JSON.stringify(_data), {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
         .then((response) => {
           e.target.reset();
           setIsSending(false);
@@ -114,7 +106,7 @@ const Job = ({ title, experience, description }) => {
           },
         }}
       >
-        <Grid childWidth="1-1">
+        <Grid childWidth="1-1" className="uk-grid-row-small">
           <Column className="uk-flex uk-flex-right">
             <button
               type="button"
@@ -123,11 +115,42 @@ const Job = ({ title, experience, description }) => {
             ></button>
           </Column>
           <Column>
-            <h2 className="text-black">{title}</h2>
+            <h2 className="text-black">
+              {title}
+              <span
+                style={{ fontSize: '12px', padding: '12px' }}
+                className="uk-badge uk-background-secondary uk-margin-small-left"
+              >
+                {slots > 1 ? `${slots} slots` : `${slots} slot`}
+              </span>
+            </h2>
+          </Column>
+          <Column>
+            <span className="uk-text-muted">
+              {experience} year/s of experience
+            </span>
+          </Column>
+          <Column>
+            <Grid childWidth="auto" className="uk-grid-small">
+              {tags.map((tag, i) => (
+                <div key={i}>
+                  <div
+                    style={{ fontSize: '12px', padding: '12px' }}
+                    className="uk-badge"
+                  >
+                    {tag}
+                  </div>
+                </div>
+              ))}
+            </Grid>
           </Column>
           <Column>
             <h5>Description</h5>
-            <p>{description}</p>
+            <p dangerouslySetInnerHTML={{ __html: description }}></p>
+          </Column>
+          <Column>
+            <h5>Requirements</h5>
+            <p dangerouslySetInnerHTML={{ __html: requirements }}></p>
           </Column>
           <Column>
             <div className="gradient-bg-light uk-padding">
@@ -265,10 +288,20 @@ const Job = ({ title, experience, description }) => {
       <Column className="uk-card uk-card-default uk-card-body">
         <Grid childWidth="1-1" className="uk-grid-row-small">
           <Column>
-            <h3 className="text-black">{title}</h3>
+            <h3 className="text-black">
+              {title}
+              <span
+                style={{ fontSize: '12px', padding: '12px' }}
+                className="uk-badge uk-background-secondary uk-margin-small-left"
+              >
+                {slots > 1 ? `${slots} slots` : `${slots} slot`}
+              </span>
+            </h3>
           </Column>
           <Column>
-            <span className="uk-text-muted">{experience}</span>
+            <span className="uk-text-muted">
+              {experience} year/s of experience
+            </span>
           </Column>
           <Column>
             <button
@@ -289,11 +322,7 @@ const Jobs = () => {
 
   useEffect(() => {
     axios
-      .get(
-        env === 'development'
-          ? 'http://127.0.0.1/comlogik_api/v1/careers.php'
-          : 'https://cors-anywhere.herokuapp.com/https://new.casaalmarenzo.com/comlogik_api/v1/careers.php'
-      )
+      .get(`${apiUrl()}careers.php`)
       .then((response) => {
         const _data = [];
         response.data.data.careers.forEach((career) => {
@@ -322,6 +351,9 @@ const Jobs = () => {
                       title={career.title}
                       description={career.description}
                       experience={career.experience}
+                      requirements={career.requirements}
+                      slots={career.slots}
+                      tags={career.tags}
                     />
                   </Column>
                 );

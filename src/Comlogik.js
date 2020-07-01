@@ -4,11 +4,11 @@ import Loadable from 'react-loadable';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import CookieConsent from 'react-cookie-consent';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
-
-import { Section, Grid, Column } from './components/Grid';
+import { Grid, Column } from './components/Grid';
 import Scroll from './components/Scroll';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { isDev } from './helpers/helpers';
 
 const Loading = () => {
   return (
@@ -81,13 +81,7 @@ const Comlogik = () => {
   };
 
   return (
-    <Router
-      basename={
-        process.env.NODE_ENV === 'development'
-          ? process.env.ROUTER_BASENAME
-          : ''
-      }
-    >
+    <Router basename={isDev() ? process.env.DEV_ROUTER_BASENAME : ''}>
       <ReactModal
         isOpen={isOpen}
         ariaHideApp={false}
@@ -173,7 +167,7 @@ const Comlogik = () => {
           fontSize: '13px',
           borderRadius: '4px',
         }}
-        debug={process.env.NODE_ENV === 'development' ? true : false}
+        debug={isDev() ? true : false}
         expires={150}
       >
         Our website uses cookies to enhance your browsing experience.

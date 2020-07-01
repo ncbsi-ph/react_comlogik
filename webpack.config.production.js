@@ -53,7 +53,7 @@ module.exports = {
         'Comlogik Business Systems - The leading healthcare system provider in the Philippines',
       template: './template/index.html',
       minify: true,
-      base: process.env.PROD_BASE,
+      base: process.env.PRODUCTION_BASE,
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',

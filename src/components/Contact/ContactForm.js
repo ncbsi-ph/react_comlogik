@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import Recaptcha from 'react-recaptcha';
-
 import { Section, Grid, Column } from '../Grid';
+import { apiUrl } from '../../helpers/helpers';
 
 const ContactForm = () => {
-  const env = process.env.NODE_ENV;
   const [isSending, setIsSending] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -21,7 +20,6 @@ const ContactForm = () => {
   const onSubmit = (data, e) => {
     setIsSending(true);
     const _data = {
-      environment: env,
       fullName: data.fullName,
       emailAddress: data.email,
       contactNumber: data.contactNumber,
@@ -30,15 +28,11 @@ const ContactForm = () => {
       captcha: data.captcha,
     };
     axios
-      .post(
-        'https://cors-anywhere.herokuapp.com/https://new.casaalmarenzo.com/comlogik_api/v1/mail.php',
-        JSON.stringify(_data),
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      )
+      .post(`${apiUrl()}mail.php`, JSON.stringify(_data), {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
       .then((response) => {
         const success = response.data.success;
         if (success) {
@@ -227,7 +221,6 @@ const ContactForm = () => {
                         </Column>
                         <Column>
                           <Grid childWidth="expand" className="uk-flex-middle">
-                            {/* <Column width="1-4"></Column> */}
                             <Column className="uk-flex uk-flex-right">
                               <Recaptcha
                                 sitekey="6LdHNMMUAAAAAD6VogsJyHQ8tFPpDb1egudacj7_"
