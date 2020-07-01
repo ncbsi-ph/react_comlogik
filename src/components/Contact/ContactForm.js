@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import Recaptcha from 'react-recaptcha';
 import { Section, Grid, Column } from '../Grid';
-import { apiUrl } from '../../helpers/helpers';
+import { postApiUrl } from '../../helpers/helpers';
 
 const ContactForm = () => {
   const [isSending, setIsSending] = useState(false);
@@ -28,7 +28,7 @@ const ContactForm = () => {
       captcha: data.captcha,
     };
     axios
-      .post(`${apiUrl()}mail.php`, JSON.stringify(_data), {
+      .post(`${postApiUrl()}mail.php`, JSON.stringify(_data), {
         headers: {
           'Content-Type': 'application/json',
         },

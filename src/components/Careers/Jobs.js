@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { Icon } from '@iconify/react';
 import frown from '@iconify/icons-feather/frown';
 import { Section, Grid, Column } from '../Grid';
-import { apiUrl } from '../../helpers/helpers';
+import { apiUrl, postApiUrl } from '../../helpers/helpers';
 
 const Job = ({ title, experience, description, requirements, slots, tags }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +45,7 @@ const Job = ({ title, experience, description, requirements, slots, tags }) => {
         job: title,
       };
       axios
-        .post(`${apiUrl()}application.php`, JSON.stringify(_data), {
+        .post(`${postApiUrl()}application.php`, JSON.stringify(_data), {
           headers: {
             'Content-Type': 'application/json',
           },
