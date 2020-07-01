@@ -1,8 +1,11 @@
+export const env = process.env.NODE_ENV;
+
 export const isDev = () => {
-  const env = process.env.NODE_ENV;
   if (env === 'development') return true;
   else return false;
 };
 
 export const apiUrl = () =>
-  isDev() ? process.env.DEV_API_URL : process.env.PRODUCTION_API_URL;
+  isDev()
+    ? 'http://127.0.0.1/comlogik_api/v1/'
+    : 'https://new.casaalmarenzo.com/comlogik_api/v1/';
