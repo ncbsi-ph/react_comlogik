@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const mozjpeg = require('imagemin-mozjpeg');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const path = require('path');
@@ -62,14 +63,23 @@ module.exports = {
     new CopyWebpackPlugin({ patterns: [{ from: 'public/' }] }),
     new ImageminPlugin({
       test: /\.(jpe?g|png|gif|svg)$/i,
-      optipng: {
-        optimizationLevel: 7,
-        interlaced: true,
+      jpegtran: null,
+      optipng: null,
+      pngquant: {
+        speed: 4,
+        strip: true,
+        quality: '65-65',
       },
       gifsicle: {
         optimizationLevel: 3,
-        interlaced: true,
+        interlaced: false,
       },
+      plugins: [
+        mozjpeg({
+          progressive: true,
+          quality: 65,
+        }),
+      ],
     }),
   ],
 };
