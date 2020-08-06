@@ -20,7 +20,7 @@ const CaseStudy = ({ image, date, hospitalName, description, link }) => {
             className="rounded-testimonials"
           ></img>
         </Column>
-        <Column className="uk-card-body uk-flex-column">
+        <Column className="uk-padding uk-card-body uk-flex uk-flex-column">
           <small className="uk-display-block uk-text-muted uk-margin-bottom">
             {date}
           </small>

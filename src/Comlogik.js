@@ -5,18 +5,11 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import CookieConsent from 'react-cookie-consent';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
 import { Grid, Column } from './components/Grid';
+import Loading from './components/Loading';
 import Scroll from './components/Scroll';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { isDev } from './helpers/helpers';
-
-const Loading = () => {
-  return (
-    <div>
-      <h1>Loading...</h1>
-    </div>
-  );
-};
 
 const Index = Loadable({
   loader: () => import('./pages/Index'),
