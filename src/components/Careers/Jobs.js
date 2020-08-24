@@ -330,9 +330,7 @@ const Jobs = () => {
         });
         setData(_data);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   }, []);
 
   return (

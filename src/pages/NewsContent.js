@@ -17,7 +17,6 @@ const NewsContent = () => {
       .get(`${apiUrl()}news.php?id=${id}`)
       .then((response) => {
         const _data = [];
-        console.log(response);
         response.data.data.news.forEach((news) => {
           _data.push(news);
         });
@@ -38,9 +37,7 @@ const NewsContent = () => {
         setIsLoaded(true);
         setData(toRender);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   }, []);
 
   return (

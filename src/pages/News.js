@@ -24,9 +24,7 @@ const News = () => {
         setBreakingNews(_breakingNews);
         setLatestNews(_latestNews);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   }, []);
 
   return (
