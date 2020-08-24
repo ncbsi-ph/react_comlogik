@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import TextTransition, { presets } from 'react-text-transition';
 import { Section, Grid, Column } from '../Grid';
 
+const text = ['Request a demo', 'Request a brochure', 'Request a quote'];
+
 const Landing = () => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    setInterval(() => setIndex((index) => index + 1), 3000);
+  }, []);
+
   return (
     <Section>
       <Grid childWidth="1-1 1-2@m" className="uk-flex-middle">
@@ -34,8 +42,12 @@ const Landing = () => {
                   <Link
                     to="/contact-us"
                     className="uk-button uk-button-secondary"
+                    style={{ minWidth: '225px' }}
                   >
-                    Request a demo
+                    <TextTransition
+                      text={text[index % text.length]}
+                      springConfig={presets.gentle}
+                    />
                   </Link>
                 </Column>
                 <Column>

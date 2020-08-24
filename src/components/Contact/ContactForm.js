@@ -1,32 +1,84 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
+import { ErrorMessage } from '@hookform/error-message';
 import Recaptcha from 'react-recaptcha';
+import DatePicker from 'react-datepicker';
+import { format } from 'date-fns';
+import 'react-datepicker/dist/react-datepicker.css';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 import { Section, Grid, Column } from '../Grid';
 import { postApiUrl } from '../../helpers/helpers';
 
+const products = [
+  { label: 'HIMS', value: 'HIMS' },
+  { label: 'CIMS', value: 'CIMS' },
+  { label: 'Claims Assure', value: 'Claims Assure' },
+  { label: 'Comlogik EMR', value: 'Comlogik EMR' },
+  { label: 'WorkBenchMD', value: 'WorkBenchMD' },
+  { label: 'Comlogik Connect', value: 'Comlogik Connect' },
+  { label: 'Paymanager', value: 'Paymanager' },
+  { label: 'HRIS WorkForce', value: 'HRIS WorkForce' },
+  { label: 'AnywhereMed Telemedicine', value: 'AnywhereMed Telemedicine' },
+];
+
+let recaptchaInstance;
+
 const ContactForm = () => {
+  const { register, handleSubmit, errors, setValue } = useForm({
+    defaultValues: {
+      country: 'Philippines',
+      province: 'Metro Manila',
+    },
+  });
+  const [country, setCountry] = useState('Philippines');
+  const [region, setRegion] = useState('Metro Manila');
+  const [startDate, setStartDate] = useState(null);
   const [isSending, setIsSending] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    errors,
-    setValue,
-    triggerValidation,
-  } = useForm();
 
-  const onSubmit = (data, e) => {
-    setIsSending(true);
+  useEffect(() => {
+    register(
+      { name: 'country', type: 'custom' },
+      { required: { value: true, message: 'Country is required' } }
+    );
+    register(
+      { name: 'province', type: 'custom' },
+      { required: { value: true, message: 'Province is required' } }
+    );
+    register(
+      { name: 'bestTimeToContact', type: 'custom' },
+      { required: { value: true, message: 'Best time to contact is required' } }
+    );
+  }, []);
+
+  const selectCountry = (value) => {
+    setCountry(value);
+    setValue('country', value, { shouldValidate: true });
+    setRegion('');
+    setValue('province', '', { shouldValidate: true });
+  };
+
+  const selectRegion = (value) => {
+    setRegion(value);
+    setValue('province', value, { shouldValidate: true });
+  };
+
+  const handleVerify = (response) => {
+    setValue('captcha', response, { shouldValidate: true });
+  };
+
+  const handleExpiry = () => {
+    setValue('captcha', null, { shouldValidate: true });
+    recaptchaInstance.reset();
+  };
+
+  const onSubmit = (form, e) => {
     const _data = {
-      fullName: data.fullName,
-      emailAddress: data.email,
-      contactNumber: data.contactNumber,
-      company: data.company,
-      message: data.message,
-      captcha: data.captcha,
+      ...form,
     };
+    setIsSending(true);
     axios
       .post(`${postApiUrl()}mail.php`, JSON.stringify(_data), {
         headers: {
@@ -39,6 +91,7 @@ const ContactForm = () => {
           e.target.reset();
           setIsSending(false);
           setIsSuccess(true);
+          recaptchaInstance.reset();
           setTimeout(() => {
             setIsSuccess(false);
           }, 3000);
@@ -47,197 +100,379 @@ const ContactForm = () => {
       .catch((error) => {
         setIsSending(false);
         setIsError(true);
+        recaptchaInstance.reset();
         setTimeout(() => {
           setIsError(false);
         }, 3000);
       });
   };
 
-  const handleVerify = (response) => {
-    setValue('captcha', response);
-    triggerValidation('captcha');
-  };
-
-  const handleExpiry = () => {
-    setValue('captcha', null);
-    triggerValidation('captcha');
-  };
-
   return (
     <Section>
-      <img className="logo-bg" src="static/logo-bg.svg" />
-      <Grid childWidth="1-1 1-2@m">
-        <Column>
-          <img src="static/contact-hero.gif" />
-        </Column>
+      <Grid childWidth="1-1">
         <Column>
           <Grid childWidth="1-1">
             <Column className="uk-flex uk-flex-column">
-              <h5 className="meta uk-margin-remove-bottom">CONTACT US</h5>
+              <h5 className="meta uk-margin-remove-bottom">CONTACT FORM</h5>
               <h2 className="margin-top-30">
-                For more questions about our products and pricing, send us a
-                message
+                Reach us using the contact form below
               </h2>
             </Column>
             <Column>
               <Grid childWidth="1-1">
                 <Column>
                   <Column
-                    className="uk-padding"
-                    style={{ backgroundColor: '#F1F5F9' }}
+                    className="uk-padding uk-box-shadow-small"
+                    style={{ backgroundColor: 'white' }}
                   >
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <Grid childWidth="1-1">
                         <Column>
-                          <Grid childWidth="expand" className="uk-flex-middle">
-                            <Column width="1-4">
-                              <label
-                                className="uk-form-label"
-                                htmlFor="fullName"
+                          <Grid
+                            childWidth="1-1"
+                            className="uk-flex-middle uk-grid-row-small"
+                          >
+                            <Column>
+                              <label className="uk-form-label">Product</label>
+                            </Column>
+                            <Column>
+                              <select
+                                name="product"
+                                className="uk-select"
+                                ref={register({
+                                  required: {
+                                    value: true,
+                                    message: 'Product is required',
+                                  },
+                                })}
                               >
-                                Full name
+                                {products.map((product, i) => (
+                                  <option key={i} value={product.value}>
+                                    {product.label}
+                                  </option>
+                                ))}
+                              </select>
+                              <ErrorMessage
+                                name="product"
+                                errors={errors}
+                                as="span"
+                                className="uk-display-block uk-text-danger uk-margin-small-top"
+                              />
+                            </Column>
+                          </Grid>
+                        </Column>
+                        <Column>
+                          <Grid childWidth="1-2">
+                            <Column>
+                              <Grid
+                                childWidth="1-1"
+                                className="uk-flex-middle uk-grid-row-small"
+                              >
+                                <Column>
+                                  <label className="uk-form-label">
+                                    Company name
+                                  </label>
+                                </Column>
+                                <Column>
+                                  <input
+                                    type="text"
+                                    name="companyName"
+                                    className="uk-input"
+                                    autoComplete="off"
+                                    ref={register({
+                                      required: {
+                                        value: true,
+                                        message: 'Company name is required',
+                                      },
+                                    })}
+                                  />
+                                  <ErrorMessage
+                                    name="companyName"
+                                    errors={errors}
+                                    as="span"
+                                    className="uk-display-block uk-text-danger uk-margin-small-top"
+                                  />
+                                </Column>
+                              </Grid>
+                            </Column>
+                            <Column>
+                              <Grid
+                                childWidth="1-1"
+                                className="uk-flex-middle uk-grid-row-small"
+                              >
+                                <Column>
+                                  <label className="uk-form-label">
+                                    Contact person
+                                  </label>
+                                </Column>
+                                <Column>
+                                  <input
+                                    type="text"
+                                    name="contactPerson"
+                                    className="uk-input"
+                                    autoComplete="off"
+                                    ref={register({
+                                      required: {
+                                        value: true,
+                                        message: 'Contact person is required',
+                                      },
+                                    })}
+                                  />
+                                  <ErrorMessage
+                                    name="contactPerson"
+                                    errors={errors}
+                                    as="span"
+                                    className="uk-display-block uk-text-danger uk-margin-small-top"
+                                  />
+                                </Column>
+                              </Grid>
+                            </Column>
+                          </Grid>
+                        </Column>
+                        <Column>
+                          <Grid
+                            childWidth="1-1"
+                            className="uk-flex-middle uk-grid-row-small"
+                          >
+                            <Column>
+                              <label className="uk-form-label">
+                                Company address
                               </label>
                             </Column>
                             <Column>
                               <input
                                 type="text"
-                                id="fullName"
-                                name="fullName"
+                                name="companyAddress"
                                 className="uk-input"
                                 autoComplete="off"
-                                ref={register({ required: true })}
-                              ></input>
-                              {errors.fullName && (
-                                <span className="uk-display-block uk-text-danger uk-margin-small-top">
-                                  Full name is required
-                                </span>
-                              )}
+                                ref={register({
+                                  required: {
+                                    value: true,
+                                    message: 'Company address is required',
+                                  },
+                                })}
+                              />
+                              <ErrorMessage
+                                name="companyAddress"
+                                errors={errors}
+                                as="span"
+                                className="uk-display-block uk-text-danger uk-margin-small-top"
+                              />
                             </Column>
                           </Grid>
                         </Column>
                         <Column>
-                          <Grid childWidth="expand" className="uk-flex-middle">
-                            <Column width="1-4">
-                              <label className="uk-form-label" htmlFor="email">
-                                Email address
-                              </label>
+                          <Grid childWidth="1-2">
+                            <Column>
+                              <Grid
+                                childWidth="1-1"
+                                className="uk-flex-middle uk-grid-row-small"
+                              >
+                                <Column>
+                                  <label className="uk-form-label">
+                                    Country
+                                  </label>
+                                </Column>
+                                <Column>
+                                  <CountryDropdown
+                                    classes="uk-select"
+                                    value={country}
+                                    onChange={selectCountry}
+                                    priorityOptions={['PH']}
+                                  />
+                                  <ErrorMessage
+                                    name="country"
+                                    errors={errors}
+                                    as="span"
+                                    className="uk-display-block uk-text-danger uk-margin-small-top"
+                                  />
+                                </Column>
+                              </Grid>
                             </Column>
                             <Column>
-                              <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                className="uk-input"
-                                autoComplete="off"
-                                ref={register({ required: true })}
-                              ></input>
-                              {errors.email && (
-                                <span className="uk-display-block uk-text-danger uk-margin-small-top">
-                                  Email address is required
-                                </span>
-                              )}
+                              <Grid
+                                childWidth="1-1"
+                                className="uk-flex-middle uk-grid-row-small"
+                              >
+                                <Column>
+                                  <label className="uk-form-label">
+                                    Province
+                                  </label>
+                                </Column>
+                                <Column>
+                                  <RegionDropdown
+                                    defaultOptionLabel="Select province"
+                                    classes="uk-select"
+                                    country={country}
+                                    value={region}
+                                    onChange={selectRegion}
+                                  />
+                                  <ErrorMessage
+                                    name="province"
+                                    errors={errors}
+                                    as="span"
+                                    className="uk-display-block uk-text-danger uk-margin-small-top"
+                                  />
+                                </Column>
+                              </Grid>
                             </Column>
                           </Grid>
                         </Column>
                         <Column>
-                          <Grid childWidth="expand" className="uk-flex-middle">
-                            <Column width="1-4">
-                              <label
-                                className="uk-form-label"
-                                htmlFor="contactNumber"
+                          <Grid childWidth="expand">
+                            <Column>
+                              <Grid
+                                childWidth="1-1"
+                                className="uk-flex-middle uk-grid-row-small"
                               >
-                                Contact number
-                              </label>
+                                <Column>
+                                  <label className="uk-form-label">
+                                    Email address
+                                  </label>
+                                </Column>
+                                <Column>
+                                  <input
+                                    type="text"
+                                    name="emailAddress"
+                                    className="uk-input"
+                                    autoComplete="off"
+                                    ref={register({
+                                      required: {
+                                        value: true,
+                                        message: 'Email address is required',
+                                      },
+                                      pattern: {
+                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                        message: 'Invalid email address',
+                                      },
+                                    })}
+                                  />
+                                  <ErrorMessage
+                                    name="emailAddress"
+                                    errors={errors}
+                                    as="span"
+                                    className="uk-display-block uk-text-danger uk-margin-small-top"
+                                  />
+                                </Column>
+                              </Grid>
                             </Column>
                             <Column>
-                              <input
-                                className="uk-input"
-                                type="text"
-                                id="contactNumber"
-                                name="contactNumber"
-                                autoComplete="off"
-                                ref={register({ required: true })}
-                              ></input>
-                              {errors.contactNumber && (
-                                <span className="uk-display-block uk-text-danger uk-margin-small-top">
-                                  Contact number is required
-                                </span>
-                              )}
-                            </Column>
-                          </Grid>
-                        </Column>
-                        <Column>
-                          <Grid childWidth="expand" className="uk-flex-middle">
-                            <Column width="1-4">
-                              <label
-                                className="uk-form-label"
-                                htmlFor="company"
+                              <Grid
+                                childWidth="1-1"
+                                className="uk-flex-middle uk-grid-row-small"
                               >
-                                Company
-                              </label>
+                                <Column>
+                                  <label className="uk-form-label">
+                                    Contact number
+                                  </label>
+                                </Column>
+                                <Column>
+                                  <input
+                                    type="tel"
+                                    name="contactNumber"
+                                    className="uk-input"
+                                    autoComplete="off"
+                                    ref={register({
+                                      required: {
+                                        value: true,
+                                        message: 'Contact number is required',
+                                      },
+                                    })}
+                                  />
+                                  <ErrorMessage
+                                    name="contactNumber"
+                                    errors={errors}
+                                    as="span"
+                                    className="uk-display-block uk-text-danger uk-margin-small-top"
+                                  />
+                                </Column>
+                              </Grid>
                             </Column>
                             <Column>
-                              <input
-                                className="uk-input"
-                                type="text"
-                                id="company"
-                                name="company"
-                                autoComplete="off"
-                                ref={register({ required: true })}
-                              ></input>
-                              {errors.company && (
-                                <span className="uk-display-block uk-text-danger uk-margin-small-top">
-                                  Company is required
-                                </span>
-                              )}
+                              <Grid
+                                childWidth="1-1"
+                                className="uk-flex-middle uk-grid-row-small"
+                              >
+                                <Column>
+                                  <label className="uk-form-label">
+                                    Best time to contact
+                                  </label>
+                                </Column>
+                                <Column>
+                                  <DatePicker
+                                    className="uk-input uk-width-1-1"
+                                    selected={startDate}
+                                    onChange={(date) => {
+                                      const formatted = format(date, 'p');
+                                      setStartDate(date);
+                                      setValue('bestTimeToContact', formatted, {
+                                        shouldValidate: true,
+                                      });
+                                    }}
+                                    showTimeSelect
+                                    showTimeSelectOnly
+                                    timeIntervals={15}
+                                    timeCaption="Time"
+                                    dateFormat="h:mm aa"
+                                  />
+                                  <ErrorMessage
+                                    name="bestTimeToContact"
+                                    errors={errors}
+                                    as="span"
+                                    className="uk-display-block uk-text-danger uk-margin-small-top"
+                                  />
+                                </Column>
+                              </Grid>
                             </Column>
                           </Grid>
                         </Column>
                         <Column>
-                          <Grid childWidth="expand" className="uk-flex-middle">
-                            <Column width="1-4">
-                              <label
-                                className="uk-form-label"
-                                htmlFor="message"
-                              >
-                                Message
+                          <Grid
+                            childWidth="1-1"
+                            className="uk-flex-middle uk-grid-row-small"
+                          >
+                            <Column>
+                              <label className="uk-form-label">
+                                Additional message
                               </label>
                             </Column>
                             <Column>
                               <textarea
+                                name="additionalMessage"
                                 className="uk-textarea"
-                                id="message"
-                                name="message"
-                                rows="4"
-                                ref={register({ required: true })}
+                                rows={4}
+                                ref={register}
                               ></textarea>
-                              {errors.message && (
-                                <span className="uk-display-block uk-text-danger uk-margin-small-top">
-                                  Message is required
-                                </span>
-                              )}
                             </Column>
                           </Grid>
                         </Column>
                         <Column>
                           <Grid childWidth="expand" className="uk-flex-middle">
-                            <Column className="uk-flex uk-flex-right">
+                            <Column className="uk-flex uk-flex-column">
                               <Recaptcha
+                                className="uk-width-1-1"
                                 sitekey="6LdHNMMUAAAAAD6VogsJyHQ8tFPpDb1egudacj7_"
                                 size="normal"
                                 verifyCallback={handleVerify}
                                 expiredCallback={handleExpiry}
+                                ref={(e) => (recaptchaInstance = e)}
                               />
                               <input
                                 type="hidden"
                                 name="captcha"
-                                ref={register({ required: true })}
+                                ref={register({
+                                  required: {
+                                    value: true,
+                                    message: 'Captcha is required',
+                                  },
+                                })}
                               />
-                              {errors.captcha && (
-                                <span className="uk-display-block uk-text-danger uk-margin-small-top">
-                                  Captcha is required
-                                </span>
-                              )}
+                              <ErrorMessage
+                                name="captcha"
+                                errors={errors}
+                                as="span"
+                                className="uk-display-block uk-text-danger uk-margin-small-top"
+                              />
                             </Column>
                           </Grid>
                         </Column>
@@ -266,7 +501,7 @@ const ContactForm = () => {
                             </div>
                           </Column>
                         ) : null}
-                        <Column className="uk-text-right">
+                        <Column>
                           <button
                             disabled={isSending ? true : false}
                             type="submit"
@@ -278,7 +513,7 @@ const ContactForm = () => {
                                 data-uk-spinner=""
                               ></div>
                             ) : null}
-                            Send message
+                            Send inquiry
                           </button>
                         </Column>
                       </Grid>
