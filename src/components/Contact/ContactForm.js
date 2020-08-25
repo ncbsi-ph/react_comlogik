@@ -4,11 +4,15 @@ import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import Recaptcha from 'react-recaptcha';
 import DatePicker from 'react-datepicker';
-import { format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
+import { format } from 'date-fns';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import { citiesMunicipalities } from 'ph-locations';
+import { filter } from 'lodash';
 import { Section, Grid, Column } from '../Grid';
 import { postApiUrl } from '../../helpers/helpers';
+
+let recaptchaInstance;
 
 const products = [
   { label: 'HIMS', value: 'HIMS' },
@@ -22,8 +26,6 @@ const products = [
   { label: 'AnywhereMed Telemedicine', value: 'AnywhereMed Telemedicine' },
 ];
 
-let recaptchaInstance;
-
 const ContactForm = () => {
   const { register, handleSubmit, errors, setValue } = useForm({
     defaultValues: {
@@ -32,7 +34,8 @@ const ContactForm = () => {
     },
   });
   const [country, setCountry] = useState('Philippines');
-  const [region, setRegion] = useState('Metro Manila');
+  const [region, setRegion] = useState('00');
+  const [regionCode, setRegionCode] = useState(null);
   const [startDate, setStartDate] = useState(null);
   const [isSending, setIsSending] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -58,11 +61,17 @@ const ContactForm = () => {
     setValue('country', value, { shouldValidate: true });
     setRegion('');
     setValue('province', '', { shouldValidate: true });
+    if (value === 'Philippines') setRegionCode('');
   };
 
-  const selectRegion = (value) => {
+  const selectRegion = (value, e) => {
+    const fullValue = e.target.selectedOptions[0].innerText;
     setRegion(value);
-    setValue('province', value, { shouldValidate: true });
+    if (country === 'Philippines' && value === '00') setRegionCode(null);
+    else if (country === 'Philippines' && value !== '00')
+      setRegionCode('PH-' + value);
+    if (country !== 'Philippines') setRegionCode('');
+    setValue('province', fullValue, { shouldValidate: true });
   };
 
   const handleVerify = (response) => {
@@ -262,7 +271,7 @@ const ContactForm = () => {
                           </Grid>
                         </Column>
                         <Column>
-                          <Grid childWidth="1-2">
+                          <Grid childWidth="expand">
                             <Column>
                               <Grid
                                 childWidth="1-1"
@@ -301,6 +310,7 @@ const ContactForm = () => {
                                 </Column>
                                 <Column>
                                   <RegionDropdown
+                                    valueType="short"
                                     defaultOptionLabel="Select province"
                                     classes="uk-select"
                                     country={country}
@@ -316,6 +326,51 @@ const ContactForm = () => {
                                 </Column>
                               </Grid>
                             </Column>
+                            {country === 'Philippines' ? (
+                              <Column>
+                                <Grid
+                                  childWidth="1-1"
+                                  className="uk-flex-middle uk-grid-row-small"
+                                >
+                                  <Column>
+                                    <label className="uk-form-label">
+                                      City/Municipality
+                                    </label>
+                                  </Column>
+                                  <Column>
+                                    <select
+                                      name="city"
+                                      className="uk-select"
+                                      ref={register({
+                                        required: {
+                                          value: true,
+                                          message:
+                                            'City/Municipality is required',
+                                        },
+                                      })}
+                                    >
+                                      <option selected value="">
+                                        Select city/municipality
+                                      </option>
+                                      {filter(
+                                        citiesMunicipalities,
+                                        (city) => city.province === regionCode
+                                      ).map((city, i) => (
+                                        <option key={i} value={city.fullName}>
+                                          {city.fullName}
+                                        </option>
+                                      ))}
+                                    </select>
+                                    <ErrorMessage
+                                      name="city"
+                                      errors={errors}
+                                      as="span"
+                                      className="uk-display-block uk-text-danger uk-margin-small-top"
+                                    />
+                                  </Column>
+                                </Grid>
+                              </Column>
+                            ) : null}
                           </Grid>
                         </Column>
                         <Column>
