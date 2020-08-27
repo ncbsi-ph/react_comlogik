@@ -72,8 +72,8 @@ const Clients = () => {
             </div>
           </Column>
           <Column className="uk-flex uk-flex-center">
-            <Link to="/clients" className="uk-button uk-button-primary">
-              See our clients
+            <Link to="/contact-us" className="uk-button uk-button-primary">
+              Request for clients list
             </Link>
           </Column>
         </Grid>

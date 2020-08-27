@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { Section } from '../components/Grid';
 import CommonHeader from '../components/CommonHeader';
+import { default as ClientsComponent } from '../components/Index/Clients';
 import LogoCarousel from '../components/Clients/LogoCarousel';
 import CaseStudies from '../components/Clients/CaseStudies';
 import Partners from '../components/Clients/Partners';
@@ -85,8 +86,9 @@ const Clients = () => {
         sentence="We wish we have the space to list all our satisfied and delighted customers here. We have some who have
         been with us from the beginning and some who has truly embraced the company’s core values and considered
         us their partners in growth and success."
-      ></CommonHeader>
-      <Section removePadding="horizontal" container={false}>
+      />
+      <ClientsComponent />
+      {/* <Section removePadding="horizontal" container={false}>
         <LogoCarousel
           logos={logos_1.map((logo) => `static/logos/${logo}`)}
         ></LogoCarousel>
@@ -104,10 +106,10 @@ const Clients = () => {
             identification purposes only.
           </small>
         </div>
-      </Section>
-      <CaseStudies></CaseStudies>
+      </Section> */}
+      <CaseStudies />
       {/* <Partners></Partners> */}
-      <CTA></CTA>
+      <CTA />
     </>
   );
 };

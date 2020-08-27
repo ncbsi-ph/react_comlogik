@@ -33,6 +33,7 @@ const ContactForm = () => {
       province: 'Metro Manila',
     },
   });
+  const [purpose, setPurpose] = useState(null);
   const [country, setCountry] = useState('Philippines');
   const [region, setRegion] = useState('00');
   const [regionCode, setRegionCode] = useState(null);
@@ -55,6 +56,10 @@ const ContactForm = () => {
       { required: { value: true, message: 'Best time to contact is required' } }
     );
   }, []);
+
+  const onChangePurpose = (e) => {
+    setPurpose(e.target.value);
+  };
 
   const selectCountry = (value) => {
     setCountry(value);
@@ -142,27 +147,77 @@ const ContactForm = () => {
                             className="uk-flex-middle uk-grid-row-small"
                           >
                             <Column>
-                              <label className="uk-form-label">Product</label>
+                              <label className="uk-form-label">Purpose</label>
                             </Column>
                             <Column>
-                              <select
-                                name="product"
-                                className="uk-select"
-                                ref={register({
-                                  required: {
-                                    value: true,
-                                    message: 'Product is required',
-                                  },
-                                })}
-                              >
-                                {products.map((product, i) => (
-                                  <option key={i} value={product.value}>
-                                    {product.label}
-                                  </option>
-                                ))}
-                              </select>
+                              <Grid childWidth="auto">
+                                <label>
+                                  <input
+                                    onChange={onChangePurpose}
+                                    type="radio"
+                                    className="uk-radio uk-margin-small-right"
+                                    name="purpose"
+                                    value="requestQuote"
+                                    ref={register({
+                                      required: {
+                                        value: true,
+                                        message: 'Purpose is required',
+                                      },
+                                    })}
+                                  />
+                                  Request quote
+                                </label>
+                                <label>
+                                  <input
+                                    onChange={onChangePurpose}
+                                    type="radio"
+                                    className="uk-radio uk-margin-small-right"
+                                    name="purpose"
+                                    value="requestDemo"
+                                    ref={register({
+                                      required: {
+                                        value: true,
+                                        message: 'Purpose is required',
+                                      },
+                                    })}
+                                  />
+                                  Request demo
+                                </label>
+                                <label>
+                                  <input
+                                    onChange={onChangePurpose}
+                                    type="radio"
+                                    className="uk-radio uk-margin-small-right"
+                                    name="purpose"
+                                    value="requestBrochure"
+                                    ref={register({
+                                      required: {
+                                        value: true,
+                                        message: 'Purpose is required',
+                                      },
+                                    })}
+                                  />
+                                  Request brochure
+                                </label>
+                                <label>
+                                  <input
+                                    onChange={onChangePurpose}
+                                    type="radio"
+                                    className="uk-radio uk-margin-small-right"
+                                    name="purpose"
+                                    value="requestClientList"
+                                    ref={register({
+                                      required: {
+                                        value: true,
+                                        message: 'Purpose is required',
+                                      },
+                                    })}
+                                  />
+                                  Request client list
+                                </label>
+                              </Grid>
                               <ErrorMessage
-                                name="product"
+                                name="purpose"
                                 errors={errors}
                                 as="span"
                                 className="uk-display-block uk-text-danger uk-margin-small-top"
@@ -170,6 +225,42 @@ const ContactForm = () => {
                             </Column>
                           </Grid>
                         </Column>
+                        {purpose === 'requestClientList' ? null : (
+                          <Column>
+                            <Grid
+                              childWidth="1-1"
+                              className="uk-flex-middle uk-grid-row-small"
+                            >
+                              <Column>
+                                <label className="uk-form-label">Product</label>
+                              </Column>
+                              <Column>
+                                <select
+                                  name="product"
+                                  className="uk-select"
+                                  ref={register({
+                                    required: {
+                                      value: true,
+                                      message: 'Product is required',
+                                    },
+                                  })}
+                                >
+                                  {products.map((product, i) => (
+                                    <option key={i} value={product.value}>
+                                      {product.label}
+                                    </option>
+                                  ))}
+                                </select>
+                                <ErrorMessage
+                                  name="product"
+                                  errors={errors}
+                                  as="span"
+                                  className="uk-display-block uk-text-danger uk-margin-small-top"
+                                />
+                              </Column>
+                            </Grid>
+                          </Column>
+                        )}
                         <Column>
                           <Grid childWidth="1-2">
                             <Column>
@@ -349,7 +440,7 @@ const ContactForm = () => {
                                         },
                                       })}
                                     >
-                                      <option selected value="">
+                                      <option value="">
                                         Select city/municipality
                                       </option>
                                       {filter(
