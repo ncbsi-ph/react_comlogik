@@ -610,3 +610,8 @@ h5 {
   justify-content: center;
   align-items: center;
 }
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container {
+  display: block !important;
+}

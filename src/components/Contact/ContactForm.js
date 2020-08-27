@@ -262,7 +262,7 @@ const ContactForm = () => {
                           </Column>
                         )}
                         <Column>
-                          <Grid childWidth="1-2">
+                          <Grid childWidth="1-1 expand@m">
                             <Column>
                               <Grid
                                 childWidth="1-1"
@@ -362,7 +362,7 @@ const ContactForm = () => {
                           </Grid>
                         </Column>
                         <Column>
-                          <Grid childWidth="expand">
+                          <Grid childWidth="1-1 expand@l">
                             <Column>
                               <Grid
                                 childWidth="1-1"
@@ -465,7 +465,7 @@ const ContactForm = () => {
                           </Grid>
                         </Column>
                         <Column>
-                          <Grid childWidth="expand">
+                          <Grid childWidth="1-1 expand@m">
                             <Column>
                               <Grid
                                 childWidth="1-1"
@@ -546,7 +546,7 @@ const ContactForm = () => {
                                 </Column>
                                 <Column>
                                   <DatePicker
-                                    className="uk-input uk-width-1-1"
+                                    className="uk-input"
                                     selected={startDate}
                                     onChange={(date) => {
                                       const formatted = format(date, 'p');
