@@ -19,7 +19,7 @@ const News = () => {
         const news = response.data.data.news;
         news.forEach((toFilter) => {
           if (toFilter.isBreakingNews) _breakingNews.push(toFilter);
-          else _latestNews.push(toFilter);
+          _latestNews.push(toFilter);
         });
         setBreakingNews(_breakingNews);
         setLatestNews(_latestNews);

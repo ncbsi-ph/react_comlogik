@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import ReactModal from 'react-modal';
 import Loadable from 'react-loadable';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
@@ -9,7 +10,7 @@ import Loading from './components/Loading';
 import Scroll from './components/Scroll';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import { isDev } from './helpers/helpers';
+import { isDev, apiUrl } from './helpers/helpers';
 
 const Index = Loadable({
   loader: () => import('./pages/Index'),
@@ -68,6 +69,17 @@ const ProductContent = Loadable({
 
 const Comlogik = () => {
   const [isOpen, setIsOpen] = useState(true);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${apiUrl()}news`)
+      .then((response) => {
+        const data = response.data.data;
+        setData(data.news);
+      })
+      .catch((error) => {});
+  }, []);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -120,22 +132,59 @@ const Comlogik = () => {
             ></button>
           </Column>
           <Column>
-            <img src="static/news/covid19.jpg" />
-          </Column>
-          <Column>
-            <h3 className="uk-margin-remove">
-              Amidst COVID-19 pandemic, Comlogik offers support to clients and
-              partners nationwide
-            </h3>
-          </Column>
-          <Column className="uk-margin-top">
-            <Link
-              onClick={handleClose}
-              to="/news/4"
-              className="uk-button uk-button-primary"
+            <div
+              className="uk-position-relative"
+              tabIndex="-1"
+              data-uk-slider=""
             >
-              Read more
-            </Link>
+              <ul
+                className="uk-slider-items uk-child-width-1-1 uk-visible-toggle uk-light"
+                data-uk-grid=""
+              >
+                {data.length > 1 ? (
+                  data.map((news) => {
+                    if (news.isBreakingNews)
+                      return (
+                        <li key={news.id}>
+                          <Grid childWidth="1-1">
+                            <Column>
+                              <img src={news.image} />
+                            </Column>
+                            <Column>
+                              <h3 className="uk-margin-remove">{news.title}</h3>
+                            </Column>
+                            <Column className="uk-margin-top">
+                              <Link
+                                onClick={handleClose}
+                                to={`/news/${news.id}`}
+                                className="uk-button uk-button-primary"
+                              >
+                                Read more
+                              </Link>
+                            </Column>
+                          </Grid>
+                        </li>
+                      );
+                  })
+                ) : (
+                  <li>
+                    <div className="uk-flex uk-flex-center">
+                      <div data-uk-spinner="ratio: 3"></div>
+                    </div>
+                  </li>
+                )}
+              </ul>
+              <a
+                className="uk-position-center-left uk-hidden-hover"
+                data-uk-slidenav-previous=""
+                data-uk-slider-item="previous"
+              ></a>
+              <a
+                className="uk-position-center-right uk-hidden-hover"
+                data-uk-slidenav-next=""
+                data-uk-slider-item="next"
+              ></a>
+            </div>
           </Column>
         </Grid>
       </ReactModal>
