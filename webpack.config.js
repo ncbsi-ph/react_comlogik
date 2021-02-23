@@ -1,6 +1,7 @@
 require('dotenv').config();
 const Dotenv = require('dotenv-webpack');
 const webpack = require('webpack');
+const tailwindcss = require('tailwindcss');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -29,7 +30,18 @@ module.exports = {
       },
       {
         test: /\.(s*)css$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [tailwindcss],
+            },
+          },
+          'sass-loader',
+        ],
       },
     ],
   },

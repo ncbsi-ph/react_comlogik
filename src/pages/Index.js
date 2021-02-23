@@ -8,12 +8,14 @@ import Team from '../components/Index/Team';
 import Testimonials from '../components/Index/Testimonials';
 import CTA from '../components/CTA';
 import Map from '../components/Map';
+import CovidSystems from '../components/Index/CovidSystems';
 
 const Index = () => {
   return (
     <>
       <Landing />
       <Clients />
+      <CovidSystems />
       <Advantages />
       <Products target="products" />
       <Team />

@@ -27,13 +27,18 @@ const Careers = Loadable({
   loading: Loading,
 });
 
+const CaseStudyContent = Loadable({
+  loader: () => import('./pages/CaseStudyContent'),
+  loading: Loading,
+});
+
 const Clients = Loadable({
   loader: () => import('./pages/Clients'),
   loading: Loading,
 });
 
-const CaseStudyContent = Loadable({
-  loader: () => import('./pages/CaseStudyContent'),
+const CovidSystems = Loadable({
+  loader: () => import('./pages/CovidSystems'),
   loading: Loading,
 });
 
@@ -221,6 +226,9 @@ const Comlogik = () => {
         </Route>
         <Route exact path="/about">
           <About />
+        </Route>
+        <Route exact path="/covid">
+          <CovidSystems />
         </Route>
         <Route exact path="/careers">
           <Careers />

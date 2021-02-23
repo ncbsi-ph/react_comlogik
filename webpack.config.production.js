@@ -1,5 +1,6 @@
 require('dotenv').config();
 const webpack = require('webpack');
+const tailwindcss = require('tailwindcss');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -35,7 +36,9 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [autoprefixer, cssnano],
+              postcssOptions: {
+                plugins: [tailwindcss, autoprefixer, cssnano],
+              },
             },
           },
           'sass-loader',

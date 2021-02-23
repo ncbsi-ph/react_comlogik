@@ -6,6 +6,9 @@ module.exports = {
       whitelistPatterns: [/uk-animation-/],
     },
   },
+  corePlugins: {
+    preflight: false,
+  },
   theme: {
     extend: {},
   },

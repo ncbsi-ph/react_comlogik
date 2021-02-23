@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 // 1. Your custom variables and variable overwrites.
 $inverse-global-color-mode: none;
 $global-font-family: Poppins, sans-serif;
