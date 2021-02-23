@@ -11,7 +11,7 @@ module.exports = {
   mode: 'development',
   watch: true,
   watchOptions: {
-    ignored: [/node_modules/, /dist/],
+    ignored: ['/node_modules/', '/dist/'],
   },
   entry: {
     comlogik: './src/index.js',
