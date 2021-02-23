@@ -1,10 +1,10 @@
 {
   "name": "react_comlogik",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Comlogik's new website made in React.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "dev": "set NODE_ENV=development&& webpack",
+    "dev": "set NODE_ENV=development&& webpack serve --config ./webpack.config.js",
     "build": "webpack --config ./webpack.config.production.js"
   },
   "repository": {
@@ -17,15 +17,6 @@
     "url": "https://github.com/cysmix12/react_comlogik/issues"
   },
   "homepage": "https://github.com/cysmix12/react_comlogik#readme",
-  "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ],
-    "plugins": [
-      "@babel/plugin-syntax-dynamic-import"
-    ]
-  },
   "dependencies": {
     "@hookform/error-message": "0.0.5",
     "@iconify/icons-entypo-social": "^1.1.0",

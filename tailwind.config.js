@@ -1,16 +1,11 @@
 module.exports = {
-  purge: {
-    content: ['./src/**/*.js'],
-    options: {
-      whitelistPatterns: [/uk-animation-/],
-    },
-  },
-  corePlugins: {
-    preflight: false,
-  },
+  purge: ['./src/**/*.js', './src/**/*.jsx'],
+  darkMode: false,
   theme: {
     extend: {},
   },
-  variants: {},
+  variants: {
+    extend: {},
+  },
   plugins: [],
 };
