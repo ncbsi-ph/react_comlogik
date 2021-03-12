@@ -146,6 +146,21 @@ const Comlogik = () => {
                 className="uk-slider-items uk-child-width-1-1 uk-visible-toggle uk-light"
                 data-uk-grid=""
               >
+                <li>
+                  <Grid childWidth="1-1">
+                    <Column>
+                      <img src="static/announcement/community-post.jpg" />
+                    </Column>
+                    <Column className="uk-margin-top uk-text-center">
+                      <a
+                        href="https://www.facebook.com/groups/comlogikcommunity"
+                        className="uk-button uk-button-primary"
+                      >
+                        Join Community
+                      </a>
+                    </Column>
+                  </Grid>
+                </li>
                 {data.length > 1 ? (
                   data.map((news) => {
                     if (news.isBreakingNews)
