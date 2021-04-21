@@ -176,7 +176,7 @@ const Footer = () => {
       </Section>
       <div>
         <h6 className="uk-text-center uk-margin-top">
-          COPYRIGHT © 2020, COMLOGIK BUSINESS SYSTEMS INC.
+          COPYRIGHT © 2021, COMLOGIK BUSINESS SYSTEMS INC.
         </h6>
       </div>
     </footer>

@@ -123,18 +123,14 @@ const Comlogik = () => {
             marginBottom: 'auto',
             margin: '0 auto',
             position: 'relative',
-            width: '500px',
+            width: '1000px',
             maxWidth: 'calc(100% - 0.01px)',
           },
         }}
       >
         <Grid childWidth="1-1">
           <Column className="uk-flex uk-flex-right">
-            <button
-              type="button"
-              data-uk-close=""
-              onClick={handleClose}
-            ></button>
+            <button type="button" data-uk-close="" onClick={handleClose} />
           </Column>
           <Column>
             <div
@@ -149,15 +145,56 @@ const Comlogik = () => {
                 <li>
                   <Grid childWidth="1-1">
                     <Column>
-                      <img src="static/announcement/community-post.jpg" />
-                    </Column>
-                    <Column className="uk-margin-top uk-text-center">
-                      <a
-                        href="https://www.facebook.com/groups/comlogikcommunity"
-                        className="uk-button uk-button-primary"
+                      <div
+                        className="flex p-10"
+                        style={{
+                          backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0.52), rgba(174, 223, 241, 0.73)), url('static/ad.jpg')`,
+                          backgroundPosition: 'left',
+                          backgroundRepeat: 'no-repeat',
+                          backgroundSize: 'cover',
+                          height: '600px',
+                        }}
                       >
-                        Join Community
-                      </a>
+                        <Grid
+                          className="content-center w-full lg:w-3/4"
+                          childWidth="1-1"
+                        >
+                          <Column>
+                            <h3>
+                              Comlogik has the solutions to help you react
+                              quickly, pull through and be ahead during times of
+                              crisis.
+                            </h3>
+                          </Column>
+                          <Column>
+                            <Link
+                              onClick={handleClose}
+                              to={`/solutions`}
+                              className="border-0 uk-button uk-button-primary"
+                            >
+                              Learn more
+                            </Link>
+                          </Column>
+                          <Column>
+                            <h4>
+                              There’s nothing wrong with being overprepared
+                              especially when it comes to healthcare.
+                            </h4>
+                          </Column>
+                          <Column>
+                            <p className="text-gray-800">
+                              You are accountable for keeping in place the needs
+                              of a business without compromising the care of
+                              human life. Our goal is to help make it all
+                              possible. Comlogik is your “custom-fit” healthcare
+                              IT partner. We adjust to your needs, promoting
+                              interoperability, improving quality at the point
+                              of care resulting to a better quality, safety and
+                              efficient treatment.
+                            </p>
+                          </Column>
+                        </Grid>
+                      </div>
                     </Column>
                   </Grid>
                 </li>
