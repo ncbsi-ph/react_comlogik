@@ -1,4 +1,3 @@
-require('dotenv').config();
 const webpack = require('webpack');
 const tailwindcss = require('tailwindcss');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -46,9 +45,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin({
-      ENVIRONMENT: JSON.stringify('build'),
-    }),
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
