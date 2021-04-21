@@ -57,9 +57,7 @@
     "react-spinners": "^0.9.0",
     "react-text-transition": "^1.2.1",
     "tailwindcss": "^1.9.6",
-    "uikit": "^3.6.19"
-  },
-  "devDependencies": {
+    "uikit": "^3.6.19",
     "@babel/core": "^7.13.16",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/preset-env": "^7.13.15",
