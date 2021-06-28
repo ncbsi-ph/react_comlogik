@@ -245,14 +245,14 @@ const Comlogik = () => {
           </Column>
         </Grid>
       </ReactModal>
-      <MessengerCustomerChat
+      {/* <MessengerCustomerChat
         pageId="138923622799419"
         appId="2542856289298560"
         themeColor="#4983d0"
         loggedInGreeting="Hi! How can we help you today?"
         loggedOutGreeting="Hi! How can we help you today?"
         shouldShowDialog={true}
-      />
+      /> */}
       <Scroll />
       <CookieConsent
         location="bottom"
