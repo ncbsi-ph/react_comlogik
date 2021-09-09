@@ -91,6 +91,16 @@ export default class ContactInfo extends Component {
                           marketing@comlogik.com
                         </a>
                       </li>
+                      <li>
+                        <b>Billing concerns:</b>
+                        <br></br>
+                        <a
+                          className="link-pink"
+                          href="mailto:billing@comlogik.com"
+                        >
+                          billing@comlogik.com
+                        </a>
+                      </li>
                     </ul>
                   </Column>
                 </Grid>
@@ -122,8 +132,8 @@ export default class ContactInfo extends Component {
                         </a>
                       </li>
                       <li>
-                        <a href="tel:83640509" className="link-pink">
-                          (632) 8364-0509
+                        <a href="tel:82970109" className="link-pink">
+                          (02) 8297-0109
                         </a>
                       </li>
                     </ul>
@@ -143,8 +153,8 @@ export default class ContactInfo extends Component {
                     <h2 className="uk-margin-remove">Fax</h2>
                     <ul className="uk-list">
                       <li>
-                        <a href="fax:84315699" className="link-pink">
-                          (632) 8431-5699
+                        <a href="fax:89522589" className="link-pink">
+                          8952-2589
                         </a>
                       </li>
                     </ul>
@@ -164,21 +174,27 @@ export default class ContactInfo extends Component {
                     <h2 className="uk-margin-remove">Mobile numbers</h2>
                     <ul className="uk-list">
                       <li>
-                        <b>SMS System Support Hotline:</b>{' '}
-                        <a href="tel:+639654896050" className="link-pink">
-                          (0965) 489 6050
+                        <b>Implementation Support Globe:</b>{' '}
+                        <a href="tel:+639457814948" className="link-pink">
+                          09457814948
                         </a>
                       </li>
                       <li>
-                        <b>SMS Implementation Support Hotline:</b>{' '}
-                        <a href="tel:+639654896042" className="link-pink">
-                          (0965) 489 6042
+                        <b>Implementation Support Smart:</b>{' '}
+                        <a href="tel:+639292405033" className="link-pink">
+                          09292405033
                         </a>
                       </li>
                       <li>
-                        <b>SMS Technical Support Hotline:</b>{' '}
+                        <b>Technical Support:</b>{' '}
                         <a href="tel:+639654896049" className="link-pink">
-                          (0965) 489 6049
+                          09654896049
+                        </a>
+                      </li>
+                      <li>
+                        <b>System Support:</b>{' '}
+                        <a href="tel:+639663745863" className="link-pink">
+                          09663745863
                         </a>
                       </li>
                     </ul>
