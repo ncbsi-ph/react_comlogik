@@ -4,12 +4,12 @@ import ReactModal from 'react-modal';
 import Loadable from 'react-loadable';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import CookieConsent from 'react-cookie-consent';
-import MessengerCustomerChat from 'react-messenger-customer-chat';
 import { Grid, Column } from './components/Grid';
 import Loading from './components/Loading';
 import Scroll from './components/Scroll';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import HIMSModal from './components/HIMSModal';
 import { isDev, apiUrl } from './helpers/helpers';
 
 const Index = Loadable({
@@ -73,32 +73,32 @@ const ProductContent = Loadable({
 });
 
 const Comlogik = () => {
-  const [isOpen, setIsOpen] = useState(true);
-  const [data, setData] = useState([]);
+  // const [isOpen, setIsOpen] = useState(true);
+  // const [data, setData] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(`${apiUrl()}news`)
-      .then((response) => {
-        const data = response.data.data;
-        setData(data.news);
-      })
-      .catch((error) => {});
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${apiUrl()}news`)
+  //     .then((response) => {
+  //       const data = response.data.data;
+  //       setData(data.news);
+  //     })
+  //     .catch((error) => {});
+  // }, []);
 
-  const handleClose = () => {
-    setIsOpen(false);
-  };
+  // const handleClose = () => {
+  //   setIsOpen(false);
+  // };
 
   return (
     <Router basename={isDev() ? process.env.DEV_ROUTER_BASENAME : ''}>
-      <ReactModal
+      {/* <ReactModal
         isOpen={isOpen}
         ariaHideApp={false}
         onRequestClose={handleClose}
         shouldCloseOnEsc
         shouldCloseOnOverlayClick
-        className="uk-margin-auto-vertical uk-padding uk-box-shadow-medium"
+        className="uk-margin-auto-vertical uk-box-shadow-medium"
         style={{
           overlay: {
             padding: '50px 30px',
@@ -128,8 +128,24 @@ const Comlogik = () => {
           },
         }}
       >
-        <Grid childWidth="1-1">
-          <Column className="uk-flex uk-flex-right">
+        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+          <img src="static/hims_modal.jpg" />
+          <div style={{ position: 'absolute', top: '50%', left: 50 }}>
+            <div className="uk-flex uk-flex-column">
+              <h2>Smarter applications in response to Covid-19</h2>
+              <div>
+                <Link to="/contact-us" className="uk-button uk-button-primary">
+                  Learn more
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div> */}
+      {/* <Grid childWidth="1-1">
+          <Column>
+            <img src="static/hims_modal.jpg" />
+          </Column> */}
+      {/* <Column className="uk-flex uk-flex-right">
             <button type="button" data-uk-close="" onClick={handleClose} />
           </Column>
           <Column>
@@ -242,17 +258,10 @@ const Comlogik = () => {
                 data-uk-slider-item="next"
               ></a>
             </div>
-          </Column>
-        </Grid>
-      </ReactModal>
-      {/* <MessengerCustomerChat
-        pageId="138923622799419"
-        appId="2542856289298560"
-        themeColor="#4983d0"
-        loggedInGreeting="Hi! How can we help you today?"
-        loggedOutGreeting="Hi! How can we help you today?"
-        shouldShowDialog={true}
-      /> */}
+          </Column> */}
+      {/* </Grid> */}
+      {/* </ReactModal> */}
+      <HIMSModal />
       <Scroll />
       <CookieConsent
         location="bottom"

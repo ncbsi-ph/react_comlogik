@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import Recaptcha from 'react-recaptcha';
 import DatePicker from 'react-datepicker';
@@ -9,6 +9,8 @@ import { format } from 'date-fns';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 import { citiesMunicipalities } from 'ph-locations';
 import { filter } from 'lodash';
+import Select from 'react-select';
+
 import { Section, Grid, Column } from '../Grid';
 import { postApiUrl } from '../../helpers/helpers';
 
@@ -23,11 +25,15 @@ const products = [
   { label: 'Comlogik Connect', value: 'Comlogik Connect' },
   { label: 'Paymanager', value: 'Paymanager' },
   { label: 'HRIS WorkForce', value: 'HRIS WorkForce' },
-  { label: 'AnywhereMed Telemedicine', value: 'AnywhereMed Telemedicine' },
+  { label: 'eHealth Tracker', value: 'eHealth Tracker' },
+  { label: 'Mollis', value: 'Mollis' },
+  { label: 'QueueLogic', value: 'QueueLogic' },
+  { label: 'Vaxims', value: 'Vaxims' },
+  { label: 'InstaP Survey System', value: 'InstaP Survey System' },
 ];
 
 const ContactForm = () => {
-  const { register, handleSubmit, errors, setValue } = useForm({
+  const { register, handleSubmit, errors, setValue, control } = useForm({
     defaultValues: {
       country: 'Philippines',
       province: 'Metro Manila',
@@ -55,6 +61,9 @@ const ContactForm = () => {
       { name: 'bestTimeToContact', type: 'custom' },
       { required: { value: true, message: 'Best time to contact is required' } }
     );
+    register('product', {
+      required: { value: true, message: 'Product is required' },
+    });
   }, []);
 
   const onChangePurpose = (e) => {
@@ -86,6 +95,11 @@ const ContactForm = () => {
   const handleExpiry = () => {
     setValue('captcha', null, { shouldValidate: true });
     recaptchaInstance.reset();
+  };
+
+  const handleProductChange = (e) => {
+    const value = e.map(({ value }) => value);
+    setValue('product', value.length ? value : null, { shouldValidate: true });
   };
 
   const onSubmit = (form, e) => {
@@ -235,22 +249,11 @@ const ContactForm = () => {
                                 <label className="uk-form-label">Product</label>
                               </Column>
                               <Column>
-                                <select
-                                  name="product"
-                                  className="uk-select"
-                                  ref={register({
-                                    required: {
-                                      value: true,
-                                      message: 'Product is required',
-                                    },
-                                  })}
-                                >
-                                  {products.map((product, i) => (
-                                    <option key={i} value={product.value}>
-                                      {product.label}
-                                    </option>
-                                  ))}
-                                </select>
+                                <Select
+                                  onChange={handleProductChange}
+                                  options={products}
+                                  isMulti
+                                />
                                 <ErrorMessage
                                   name="product"
                                   errors={errors}
@@ -488,7 +491,8 @@ const ContactForm = () => {
                                         message: 'Email address is required',
                                       },
                                       pattern: {
-                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                        value:
+                                          /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                                         message: 'Invalid email address',
                                       },
                                     })}
