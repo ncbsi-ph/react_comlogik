@@ -36,10 +36,10 @@ const Clients = () => {
                 <img src="static/clients/image7.png" />
               </Column>
               <Column>
-                <img src="static/clients/image12.png" />
+                <img src="static/clients/image15.png" />
               </Column>
               <Column>
-                <img src="static/clients/image10.png" />
+                <img src="static/clients/image13.png" />
               </Column>
             </div>
           </Column>
@@ -50,13 +50,16 @@ const Clients = () => {
               data-uk-scrollspy="cls: uk-animation-fade; target: div; delay: 300; repeat: true"
             >
               <Column>
-                <img src="static/clients/image15.png" />
-              </Column>
-              <Column>
-                <img src="static/clients/image13.png" />
-              </Column>
-              <Column>
                 <img src="static/clients/image14.png" />
+              </Column>
+              <Column>
+                <img src="static/clients/image17.jpg" />
+              </Column>
+              <Column>
+                <img src="static/clients/image12.png" />
+              </Column>
+              <Column>
+                <img src="static/clients/image10.png" />
               </Column>
             </div>
           </Column>
