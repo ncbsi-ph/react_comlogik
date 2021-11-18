@@ -2,7 +2,7 @@ import { Box, Text, VStack, SimpleGrid, Image, Button } from '@chakra-ui/react';
 
 export const Clients = () => {
   return (
-    <VStack spacing="96px" justifyContent="start">
+    <VStack spacing="72px" justifyContent="start">
       <Box bg="gray.200" px="20" py="10">
         <Text
           textTransform="uppercase"
@@ -13,7 +13,7 @@ export const Clients = () => {
         >
           Our clients
         </Text>
-        <Text fontSize="24">
+        <Text fontSize="22px">
           We’ve helped hundreds of healthcare institutions, thousands of
           physicians and medical workers accelerate their growth by providing
           them with the right tools and knowledge.

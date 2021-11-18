@@ -1,7 +1,13 @@
 import type { NextPage } from 'next';
 import { Box } from '@chakra-ui/react';
 
-import { Landing, Clients, CovidResponse } from './components/Home';
+import {
+  Landing,
+  Clients,
+  CovidResponse,
+  Advantages,
+  Products,
+} from './components/Home';
 
 const Home: NextPage = () => {
   return (
@@ -11,6 +17,10 @@ const Home: NextPage = () => {
       <Box my="96px">
         <CovidResponse />
       </Box>
+      <Box mb="96px">
+        <Advantages />
+      </Box>
+      <Products />
     </>
   );
 };

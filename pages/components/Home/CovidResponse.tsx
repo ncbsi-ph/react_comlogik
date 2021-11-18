@@ -12,9 +12,9 @@ export const CovidResponse = () => {
       >
         COVID-19 response
       </Text>
-      <Text fontSize="24" mb="4">
-        Comlogik has the solutions to help you respond to COVID-19 and operate
-        your healthcare facility safely and smartly.
+      <Text fontSize="22px" mb="4">
+        We have the solutions to help you respond to COVID-19 and operate your
+        healthcare facility safely and smartly.
       </Text>
       <Box>
         <Button size="lg">Learn more</Button>

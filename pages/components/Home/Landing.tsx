@@ -2,13 +2,13 @@ import { Box, Flex, Button, Text, Image, HStack } from '@chakra-ui/react';
 
 export const Landing = () => {
   return (
-    <HStack px="20" minH="100vh" variant="contained">
+    <HStack px="20" minH="100vh" spacing="24px">
       <Flex flexDir="column">
-        <Text as="h1" fontSize="36px" fontWeight="700" mb="4">
+        <Text as="h1" fontSize="48px" fontWeight="700" mb="4">
           Beyond just information.
         </Text>
-        <Box as="h2" mb="8">
-          <Text d="inline" fontWeight="600">
+        <Box fontSize="18px" as="h2" mb="8">
+          <Text d="inline" fontWeight="700">
             Comlogik
           </Text>{' '}
           <Text d="inline">
