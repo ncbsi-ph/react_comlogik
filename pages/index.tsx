@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { Box } from '@chakra-ui/react';
+import { Box, VStack } from '@chakra-ui/react';
 
 import {
   Landing,
@@ -13,14 +13,12 @@ const Home: NextPage = () => {
   return (
     <>
       <Landing />
-      <Clients />
-      <Box my="96px">
+      <VStack alignItems="start" spacing="96px">
+        <Clients />
         <CovidResponse />
-      </Box>
-      <Box mb="96px">
         <Advantages />
-      </Box>
-      <Products />
+        <Products />
+      </VStack>
     </>
   );
 };

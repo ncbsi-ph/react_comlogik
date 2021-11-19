@@ -2,18 +2,18 @@ import { Box, Text, VStack, SimpleGrid, Image, Button } from '@chakra-ui/react';
 
 export const Clients = () => {
   return (
-    <VStack spacing="72px" justifyContent="start">
+    <VStack spacing="60px" justifyContent="start">
       <Box bg="gray.200" px="20" py="10">
         <Text
           textTransform="uppercase"
-          fontSize="18px"
+          fontSize="20px"
           fontWeight="700"
           letterSpacing="2px"
           mb="4"
         >
           Our clients
         </Text>
-        <Text fontSize="22px">
+        <Text fontSize="20px">
           We’ve helped hundreds of healthcare institutions, thousands of
           physicians and medical workers accelerate their growth by providing
           them with the right tools and knowledge.

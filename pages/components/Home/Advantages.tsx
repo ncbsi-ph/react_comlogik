@@ -43,11 +43,11 @@ const advantages = [
 
 export const Advantages = () => {
   return (
-    <VStack px="20" spacing="72px" alignItems="start">
+    <VStack px="20" spacing="48px" alignItems="start">
       <Box>
         <Text
           textTransform="uppercase"
-          fontSize="18px"
+          fontSize="20px"
           fontWeight="700"
           letterSpacing="2px"
           mb="4"
@@ -57,7 +57,7 @@ export const Advantages = () => {
         <Text fontSize="30px" fontWeight="700">
           Why we’re the right healthcare software provider for you.
         </Text>
-        <Text fontSize="18px" color="gray.600">
+        <Text color="gray.600">
           Unbeatable advantages and value over any other provider.
         </Text>
       </Box>
@@ -67,7 +67,9 @@ export const Advantages = () => {
             <Box mr="4">
               <Image src={advantage.image} />
             </Box>
-            <Text w="full">{advantage.content}</Text>
+            <Text w="full" fontSize="18px">
+              {advantage.content}
+            </Text>
           </Flex>
         ))}
       </SimpleGrid>
