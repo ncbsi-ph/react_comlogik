@@ -1,5 +1,6 @@
 import React from 'react';
 import { VStack, Box, Text, SimpleGrid, Flex, Image } from '@chakra-ui/react';
+import { Container } from 'react-grid-system';
 
 const advantages = [
   {
@@ -43,36 +44,30 @@ const advantages = [
 
 export const Advantages = () => {
   return (
-    <VStack px="20" spacing="48px" alignItems="start">
-      <Box>
-        <Text
-          textTransform="uppercase"
-          fontSize="20px"
-          fontWeight="700"
-          letterSpacing="2px"
-          mb="4"
-        >
-          Advantages
-        </Text>
-        <Text fontSize="30px" fontWeight="700">
-          Why we’re the right healthcare software provider for you.
-        </Text>
-        <Text color="gray.600">
-          Unbeatable advantages and value over any other provider.
-        </Text>
-      </Box>
-      <SimpleGrid columns={3} spacing="36px">
-        {advantages.map((advantage, i) => (
-          <Flex key={i}>
-            <Box mr="4">
-              <Image src={advantage.image} />
-            </Box>
-            <Text w="full" fontSize="18px">
-              {advantage.content}
-            </Text>
-          </Flex>
-        ))}
-      </SimpleGrid>
-    </VStack>
+    <Container>
+      <VStack spacing="48px" alignItems="start">
+        <Box>
+          <Text variant="subheader">Advantages</Text>
+          <Text variant="header">
+            Why we’re the right healthcare software provider for you.
+          </Text>
+          <Text color="gray.600">
+            Unbeatable advantages and value over any other provider.
+          </Text>
+        </Box>
+        <SimpleGrid columns={3} spacing="36px">
+          {advantages.map((advantage, i) => (
+            <Flex key={i} alignItems="center">
+              <Box mr="4">
+                <Image src={advantage.image} />
+              </Box>
+              <Text w="full" fontSize="20px">
+                {advantage.content}
+              </Text>
+            </Flex>
+          ))}
+        </SimpleGrid>
+      </VStack>
+    </Container>
   );
 };

@@ -13,6 +13,7 @@ import {
   Flex,
   Button,
 } from '@chakra-ui/react';
+import { Container } from 'react-grid-system';
 
 const products = [
   {
@@ -36,7 +37,7 @@ const products = [
   {
     title: 'Comlogik EMR',
     description:
-      'Comlogik EMR™ is the industry leading solution that meets the stringent requirements of the Department of Health and likewise holds the distinction of being the FIRST DOH VALIDATED SOFTWARE. Be compliant and get expert advice from our team of experts.',
+      'Comlogik EMR™ is the industry leading solution that meets the stringent requirements of the Department of Health and likewise holds the distinction of being the first DOH Validated Software. Be compliant and get expert advice from our team of experts.',
     image: 'https://dummyimage.com/256x256/000/fff',
   },
   {
@@ -73,63 +74,63 @@ const products = [
 
 export const Products = () => {
   return (
-    <Tabs px="20" variant="unstyled">
-      <HStack spacing="72px">
-        <VStack spacing="48px" alignItems="start">
-          <Box>
-            <Text
-              textTransform="uppercase"
-              fontSize="20px"
-              fontWeight="700"
-              letterSpacing="2px"
-              mb="4"
+    <Container>
+      <Tabs variant="unstyled">
+        <HStack spacing="72px">
+          <VStack spacing="48px" alignItems="start">
+            <Box>
+              <Text variant="subheader">Products</Text>
+              <Text variant="header">
+                Software that really gets the job done.
+              </Text>
+              <Text color="gray.600">
+                Our well-thought-out software solutions give you the tools to
+                get higher patient satisfaction and greater employee
+                productivity, in a way that will drive profitability.
+              </Text>
+            </Box>
+            <TabList
+              d="grid"
+              gridTemplateColumns="repeat(3, 1fr)"
+              gridGap="24px"
             >
-              Products
-            </Text>
-            <Text fontSize="30px" fontWeight="700">
-              Software that really gets the job done.
-            </Text>
-            <Text color="gray.600">
-              Our well-thought-out software solutions give you the tools to get
-              higher patient satisfaction and greater employee productivity, in
-              a way that will drive profitability.
-            </Text>
-          </Box>
-          <TabList d="grid" gridTemplateColumns="repeat(3, 1fr)" gridGap="24px">
+              {products.map((product, i) => (
+                <Tab p="0" key={i}>
+                  <Image objectFit="cover" src={product.image} />
+                </Tab>
+              ))}
+            </TabList>
+          </VStack>
+          <TabPanels boxShadow="base">
             {products.map((product, i) => (
-              <Tab p="0" key={i}>
-                <Image objectFit="cover" src={product.image} />
-              </Tab>
+              <TabPanel key={i} p="0">
+                <Box w="full" h="72">
+                  <Image
+                    w="full"
+                    h="full"
+                    objectFit="cover"
+                    src={product.image}
+                  />
+                </Box>
+                <Flex flexDir="column" p="12">
+                  <Text fontSize="24px" fontWeight="700" mb="4">
+                    {product.title}
+                  </Text>
+                  <Text color="gray.600" mb="8">
+                    {product.description}
+                  </Text>
+                  <HStack spacing="18px">
+                    <Button size="lg">Learn more</Button>
+                    <Button size="lg" variant="outline">
+                      Request a demo
+                    </Button>
+                  </HStack>
+                </Flex>
+              </TabPanel>
             ))}
-          </TabList>
-        </VStack>
-        <TabPanels boxShadow="base">
-          {products.map((product, i) => (
-            <TabPanel key={i} p="0">
-              <Box w="full" h="72">
-                <Image
-                  w="full"
-                  h="full"
-                  objectFit="cover"
-                  src={product.image}
-                />
-              </Box>
-              <Flex flexDir="column" p="12">
-                <Text fontSize="24px" mb="4">
-                  {product.title}
-                </Text>
-                <Text color="gray.600" mb="8">
-                  {product.description}
-                </Text>
-                <HStack spacing="18px">
-                  <Button>Learn more</Button>
-                  <Button variant="outline">Request a demo</Button>
-                </HStack>
-              </Flex>
-            </TabPanel>
-          ))}
-        </TabPanels>
-      </HStack>
-    </Tabs>
+          </TabPanels>
+        </HStack>
+      </Tabs>
+    </Container>
   );
 };

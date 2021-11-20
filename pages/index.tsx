@@ -13,7 +13,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Landing />
-      <VStack alignItems="start" spacing="96px">
+      <VStack alignItems="start" spacing="256px">
         <Clients />
         <CovidResponse />
         <Advantages />
