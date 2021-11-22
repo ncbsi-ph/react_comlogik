@@ -4,8 +4,13 @@ import { Container, Row, Col } from 'react-grid-system';
 export const Landing = () => {
   return (
     <Container>
-      <Row style={{ minHeight: '100vh' }} align="center" justify="center">
-        <Col sm={6}>
+      <Row
+        style={{ minHeight: '100vh' }}
+        align="center"
+        justify="center"
+        gutterWidth={36}
+      >
+        <Col xl={7} xxl={6}>
           <Flex flexDir="column">
             <Text variant="header">Beyond just information.</Text>
             <Box as="h2" mb="8">
@@ -25,7 +30,7 @@ export const Landing = () => {
             </HStack>
           </Flex>
         </Col>
-        <Col sm="content">
+        <Col xl={5} xxl="content">
           <Image src="https:dummyimage.com/500x500/000/fff" />
         </Col>
       </Row>

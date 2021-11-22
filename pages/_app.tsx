@@ -1,7 +1,9 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ChakraProvider, extendTheme, ThemeComponents } from '@chakra-ui/react';
-import { ScreenClassProvider } from 'react-grid-system';
+import { ScreenClassProvider, setConfiguration } from 'react-grid-system';
+
+import { Footer } from './components';
 
 import '../styles/globals.css';
 
@@ -21,7 +23,7 @@ const components: ThemeComponents = {
       header: {
         fontSize: '48px',
         fontWeight: '700',
-        lineHeight: '1.2',
+        lineHeight: '1.1',
         mb: '4',
       },
     },
@@ -36,6 +38,11 @@ const theme = extendTheme({
   components,
 });
 
+setConfiguration({
+  containerWidths: [540, 740, 960, 1250, 1540],
+  gutterWidth: 72,
+});
+
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
@@ -48,6 +55,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <ChakraProvider theme={theme}>
         <ScreenClassProvider>
           <Component {...pageProps} />
+          <Footer />
         </ScreenClassProvider>
       </ChakraProvider>
     </>

@@ -8,8 +8,7 @@ const advantages = [
     image: 'https://dummyimage.com/64x64/000/fff',
   },
   {
-    content:
-      'Widely used by 5,000+ doctors, hospitals and healthcare facilities',
+    content: 'Used by 5,000+ doctors, hospitals and healthcare facilities',
     image: 'https://dummyimage.com/64x64/000/fff',
   },
   {
@@ -47,7 +46,7 @@ export const Advantages = () => {
     <Container>
       <VStack spacing="48px" alignItems="start">
         <Box>
-          <Text variant="subheader">Advantages</Text>
+          <Text variant="subheader">Our advantages</Text>
           <Text variant="header">
             Why we’re the right healthcare software provider for you.
           </Text>
