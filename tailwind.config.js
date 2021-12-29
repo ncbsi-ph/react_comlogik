@@ -1,16 +1,18 @@
 module.exports = {
-  purge: {
-    content: ['./src/**/*.js'],
-    options: {
-      whitelistPatterns: [/uk-animation-/],
-    },
-  },
+  content: [
+    './src/**/*.js',
+    './src/**/*.jsx',
+    './src/**/*.ts',
+    './src/**/*.tsx',
+  ],
   corePlugins: {
     preflight: false,
   },
   theme: {
     extend: {},
   },
-  variants: {},
-  plugins: [],
+  variants: {
+    extend: {},
+  },
+  plugins: [require('@tailwindcss/typography')],
 };

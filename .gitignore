@@ -1,2 +1,9 @@
+# Folders
+.next/
+.vscode/
 node_modules/
 dist/
+
+# Files
+.env
+stats.json

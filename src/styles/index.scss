@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 // 1. Your custom variables and variable overwrites.
 $inverse-global-color-mode: none;
 $global-font-family: Poppins, sans-serif;
@@ -24,8 +20,8 @@ $offcanvas-overlay-background: rgba(#212529, 0.5);
 $form-padding-horizontal: 14px;
 
 // 2. Import default variables and available mixins.
-@import '../node_modules/uikit/src/scss/variables.scss';
-@import '../node_modules/uikit/src/scss/mixins.scss';
+@import '~uikit/src/scss/variables.scss';
+@import '~uikit/src/scss/mixins.scss';
 
 // 3. Your custom mixin overwrites.
 @mixin hook-navbar-sticky() {
@@ -109,9 +105,19 @@ $form-padding-horizontal: 14px;
 }
 
 // 4. Import UIkit.
-@import '../node_modules/uikit/src/scss/uikit.scss';
+@import '~uikit/src/scss/uikit.scss';
 
 // 5. Your custom CSS.
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '~react-datepicker/dist/react-datepicker.css';
+
+::selection {
+  @apply bg-blue-300 text-gray-700;
+}
 
 body {
   text-rendering: optimizeLegibility;

@@ -1,20 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useForm, Controller } from 'react-hook-form';
+import React, { useState, useEffect, useRef } from 'react';
+import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import Recaptcha from 'react-recaptcha';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import { format } from 'date-fns';
-import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
-import { citiesMunicipalities } from 'ph-locations';
 import { filter } from 'lodash';
 import Select from 'react-select';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import { citiesMunicipalities } from 'ph-locations';
 
 import { Section, Grid, Column } from '../Grid';
-import { postApiUrl } from '../../helpers/helpers';
-
-let recaptchaInstance;
+import { sendContactForm } from '../../api';
 
 const products = [
   { label: 'HIMS', value: 'HIMS' },
@@ -33,108 +29,6 @@ const products = [
 ];
 
 const ContactForm = () => {
-  const { register, handleSubmit, errors, setValue, control } = useForm({
-    defaultValues: {
-      country: 'Philippines',
-      province: 'Metro Manila',
-    },
-  });
-  const [purpose, setPurpose] = useState(null);
-  const [country, setCountry] = useState('Philippines');
-  const [region, setRegion] = useState('00');
-  const [regionCode, setRegionCode] = useState(null);
-  const [startDate, setStartDate] = useState(null);
-  const [isSending, setIsSending] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    register(
-      { name: 'country', type: 'custom' },
-      { required: { value: true, message: 'Country is required' } }
-    );
-    register(
-      { name: 'province', type: 'custom' },
-      { required: { value: true, message: 'Province is required' } }
-    );
-    register(
-      { name: 'bestTimeToContact', type: 'custom' },
-      { required: { value: true, message: 'Best time to contact is required' } }
-    );
-    register('product', {
-      required: { value: true, message: 'Product is required' },
-    });
-  }, []);
-
-  const onChangePurpose = (e) => {
-    setPurpose(e.target.value);
-  };
-
-  const selectCountry = (value) => {
-    setCountry(value);
-    setValue('country', value, { shouldValidate: true });
-    setRegion('');
-    setValue('province', '', { shouldValidate: true });
-    if (value === 'Philippines') setRegionCode('');
-  };
-
-  const selectRegion = (value, e) => {
-    const fullValue = e.target.selectedOptions[0].innerText;
-    setRegion(value);
-    if (country === 'Philippines' && value === '00') setRegionCode(null);
-    else if (country === 'Philippines' && value !== '00')
-      setRegionCode('PH-' + value);
-    if (country !== 'Philippines') setRegionCode('');
-    setValue('province', fullValue, { shouldValidate: true });
-  };
-
-  const handleVerify = (response) => {
-    setValue('captcha', response, { shouldValidate: true });
-  };
-
-  const handleExpiry = () => {
-    setValue('captcha', null, { shouldValidate: true });
-    recaptchaInstance.reset();
-  };
-
-  const handleProductChange = (e) => {
-    const value = e.map(({ value }) => value);
-    setValue('product', value.length ? value : null, { shouldValidate: true });
-  };
-
-  const onSubmit = (form, e) => {
-    const _data = {
-      ...form,
-    };
-    setIsSending(true);
-    axios
-      .post(`${postApiUrl()}mail.php`, JSON.stringify(_data), {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-      .then((response) => {
-        const success = response.data.success;
-        if (success) {
-          e.target.reset();
-          setIsSending(false);
-          setIsSuccess(true);
-          recaptchaInstance.reset();
-          setTimeout(() => {
-            setIsSuccess(false);
-          }, 3000);
-        }
-      })
-      .catch((error) => {
-        setIsSending(false);
-        setIsError(true);
-        recaptchaInstance.reset();
-        setTimeout(() => {
-          setIsError(false);
-        }, 3000);
-      });
-  };
-
   return (
     <Section>
       <Grid childWidth="1-1">
@@ -149,525 +43,8 @@ const ContactForm = () => {
             <Column>
               <Grid childWidth="1-1">
                 <Column>
-                  <Column
-                    className="uk-padding uk-box-shadow-small"
-                    style={{ backgroundColor: 'white' }}
-                  >
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                      <Grid childWidth="1-1">
-                        <Column>
-                          <Grid
-                            childWidth="1-1"
-                            className="uk-flex-middle uk-grid-row-small"
-                          >
-                            <Column>
-                              <label className="uk-form-label">Purpose</label>
-                            </Column>
-                            <Column>
-                              <Grid childWidth="auto">
-                                <label>
-                                  <input
-                                    onChange={onChangePurpose}
-                                    type="radio"
-                                    className="uk-radio uk-margin-small-right"
-                                    name="purpose"
-                                    value="requestQuote"
-                                    ref={register({
-                                      required: {
-                                        value: true,
-                                        message: 'Purpose is required',
-                                      },
-                                    })}
-                                  />
-                                  Request quote
-                                </label>
-                                <label>
-                                  <input
-                                    onChange={onChangePurpose}
-                                    type="radio"
-                                    className="uk-radio uk-margin-small-right"
-                                    name="purpose"
-                                    value="requestDemo"
-                                    ref={register({
-                                      required: {
-                                        value: true,
-                                        message: 'Purpose is required',
-                                      },
-                                    })}
-                                  />
-                                  Request demo
-                                </label>
-                                <label>
-                                  <input
-                                    onChange={onChangePurpose}
-                                    type="radio"
-                                    className="uk-radio uk-margin-small-right"
-                                    name="purpose"
-                                    value="requestBrochure"
-                                    ref={register({
-                                      required: {
-                                        value: true,
-                                        message: 'Purpose is required',
-                                      },
-                                    })}
-                                  />
-                                  Request brochure
-                                </label>
-                                <label>
-                                  <input
-                                    onChange={onChangePurpose}
-                                    type="radio"
-                                    className="uk-radio uk-margin-small-right"
-                                    name="purpose"
-                                    value="requestClientList"
-                                    ref={register({
-                                      required: {
-                                        value: true,
-                                        message: 'Purpose is required',
-                                      },
-                                    })}
-                                  />
-                                  Request client list
-                                </label>
-                              </Grid>
-                              <ErrorMessage
-                                name="purpose"
-                                errors={errors}
-                                as="span"
-                                className="uk-display-block uk-text-danger uk-margin-small-top"
-                              />
-                            </Column>
-                          </Grid>
-                        </Column>
-                        {purpose === 'requestClientList' ? null : (
-                          <Column>
-                            <Grid
-                              childWidth="1-1"
-                              className="uk-flex-middle uk-grid-row-small"
-                            >
-                              <Column>
-                                <label className="uk-form-label">Product</label>
-                              </Column>
-                              <Column>
-                                <Select
-                                  onChange={handleProductChange}
-                                  options={products}
-                                  isMulti
-                                />
-                                <ErrorMessage
-                                  name="product"
-                                  errors={errors}
-                                  as="span"
-                                  className="uk-display-block uk-text-danger uk-margin-small-top"
-                                />
-                              </Column>
-                            </Grid>
-                          </Column>
-                        )}
-                        <Column>
-                          <Grid childWidth="1-1 expand@m">
-                            <Column>
-                              <Grid
-                                childWidth="1-1"
-                                className="uk-flex-middle uk-grid-row-small"
-                              >
-                                <Column>
-                                  <label className="uk-form-label">
-                                    Company name
-                                  </label>
-                                </Column>
-                                <Column>
-                                  <input
-                                    type="text"
-                                    name="companyName"
-                                    className="uk-input"
-                                    autoComplete="off"
-                                    ref={register({
-                                      required: {
-                                        value: true,
-                                        message: 'Company name is required',
-                                      },
-                                    })}
-                                  />
-                                  <ErrorMessage
-                                    name="companyName"
-                                    errors={errors}
-                                    as="span"
-                                    className="uk-display-block uk-text-danger uk-margin-small-top"
-                                  />
-                                </Column>
-                              </Grid>
-                            </Column>
-                            <Column>
-                              <Grid
-                                childWidth="1-1"
-                                className="uk-flex-middle uk-grid-row-small"
-                              >
-                                <Column>
-                                  <label className="uk-form-label">
-                                    Contact person
-                                  </label>
-                                </Column>
-                                <Column>
-                                  <input
-                                    type="text"
-                                    name="contactPerson"
-                                    className="uk-input"
-                                    autoComplete="off"
-                                    ref={register({
-                                      required: {
-                                        value: true,
-                                        message: 'Contact person is required',
-                                      },
-                                    })}
-                                  />
-                                  <ErrorMessage
-                                    name="contactPerson"
-                                    errors={errors}
-                                    as="span"
-                                    className="uk-display-block uk-text-danger uk-margin-small-top"
-                                  />
-                                </Column>
-                              </Grid>
-                            </Column>
-                          </Grid>
-                        </Column>
-                        <Column>
-                          <Grid
-                            childWidth="1-1"
-                            className="uk-flex-middle uk-grid-row-small"
-                          >
-                            <Column>
-                              <label className="uk-form-label">
-                                Company address
-                              </label>
-                            </Column>
-                            <Column>
-                              <input
-                                type="text"
-                                name="companyAddress"
-                                className="uk-input"
-                                autoComplete="off"
-                                ref={register({
-                                  required: {
-                                    value: true,
-                                    message: 'Company address is required',
-                                  },
-                                })}
-                              />
-                              <ErrorMessage
-                                name="companyAddress"
-                                errors={errors}
-                                as="span"
-                                className="uk-display-block uk-text-danger uk-margin-small-top"
-                              />
-                            </Column>
-                          </Grid>
-                        </Column>
-                        <Column>
-                          <Grid childWidth="1-1 expand@l">
-                            <Column>
-                              <Grid
-                                childWidth="1-1"
-                                className="uk-flex-middle uk-grid-row-small"
-                              >
-                                <Column>
-                                  <label className="uk-form-label">
-                                    Country
-                                  </label>
-                                </Column>
-                                <Column>
-                                  <CountryDropdown
-                                    classes="uk-select"
-                                    value={country}
-                                    onChange={selectCountry}
-                                    priorityOptions={['PH']}
-                                  />
-                                  <ErrorMessage
-                                    name="country"
-                                    errors={errors}
-                                    as="span"
-                                    className="uk-display-block uk-text-danger uk-margin-small-top"
-                                  />
-                                </Column>
-                              </Grid>
-                            </Column>
-                            <Column>
-                              <Grid
-                                childWidth="1-1"
-                                className="uk-flex-middle uk-grid-row-small"
-                              >
-                                <Column>
-                                  <label className="uk-form-label">
-                                    Province
-                                  </label>
-                                </Column>
-                                <Column>
-                                  <RegionDropdown
-                                    valueType="short"
-                                    defaultOptionLabel="Select province"
-                                    classes="uk-select"
-                                    country={country}
-                                    value={region}
-                                    onChange={selectRegion}
-                                  />
-                                  <ErrorMessage
-                                    name="province"
-                                    errors={errors}
-                                    as="span"
-                                    className="uk-display-block uk-text-danger uk-margin-small-top"
-                                  />
-                                </Column>
-                              </Grid>
-                            </Column>
-                            {country === 'Philippines' ? (
-                              <Column>
-                                <Grid
-                                  childWidth="1-1"
-                                  className="uk-flex-middle uk-grid-row-small"
-                                >
-                                  <Column>
-                                    <label className="uk-form-label">
-                                      City/Municipality
-                                    </label>
-                                  </Column>
-                                  <Column>
-                                    <select
-                                      name="city"
-                                      className="uk-select"
-                                      ref={register({
-                                        required: {
-                                          value: true,
-                                          message:
-                                            'City/Municipality is required',
-                                        },
-                                      })}
-                                    >
-                                      <option value="">
-                                        Select city/municipality
-                                      </option>
-                                      {filter(
-                                        citiesMunicipalities,
-                                        (city) => city.province === regionCode
-                                      ).map((city, i) => (
-                                        <option key={i} value={city.fullName}>
-                                          {city.fullName}
-                                        </option>
-                                      ))}
-                                    </select>
-                                    <ErrorMessage
-                                      name="city"
-                                      errors={errors}
-                                      as="span"
-                                      className="uk-display-block uk-text-danger uk-margin-small-top"
-                                    />
-                                  </Column>
-                                </Grid>
-                              </Column>
-                            ) : null}
-                          </Grid>
-                        </Column>
-                        <Column>
-                          <Grid childWidth="1-1 expand@m">
-                            <Column>
-                              <Grid
-                                childWidth="1-1"
-                                className="uk-flex-middle uk-grid-row-small"
-                              >
-                                <Column>
-                                  <label className="uk-form-label">
-                                    Email address
-                                  </label>
-                                </Column>
-                                <Column>
-                                  <input
-                                    type="text"
-                                    name="emailAddress"
-                                    className="uk-input"
-                                    autoComplete="off"
-                                    ref={register({
-                                      required: {
-                                        value: true,
-                                        message: 'Email address is required',
-                                      },
-                                      pattern: {
-                                        value:
-                                          /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                        message: 'Invalid email address',
-                                      },
-                                    })}
-                                  />
-                                  <ErrorMessage
-                                    name="emailAddress"
-                                    errors={errors}
-                                    as="span"
-                                    className="uk-display-block uk-text-danger uk-margin-small-top"
-                                  />
-                                </Column>
-                              </Grid>
-                            </Column>
-                            <Column>
-                              <Grid
-                                childWidth="1-1"
-                                className="uk-flex-middle uk-grid-row-small"
-                              >
-                                <Column>
-                                  <label className="uk-form-label">
-                                    Contact number
-                                  </label>
-                                </Column>
-                                <Column>
-                                  <input
-                                    type="tel"
-                                    name="contactNumber"
-                                    className="uk-input"
-                                    autoComplete="off"
-                                    ref={register({
-                                      required: {
-                                        value: true,
-                                        message: 'Contact number is required',
-                                      },
-                                    })}
-                                  />
-                                  <ErrorMessage
-                                    name="contactNumber"
-                                    errors={errors}
-                                    as="span"
-                                    className="uk-display-block uk-text-danger uk-margin-small-top"
-                                  />
-                                </Column>
-                              </Grid>
-                            </Column>
-                            <Column>
-                              <Grid
-                                childWidth="1-1"
-                                className="uk-flex-middle uk-grid-row-small"
-                              >
-                                <Column>
-                                  <label className="uk-form-label">
-                                    Best time to contact
-                                  </label>
-                                </Column>
-                                <Column>
-                                  <DatePicker
-                                    className="uk-input"
-                                    selected={startDate}
-                                    onChange={(date) => {
-                                      const formatted = format(date, 'p');
-                                      setStartDate(date);
-                                      setValue('bestTimeToContact', formatted, {
-                                        shouldValidate: true,
-                                      });
-                                    }}
-                                    showTimeSelect
-                                    showTimeSelectOnly
-                                    timeIntervals={15}
-                                    timeCaption="Time"
-                                    dateFormat="h:mm aa"
-                                  />
-                                  <ErrorMessage
-                                    name="bestTimeToContact"
-                                    errors={errors}
-                                    as="span"
-                                    className="uk-display-block uk-text-danger uk-margin-small-top"
-                                  />
-                                </Column>
-                              </Grid>
-                            </Column>
-                          </Grid>
-                        </Column>
-                        <Column>
-                          <Grid
-                            childWidth="1-1"
-                            className="uk-flex-middle uk-grid-row-small"
-                          >
-                            <Column>
-                              <label className="uk-form-label">
-                                Additional message
-                              </label>
-                            </Column>
-                            <Column>
-                              <textarea
-                                name="additionalMessage"
-                                className="uk-textarea"
-                                rows={4}
-                                ref={register}
-                              ></textarea>
-                            </Column>
-                          </Grid>
-                        </Column>
-                        <Column>
-                          <Grid childWidth="expand" className="uk-flex-middle">
-                            <Column className="uk-flex uk-flex-column">
-                              <Recaptcha
-                                className="uk-width-1-1"
-                                sitekey="6LdHNMMUAAAAAD6VogsJyHQ8tFPpDb1egudacj7_"
-                                size="normal"
-                                verifyCallback={handleVerify}
-                                expiredCallback={handleExpiry}
-                                ref={(e) => (recaptchaInstance = e)}
-                              />
-                              <input
-                                type="hidden"
-                                name="captcha"
-                                ref={register({
-                                  required: {
-                                    value: true,
-                                    message: 'Captcha is required',
-                                  },
-                                })}
-                              />
-                              <ErrorMessage
-                                name="captcha"
-                                errors={errors}
-                                as="span"
-                                className="uk-display-block uk-text-danger uk-margin-small-top"
-                              />
-                            </Column>
-                          </Grid>
-                        </Column>
-                        {isSuccess ? (
-                          <Column>
-                            <div className="uk-alert-success" data-uk-alert="">
-                              <a
-                                className="uk-alert-close"
-                                data-uk-close=""
-                              ></a>
-                              <p>Your inquiry has been sent!</p>
-                            </div>
-                          </Column>
-                        ) : null}
-                        {isError ? (
-                          <Column>
-                            <div className="uk-alert-danger" data-uk-alert="">
-                              <a
-                                className="uk-alert-close"
-                                data-uk-close=""
-                              ></a>
-                              <p>
-                                Sending of inquiry failed. Please try again
-                                later.
-                              </p>
-                            </div>
-                          </Column>
-                        ) : null}
-                        <Column>
-                          <button
-                            disabled={isSending ? true : false}
-                            type="submit"
-                            className="uk-button uk-button-primary"
-                          >
-                            {isSending ? (
-                              <div
-                                className="uk-margin-small-right"
-                                data-uk-spinner=""
-                              ></div>
-                            ) : null}
-                            Send inquiry
-                          </button>
-                        </Column>
-                      </Grid>
-                    </form>
+                  <Column className="p-12 bg-white border-0 border-t-4 border-solid shadow-lg border-t-blue-500">
+                    <ActualContactForm />
                   </Column>
                 </Column>
               </Grid>
@@ -676,6 +53,508 @@ const ContactForm = () => {
         </Column>
       </Grid>
     </Section>
+  );
+};
+
+const ActualContactForm = () => {
+  const {
+    register,
+    unregister,
+    handleSubmit,
+    setValue,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      country: 'Philippines',
+      province: 'Metro Manila',
+    },
+  });
+
+  const purpose = watch('purpose');
+
+  const recaptcha = useRef(null);
+
+  const [country, setCountry] = useState('Philippines');
+  const [province, setProvince] = useState('00');
+  const [regionCode, setRegionCode] = useState(null);
+  const [currentDate, setCurrentDate] = useState(null);
+  const [isSending, setIsSending] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  const handleCountryChange = (value) => {
+    setCountry(value);
+    setProvince(null);
+    setValue('country', value, { shouldValidate: true });
+    setValue('province', null, { shouldValidate: true });
+  };
+
+  const handleProvinceChange = (value, e) => {
+    const fullValue = e.target.selectedOptions[0].innerText;
+    setProvince(value);
+    setValue('province', fullValue, { shouldValidate: true });
+    setValue('city', '', { shouldValidate: true });
+    if (country === 'Philippines') setRegionCode('PH-' + value);
+    else setRegionCode(null);
+  };
+
+  const handleVerify = (response) => {
+    setValue('captcha', response, { shouldValidate: true });
+  };
+
+  const handleExpiry = () => {
+    setValue('captcha', null, { shouldValidate: true });
+    recaptcha.current.reset();
+  };
+
+  const handleProductChange = (e) => {
+    const value = e.map(({ value }) => value);
+    setValue('products', value.length ? value : null, { shouldValidate: true });
+  };
+
+  const onSubmit = async (formData) => {
+    try {
+      setIsSending(true);
+      await sendContactForm(formData);
+      reset();
+      setCurrentDate(null);
+      // TODO: Fix resetting of `time_to_contact` field
+      setValue('time_to_contact', null);
+      recaptcha.current.reset();
+      setIsSending(false);
+      setIsSuccess(true);
+      setTimeout(() => setIsSuccess(false), 3000);
+    } catch (error) {
+      setIsSending(false);
+      setIsError(true);
+      setTimeout(() => setIsError(false), 3000);
+    }
+  };
+
+  useEffect(() => {
+    register('country', {
+      required: 'Country is required',
+    });
+    register('province', {
+      required: 'Province is required',
+    });
+    register('time_to_contact', {
+      required: 'Best time to contact is required',
+    });
+  }, []);
+
+  useEffect(() => {
+    if (purpose === 'Request clients list') unregister('products');
+    else
+      register('products', {
+        required: 'Product is required',
+      });
+  }, [purpose]);
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Grid childWidth="1-1">
+        <Column>
+          <Grid childWidth="1-1" className="uk-flex-middle uk-grid-row-small">
+            <Column>
+              <label className="uk-form-label">Purpose</label>
+            </Column>
+            <Column>
+              <Grid childWidth="auto">
+                {[
+                  {
+                    label: 'Request a demo',
+                    value: 'Request a demo',
+                  },
+                  {
+                    label: 'Request a quote',
+                    value: 'Request a quote',
+                  },
+                  {
+                    label: 'Request clients list',
+                    value: 'Request clients list',
+                  },
+                ].map((purpose, i) => (
+                  <label>
+                    <input
+                      key={i}
+                      {...register('purpose', {
+                        required: 'Purpose is required',
+                      })}
+                      type="radio"
+                      className="uk-radio uk-margin-small-right"
+                      value={purpose.value}
+                    />
+                    {purpose.label}
+                  </label>
+                ))}
+              </Grid>
+              <ErrorMessage
+                name="purpose"
+                errors={errors}
+                as="span"
+                className="uk-display-block uk-text-danger uk-margin-small-top"
+              />
+            </Column>
+          </Grid>
+        </Column>
+        {purpose !== 'Request clients list' && (
+          <Column>
+            <Grid childWidth="1-1" className="uk-flex-middle uk-grid-row-small">
+              <Column>
+                <label className="uk-form-label">Product(s)</label>
+              </Column>
+              <Column>
+                <Select
+                  onChange={handleProductChange}
+                  options={products}
+                  isMulti
+                />
+                <ErrorMessage
+                  name="products"
+                  errors={errors}
+                  as="span"
+                  className="uk-display-block uk-text-danger uk-margin-small-top"
+                />
+              </Column>
+            </Grid>
+          </Column>
+        )}
+        <Column>
+          <Grid childWidth="1-1 expand@m">
+            <Column>
+              <Grid
+                childWidth="1-1"
+                className="uk-flex-middle uk-grid-row-small"
+              >
+                <Column>
+                  <label className="uk-form-label">Company name</label>
+                </Column>
+                <Column>
+                  <input
+                    {...register('company_name', {
+                      required: 'Company name is required',
+                    })}
+                    type="text"
+                    className="uk-input"
+                    autoComplete="off"
+                  />
+                  <ErrorMessage
+                    name="company_name"
+                    errors={errors}
+                    as="span"
+                    className="uk-display-block uk-text-danger uk-margin-small-top"
+                  />
+                </Column>
+              </Grid>
+            </Column>
+            <Column>
+              <Grid
+                childWidth="1-1"
+                className="uk-flex-middle uk-grid-row-small"
+              >
+                <Column>
+                  <label className="uk-form-label">Contact person</label>
+                </Column>
+                <Column>
+                  <input
+                    {...register('contact_person', {
+                      required: 'Contact person is required',
+                    })}
+                    type="text"
+                    className="uk-input"
+                    autoComplete="off"
+                  />
+                  <ErrorMessage
+                    name="contact_person"
+                    errors={errors}
+                    as="span"
+                    className="uk-display-block uk-text-danger uk-margin-small-top"
+                  />
+                </Column>
+              </Grid>
+            </Column>
+          </Grid>
+        </Column>
+        <Column>
+          <Grid childWidth="1-1" className="uk-flex-middle uk-grid-row-small">
+            <Column>
+              <label className="uk-form-label">Company address</label>
+            </Column>
+            <Column>
+              <input
+                {...register('company_address', {
+                  required: 'Company address is required',
+                })}
+                type="text"
+                className="uk-input"
+                autoComplete="off"
+              />
+              <ErrorMessage
+                name="company_address"
+                errors={errors}
+                as="span"
+                className="uk-display-block uk-text-danger uk-margin-small-top"
+              />
+            </Column>
+          </Grid>
+        </Column>
+        <Column>
+          <Grid childWidth="1-1 expand@l">
+            <Column>
+              <Grid
+                childWidth="1-1"
+                className="uk-flex-middle uk-grid-row-small"
+              >
+                <Column>
+                  <label className="uk-form-label">Country</label>
+                </Column>
+                <Column>
+                  <CountryDropdown
+                    value={country}
+                    onChange={handleCountryChange}
+                    priorityOptions={['PH']}
+                    classes="uk-select"
+                  />
+                  <ErrorMessage
+                    name="country"
+                    errors={errors}
+                    as="span"
+                    className="uk-display-block uk-text-danger uk-margin-small-top"
+                  />
+                </Column>
+              </Grid>
+            </Column>
+            <Column>
+              <Grid
+                childWidth="1-1"
+                className="uk-flex-middle uk-grid-row-small"
+              >
+                <Column>
+                  <label className="uk-form-label">Province</label>
+                </Column>
+                <Column>
+                  <RegionDropdown
+                    country={country}
+                    value={province}
+                    onChange={handleProvinceChange}
+                    defaultOptionLabel="Select province"
+                    valueType="short"
+                    classes="uk-select"
+                  />
+                  <ErrorMessage
+                    name="province"
+                    errors={errors}
+                    as="span"
+                    className="uk-display-block uk-text-danger uk-margin-small-top"
+                  />
+                </Column>
+              </Grid>
+            </Column>
+            {country === 'Philippines' ? (
+              <Column>
+                <Grid
+                  childWidth="1-1"
+                  className="uk-flex-middle uk-grid-row-small"
+                >
+                  <Column>
+                    <label className="uk-form-label">City/Municipality</label>
+                  </Column>
+                  <Column>
+                    <select
+                      {...register('city', {
+                        required: 'City/Municipality is required',
+                      })}
+                      className="uk-select"
+                    >
+                      <option value="">Select city/municipality</option>
+                      {filter(
+                        citiesMunicipalities,
+                        (city) => city.province === regionCode
+                      ).map((city, i) => (
+                        <option key={i} value={city.fullName}>
+                          {city.fullName}
+                        </option>
+                      ))}
+                    </select>
+                    <ErrorMessage
+                      name="city"
+                      errors={errors}
+                      as="span"
+                      className="uk-display-block uk-text-danger uk-margin-small-top"
+                    />
+                  </Column>
+                </Grid>
+              </Column>
+            ) : null}
+          </Grid>
+        </Column>
+        <Column>
+          <Grid childWidth="1-1 expand@m">
+            <Column>
+              <Grid
+                childWidth="1-1"
+                className="uk-flex-middle uk-grid-row-small"
+              >
+                <Column>
+                  <label className="uk-form-label">Email address</label>
+                </Column>
+                <Column>
+                  <input
+                    {...register('email_address', {
+                      required: 'Email address is required',
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: 'Invalid email address',
+                      },
+                    })}
+                    type="text"
+                    className="uk-input"
+                    autoComplete="off"
+                  />
+                  <ErrorMessage
+                    name="email_address"
+                    errors={errors}
+                    as="span"
+                    className="uk-display-block uk-text-danger uk-margin-small-top"
+                  />
+                </Column>
+              </Grid>
+            </Column>
+            <Column>
+              <Grid
+                childWidth="1-1"
+                className="uk-flex-middle uk-grid-row-small"
+              >
+                <Column>
+                  <label className="uk-form-label">Contact number</label>
+                </Column>
+                <Column>
+                  <input
+                    {...register('contact_number', {
+                      required: 'Contact number is required',
+                    })}
+                    type="tel"
+                    className="uk-input"
+                    autoComplete="off"
+                  />
+                  <ErrorMessage
+                    name="contact_number"
+                    errors={errors}
+                    as="span"
+                    className="uk-display-block uk-text-danger uk-margin-small-top"
+                  />
+                </Column>
+              </Grid>
+            </Column>
+            <Column>
+              <Grid
+                childWidth="1-1"
+                className="uk-flex-middle uk-grid-row-small"
+              >
+                <Column>
+                  <label className="uk-form-label">Best time to contact</label>
+                </Column>
+                <Column>
+                  <DatePicker
+                    className="uk-input"
+                    selected={currentDate}
+                    onChange={(date) => {
+                      const formatted = format(date, 'p');
+                      setCurrentDate(date);
+                      setValue('time_to_contact', formatted, {
+                        shouldValidate: true,
+                      });
+                    }}
+                    showTimeSelect
+                    showTimeSelectOnly
+                    timeIntervals={15}
+                    timeCaption="Time"
+                    dateFormat="h:mm aa"
+                  />
+                  <ErrorMessage
+                    name="time_to_contact"
+                    errors={errors}
+                    as="span"
+                    className="uk-display-block uk-text-danger uk-margin-small-top"
+                  />
+                </Column>
+              </Grid>
+            </Column>
+          </Grid>
+        </Column>
+        <Column>
+          <Grid childWidth="1-1" className="uk-flex-middle uk-grid-row-small">
+            <Column>
+              <label className="uk-form-label">Additional message</label>
+            </Column>
+            <Column>
+              <textarea
+                {...register('additional_message')}
+                className="uk-textarea"
+                rows={4}
+              />
+            </Column>
+          </Grid>
+        </Column>
+        <Column>
+          <Grid childWidth="expand" className="uk-flex-middle">
+            <Column className="uk-flex uk-flex-column">
+              <Recaptcha
+                ref={recaptcha}
+                verifyCallback={handleVerify}
+                expiredCallback={handleExpiry}
+                sitekey="6LdHNMMUAAAAAD6VogsJyHQ8tFPpDb1egudacj7_"
+                size="normal"
+                className="uk-width-1-1"
+              />
+              <input
+                {...register('captcha', {
+                  required: 'Captcha is required',
+                })}
+                type="hidden"
+              />
+              <ErrorMessage
+                name="captcha"
+                errors={errors}
+                as="span"
+                className="uk-display-block uk-text-danger uk-margin-small-top"
+              />
+            </Column>
+          </Grid>
+        </Column>
+        {isSuccess ? (
+          <Column>
+            <div className="uk-alert-success" data-uk-alert="">
+              <a className="uk-alert-close" data-uk-close="" />
+              <p>Your inquiry has been sent!</p>
+            </div>
+          </Column>
+        ) : null}
+        {isError ? (
+          <Column>
+            <div className="uk-alert-danger" data-uk-alert="">
+              <a className="uk-alert-close" data-uk-close="" />
+              <p>Error sending contact form. Please try again later.</p>
+            </div>
+          </Column>
+        ) : null}
+        <Column>
+          <button
+            disabled={isSending ? true : false}
+            type="submit"
+            className="uk-button uk-button-primary"
+          >
+            {isSending ? (
+              <div className="uk-margin-small-right" data-uk-spinner=""></div>
+            ) : null}
+            Send inquiry
+          </button>
+        </Column>
+      </Grid>
+    </form>
   );
 };
 

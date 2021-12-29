@@ -4,6 +4,6 @@ import UIkit from 'uikit';
 
 import Comlogik from './Comlogik';
 
-import './index.scss';
+import './styles/index.scss';
 
 ReactDOM.render(<Comlogik />, document.getElementById('app'));

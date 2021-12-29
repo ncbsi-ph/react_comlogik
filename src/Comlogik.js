@@ -91,7 +91,7 @@ const Comlogik = () => {
   // };
 
   return (
-    <Router basename={isDev() ? process.env.DEV_ROUTER_BASENAME : ''}>
+    <Router>
       {/* <ReactModal
         isOpen={isOpen}
         ariaHideApp={false}
