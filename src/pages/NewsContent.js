@@ -1,50 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import { parse, format } from 'date-fns';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+
 import { Section, Grid } from '../components/Grid';
 import Breadcrumb from '../components/NewsContent/Breadcrumb';
 import Content from '../components/NewsContent/Content';
-import { apiUrl } from '../helpers/helpers';
+import { getNews } from '../api';
 
 const NewsContent = () => {
-  const { id } = useParams();
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [data, setData] = useState([]);
+  const { id, title_id } = useParams();
+
+  const [loading, setLoading] = useState(false);
+  const [news, setNews] = useState(null);
 
   useEffect(() => {
-    axios
-      .get(`${apiUrl()}news.php?id=${id}`)
-      .then((response) => {
-        const _data = [];
-        response.data.data.news.forEach((news) => {
-          _data.push(news);
-        });
-        const toRender = _data.map((news) => {
-          return (
-            <Content
-              key={news.id}
-              date={format(
-                parse(news.dateAdded, 'yyyy-MM-dd HH:mm:ss.SSS', new Date()),
-                'MMMM dd, yyyy'
-              )}
-              title={news.title}
-              image={news.image}
-              content={news.news}
-            />
-          );
-        });
-        setIsLoaded(true);
-        setData(toRender);
-      })
-      .catch((error) => {});
-  }, []);
+    const getData = async () => {
+      try {
+        setLoading(true);
+        const response = await getNews(id);
+        setLoading(false);
+        setNews(response.data.data);
+      } catch (error) {
+        setLoading(false);
+        // TODO: To the next dev, add proper error handling 😆
+        console.log('Error loading news');
+      }
+    };
+    getData();
+  }, [id]);
 
   return (
     <>
       <Breadcrumb />
       <Section>
-        <Grid className="uk-grid-medium">{isLoaded ? data : null}</Grid>
+        <Grid className="uk-grid-medium">
+          {news && (
+            <Content
+              date={format(
+                parse(news.date_added, 'yyyy-MM-dd HH:mm:ss.SSS', new Date()),
+                'MMMM dd, yyyy'
+              )}
+              title={news.title}
+              image={news.thumbnail}
+              content={news.news_content}
+            />
+          )}
+        </Grid>
       </Section>
     </>
   );

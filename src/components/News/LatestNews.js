@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { parse, format, compareAsc, compareDesc } from 'date-fns';
 
 import { Section, Grid, Column } from '../Grid';
 
-const NewsArticle = ({ link, date, image, title }) => {
+const NewsArticle = ({ id, title, titleURL, date, image }) => {
   return (
     <Column>
       <div className="uk-card-media-top uk-height-small">
@@ -16,15 +16,25 @@ const NewsArticle = ({ link, date, image, title }) => {
         />
       </div>
       <div className="uk-card-body uk-flex uk-flex-column gray-bg uk-padding">
-        <small className="uk-text-muted">
+        <div className="text-xs uppercase tracking-widest font-semibold text-gray-500">
           {format(
             parse(date, 'yyyy-MM-dd HH:mm:ss.SSS', new Date()),
             'MMM dd, yyyy'
-          ).toUpperCase()}
-        </small>
-        <h4 className="uk-margin-small-top">{title}</h4>
+          )}
+        </div>
+        <Link
+          to={`/news/${id}/${titleURL}`}
+          title={title}
+          className="mt-4 mb-6 text-gray-700 font-semibold text-xl hover:text-primary-500"
+        >
+          {title}
+        </Link>
+        <a></a>
         <div>
-          <Link to={`/news/${link}`} className="uk-button uk-button-primary">
+          <Link
+            to={`/news/${id}/${titleURL}`}
+            className="uk-button uk-button-primary"
+          >
             Read more
           </Link>
         </div>
@@ -33,56 +43,43 @@ const NewsArticle = ({ link, date, image, title }) => {
   );
 };
 
-const LatestNews = React.memo(({ data }) => {
+const LatestNews = ({ data = [] }) => {
   const [sort, setSort] = useState('desc');
-  let latestNews = null;
+  const [sorted, setSorted] = useState([]);
 
-  if (data.length > 0) {
-    latestNews = data
-      .sort((a, b) => {
-        if (sort === 'asc') {
-          return compareAsc(
-            parse(a.dateAdded, 'yyyy-MM-dd HH:mm:ss.SSS', new Date()),
-            parse(b.dateAdded, 'yyyy-MM-dd HH:mm:ss.SSS', new Date())
-          );
-        } else if (sort === 'desc') {
-          return compareDesc(
-            parse(a.dateAdded, 'yyyy-MM-dd HH:mm:ss.SSS', new Date()),
-            parse(b.dateAdded, 'yyyy-MM-dd HH:mm:ss.SSS', new Date())
-          );
-        }
-      })
-      .map((news) => {
-        return (
-          <li key={parseInt(news.id)}>
-            <NewsArticle
-              image={news.image}
-              title={news.title}
-              link={news.id}
-              date={news.dateAdded}
-            />
-          </li>
-        );
+  useEffect(() => {
+    if (data.length) {
+      const sorted = data.sort((a, b) => {
+        const dateFormat = 'yyyy-MM-dd HH:mm:ss.SSS';
+        const firstDate = parse(a.date_added, dateFormat, new Date());
+        const secondDate = parse(b.date_added, dateFormat, new Date());
+        if (sort === 'asc') return compareAsc(firstDate, secondDate);
+        else return compareDesc(firstDate, secondDate);
       });
-  }
+      setSorted([...sorted]);
+    }
+  }, [data, sort]);
 
-  const handleSortChange = (e) => {
-    setSort(e.target.value);
-  };
+  if (!data.length)
+    return (
+      <Section>
+        <div className="text-3xl">No news at the moment</div>
+      </Section>
+    );
 
   return (
     <Section>
       <Grid childWidth="1-1">
         <Column>
-          <h1>Latest news</h1>
+          <h1>All news</h1>
         </Column>
         <Column>
           <Grid childWidth="auto">
             <Column>
-              <label className="uk-form-label uk-text-bold">Order By</label>
+              <label className="uk-form-label uk-text-bold">Sort by</label>
               <select
                 value={sort}
-                onChange={handleSortChange}
+                onChange={(e) => setSort(e.target.value)}
                 className="uk-select uk-margin-small-top"
               >
                 <option value="desc">Newest first</option>
@@ -94,13 +91,25 @@ const LatestNews = React.memo(({ data }) => {
         <Column>
           <Grid childWidth="1-1 expand@m">
             <Column>
-              <Grid childWidth="1-1 1-2@m 1-3@l">{latestNews}</Grid>
+              <Grid childWidth="1-1 1-2@m 1-3@l">
+                {sorted.map((news) => (
+                  <li key={news.id}>
+                    <NewsArticle
+                      id={news.id}
+                      title={news.title}
+                      titleURL={news.title_id}
+                      image={news.thumbnail}
+                      date={news.date_added}
+                    />
+                  </li>
+                ))}
+              </Grid>
             </Column>
           </Grid>
         </Column>
       </Grid>
     </Section>
   );
-});
+};
 
 export default LatestNews;

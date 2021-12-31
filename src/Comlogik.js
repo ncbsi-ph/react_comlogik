@@ -4,7 +4,7 @@ import ReactModal from 'react-modal';
 import Loadable from 'react-loadable';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import CookieConsent from 'react-cookie-consent';
-import { Grid, Column } from './components/Grid';
+import { Grid, Column, Section } from './components/Grid';
 import Loading from './components/Loading';
 import Scroll from './components/Scroll';
 import Navbar from './components/Navbar';
@@ -91,7 +91,7 @@ const Comlogik = () => {
   // };
 
   return (
-    <Router>
+    <Router basename="/">
       {/* <ReactModal
         isOpen={isOpen}
         ariaHideApp={false}
@@ -266,7 +266,7 @@ const Comlogik = () => {
       <CookieConsent
         location="bottom"
         buttonText="I understand"
-        cookieName="ComlogikConsent"
+        cookieName="comlogik_cookie_consent"
         style={{ backgroundColor: '#394049' }}
         buttonClasses="uk-button uk-button-small uk-button-primary"
         buttonStyle={{
@@ -315,7 +315,7 @@ const Comlogik = () => {
         <Route exact path="/news">
           <News />
         </Route>
-        <Route exact path="/news/:id">
+        <Route exact path="/news/:id/:title_id?">
           <NewsContent />
         </Route>
       </Switch>

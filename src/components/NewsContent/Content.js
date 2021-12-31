@@ -1,4 +1,6 @@
 import React from 'react';
+import { sanitize } from 'dompurify';
+
 import { Column } from '../Grid';
 
 const Content = ({ date, title, image, content }) => {
@@ -11,8 +13,8 @@ const Content = ({ date, title, image, content }) => {
           <img src={image} />
         </div>
         <div
-          style={{ whiteSpace: 'pre-line' }}
-          dangerouslySetInnerHTML={{ __html: content }}
+          className="prose max-w-none"
+          dangerouslySetInnerHTML={{ __html: sanitize(content) }}
         />
       </div>
     </Column>

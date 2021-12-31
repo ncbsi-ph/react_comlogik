@@ -170,9 +170,7 @@ h5 {
 }
 
 .meta {
-  font-weight: bold;
-  color: #808a97 !important;
-  letter-spacing: 0.155em;
+  @apply tracking-widest font-semibold text-gray-500 text-sm;
 }
 
 .cloud-1 {
