@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import Recaptcha from 'react-recaptcha';
 import DatePicker from 'react-datepicker';
@@ -59,11 +59,11 @@ const ContactForm = () => {
 const ActualContactForm = () => {
   const {
     register,
-    unregister,
     handleSubmit,
     setValue,
     watch,
     reset,
+    control,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -79,7 +79,6 @@ const ActualContactForm = () => {
   const [country, setCountry] = useState('Philippines');
   const [province, setProvince] = useState('00');
   const [regionCode, setRegionCode] = useState(null);
-  const [currentDate, setCurrentDate] = useState(null);
   const [isSending, setIsSending] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -109,19 +108,16 @@ const ActualContactForm = () => {
     recaptcha.current.reset();
   };
 
-  const handleProductChange = (e) => {
-    const value = e.map(({ value }) => value);
-    setValue('products', value.length ? value : null, { shouldValidate: true });
-  };
-
   const onSubmit = async (formData) => {
     try {
       setIsSending(true);
-      await sendContactForm(formData);
+      const actualFormData = {
+        ...formData,
+        products: formData.products.map(({ value }) => value),
+        time_to_contact: format(formData.time_to_contact, 'p'),
+      };
+      await sendContactForm(actualFormData);
       reset();
-      setCurrentDate(null);
-      // TODO: Fix resetting of `time_to_contact` field
-      setValue('time_to_contact', null);
       recaptcha.current.reset();
       setIsSending(false);
       setIsSuccess(true);
@@ -140,18 +136,7 @@ const ActualContactForm = () => {
     register('province', {
       required: 'Province is required',
     });
-    register('time_to_contact', {
-      required: 'Best time to contact is required',
-    });
   }, []);
-
-  useEffect(() => {
-    if (purpose === 'Request clients list') unregister('products');
-    else
-      register('products', {
-        required: 'Product is required',
-      });
-  }, [purpose]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -177,9 +162,8 @@ const ActualContactForm = () => {
                     value: 'Request clients list',
                   },
                 ].map((purpose, i) => (
-                  <label>
+                  <label key={i}>
                     <input
-                      key={i}
                       {...register('purpose', {
                         required: 'Purpose is required',
                       })}
@@ -207,10 +191,19 @@ const ActualContactForm = () => {
                 <label className="uk-form-label">Product(s)</label>
               </Column>
               <Column>
-                <Select
-                  onChange={handleProductChange}
-                  options={products}
-                  isMulti
+                <Controller
+                  control={control}
+                  name="products"
+                  defaultValue={[]}
+                  rules={{ required: 'Product(s) is required' }}
+                  render={({ field: { value, onChange } }) => (
+                    <Select
+                      onChange={(newValue) => onChange(newValue)}
+                      options={products}
+                      value={value}
+                      isMulti
+                    />
+                  )}
                 />
                 <ErrorMessage
                   name="products"
@@ -458,21 +451,22 @@ const ActualContactForm = () => {
                   <label className="uk-form-label">Best time to contact</label>
                 </Column>
                 <Column>
-                  <DatePicker
-                    className="uk-input"
-                    selected={currentDate}
-                    onChange={(date) => {
-                      const formatted = format(date, 'p');
-                      setCurrentDate(date);
-                      setValue('time_to_contact', formatted, {
-                        shouldValidate: true,
-                      });
-                    }}
-                    showTimeSelect
-                    showTimeSelectOnly
-                    timeIntervals={15}
-                    timeCaption="Time"
-                    dateFormat="h:mm aa"
+                  <Controller
+                    control={control}
+                    name="time_to_contact"
+                    rules={{ required: 'Best time to contact is required' }}
+                    render={({ field: { value, onChange } }) => (
+                      <DatePicker
+                        className="uk-input"
+                        selected={value}
+                        onChange={(date) => onChange(date)}
+                        showTimeSelect
+                        showTimeSelectOnly
+                        timeIntervals={15}
+                        timeCaption="Time"
+                        dateFormat="h:mm aa"
+                      />
+                    )}
                   />
                   <ErrorMessage
                     name="time_to_contact"
@@ -545,7 +539,7 @@ const ActualContactForm = () => {
           <button
             disabled={isSending ? true : false}
             type="submit"
-            className="uk-button uk-button-primary"
+            className="border-0 uk-button uk-button-primary"
           >
             {isSending ? (
               <div className="uk-margin-small-right" data-uk-spinner=""></div>

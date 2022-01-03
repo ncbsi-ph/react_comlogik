@@ -33,7 +33,7 @@ const NewsContent = () => {
     <>
       <Breadcrumb />
       <Section>
-        <Grid className="uk-grid-medium">
+        <Grid childWidth="1-1" className="uk-grid-medium">
           {news && (
             <Content
               date={format(

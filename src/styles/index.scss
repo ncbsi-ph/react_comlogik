@@ -18,6 +18,7 @@ $list-margin-top: 1.25rem;
 $offcanvas-bar-background: white;
 $offcanvas-overlay-background: rgba(#212529, 0.5);
 $form-padding-horizontal: 14px;
+$form-focus-background: white;
 
 // 2. Import default variables and available mixins.
 @import '~uikit/src/scss/variables.scss';
@@ -622,4 +623,8 @@ h5 {
 .react-datepicker-wrapper,
 .react-datepicker__input-container {
   display: block !important;
+}
+
+em {
+  color: inherit;
 }

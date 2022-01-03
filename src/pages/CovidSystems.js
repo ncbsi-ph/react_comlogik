@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CommonHeader from '../components/CommonHeader';
-import { Section, Grid, Column } from '../components/Grid';
+import { Section } from '../components/Grid';
 
 const CovidSystems = () => {
   return (

@@ -15,6 +15,7 @@ const News = () => {
       try {
         const response = await getNews();
         const news = response.data.data;
+        // TODO: Sort breaking news by latest
         setBreakingNews(news.filter((value) => value.is_breaking_news));
         setLatestNews(news);
       } catch (error) {

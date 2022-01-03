@@ -16,7 +16,7 @@ const NewsArticle = ({ id, title, titleURL, date, image }) => {
         />
       </div>
       <div className="uk-card-body uk-flex uk-flex-column gray-bg uk-padding">
-        <div className="text-xs uppercase tracking-widest font-semibold text-gray-500">
+        <div className="text-xs font-semibold tracking-widest text-gray-500 uppercase">
           {format(
             parse(date, 'yyyy-MM-dd HH:mm:ss.SSS', new Date()),
             'MMM dd, yyyy'
@@ -25,11 +25,10 @@ const NewsArticle = ({ id, title, titleURL, date, image }) => {
         <Link
           to={`/news/${id}/${titleURL}`}
           title={title}
-          className="mt-4 mb-6 text-gray-700 font-semibold text-xl hover:text-primary-500"
+          className="mt-4 mb-6 text-xl font-semibold text-gray-700 no-underline hover:text-primary-500"
         >
           {title}
         </Link>
-        <a></a>
         <div>
           <Link
             to={`/news/${id}/${titleURL}`}

@@ -1,71 +1,171 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import ReactModal from 'react-modal';
 import { useForm } from 'react-hook-form';
 import { Icon } from '@iconify/react';
 import frown from '@iconify/icons-feather/frown';
-import { Section, Grid, Column } from '../Grid';
-import { apiUrl, postApiUrl } from '../../helpers/helpers';
 
-const Job = ({ title, experience, description, requirements, slots, tags }) => {
-  const [isOpen, setIsOpen] = useState(false);
+import { Section, Grid, Column } from '../Grid';
+import { getCareers, sendCareerApplication } from '../../api';
+
+const isPDF = (value) => {
+  const type = value[0].type;
+  return type === 'application/pdf';
+};
+
+const toBase64 = (file) =>
+  new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      resolve(btoa(reader.result));
+    };
+    reader.readAsBinaryString(file);
+  });
+
+const ApplicationForm = ({ title }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
   const [isSending, setIsSending] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
-  const { register, handleSubmit, errors } = useForm();
 
-  const isPDF = (value) => {
-    const type = value[0].type;
-    if (type === 'application/pdf') return true;
-    else return false;
-  };
-
-  const toBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        resolve(reader.result);
+  const onSubmit = async (formData) => {
+    console.log(formData);
+    try {
+      setIsSending(true);
+      const attachment = await toBase64(formData.attachment[0]);
+      const actualData = {
+        ...formData,
+        title,
+        attachment,
       };
-      reader.readAsDataURL(file);
-    });
+      await sendCareerApplication(actualData);
+      reset();
+      setIsSending(false);
+      setIsSuccess(true);
+      setTimeout(() => setIsSuccess(false), 3000);
+    } catch (error) {
+      setIsSending(false);
+      setIsError(true);
+      setTimeout(() => setIsError(false), 3000);
+    }
   };
+
+  return (
+    <Grid className="uk-grid-row-small" childWidth="1-1">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Column>
+          <h3>Apply for this job</h3>
+        </Column>
+        <Column>
+          <div className="uk-flex uk-flex-column">
+            <label className="uk-margin-small-bottom" htmlFor="full_name">
+              Full name
+            </label>
+            <input
+              {...register('full_name', { required: 'This field is required' })}
+              id="full_name"
+              className="uk-input"
+            />
+            {errors.full_name && (
+              <span className="uk-display-block uk-text-danger uk-margin-small-top">
+                {errors.full_name.message}
+              </span>
+            )}
+          </div>
+        </Column>
+        <Column className="uk-margin-top">
+          <div className="uk-flex uk-flex-column">
+            <label className="uk-margin-small-bottom" htmlFor="email_address">
+              Email address
+            </label>
+            <input
+              {...register('email_address', {
+                required: 'This field is required',
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                  message: 'Please enter a valid email address',
+                },
+              })}
+              id="email_address"
+              className="uk-input"
+            />
+            {errors.email_address && (
+              <span className="uk-display-block uk-text-danger uk-margin-small-top">
+                {errors.email_address.message}
+              </span>
+            )}
+          </div>
+        </Column>
+        <Column className="uk-margin-top">
+          <div className="uk-flex uk-flex-column">
+            <label className="uk-margin-small-bottom" htmlFor="attachment">
+              Resume/CV
+            </label>
+            <div data-uk-form-custom="target: true">
+              <input
+                {...register('attachment', {
+                  required: 'This field is required',
+                  validate: {
+                    isPDF: (value) =>
+                      isPDF(value) || 'Please attach PDF files only',
+                  },
+                })}
+                id="attachment"
+                type="file"
+                accept="application/pdf"
+              />
+              <input className="uk-input" placeholder="Select file" readOnly />
+            </div>
+          </div>
+          {errors.attachment && (
+            <span className="uk-display-block uk-text-danger uk-margin-small-top">
+              {errors.attachment.message}
+            </span>
+          )}
+        </Column>
+        {isSuccess ? (
+          <Column className="uk-margin-top">
+            <div className="uk-alert-success" data-uk-alert="">
+              <a className="uk-alert-close" data-uk-close=""></a>
+              <p>Your application has been sent!</p>
+            </div>
+          </Column>
+        ) : null}
+        {isError ? (
+          <Column className="uk-margin-top">
+            <div className="uk-alert-danger" data-uk-alert="">
+              <a className="uk-alert-close" data-uk-close=""></a>
+              <p>Sending of application failed. Please try again later.</p>
+            </div>
+          </Column>
+        ) : null}
+        <Column>
+          <button
+            type="submit"
+            className="border-none uk-button uk-button-primary uk-margin-top"
+            disabled={isSending}
+          >
+            {isSending && (
+              <div className="uk-margin-small-right" data-uk-spinner="" />
+            )}
+            Submit application
+          </button>
+        </Column>
+      </form>
+    </Grid>
+  );
+};
+
+const Job = ({ title, experience, description, requirements, slots, tags }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleModal = () => {
-    if (isOpen) setIsOpen(false);
-    else if (!isOpen) setIsOpen(true);
-  };
-
-  const onSubmit = (data, e) => {
-    toBase64(data.attachment[0]).then((value) => {
-      setIsSending(true);
-      const _data = {
-        fullName: data.fullName,
-        emailAddress: data.emailAddress,
-        attachment: value,
-        job: title,
-      };
-      axios
-        .post(`${postApiUrl()}application.php`, JSON.stringify(_data), {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-        .then((response) => {
-          e.target.reset();
-          setIsSending(false);
-          setIsSuccess(true);
-          setTimeout(() => {
-            setIsSuccess(false);
-          }, 3000);
-        })
-        .catch((error) => {
-          setIsSending(false);
-          setIsError(true);
-          setTimeout(() => {
-            setIsError(false);
-          }, 3000);
-        });
-    });
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -108,205 +208,87 @@ const Job = ({ title, experience, description, requirements, slots, tags }) => {
       >
         <Grid childWidth="1-1" className="uk-grid-row-small">
           <Column className="uk-flex uk-flex-right">
-            <button
-              type="button"
-              data-uk-close=""
-              onClick={handleModal}
-            ></button>
+            <button type="button" data-uk-close="" onClick={handleModal} />
           </Column>
           <Column>
-            <h2 className="text-black">
+            <h2 className="text-gray-700">
               {title}
-              <span
-                style={{ fontSize: '12px', padding: '12px' }}
-                className="uk-badge uk-background-secondary uk-margin-small-left"
-              >
+              <span className="p-3 text-xs font-normal tracking-wide uk-badge uk-background-secondary uk-margin-small-left">
                 {slots > 1 ? `${slots} slots` : `${slots} slot`}
               </span>
             </h2>
           </Column>
           <Column>
-            <span className="uk-text-muted">
-              {experience} year/s of experience
-            </span>
+            <span className="text-gray-500">Experience: {experience}</span>
           </Column>
-          <Column>
-            <Grid childWidth="auto" className="uk-grid-small">
-              {tags.map((tag, i) => (
-                <div key={i}>
-                  <div
-                    style={{ fontSize: '12px', padding: '12px' }}
-                    className="uk-badge"
-                  >
-                    {tag}
+          {!!tags.length && (
+            <Column>
+              <div className="flex flex-wrap gap-3">
+                {tags.map((tag, i) => (
+                  <div key={i}>
+                    <div className="p-1 text-xs font-semibold bg-transparent border border-solid rounded text-primary-500 border-primary-500">
+                      {tag}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </Grid>
+                ))}
+              </div>
+            </Column>
+          )}
+          <Column className="mt-8">
+            <div className="mb-2 font-semibold text-gray-700">Description</div>
+            <p
+              className="m-0 !prose max-w-none"
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
           </Column>
-          <Column>
-            <h5>Description</h5>
-            <p dangerouslySetInnerHTML={{ __html: description }}></p>
-          </Column>
-          <Column>
-            <h5>Requirements</h5>
-            <p dangerouslySetInnerHTML={{ __html: requirements }}></p>
-          </Column>
-          <Column>
+          {requirements && (
+            <Column className="mt-8">
+              <div className="mb-2 font-semibold text-gray-700">
+                Requirements
+              </div>
+              <p
+                className="m-0 !prose max-w-none"
+                dangerouslySetInnerHTML={{ __html: requirements }}
+              />
+            </Column>
+          )}
+          <Column className="mt-8">
             <div className="gradient-bg-light uk-padding">
-              <Grid className="uk-grid-row-small" childWidth="1-1">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <Column>
-                    <h3>Apply for this job</h3>
-                  </Column>
-                  <Column>
-                    <div className="uk-flex uk-flex-column">
-                      <label
-                        className="uk-margin-small-bottom"
-                        htmlFor="fullName"
-                      >
-                        Full name
-                      </label>
-                      <input
-                        name="fullName"
-                        id="fullName"
-                        className="uk-input"
-                        ref={register({ required: true })}
-                      />
-                      {errors.fullName && (
-                        <span className="uk-display-block uk-text-danger uk-margin-small-top">
-                          Full name is required
-                        </span>
-                      )}
-                    </div>
-                  </Column>
-                  <Column className="uk-margin-top">
-                    <div className="uk-flex uk-flex-column">
-                      <label
-                        className="uk-margin-small-bottom"
-                        htmlFor="emailAddress"
-                      >
-                        Email address
-                      </label>
-                      <input
-                        type="text"
-                        name="emailAddress"
-                        id="emailAddress"
-                        className="uk-input"
-                        ref={register({
-                          required: true,
-                          pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                        })}
-                      />
-                      {errors.emailAddress?.type === 'required' && (
-                        <span className="uk-display-block uk-text-danger uk-margin-small-top">
-                          Email address is required
-                        </span>
-                      )}
-                      {errors.emailAddress?.type === 'pattern' && (
-                        <span className="uk-display-block uk-text-danger uk-margin-small-top">
-                          Please enter a valid email address
-                        </span>
-                      )}
-                    </div>
-                  </Column>
-                  <Column className="uk-margin-top">
-                    <div className="uk-flex uk-flex-column">
-                      <label
-                        className="uk-margin-small-bottom"
-                        htmlFor="attachment"
-                      >
-                        Resume / CV
-                      </label>
-                      <div data-uk-form-custom="target: true">
-                        <input
-                          type="file"
-                          name="attachment"
-                          id="attachment"
-                          ref={register({ required: true, validate: isPDF })}
-                          accept="application/pdf"
-                        />
-                        <input
-                          className="uk-input"
-                          placeholder="Select file"
-                          readOnly
-                        />
-                      </div>
-                    </div>
-                    {errors.attachment &&
-                      errors.attachment.type === 'required' && (
-                        <span className="uk-display-block uk-text-danger uk-margin-small-top">
-                          Please attach your resume/CV
-                        </span>
-                      )}
-                    {errors.attachment &&
-                      errors.attachment.type === 'validate' && (
-                        <span className="uk-display-block uk-text-danger uk-margin-small-top">
-                          Please attach PDF files only
-                        </span>
-                      )}
-                  </Column>
-                  {isSuccess ? (
-                    <Column className="uk-margin-top">
-                      <div className="uk-alert-success" data-uk-alert="">
-                        <a className="uk-alert-close" data-uk-close=""></a>
-                        <p>Your application has been sent!</p>
-                      </div>
-                    </Column>
-                  ) : null}
-                  {isError ? (
-                    <Column className="uk-margin-top">
-                      <div className="uk-alert-danger" data-uk-alert="">
-                        <a className="uk-alert-close" data-uk-close=""></a>
-                        <p>
-                          Sending of application failed. Please try again later.
-                        </p>
-                      </div>
-                    </Column>
-                  ) : null}
-                  <Column>
-                    <button
-                      className="uk-button uk-button-primary uk-margin-top"
-                      type="submit"
-                      disabled={isSending ? true : false}
-                    >
-                      {isSending ? (
-                        <div
-                          className="uk-margin-small-right"
-                          data-uk-spinner=""
-                        ></div>
-                      ) : null}
-                      Submit application
-                    </button>
-                  </Column>
-                </form>
-              </Grid>
+              <ApplicationForm title={title} />
             </div>
           </Column>
         </Grid>
       </ReactModal>
-      <Column className="uk-card uk-card-default uk-card-body">
+      <Column className="bg-gray-100 border border-gray-200 shadow uk-card uk-card-body">
         <Grid childWidth="1-1" className="uk-grid-row-small">
           <Column>
-            <h3 className="text-black">
+            <h3 className="text-gray-700">
               {title}
-              <span
-                style={{ fontSize: '12px', padding: '12px' }}
-                className="uk-badge uk-background-secondary uk-margin-small-left"
-              >
+              <span className="p-3 text-xs font-normal tracking-wide uk-badge uk-background-secondary uk-margin-small-left">
                 {slots > 1 ? `${slots} slots` : `${slots} slot`}
               </span>
             </h3>
           </Column>
           <Column>
-            <span className="uk-text-muted">
-              {experience} year/s of experience
-            </span>
+            <span className="text-gray-500">Experience: {experience}</span>
           </Column>
-          <Column>
+          {!!tags.length && (
+            <Column>
+              <div className="flex flex-wrap gap-3">
+                {tags.map((tag, i) => (
+                  <div key={i}>
+                    <div className="p-1 text-xs font-semibold bg-transparent border border-solid rounded text-primary-500 border-primary-500">
+                      {tag}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Column>
+          )}
+          <Column className="mt-8">
             <button
               onClick={handleModal}
-              className="uk-button uk-button-primary"
+              className="border-0 uk-button uk-button-primary"
             >
               View details
             </button>
@@ -321,16 +303,17 @@ const Jobs = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${apiUrl()}careers.php`)
-      .then((response) => {
-        const _data = [];
-        response.data.data.careers.forEach((career) => {
-          _data.push(career);
-        });
-        setData(_data);
-      })
-      .catch((error) => {});
+    const getData = async () => {
+      try {
+        const response = await getCareers();
+        const data = response.data.data;
+        setData(data);
+      } catch (error) {
+        // TODO: To the next dev, add proper error handling 😆
+        console.log('Failed to load careers');
+      }
+    };
+    getData();
   }, []);
 
   return (
@@ -340,8 +323,8 @@ const Jobs = () => {
           <h2 className="uk-margin-remove">Available jobs</h2>
         </Column>
         <Column>
-          <Grid childWidth="1-3">
-            {data.length > 0 ? (
+          <Grid childWidth="1-1 1-2@s 1-3@m">
+            {data.length ? (
               data.map((career) => {
                 return (
                   <Column key={career.id}>

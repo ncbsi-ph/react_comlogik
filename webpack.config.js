@@ -63,6 +63,7 @@ const dependencyName = 'deps';
 // * Add more groups as needed
 const groups = {
   react: ['react', 'react-dom'],
+  uikit: ['uikit'],
 };
 
 const plugins = () =>

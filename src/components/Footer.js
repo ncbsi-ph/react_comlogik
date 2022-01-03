@@ -143,6 +143,16 @@ const Solutions = () => {
               WorkForce
             </Link>
           </li>
+          <li>
+            <Link to="/solutions" className="link">
+              InstaP Survey
+            </Link>
+          </li>
+          <li>
+            <Link to="/solutions" className="link">
+              eHealth Tracker
+            </Link>
+          </li>
         </ul>
       </Column>
     </Grid>
@@ -155,7 +165,7 @@ const Footer = () => {
       <Section removePadding="top" className="footer-bg">
         <Grid childWidth="1-1">
           <Column className="uk-margin-large-top uk-text-center">
-            <Link to="/" className="uk-logo">
+            <Link to="/">
               <img src="static/logo.png" className="logo" />
             </Link>
           </Column>
@@ -176,7 +186,7 @@ const Footer = () => {
       </Section>
       <div>
         <h6 className="uk-text-center uk-margin-top">
-          COPYRIGHT © 2021, COMLOGIK BUSINESS SYSTEMS INC.
+          COPYRIGHT © 2020 - 2022, COMLOGIK BUSINESS SYSTEMS INC.
         </h6>
       </div>
     </footer>

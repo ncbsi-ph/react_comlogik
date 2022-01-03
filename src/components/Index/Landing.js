@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import TextTransition, { presets } from 'react-text-transition';
+
 import { Section, Grid, Column } from '../Grid';
 
 const text = ['Request a demo', 'Request a brochure', 'Request a quote'];
@@ -9,7 +10,11 @@ const Landing = () => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    setInterval(() => setIndex((index) => index + 1), 3000);
+    const interval = setInterval(() => setIndex((index) => index + 1), 3000);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   return (

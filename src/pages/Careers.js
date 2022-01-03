@@ -16,11 +16,11 @@ const Careers = () => {
         heading="Build your career with us"
         sentence="Bonded by our mission and propelled by our innovative spirit, our work at Comlogik is collaborative, transformative, and above all, it’s meaningful. Our employees take pride in using technology and data-driven insights to inspire changes that will make the Philippine healthcare system better for everyone that may have an effect with your friends, family or even you."
       />
+      <Jobs />
       <Benefits />
-      <Section container={false} className="uk-padding-remove-top">
+      <Section container={false} className="py-0">
         <WorkPhotos />
       </Section>
-      <Jobs />
       <CTA />
     </>
   );

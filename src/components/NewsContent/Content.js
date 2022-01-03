@@ -13,7 +13,7 @@ const Content = ({ date, title, image, content }) => {
           <img src={image} />
         </div>
         <div
-          className="prose max-w-none"
+          className="max-w-full prose break-words"
           dangerouslySetInnerHTML={{ __html: sanitize(content) }}
         />
       </div>

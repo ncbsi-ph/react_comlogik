@@ -53,11 +53,13 @@ const HIMSModal = () => {
         <img src="static/hims_modal.jpg" />
         <div className="uk-padding">
           <div className="uk-flex uk-flex-column">
-            <h3>Smarter applications in response to COVID-19</h3>
+            <h3 className="text-gray-700">
+              Smarter applications in response to COVID-19
+            </h3>
             <div>
               <Link
                 to="/contact-us"
-                className="uk-button uk-button-primary"
+                className="border-0 uk-button uk-button-primary"
                 onClick={() => setIsOpen(false)}
               >
                 Learn more
@@ -73,13 +75,16 @@ const HIMSModal = () => {
         <img src="static/hims_modal.jpg" />
         <div style={{ position: 'absolute', top: '50%', left: 50 }}>
           <div className="uk-flex uk-flex-column">
-            <h2 className="uk-text-emphasis" style={{ width: '60%' }}>
+            <h2
+              className="text-gray-900 uk-text-emphasis"
+              style={{ width: '60%' }}
+            >
               Smarter applications in response to COVID-19
             </h2>
             <div>
               <Link
                 to="/contact-us"
-                className="uk-button uk-button-primary"
+                className="border-0 uk-button uk-button-primary"
                 onClick={() => setIsOpen(false)}
               >
                 Learn more
