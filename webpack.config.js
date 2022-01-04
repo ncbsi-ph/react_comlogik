@@ -8,12 +8,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+let ReactRefreshWebpackPlugin = null;
 
 // * DOTENV is specified in package.json scripts
 if (process.env.DOTENV === 'true') require('dotenv').config();
 
 const { NODE_ENV, TITLE, PORT } = process.env;
+
+if (NODE_ENV === 'development')
+  ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const isProduction = NODE_ENV === 'production';
 
