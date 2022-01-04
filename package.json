@@ -2,19 +2,19 @@
   "name": "react_comlogik",
   "version": "1.0.0",
   "description": "Comlogik's new website made in React.",
+  "author": "cysmix12",
   "main": "index.js",
   "scripts": {
     "dev": "set NODE_ENV=development&& set DOTENV=true&& webpack serve",
     "build:local": "set NODE_ENV=production&& set DOTENV=true&& webpack --profile --json > stats.json",
     "build:analyze": "webpack-bundle-analyzer ./stats.json ./dist",
-    "build:serve": "http-server ./dist -p 8080 -P http://localhost:8080? -o",
+    "build:serve": "http-server ./dist -p 8080 -P http://localhost:8080? -o -c-1",
     "build:jamstack": "webpack"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cysmix12/react_comlogik.git"
   },
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/cysmix12/react_comlogik/issues"

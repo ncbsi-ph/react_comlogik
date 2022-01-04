@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactModal from 'react-modal';
 import { useForm } from 'react-hook-form';
+import { sanitize } from 'dompurify';
 import { Icon } from '@iconify/react';
 import frown from '@iconify/icons-feather/frown';
 
@@ -34,7 +35,6 @@ const ApplicationForm = ({ title }) => {
   const [isError, setIsError] = useState(false);
 
   const onSubmit = async (formData) => {
-    console.log(formData);
     try {
       setIsSending(true);
       const attachment = await toBase64(formData.attachment[0]);
@@ -237,8 +237,8 @@ const Job = ({ title, experience, description, requirements, slots, tags }) => {
           <Column className="mt-8">
             <div className="mb-2 font-semibold text-gray-700">Description</div>
             <p
-              className="m-0 !prose max-w-none"
-              dangerouslySetInnerHTML={{ __html: description }}
+              className="m-0 prose max-w-none"
+              dangerouslySetInnerHTML={{ __html: sanitize(description) }}
             />
           </Column>
           {requirements && (
@@ -247,8 +247,8 @@ const Job = ({ title, experience, description, requirements, slots, tags }) => {
                 Requirements
               </div>
               <p
-                className="m-0 !prose max-w-none"
-                dangerouslySetInnerHTML={{ __html: requirements }}
+                className="m-0 prose max-w-none"
+                dangerouslySetInnerHTML={{ __html: sanitize(requirements) }}
               />
             </Column>
           )}

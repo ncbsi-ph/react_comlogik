@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import ReactModal from 'react-modal';
+import React from 'react';
 import Loadable from 'react-loadable';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import CookieConsent from 'react-cookie-consent';
-import { Grid, Column, Section } from './components/Grid';
+
 import Loading from './components/Loading';
 import Scroll from './components/Scroll';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HIMSModal from './components/HIMSModal';
-import { isDev, apiUrl } from './helpers/helpers';
+import { isDev } from './helpers/helpers';
 
 const Index = Loadable({
   loader: () => import('./pages/Index'),
@@ -73,254 +71,70 @@ const ProductContent = Loadable({
 });
 
 const Comlogik = () => {
-  // const [isOpen, setIsOpen] = useState(true);
-  // const [data, setData] = useState([]);
-
-  // useEffect(() => {
-  //   axios
-  //     .get(`${apiUrl()}news`)
-  //     .then((response) => {
-  //       const data = response.data.data;
-  //       setData(data.news);
-  //     })
-  //     .catch((error) => {});
-  // }, []);
-
-  // const handleClose = () => {
-  //   setIsOpen(false);
-  // };
-
   return (
-    <Router basename="/">
-      {/* <ReactModal
-        isOpen={isOpen}
-        ariaHideApp={false}
-        onRequestClose={handleClose}
-        shouldCloseOnEsc
-        shouldCloseOnOverlayClick
-        className="uk-margin-auto-vertical uk-box-shadow-medium"
-        style={{
-          overlay: {
-            padding: '50px 30px',
-            display: 'flex',
-            alignItems: 'flex-start',
-            backgroundColor: 'rgba(0,0,0,0.6)',
-            zIndex: 1000,
-            overflowY: 'auto',
-          },
-          content: {
-            borderRadius: '4px',
-            backgroundColor: 'white',
-            outline: 0,
-            overflowY: 'auto',
-            transform: 'translateY(0)',
-            boxSizing: 'border-box',
-            top: '0',
-            bottom: '0',
-            left: '0',
-            right: '0',
-            marginTop: 'auto',
-            marginBottom: 'auto',
-            margin: '0 auto',
-            position: 'relative',
-            width: '1000px',
-            maxWidth: 'calc(100% - 0.01px)',
-          },
-        }}
-      >
-        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-          <img src="static/hims_modal.jpg" />
-          <div style={{ position: 'absolute', top: '50%', left: 50 }}>
-            <div className="uk-flex uk-flex-column">
-              <h2>Smarter applications in response to Covid-19</h2>
-              <div>
-                <Link to="/contact-us" className="uk-button uk-button-primary">
-                  Learn more
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div> */}
-      {/* <Grid childWidth="1-1">
-          <Column>
-            <img src="static/hims_modal.jpg" />
-          </Column> */}
-      {/* <Column className="uk-flex uk-flex-right">
-            <button type="button" data-uk-close="" onClick={handleClose} />
-          </Column>
-          <Column>
-            <div
-              className="uk-position-relative"
-              tabIndex="-1"
-              data-uk-slider=""
-            >
-              <ul
-                className="uk-slider-items uk-child-width-1-1 uk-visible-toggle uk-light"
-                data-uk-grid=""
-              >
-                <li>
-                  <Grid childWidth="1-1">
-                    <Column>
-                      <div
-                        className="flex p-10"
-                        style={{
-                          backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0.52), rgba(174, 223, 241, 0.73)), url('static/ad.jpg')`,
-                          backgroundPosition: 'left',
-                          backgroundRepeat: 'no-repeat',
-                          backgroundSize: 'cover',
-                          height: '600px',
-                        }}
-                      >
-                        <Grid
-                          className="content-center w-full lg:w-3/4"
-                          childWidth="1-1"
-                        >
-                          <Column>
-                            <h3>
-                              Comlogik has the solutions to help you react
-                              quickly, pull through and be ahead during times of
-                              crisis.
-                            </h3>
-                          </Column>
-                          <Column>
-                            <Link
-                              onClick={handleClose}
-                              to={`/solutions`}
-                              className="border-0 uk-button uk-button-primary"
-                            >
-                              Learn more
-                            </Link>
-                          </Column>
-                          <Column>
-                            <h4>
-                              There’s nothing wrong with being overprepared
-                              especially when it comes to healthcare.
-                            </h4>
-                          </Column>
-                          <Column>
-                            <p className="text-gray-800">
-                              You are accountable for keeping in place the needs
-                              of a business without compromising the care of
-                              human life. Our goal is to help make it all
-                              possible. Comlogik is your “custom-fit” healthcare
-                              IT partner. We adjust to your needs, promoting
-                              interoperability, improving quality at the point
-                              of care resulting to a better quality, safety and
-                              efficient treatment.
-                            </p>
-                          </Column>
-                        </Grid>
-                      </div>
-                    </Column>
-                  </Grid>
-                </li>
-                {data.length > 1 ? (
-                  data.map((news) => {
-                    if (news.isBreakingNews)
-                      return (
-                        <li key={news.id}>
-                          <Grid childWidth="1-1">
-                            <Column>
-                              <img src={news.image} />
-                            </Column>
-                            <Column>
-                              <h3 className="uk-margin-remove">{news.title}</h3>
-                            </Column>
-                            <Column className="uk-margin-top">
-                              <Link
-                                onClick={handleClose}
-                                to={`/news/${news.id}`}
-                                className="uk-button uk-button-primary"
-                              >
-                                Read more
-                              </Link>
-                            </Column>
-                          </Grid>
-                        </li>
-                      );
-                  })
-                ) : (
-                  <li>
-                    <div className="uk-flex uk-flex-center">
-                      <div data-uk-spinner="ratio: 3"></div>
-                    </div>
-                  </li>
-                )}
-              </ul>
-              <a
-                className="uk-position-center-left uk-hidden-hover"
-                data-uk-slidenav-previous=""
-                data-uk-slider-item="previous"
-              ></a>
-              <a
-                className="uk-position-center-right uk-hidden-hover"
-                data-uk-slidenav-next=""
-                data-uk-slider-item="next"
-              ></a>
-            </div>
-          </Column> */}
-      {/* </Grid> */}
-      {/* </ReactModal> */}
-      <HIMSModal />
-      <Scroll />
+    <>
       <CookieConsent
         location="bottom"
         buttonText="I understand"
         cookieName="comlogik_cookie_consent"
-        style={{ backgroundColor: '#394049' }}
+        style={{ backgroundColor: '#394049', fontSize: '14px' }}
         buttonClasses="uk-button uk-button-small uk-button-primary"
         buttonStyle={{
           color: 'white',
           backgroundColor: '#cc3396',
-          fontSize: '13px',
+          fontSize: '12px',
           borderRadius: '4px',
         }}
-        debug={isDev() ? true : false}
-        expires={150}
+        debug={isDev}
+        expires={365}
       >
         Our website uses cookies to enhance your browsing experience.
       </CookieConsent>
-      <Navbar />
-      <Switch>
-        <Route exact path="/">
-          <Index />
-        </Route>
-        <Route exact path="/about">
-          <About />
-        </Route>
-        <Route exact path="/covid">
-          <CovidSystems />
-        </Route>
-        <Route exact path="/careers">
-          <Careers />
-        </Route>
-        <Route exact path="/clients">
-          <Clients />
-        </Route>
-        <Route exact path="/clients/:client">
-          <CaseStudyContent />
-        </Route>
-        <Route exact path="/support">
-          <Support />
-        </Route>
-        <Route exact path="/contact-us">
-          <Contact />
-        </Route>
-        <Route exact path="/solutions">
-          <Solutions />
-        </Route>
-        <Route exact path="/solutions/:product">
-          <ProductContent />
-        </Route>
-        <Route exact path="/news">
-          <News />
-        </Route>
-        <Route exact path="/news/:id/:title_id?">
-          <NewsContent />
-        </Route>
-      </Switch>
-      <Footer />
-    </Router>
+      <Router basename="/">
+        <Scroll />
+        <HIMSModal />
+        <Navbar />
+        <Switch>
+          <Route exact path="/">
+            <Index />
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/covid">
+            <CovidSystems />
+          </Route>
+          <Route exact path="/careers">
+            <Careers />
+          </Route>
+          <Route exact path="/clients">
+            <Clients />
+          </Route>
+          <Route exact path="/clients/:client">
+            <CaseStudyContent />
+          </Route>
+          <Route exact path="/support">
+            <Support />
+          </Route>
+          <Route exact path="/contact-us">
+            <Contact />
+          </Route>
+          <Route exact path="/solutions">
+            <Solutions />
+          </Route>
+          <Route exact path="/solutions/:product">
+            <ProductContent />
+          </Route>
+          <Route exact path="/news">
+            <News />
+          </Route>
+          <Route exact path="/news/:id/:title_id?">
+            <NewsContent />
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
+    </>
   );
 };
 

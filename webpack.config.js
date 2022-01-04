@@ -64,6 +64,7 @@ const dependencyName = 'deps';
 const groups = {
   react: ['react', 'react-dom'],
   uikit: ['uikit'],
+  'ph-locations': ['ph-locations'],
 };
 
 const plugins = () =>
@@ -80,8 +81,8 @@ const plugins = () =>
       cleanStaleWebpackAssets: isProduction,
     }),
     new HtmlWebpackPlugin({
-      title: TITLE,
       template: './src/index.html',
+      title: TITLE,
       base: '/',
       meta: {
         charset: 'utf-8',

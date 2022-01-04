@@ -7,7 +7,7 @@ const Advantage = (props) => {
     <Column>
       <Grid>
         <Column width="auto">
-          <img className="uk-preserve" src={props.icon} data-uk-svg=""></img>
+          <img src={props.icon} />
         </Column>
         <Column
           width="expand"

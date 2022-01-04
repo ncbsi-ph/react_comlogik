@@ -9,6 +9,8 @@ import Select from 'react-select';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 import { citiesMunicipalities } from 'ph-locations';
 
+import 'react-datepicker/dist/react-datepicker.css';
+
 import { Section, Grid, Column } from '../Grid';
 import { sendContactForm } from '../../api';
 

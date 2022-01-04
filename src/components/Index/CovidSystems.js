@@ -12,7 +12,7 @@ const CovidSystems = () => {
           your healthcare facility safely and smartly.
         </h2>
         <Column className="uk-flex uk-flex-center">
-          <Link to="/covid" className="uk-button uk-button-primary">
+          <Link to="/covid" className="border-0 uk-button uk-button-primary">
             See How
           </Link>
         </Column>

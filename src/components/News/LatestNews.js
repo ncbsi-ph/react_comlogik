@@ -32,7 +32,7 @@ const NewsArticle = ({ id, title, titleURL, date, image }) => {
         <div>
           <Link
             to={`/news/${id}/${titleURL}`}
-            className="uk-button uk-button-primary"
+            className="border-0 uk-button uk-button-primary"
           >
             Read more
           </Link>

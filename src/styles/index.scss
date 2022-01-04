@@ -114,7 +114,7 @@ $form-focus-background: white;
 @tailwind components;
 @tailwind utilities;
 
-@import '~react-datepicker/dist/react-datepicker.css';
+// @import '~react-datepicker/dist/react-datepicker.css';
 
 ::selection {
   @apply bg-blue-300 text-gray-700;
@@ -627,4 +627,12 @@ h5 {
 
 em {
   color: inherit;
+}
+
+.prose :where(strong):not(:where([class~='not-prose'] *)) {
+  color: inherit;
+}
+
+.prose div[style*='text-align:none;'] {
+  text-align: center;
 }

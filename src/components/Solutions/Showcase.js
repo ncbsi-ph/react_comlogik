@@ -3,71 +3,72 @@ import { Link } from 'react-router-dom';
 
 import { Section, Grid, Column } from '../Grid';
 
+const data = [
+  {
+    id: '1',
+    productName: 'Hospital Information & Management System',
+    image: 'static/product-1.png',
+    description:
+      'HIMS™ is a comprehensive, fully integrated, yet easy to use hospital information system for all hospital levels. HIMS™ is the first DOH Validated System and PhilHealth Certified that can be customized and can adapt to various hospital setup.',
+    link: '/solutions/hims',
+  },
+  {
+    id: '2',
+    productName: 'Clinic Information & Management System',
+    image: 'static/product-2.png',
+    description:
+      'CIMS™ is an all-in-one clinic information system that is both a turnkey and customizable solution for your clinic or diagnostic center. CIMS™ guarantees billing efficiency while storing real- time patient data resulting to a more improved patient and users experience.',
+  },
+  {
+    id: '3',
+    productName: 'Claims Assure™',
+    image: 'static/product-3.png',
+    description:
+      'Claims Assure™ is a PhilHealth certified electronic claims transmittal software that enables any healthcare accredited institution to send paperless patient claims. It allows users to manage and track receivables while monitoring status of claims all in a single window.',
+    link: '/solutions/claims-assure',
+  },
+  {
+    id: '4',
+    productName: 'Comlogik EMR™',
+    image: 'static/product-4.png',
+    description:
+      'Comlogik EMR™ is the industry leading solution that meets the stringent requirements of the Department of Health and likewise holds the distinction of being the FIRST DOH VALIDATED EMR SOFTWARE.',
+    link: '/solutions/emr',
+  },
+  {
+    id: '5',
+    productName: 'WorkBenchMD™',
+    image: 'static/product-5.png',
+    description:
+      'WorkBenchMD™ is a revolutionary way of managing your clinic and gets you ready before your patient enters your door. From reception, it allows you to view patients records, history, medical images and results, appointments, create billing, SOAP and more.',
+  },
+  {
+    id: '6',
+    productName: 'Connect™',
+    image: 'static/product-6.png',
+    description:
+      'Comlogik Connect™ is designed to run on a mobile device which remotely access key information from HIMS™. If you are a patient, doctor or owner of the hospital, Connect™ allows each one to do specific task without the hassle.',
+    link: '/solutions/connect',
+  },
+  {
+    id: '8',
+    productName: 'Paymanager™',
+    image: 'static/product-8.png',
+    description:
+      'Paymanager™ is your go to application when you want an end to end payroll system. Paymanager™ lets you manage unlimited schedules with multi- scheduling function, accommodate leave requests or generate needed reports in compliance with all government requirements.',
+  },
+  {
+    id: '9',
+    productName: 'AnywhereMed Telemedicine',
+    image: 'static/product-9.jpg',
+    description:
+      'AnywhereMed is a fast and convenient way for patients to call and get in touch with a network of doctors affiliated to a hospital, explain your symptoms and get immediate medical advice before actually going to the hospital. This Telemedicine web- based application is developed to ensure that patient concerns are met especially in difficult situations such as inability to go to the hospital due to scheduling, distance, or critical conditions like the COVID-19 epidemic.',
+    link: '/solutions/anywheremed-telemedicine',
+  },
+];
+
 const Showcase = () => {
   const idPrefix = 'product';
-  const data = [
-    {
-      id: '1',
-      productName: 'Hospital Information & Management System',
-      image: 'static/product-1.png',
-      description:
-        'HIMS™ is a comprehensive, fully integrated, yet easy to use hospital information system for all hospital levels. HIMS™ is the first DOH Validated System and PhilHealth Certified that can be customized and can adapt to various hospital setup.',
-      link: '/solutions/hims',
-    },
-    {
-      id: '2',
-      productName: 'Clinic Information & Management System',
-      image: 'static/product-2.png',
-      description:
-        'CIMS™ is an all-in-one clinic information system that is both a turnkey and customizable solution for your clinic or diagnostic center. CIMS™ guarantees billing efficiency while storing real- time patient data resulting to a more improved patient and users experience.',
-    },
-    {
-      id: '3',
-      productName: 'Claims Assure™',
-      image: 'static/product-3.png',
-      description:
-        'Claims Assure™ is a PhilHealth certified electronic claims transmittal software that enables any healthcare accredited institution to send paperless patient claims. It allows users to manage and track receivables while monitoring status of claims all in a single window.',
-      link: '/solutions/claims-assure',
-    },
-    {
-      id: '4',
-      productName: 'Comlogik EMR™',
-      image: 'static/product-4.png',
-      description:
-        'Comlogik EMR™ is the industry leading solution that meets the stringent requirements of the Department of Health and likewise holds the distinction of being the FIRST DOH VALIDATED EMR SOFTWARE.',
-      link: '/solutions/emr',
-    },
-    {
-      id: '5',
-      productName: 'WorkBenchMD™',
-      image: 'static/product-5.png',
-      description:
-        'WorkBenchMD™ is a revolutionary way of managing your clinic and gets you ready before your patient enters your door. From reception, it allows you to view patients records, history, medical images and results, appointments, create billing, SOAP and more.',
-    },
-    {
-      id: '6',
-      productName: 'Connect™',
-      image: 'static/product-6.png',
-      description:
-        'Comlogik Connect™ is designed to run on a mobile device which remotely access key information from HIMS™. If you are a patient, doctor or owner of the hospital, Connect™ allows each one to do specific task without the hassle.',
-      link: '/solutions/connect',
-    },
-    {
-      id: '8',
-      productName: 'Paymanager™',
-      image: 'static/product-8.png',
-      description:
-        'Paymanager™ is your go to application when you want an end to end payroll system. Paymanager™ lets you manage unlimited schedules with multi- scheduling function, accommodate leave requests or generate needed reports in compliance with all government requirements.',
-    },
-    {
-      id: '9',
-      productName: 'AnywhereMed Telemedicine',
-      image: 'static/product-9.jpg',
-      description:
-        'AnywhereMed is a fast and convenient way for patients to call and get in touch with a network of doctors affiliated to a hospital, explain your symptoms and get immediate medical advice before actually going to the hospital. This Telemedicine web- based application is developed to ensure that patient concerns are met especially in difficult situations such as inability to go to the hospital due to scheduling, distance, or critical conditions like the COVID-19 epidemic.',
-        link: '/solutions/anywheremed-telemedicine',
-    },
-  ];
   const links = [];
   const parallaxShowcase = [];
   const sliderItems = [];
@@ -87,24 +88,22 @@ const Showcase = () => {
           data-uk-height-viewport=""
         >
           <div
-            className="uk-child-width-auto uk-flex-right uk-grid-row-small"
+            className="uk-child-width-auto uk-grid-row-small"
             data-uk-grid=""
             data-uk-parallax="opacity: 0, 1; viewport: 0.5"
           >
             <div>
-              <img src={product.image}></img>
+              <img src={product.image} />
             </div>
-            <div>
-              <p className="uk-margin-large-left uk-text-right">
-                {product.description}
-              </p>
+            <div className="mt-8">
+              <p className="m-0 text-gray-700">{product.description}</p>
             </div>
-            <div>
+            <div className="mt-8">
               <Link
                 to={
                   product.hasOwnProperty('link') ? product.link : '/contact-us'
                 }
-                className="uk-button uk-button-primary uk-margin-top"
+                className="border-0 uk-button uk-button-primary"
               >
                 Learn more
               </Link>
@@ -116,15 +115,15 @@ const Showcase = () => {
     sliderItems.push(
       <li key={sliderItems.length}>
         <div className="uk-card uk-card-default">
-          <div className="uk-card-media-top uk-cover-container uk-height-small">
-            <img src={product.image} data-uk-cover=""></img>
+          <div className="flex items-center justify-center h-48 uk-card-media-top uk-cover-container">
+            <img src={product.image} className="object-scale-down h-full" />
           </div>
           <div className="uk-card-body">
             <h3 className="uk-card-title">{product.productName}</h3>
             <p>{product.description}</p>
             <Link
               to={product.hasOwnProperty('link') ? product.link : '/contact-us'}
-              className="uk-button uk-button-primary"
+              className="border-0 uk-button uk-button-primary"
             >
               Learn more
             </Link>
