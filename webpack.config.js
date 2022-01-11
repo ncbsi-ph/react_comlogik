@@ -65,8 +65,7 @@ const modules = () => {
 const dependencyName = 'deps';
 // * Add more groups as needed
 const groups = {
-  react: ['react', 'react-dom'],
-  uikit: ['uikit'],
+  ui: ['react', 'react-dom', 'uikit'],
   'ph-locations': ['ph-locations'],
 };
 
