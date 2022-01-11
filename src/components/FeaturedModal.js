@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactModal from 'react-modal';
-import { Link } from 'react-router-dom';
 
-import { Grid, Column, Section } from '../components/Grid';
+import { Grid, Column } from '../components/Grid';
 import { getFeatured } from '../api';
 
 const FeaturedModal = () => {
@@ -83,7 +82,7 @@ const FeaturedModal = () => {
                   <li key={featured.id}>
                     <Grid childWidth="1-1" className="h-full">
                       <Column className="flex items-center justify-center h-full">
-                        <img src={featured.image} loading="lazy" />
+                        <img data-src={featured.image} data-uk-img="" />
                       </Column>
                     </Grid>
                   </li>
