@@ -7,7 +7,7 @@ import Loading from './components/Loading';
 import Scroll from './components/Scroll';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import HIMSModal from './components/HIMSModal';
+import FeaturedModal from './components/FeaturedModal';
 import { isDev } from './helpers/helpers';
 
 const Index = Loadable({
@@ -92,7 +92,7 @@ const Comlogik = () => {
       </CookieConsent>
       <Router basename="/">
         <Scroll />
-        <HIMSModal />
+        <FeaturedModal />
         <Navbar />
         <Switch>
           <Route exact path="/">

@@ -27,19 +27,19 @@ const Clients = () => {
               data-uk-scrollspy="cls: uk-animation-fade; target: div; delay: 300; repeat: false"
             >
               <Column>
-                <img src="static/clients/image6.png" />
+                <img data-src="static/clients/image6.png" data-uk-img="" />
               </Column>
               <Column>
-                <img src="static/clients/image9.png" />
+                <img data-src="static/clients/image9.png" data-uk-img="" />
               </Column>
               <Column>
-                <img src="static/clients/image7.png" />
+                <img data-src="static/clients/image7.png" data-uk-img="" />
               </Column>
               <Column>
-                <img src="static/clients/image15.png" />
+                <img data-src="static/clients/image15.png" data-uk-img="" />
               </Column>
               <Column>
-                <img src="static/clients/image13.png" />
+                <img data-src="static/clients/image13.png" data-uk-img="" />
               </Column>
             </div>
           </Column>
@@ -50,16 +50,16 @@ const Clients = () => {
               data-uk-scrollspy="cls: uk-animation-fade; target: div; delay: 300; repeat: true"
             >
               <Column>
-                <img src="static/clients/image14.png" />
+                <img data-src="static/clients/image14.png" data-uk-img="" />
               </Column>
               <Column>
-                <img src="static/clients/image17.jpg" />
+                <img data-src="static/clients/image17.jpg" data-uk-img="" />
               </Column>
               <Column>
-                <img src="static/clients/image12.png" />
+                <img data-src="static/clients/image12.png" data-uk-img="" />
               </Column>
               <Column>
-                <img src="static/clients/image10.png" />
+                <img data-src="static/clients/image10.png" data-uk-img="" />
               </Column>
             </div>
           </Column>
@@ -70,7 +70,7 @@ const Clients = () => {
               data-uk-scrollspy="cls: uk-animation-fade; target: div; delay: 300; repeat: true"
             >
               <Column>
-                <img src="static/clients/image16.png" />
+                <img data-src="static/clients/image16.png" data-uk-img="" />
               </Column>
             </div>
           </Column>

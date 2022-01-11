@@ -122,7 +122,7 @@ const Products = (props) => {
 
   data.forEach((value) => {
     productIcons.push(
-      <Product key={productIcons.length} image={value.image}></Product>
+      <Product key={productIcons.length} image={value.image} />
     );
     products.push(
       <ProductDescription
@@ -131,7 +131,7 @@ const Products = (props) => {
         productName={value.productName}
         productDescription={value.productDescription}
         link={value.link}
-      ></ProductDescription>
+      />
     );
   });
 
@@ -176,7 +176,7 @@ const Products = (props) => {
                     frameBorder="0"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                  ></iframe>
+                  />
                 </div>
                 <div className="uk-card-body uk-flex uk-flex-column">
                   <p>

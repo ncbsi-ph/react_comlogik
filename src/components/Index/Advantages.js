@@ -7,7 +7,7 @@ const Advantage = (props) => {
     <Column>
       <Grid>
         <Column width="auto">
-          <img src={props.icon} />
+          <img data-src={props.icon} data-uk-img="" />
         </Column>
         <Column
           width="expand"
@@ -39,8 +39,6 @@ const Advantage = (props) => {
 const Advantages = () => {
   return (
     <Section>
-      <img className="cloud-1" src="static/cloud-1.svg" hidden />
-      <img className="cloud-2" src="static/cloud-2.svg" hidden />
       <Grid childWidth="1-1">
         <Column className="uk-flex uk-flex-column uk-text-center uk-margin-large-bottom uk-margin-large-top">
           <h5 className="meta uk-margin-remove-bottom">ADVANTAGES</h5>

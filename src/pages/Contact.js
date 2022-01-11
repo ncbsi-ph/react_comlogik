@@ -9,7 +9,7 @@ const Contact = () => {
   return (
     <>
       <CommonHeader
-        image="static/contact-hero.gif"
+        image="static/contact-hero-small.gif"
         label="CONTACT US"
         heading="For more questions about our products and pricing, send us a message"
       />

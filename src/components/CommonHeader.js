@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import { Section, Grid, Column } from './Grid';
 
 const CommonHeader = (props) => {
-  let image = <img src={props.image}></img>;
+  let image = <img data-src={props.image} data-uk-img="" />;
 
   if (props.svg) {
-    image = (
-      <img src={props.image} className="uk-preserve" data-uk-svg=""></img>
-    );
+    image = <img src={props.image} className="uk-preserve" data-uk-svg="" />;
   }
 
   return (

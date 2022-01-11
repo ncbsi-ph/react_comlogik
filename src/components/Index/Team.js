@@ -8,7 +8,7 @@ const Team = () => {
     <Section>
       <Grid childWidth="1-1 1-2@m" className="uk-flex-middle">
         <Column>
-          <img src="static/team.gif"></img>
+          <img data-src="static/team-small.gif" data-uk-img="" />
         </Column>
         <Column className="uk-flex uk-flex-column">
           <h5 className="meta uk-margin-remove-bottom">ABOUT</h5>

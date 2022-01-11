@@ -14,6 +14,8 @@ export const getNews = (id = 0) => {
 
 export const getCareers = () => api.get('careers');
 
+export const getFeatured = () => api.get('featured?enabled=true');
+
 export const sendContactForm = (payload) =>
   api.post('mail/contact-form', payload);
 

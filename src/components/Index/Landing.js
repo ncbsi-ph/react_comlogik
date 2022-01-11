@@ -18,7 +18,7 @@ const Landing = () => {
   }, []);
 
   return (
-    <Section>
+    <Section className="pt-0">
       <Grid childWidth="1-1 1-2@m" className="uk-flex-middle">
         <Column>
           <Grid childWidth="1-1">
@@ -68,7 +68,11 @@ const Landing = () => {
           </Grid>
         </Column>
         <Column>
-          <img data-src="static/landing-img.gif" data-uk-img=""></img>
+          <img
+            data-src="static/landing-img-small.gif"
+            data-uk-img=""
+            className="w-full h-full"
+          />
         </Column>
       </Grid>
     </Section>
