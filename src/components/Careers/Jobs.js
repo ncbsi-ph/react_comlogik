@@ -309,7 +309,7 @@ const Jobs = () => {
         const data = response.data.data;
         setData(data);
       } catch (error) {
-        // TODO: To the next dev, add proper error handling 😆
+        // TODO: Add proper error handling
         console.log('Failed to load careers');
       }
     };

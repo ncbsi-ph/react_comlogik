@@ -18,7 +18,7 @@ const Landing = () => {
   }, []);
 
   return (
-    <Section className="pt-0">
+    <Section>
       <Grid childWidth="1-1 1-2@m" className="uk-flex-middle">
         <Column>
           <Grid childWidth="1-1">

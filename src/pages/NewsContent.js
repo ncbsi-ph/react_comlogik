@@ -22,7 +22,7 @@ const NewsContent = () => {
         setNews(response.data.data);
       } catch (error) {
         setLoading(false);
-        // TODO: To the next dev, add proper error handling 😆
+        // TODO: Add proper error handling
         console.log('Error loading news');
       }
     };

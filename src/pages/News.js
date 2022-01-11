@@ -15,11 +15,10 @@ const News = () => {
       try {
         const response = await getNews();
         const news = response.data.data;
-        // TODO: Sort breaking news by latest
         setBreakingNews(news.filter((value) => value.is_breaking_news));
         setLatestNews(news);
       } catch (error) {
-        // TODO: To the next dev, add proper error handling 😆
+        // TODO: Add proper error handling
         console.log('Error loading news');
       }
     };
