@@ -48,8 +48,7 @@ const FeaturedModal = () => {
                     <Column className="flex items-center justify-center h-full">
                       <img
                         className="object-contain h-full"
-                        data-src={featured.image}
-                        data-uk-img=""
+                        src={featured.image}
                       />
                     </Column>
                   </Grid>
@@ -58,7 +57,7 @@ const FeaturedModal = () => {
             ) : (
               <li>
                 <div className="uk-flex uk-flex-center">
-                  <div data-uk-spinner="ratio: 3"></div>
+                  <div data-uk-spinner="ratio: 3" />
                 </div>
               </li>
             )}
@@ -67,12 +66,12 @@ const FeaturedModal = () => {
             className="uk-position-center-left uk-hidden-hover uk-slidenav-large"
             data-uk-slidenav-previous=""
             data-uk-slider-item="previous"
-          ></a>
+          />
           <a
             className="uk-position-center-right uk-hidden-hover uk-slidenav-large"
             data-uk-slidenav-next=""
             data-uk-slider-item="next"
-          ></a>
+          />
         </div>
       </div>
     </div>
