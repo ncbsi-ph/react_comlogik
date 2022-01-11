@@ -92,7 +92,6 @@ const Comlogik = () => {
       </CookieConsent>
       <Router basename="/">
         <Scroll />
-        <FeaturedModal />
         <Navbar />
         <Switch>
           <Route exact path="/">
@@ -134,6 +133,7 @@ const Comlogik = () => {
         </Switch>
         <Footer />
       </Router>
+      <FeaturedModal />
     </>
   );
 };
