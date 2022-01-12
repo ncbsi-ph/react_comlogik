@@ -35,7 +35,7 @@ const FeaturedModal = () => {
           type="button"
           data-uk-close=""
         />
-        <div data-uk-slider="">
+        <div data-uk-slider="autoplay: true; autoplay-interval: 5000; pause-on-hover: false">
           <ul className="uk-slider-items">
             {data.map((featured) => (
               <li
