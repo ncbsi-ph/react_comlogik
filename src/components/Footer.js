@@ -109,7 +109,7 @@ const Solutions = () => {
             </Link>
           </li>
           <li>
-            <Link to="/solutions" className="link">
+            <Link to="/contact-us" className="link">
               Clinic Information Management System
             </Link>
           </li>
@@ -124,7 +124,7 @@ const Solutions = () => {
             </Link>
           </li>
           <li>
-            <Link to="/solutions" className="link">
+            <Link to="/contact-us" className="link">
               WorkbenchMD
             </Link>
           </li>
@@ -134,22 +134,22 @@ const Solutions = () => {
             </Link>
           </li>
           <li>
-            <Link to="/solutions" className="link">
+            <Link to="/contact-us" className="link">
               PayManager
             </Link>
           </li>
           <li>
-            <Link to="/solutions" className="link">
+            <Link to="/contact-us" className="link">
               WorkForce
             </Link>
           </li>
           <li>
-            <Link to="/solutions" className="link">
+            <Link to="/contact-us" className="link">
               InstaP Survey
             </Link>
           </li>
           <li>
-            <Link to="/solutions" className="link">
+            <Link to="/contact-us" className="link">
               eHealth Tracker
             </Link>
           </li>
