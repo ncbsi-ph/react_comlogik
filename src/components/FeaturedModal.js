@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import UIkit from 'uikit';
+import React, { useState, useEffect, useRef } from "react";
+import UIkit from "uikit";
 
-import { getFeatured } from '../api';
+import { getFeatured } from "../api";
 
 const FeaturedModal = () => {
   const modalRef = useRef(null);
@@ -15,7 +15,7 @@ const FeaturedModal = () => {
         setData(response.data.data);
       } catch (error) {
         // TODO: Add proper error handling
-        console.log('Failed to load featured data');
+        console.log("Failed to load featured data");
       }
     };
     getData();
@@ -35,15 +35,19 @@ const FeaturedModal = () => {
           type="button"
           data-uk-close=""
         />
-        <div data-uk-slider="autoplay: true; autoplay-interval: 5000; pause-on-hover: false">
+        <div data-uk-slider="autoplay: true; autoplay-interval: 7000; pause-on-hover: false">
           <ul className="uk-slider-items">
             {data.map((featured) => (
-              <li
-                className="flex items-center justify-center"
-                key={featured.id}
-              >
-                <img className="" src={featured.image} />
-              </li>
+              <>
+                <a href={featured.link} target="_blank">
+                  <li
+                    className="flex items-center justify-center"
+                    key={featured.id}
+                  >
+                    <img className="" src={featured.image} />
+                  </li>
+                </a>
+              </>
             ))}
           </ul>
           <a
