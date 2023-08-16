@@ -39,14 +39,23 @@ const FeaturedModal = () => {
           <ul className="uk-slider-items">
             {data.map((featured) => (
               <>
-                <a href={featured.link} target="_blank">
+                {featured.link.length !== 0 ? (
+                  <a href={featured.link} target="_blank">
+                    <li
+                      className="flex items-center justify-center"
+                      key={featured.id}
+                    >
+                      <img className="" src={featured.image} />
+                    </li>
+                  </a>
+                ) : (
                   <li
                     className="flex items-center justify-center"
                     key={featured.id}
                   >
                     <img className="" src={featured.image} />
                   </li>
-                </a>
+                )}
               </>
             ))}
           </ul>
