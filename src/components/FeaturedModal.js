@@ -37,7 +37,7 @@ const FeaturedModal = () => {
         />
         <div data-uk-slider="autoplay: true; autoplay-interval: 7000; pause-on-hover: false">
           <ul className="uk-slider-items">
-            {data.map((featured) => (
+            {data.reverse().map((featured) => (
               <>
                 {featured.link.length !== 0 ? (
                   <a href={featured.link} target="_blank">
