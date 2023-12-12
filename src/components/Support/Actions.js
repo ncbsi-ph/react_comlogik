@@ -31,7 +31,11 @@ const Actions = () => {
             </Column>
             <Column className="uk-flex uk-flex-column">
               <h4 className="uk-margin-small-bottom">
-                <a className="flex items-center text-white">
+                <a
+                  className="flex items-center text-white"
+                  target="_blank"
+                  href="http://120.28.82.87:8012/osticket/"
+                >
                   <Icon className="mr-2" icon={link} />
                   <div>Visit our Support Ticketing System</div>
                 </a>
