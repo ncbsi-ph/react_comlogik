@@ -160,6 +160,8 @@ const Solutions = () => {
 };
 
 const Footer = () => {
+  const date = new Date();
+  let year = date.getFullYear();
   return (
     <footer>
       <Section removePadding="top" className="footer-bg">
@@ -186,7 +188,7 @@ const Footer = () => {
       </Section>
       <div>
         <h6 className="uk-text-center uk-margin-top">
-          COPYRIGHT © 2020 - 2022, COMLOGIK BUSINESS SYSTEMS INC.
+          COPYRIGHT © 2020 - {year}, COMLOGIK BUSINESS SYSTEMS INC.
         </h6>
       </div>
     </footer>
