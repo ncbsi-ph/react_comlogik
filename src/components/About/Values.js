@@ -12,7 +12,9 @@ const Vision = () => {
       </Column>
       <Column width="expand@m">
         <p>
-          To create an exceptional product that is affordable and easy to use.
+          Our Vision is to build a legacy of technological innovation in our
+          industry, while setting the standard for professionalism, integrity,
+          and the steadfast pursuit of excellence, all for the glory of God.
         </p>
       </Column>
     </Grid>
@@ -27,17 +29,19 @@ const Mission = () => {
       </Column>
       <Column width="expand@m">
         <p>
-          To offer effective solutions, provide top quality services and giving
-          our one hundred and ten percent (110%) for customer satisfaction. To
-          do this we must earn continuing loyalty of customers by providing
-          superior value in a way that is profitable to us.
+          Since 1999, Comlogik has had the Mission of empowering businesses in
+          healthcare and beyond by creating innovative technological solutions
+          that maximize productivity, efficiency, and service quality. Comlogik
+          is committed to meeting every clients&apos; needs through safe and
+          secure IT services alongside above-and-beyond customer support,
+          forming lasting partnerships in a continuously evolving digital age.
         </p>
       </Column>
     </Grid>
   );
 };
 
-const CoreValue = props => {
+const CoreValue = (props) => {
   return (
     <Column>
       <Grid childWidth="expand" className="uk-grid-small">
@@ -86,7 +90,11 @@ const CoreValues = () => {
 const Values = () => {
   return (
     <Section>
-      <div className="uk-child-width-1-1" data-uk-grid="" data-uk-scrollspy="cls: uk-animation-fade; target: > div; delay: 300">
+      <div
+        className="uk-child-width-1-1"
+        data-uk-grid=""
+        data-uk-scrollspy="cls: uk-animation-fade; target: > div; delay: 300"
+      >
         <Column>
           <Vision />
         </Column>
