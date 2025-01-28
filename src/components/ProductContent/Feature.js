@@ -10,7 +10,9 @@ const Feature = ({ image, feature, description }) => {
           <img src={image} className="uk-width-1-1" />
         </Column>
         <Column className="uk-flex uk-flex-column">
-          <h3 className="uk-margin-remove uk-text-center uk-text-left@s">{feature}</h3>
+          <h3 className="uk-margin-remove uk-text-center uk-text-left@s">
+            {feature}
+          </h3>
           <p>{description}</p>
         </Column>
       </Grid>

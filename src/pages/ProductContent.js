@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 
-import { Section, Grid, Column } from '../components/Grid';
+import { Section } from '../components/Grid';
 import ProductHeader from '../components/ProductContent/ProductHeader';
 import HIMSStats from '../components/ProductContent/HIMSStats';
 import MiscHeader from '../components/ProductContent/MiscHeader';
@@ -12,10 +12,27 @@ import CTA from '../components/CTA';
 const ProductContent = () => {
   const { product } = useParams();
 
+  const getHelmetForProduct = (title, description, imageUrl) => (
+    <Helmet>
+      <title>{title}</title>
+      <link rel="canonical" href={window.location.href} />
+      <meta name="description" content={description} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={imageUrl} />
+      <meta property="og:type" content="website" />
+    </Helmet>
+  );
+
   return (
     <>
       {product === 'hims' ? (
         <>
+          {getHelmetForProduct(
+            'HIMS - Hospital Information & Management System',
+            'HIMS™ is a comprehensive, fully integrated, yet easy-to-use Hospital Information System for all hospital levels.',
+            'static/products/hims/hims-header.png'
+          )}
           <ProductHeader
             image="static/products/hims/hims-header.png"
             name="Hospital Information & Management System"
@@ -92,6 +109,11 @@ const ProductContent = () => {
       ) : null}
       {product === 'emr' ? (
         <>
+          {getHelmetForProduct(
+            'EMR - Electronic Medical Record',
+            'Avail the First Government Validated & Certified EMR System in the Philippines.',
+            'static/products/emr/other-logo.png'
+          )}
           <MiscHeader
             image="static/products/emr/other-logo.png"
             description="Capture every medical information you need, send it electronically to DOH’s 
@@ -142,6 +164,11 @@ const ProductContent = () => {
       ) : null}
       {product === 'connect' ? (
         <>
+          {getHelmetForProduct(
+            'Comlogik Connect - Access Your Hospital Anytime',
+            'Comlogik Connect™ is a healthcare mobile app that connects users, doctors, and the hospital.',
+            'static/products/connect/other-logo.png'
+          )}
           <MiscHeader
             image="static/products/connect/other-logo.png"
             description="Access Your Hospital Anytime, Anywhere"
@@ -191,6 +218,11 @@ const ProductContent = () => {
       ) : null}
       {product === 'claims-assure' ? (
         <>
+          {getHelmetForProduct(
+            'Claims Assure - PhilHealth eClaims Transmittal System',
+            'Claims Assure™ is the most sought-after PhilHealth eClaims Transmittal System in the country.',
+            'static/products/claims-assure/other-logo.png'
+          )}
           <MiscHeader
             image="static/products/claims-assure/other-logo.png"
             title="PhilHealth eClaims Transmittal System"
@@ -241,6 +273,12 @@ const ProductContent = () => {
       ) : null}
       {product === 'anywheremed-telemedicine' ? (
         <>
+          {getHelmetForProduct(
+            'AnywhereMed Telemedicine - Comlogik Business Systems',
+            'Discover AnywhereMed Telemedicine by Comlogik, a cutting-edge telemedicine app designed to enhance healthcare delivery through virtual consultations, ePrescriptions, and integrated HIMS features.',
+            'static/product-9.jpg'
+          )}
+
           <MiscHeader
             image="static/product-9.jpg"
             title="AnywhereMed Telemedicine"
@@ -297,7 +335,9 @@ const ProductContent = () => {
                 today!
               </p>
               <div>
-                <Link to="/contact-us" className="uk-button uk-button-primary">Try AnywhereMed</Link>
+                <Link to="/contact-us" className="uk-button uk-button-primary">
+                  Try AnywhereMed
+                </Link>
               </div>
             </div>
           </Section>
