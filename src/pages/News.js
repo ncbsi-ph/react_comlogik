@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { Helmet } from 'react-helmet';
 import CommonHeader from '../components/CommonHeader';
 import BreakingNews from '../components/News/BreakingNews';
 import LatestNews from '../components/News/LatestNews';

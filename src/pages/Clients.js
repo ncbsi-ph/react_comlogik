@@ -3,6 +3,7 @@ import CommonHeader from '../components/CommonHeader';
 import { default as ClientsComponent } from '../components/Index/Clients';
 import CaseStudies from '../components/Clients/CaseStudies';
 import CTA from '../components/CTA';
+import { Helmet } from 'react-helmet';
 
 const Clients = () => {
   const logos_1 = [

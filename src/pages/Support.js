@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Landing from '../components/Support/Landing';
 import Actions from '../components/Support/Actions';
-
+import { Helmet } from 'react-helmet';
 export default class Support extends Component {
   render() {
     return (
