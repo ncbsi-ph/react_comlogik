@@ -27,6 +27,24 @@ const News = () => {
 
   return (
     <>
+      <Helmet>
+        <title>News - Comlogik Business Systems</title>
+        <link rel="canonical" href="https://comlogikph.com/news" />
+        <meta
+          name="description"
+          content="Stay updated with the latest trends and breaking news in the healthcare industry. Discover what's making headlines today."
+        />
+        <meta property="og:title" content="News - Comlogik Business Systems" />
+        <meta
+          property="og:description"
+          content="Get the latest healthcare industry updates and breaking news delivered straight to you."
+        />
+        <meta
+          property="og:image"
+          content="https://comlogikph.com/static/news-hero.gif"
+        />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <CommonHeader
         image="static/news-hero.gif"
         label="NEWS"

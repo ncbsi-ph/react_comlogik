@@ -1,6 +1,6 @@
 import React from 'react';
-
-import { Section, Grid, Column } from '../components/Grid';
+import { Helmet } from 'react-helmet';
+import { Section } from '../components/Grid';
 import CommonHeader from '../components/CommonHeader';
 import Benefits from '../components/Careers/Benefits';
 import WorkPhotos from '../components/Careers/WorkPhotos';
@@ -10,6 +10,27 @@ import CTA from '../components/CTA';
 const Careers = () => {
   return (
     <>
+      <Helmet>
+        <title>Careers - Join Our Team at Comlogik</title>
+        <link rel="canonical" href="https://comlogikph.com/careers" />
+        <meta
+          name="description"
+          content="Explore exciting career opportunities at Comlogik and be part of a team transforming the Philippine healthcare system through innovation and collaboration."
+        />
+        <meta
+          property="og:title"
+          content="Careers - Join Our Team at Comlogik"
+        />
+        <meta
+          property="og:description"
+          content="Join Comlogik and contribute to making the Philippine healthcare system better for everyone. Discover career opportunities with us."
+        />
+        <meta
+          property="og:image"
+          content="https://comlogikph.com/static/careers.png"
+        />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <CommonHeader
         image="static/careers.png"
         label="CAREERS"

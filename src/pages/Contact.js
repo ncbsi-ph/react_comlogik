@@ -8,6 +8,27 @@ import ContactInfo from '../components/Contact/ContactInfo';
 const Contact = () => {
   return (
     <>
+      <Helmet>
+        <title>Contact Us - Comlogik Business Systems</title>
+        <link rel="canonical" href="https://comlogikph.com/contact" />
+        <meta
+          name="description"
+          content="Get in touch with Comlogik Business Systems for inquiries about our healthcare IT solutions, hospital information systems, and more."
+        />
+        <meta
+          property="og:title"
+          content="Contact Us - Comlogik Business Systems"
+        />
+        <meta
+          property="og:description"
+          content="Contact us today for any questions regarding our healthcare solutions, pricing, or support. We're here to help!"
+        />
+        <meta
+          property="og:image"
+          content="https://comlogikph.com/static/contact-hero-small.gif"
+        />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <CommonHeader
         image="static/contact-hero-small.gif"
         label="CONTACT US"

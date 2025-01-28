@@ -1,11 +1,7 @@
-import React, { Component } from 'react';
-
-import { Section } from '../components/Grid';
+import React from 'react';
 import CommonHeader from '../components/CommonHeader';
 import { default as ClientsComponent } from '../components/Index/Clients';
-import LogoCarousel from '../components/Clients/LogoCarousel';
 import CaseStudies from '../components/Clients/CaseStudies';
-import Partners from '../components/Clients/Partners';
 import CTA from '../components/CTA';
 
 const Clients = () => {
@@ -78,6 +74,19 @@ const Clients = () => {
 
   return (
     <>
+      <Helmet>
+        <title>
+          Our Clients - Learn from the Best | Comlogik Business Systems
+        </title>
+        <meta
+          name="description"
+          content="Discover our esteemed clients and their success stories. Learn how they partnered with us to achieve growth and excellence."
+        />
+        <meta
+          name="keywords"
+          content="clients, success stories, partnerships, growth"
+        />
+      </Helmet>
       <CommonHeader
         svg={true}
         image="static/clients.svg"

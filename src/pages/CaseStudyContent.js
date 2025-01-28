@@ -1,15 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-
 import { Section, Grid, Column } from '../components/Grid';
 import CTA from '../components/CTA';
+import { Helmet } from 'react-helmet';
 
 const CaseStudyContent = () => {
   const { client } = useParams();
 
   return (
     <>
+      <Helmet>
+        <title>Case Study - Hospital Challenges and our Solutions</title>
+        <meta
+          name="description"
+          content={
+            client === 'ngh'
+              ? "Learn how Nazareth General Hospital improved its operations with Comlogik's solutions."
+              : "Discover how MMGHHSCP transformed its processes with Comlogik's HIMS™."
+          }
+        />
+        <meta
+          name="keywords"
+          content="Case Study, Healthcare Solutions, Hospital Information Management"
+        />
+        <meta name="author" content="Comlogik" />
+      </Helmet>
       <Section className="gradient-bg-light">
         <Grid childWidth="1-1" className="uk-flex-center uk-flex-middle">
           <Column>
