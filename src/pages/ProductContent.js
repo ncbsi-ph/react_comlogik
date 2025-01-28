@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-
+import { Helmet } from 'react-helmet';
 import { Section } from '../components/Grid';
 import ProductHeader from '../components/ProductContent/ProductHeader';
 import HIMSStats from '../components/ProductContent/HIMSStats';
