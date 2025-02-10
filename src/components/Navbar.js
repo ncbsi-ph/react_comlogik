@@ -5,14 +5,13 @@ import { Icon } from '@iconify/react';
 import search from '@iconify/icons-feather/search';
 import mail from '@iconify/icons-feather/mail';
 import menu from '@iconify/icons-feather/menu';
-import dropDownArrow from '@iconify/icons-fa-solid/angle-down'
+import dropDownArrow from '@iconify/icons-fa-solid/angle-down';
 import UIkit from 'uikit';
 
 const Navbar = () => {
   const history = useHistory();
   const [value, setValue] = useState('');
   const [suggestions, setSuggestions] = useState([]);
-
 
   const _suggestions = [
     {
@@ -54,6 +53,10 @@ const Navbar = () => {
     {
       text: 'EMR',
       link: '/solutions/emr',
+    },
+    {
+      text: 'Electronics Charting',
+      link: '/solutions/e-charting',
     },
     {
       text: 'AnywhereMed Telemedicine',
@@ -126,17 +129,17 @@ const Navbar = () => {
 
   const dropDownRef = useRef(null);
 
-    const handleClickOutside = e => {
-        if(!dropDownRef.current.contains(e.target)){
-            setToggleDropDown(false);
-        }
+  const handleClickOutside = (e) => {
+    if (!dropDownRef.current.contains(e.target)) {
+      setToggleDropDown(false);
     }
+  };
 
-    useEffect( () => {
-        document.addEventListener('click', handleClickOutside);
-        return () => document.removeEventListener('click', handleClickOutside);
-    })
-  
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  });
+
   return (
     <>
       <div
@@ -192,7 +195,11 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div id="navigation" data-uk-offcanvas="flip: true; overlay: true" ref={dropDownRef}>
+      <div
+        id="navigation"
+        data-uk-offcanvas="flip: true; overlay: true"
+        ref={dropDownRef}
+      >
         <div className="uk-offcanvas-bar uk-box-shadow-medium">
           <button
             className="uk-offcanvas-close"
@@ -221,7 +228,13 @@ const Navbar = () => {
                     About Us
                   </NavLink>
                 </li>
-                <li className={`uk-parent ${toggleDropDown ? 'transition-[height] duration-250 ease-in h-[350px] ' : 'transition-[height] duration-450 ease-out h-8'}`}>
+                <li
+                  className={`uk-parent ${
+                    toggleDropDown
+                      ? 'transition-[height] duration-250 ease-in h-[385px] '
+                      : 'transition-[height] duration-450 ease-out h-8'
+                  }`}
+                >
                   {/* <NavLink
                     onClick={offcanvasClick}
                     to="/solutions"
@@ -229,122 +242,141 @@ const Navbar = () => {
                   >
                     Solutions
                   </NavLink> */}
-                  <a onClick={() => setToggleDropDown(!toggleDropDown)} className={toggleDropDown ? 'text-[#666]' : ''}>Solution <Icon icon={dropDownArrow} width={16} height={16}></Icon></a> 
+                  <a
+                    onClick={() => setToggleDropDown(!toggleDropDown)}
+                    className={toggleDropDown ? 'text-[#666]' : ''}
+                  >
+                    Solution{' '}
+                    <Icon icon={dropDownArrow} width={16} height={16}></Icon>
+                  </a>
 
-                  <ul className={`grid gap-2 pl-4 text-sm ${toggleDropDown ? 'transition-[height] duration-300 ease-in h-[312px] transition-opacity opacity-100' : 'transition-[height] duration-300 ease-out truncate h-0 transition-opacity opacity-0'}`}>
+                  <ul
+                    className={`grid gap-2 pl-4 text-sm ${
+                      toggleDropDown
+                        ? 'transition-[height] duration-300 ease-in h-[312px] transition-opacity opacity-100'
+                        : 'transition-[height] duration-300 ease-out truncate h-0 transition-opacity opacity-0'
+                    }`}
+                  >
                     <li onClick={() => setToggleDropDown(false)}>
                       <NavLink
                         onClick={offcanvasClick}
                         to="/solutions/hims"
                         activeClassName="offcanvas-active"
-                        className='uk-text-muted hover:text-[#666]'
+                        className="uk-text-muted hover:text-[#666]"
                       >
-                      Hospital Information & Management System
+                        Hospital Information & Management System
                       </NavLink>
                     </li>
 
                     <li onClick={() => setToggleDropDown(false)}>
-                    <NavLink
-                      onClick={offcanvasClick}
-                      to="/contact-us/"
-                      // activeClassName="offcanvas-active"
-                      className='uk-text-muted hover:text-[#666]'
-                    >
-                      Clinic Information & Management System
-                    </NavLink>
+                      <NavLink
+                        onClick={offcanvasClick}
+                        to="/contact-us/"
+                        // activeClassName="offcanvas-active"
+                        className="uk-text-muted hover:text-[#666]"
+                      >
+                        Clinic Information & Management System
+                      </NavLink>
                     </li>
 
-                    <li onClick={() => setToggleDropDown(false)}> 
-                    <NavLink
-                      onClick={offcanvasClick}
-                      to="/solutions/claims-assure"
-                      activeClassName="offcanvas-active"
-                      className='uk-text-muted hover:text-[#666]'
-                    >
-                      Claims Assure 
-                    </NavLink>
+                    <li onClick={() => setToggleDropDown(false)}>
+                      <NavLink
+                        onClick={offcanvasClick}
+                        to="/solutions/claims-assure"
+                        activeClassName="offcanvas-active"
+                        className="uk-text-muted hover:text-[#666]"
+                      >
+                        Claims Assure
+                      </NavLink>
                     </li>
 
-                    <li onClick={() => setToggleDropDown(false)}> 
-                    <NavLink
-                      onClick={offcanvasClick}
-                      to="/solutions/emr"
-                      activeClassName="offcanvas-active"
-                      className='uk-text-muted hover:text-[#666]'
-                    >
-                      Comlogik EMR
-                    </NavLink>
+                    <li onClick={() => setToggleDropDown(false)}>
+                      <NavLink
+                        onClick={offcanvasClick}
+                        to="/solutions/emr"
+                        activeClassName="offcanvas-active"
+                        className="uk-text-muted hover:text-[#666]"
+                      >
+                        Comlogik EMR
+                      </NavLink>
+                    </li>
+                    <li onClick={() => setToggleDropDown(false)}>
+                      <NavLink
+                        onClick={offcanvasClick}
+                        to="/solutions/e-charting"
+                        activeClassName="offcanvas-active"
+                        className="uk-text-muted hover:text-[#666]"
+                      >
+                        Electronic Charting
+                      </NavLink>
                     </li>
 
-                    <li onClick={() => setToggleDropDown(false)}> 
-                    <NavLink
-                      onClick={offcanvasClick}
-                      to="/contact-us/"
-                      // activeClassName="offcanvas-active"
-                      className='uk-text-muted hover:text-[#666]'
-                    >
-                      WorkbenchMD
-                    </NavLink>
+                    <li onClick={() => setToggleDropDown(false)}>
+                      <NavLink
+                        onClick={offcanvasClick}
+                        to="/contact-us/"
+                        // activeClassName="offcanvas-active"
+                        className="uk-text-muted hover:text-[#666]"
+                      >
+                        WorkbenchMD
+                      </NavLink>
                     </li>
 
-                    <li onClick={() => setToggleDropDown(false)}> 
-                    <NavLink
-                      onClick={offcanvasClick}
-                      to="/solutions/connect"
-                      activeClassName="offcanvas-active"
-                      className='uk-text-muted hover:text-[#666]'
-                    >
-                      Comlogik Connect
-                    </NavLink>
+                    <li onClick={() => setToggleDropDown(false)}>
+                      <NavLink
+                        onClick={offcanvasClick}
+                        to="/solutions/connect"
+                        activeClassName="offcanvas-active"
+                        className="uk-text-muted hover:text-[#666]"
+                      >
+                        Comlogik Connect
+                      </NavLink>
                     </li>
 
-                    <li onClick={() => setToggleDropDown(false)}> 
-                    <NavLink
-                      onClick={offcanvasClick}
-                      to="/contact-us/"
-                      // activeClassName="offcanvas-active"
-                      className='uk-text-muted hover:text-[#666]'
-                    >
-                      PayManager
-                    </NavLink>
+                    <li onClick={() => setToggleDropDown(false)}>
+                      <NavLink
+                        onClick={offcanvasClick}
+                        to="/contact-us/"
+                        // activeClassName="offcanvas-active"
+                        className="uk-text-muted hover:text-[#666]"
+                      >
+                        PayManager
+                      </NavLink>
                     </li>
 
-                    <li onClick={() => setToggleDropDown(false)}> 
-                    <NavLink
-                      onClick={offcanvasClick}
-                      to="/contact-us/"
-                      // activeClassName="offcanvas-active"
-                      className='uk-text-muted hover:text-[#666]'
-                    >
-                      WorkForce
-                    </NavLink>
+                    <li onClick={() => setToggleDropDown(false)}>
+                      <NavLink
+                        onClick={offcanvasClick}
+                        to="/contact-us/"
+                        // activeClassName="offcanvas-active"
+                        className="uk-text-muted hover:text-[#666]"
+                      >
+                        WorkForce
+                      </NavLink>
                     </li>
 
-                    <li onClick={() => setToggleDropDown(false)}> 
-                    <NavLink
-                      onClick={offcanvasClick}
-                      to="/contact-us/"
-                      // activeClassName="offcanvas-active"
-                      className='uk-text-muted hover:text-[#666]'
-                    >
-                      InstaP Survey
-                    </NavLink>
+                    <li onClick={() => setToggleDropDown(false)}>
+                      <NavLink
+                        onClick={offcanvasClick}
+                        to="/contact-us/"
+                        // activeClassName="offcanvas-active"
+                        className="uk-text-muted hover:text-[#666]"
+                      >
+                        InstaP Survey
+                      </NavLink>
                     </li>
 
-                    <li onClick={() => setToggleDropDown(false)}> 
-                    <NavLink
-                      onClick={offcanvasClick}
-                      to="/contact-us/"
-                      // activeClassName="offcanvas-active"
-                      className='uk-text-muted hover:text-[#666]'
-                    >
-                      eHealth Tracker
-                    </NavLink>
+                    <li onClick={() => setToggleDropDown(false)}>
+                      <NavLink
+                        onClick={offcanvasClick}
+                        to="/contact-us/"
+                        // activeClassName="offcanvas-active"
+                        className="uk-text-muted hover:text-[#666]"
+                      >
+                        eHealth Tracker
+                      </NavLink>
                     </li>
-
-
                   </ul>
-                  
                 </li>
                 <li className="uk-parent">
                   <NavLink

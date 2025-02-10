@@ -8,7 +8,7 @@ import MiscHeader from '../components/ProductContent/MiscHeader';
 import Feature from '../components/ProductContent/Feature';
 import CAFeature from '../components/ProductContent/CAFeature';
 import CTA from '../components/CTA';
-
+import ECharting from '../pages/ECharting';
 const ProductContent = () => {
   const { product } = useParams();
 
@@ -160,6 +160,17 @@ const ProductContent = () => {
               description="It's so easy to learn and use Comlogik EMR. With the hospital staff spending one-third of their time using the system, we designed it to be natural and easy on the eyes. Drag-and-drop capabilities and minimal screen openings will allow you to move through the system with a minimal number of mouse clicks."
             />
           </Section>
+        </>
+      ) : null}
+      {product === 'e-charting' ? (
+        <>
+          {' '}
+          {getHelmetForProduct(
+            'Electronic Charting - Streamlined Digital Healthcare Records',
+            'Electronic Charting is an advanced healthcare solution that connects patients, doctors, and hospitals for seamless and secure medical record management.',
+            'static/products/connect/other-logo.png'
+          )}
+          <ECharting />
         </>
       ) : null}
       {product === 'connect' ? (

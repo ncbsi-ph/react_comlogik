@@ -18,7 +18,7 @@ const Solutions = () => {
         />
         <meta
           name="keywords"
-          content="Hospital Information System, HIS provider, healthcare IT solutions, hospital management software, patient care system, medical software, healthcare analytics, Comlogik, DOH Certified"
+          content="Hospital Information System, HIS provider, Healthcare IT Solutions, Hospital Management Software, Patient Care System, Medical Software, Healthcare Analytics, Eclaims, Universal HealthCare Electronic Chart, Queueing System, Kiosk, Telemedicine DOH Certified"
         />
         <meta
           property="og:title"
