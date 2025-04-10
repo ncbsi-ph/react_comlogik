@@ -166,7 +166,9 @@ const Footer = () => {
             <QuickLinks />
             <Solutions />
             <div className="grid justify-center md:col-span-6 lg:col-span-2">
-              <img src="static/dpo_dps.png" width={150} />
+              <a href="/static/dpo_dps.png" target="_blank">
+                <img src="static/dpo_dps.png" width={150} alt="NPC Seal" />
+              </a>
             </div>
           </div>
         </div>
