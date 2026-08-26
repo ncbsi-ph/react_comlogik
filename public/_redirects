@@ -1,7 +1,10 @@
 # Temporary migration: send all public traffic from the legacy domains to the
-# new landing page. Keep this as a 302 while the new site is still in development.
-https://comlogikph.com/* https://new.comlogikph.com/ 302!
-https://www.comlogikph.com/* https://new.comlogikph.com/ 302!
+
+# new landing page. Keep this as a 301 while the new site is still in development.
+
+https://comlogikph.com/_ https://new.comlogikph.com/ 301!
+https://www.comlogikph.com/_ https://new.comlogikph.com/ 301!
 
 # SPA fallback for Netlify preview URLs and any other domains not matched above.
-/* /index.html 200
+
+/\* /index.html 200
