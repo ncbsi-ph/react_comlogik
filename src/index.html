@@ -4,6 +4,48 @@
     <base href="<%=htmlWebpackPlugin.options.base%>" />
     <title><%=htmlWebpackPlugin.options.title%></title>
     <link rel="icon" href="static/icon.png" />
+    <script>
+      (function () {
+        var legacyHosts = ['comlogikph.com', 'www.comlogikph.com'];
+        var currentHost = window.location.hostname.toLowerCase();
+
+        // Keep local development and Netlify preview URLs on the existing site.
+        if (legacyHosts.indexOf(currentHost) === -1) return;
+
+        var storageKey = 'comlogik:new-site-landing-seen';
+        var returnParameter = 'from-new-site';
+
+        try {
+          var searchParameters = new URLSearchParams(window.location.search);
+
+          // The new site's "back" button can append ?from=new-site so a direct
+          // visitor of the landing page can reach the existing site immediately.
+          if (searchParameters.has(returnParameter)) {
+            window.localStorage.setItem(storageKey, 'true');
+            searchParameters.delete(returnParameter);
+
+            var cleanSearch = searchParameters.toString();
+            window.history.replaceState(
+              null,
+              '',
+              window.location.pathname +
+                (cleanSearch ? '?' + cleanSearch : '') +
+                window.location.hash
+            );
+            return;
+          }
+
+          if (window.localStorage.getItem(storageKey) === 'true') return;
+
+          // Store the marker before replacing the page, so later visits to the
+          // current website remain on comlogikph.com.
+          window.localStorage.setItem(storageKey, 'true');
+          window.location.replace('https://new.comlogikph.com/');
+        } catch (error) {
+          // If storage is unavailable, keep the current website accessible.
+        }
+      })();
+    </script>
     <!-- ChatFuel custom Messenger bot -->
     <script id="60d98bc1de53814327fb342b" src="https://dashboard.chatfuel.com/integration/fb-entry-point.js" async defer></script>
     <!-- Recaptcha SDK -->
