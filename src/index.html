@@ -12,17 +12,28 @@
         // Keep local development and Netlify preview URLs on the existing site.
         if (legacyHosts.indexOf(currentHost) === -1) return;
 
-        var storageKey = 'comlogik:new-site-landing-seen';
-        var returnParameter = 'from-new-site';
+        var storageKey = 'comlogik:new-site-landing-session';
+        var returnParameter = 'from';
 
         try {
           var searchParameters = new URLSearchParams(window.location.search);
 
-          // The new site's "back" button can append ?from=new-site so a direct
-          // visitor of the landing page can reach the existing site immediately.
-          if (searchParameters.has(returnParameter)) {
-            window.localStorage.setItem(storageKey, 'true');
-            searchParameters.delete(returnParameter);
+          // Let visitors return from the new landing page during this browser
+          // tab's session. The query parameter is the reliable path; the
+          // referrer keeps the existing landing-page button working as well.
+          var hasReturnParameter =
+            searchParameters.get(returnParameter) === 'new-site';
+          var isReturningFromNewSite =
+            hasReturnParameter ||
+            document.referrer.indexOf('https://new.comlogikph.com/') === 0;
+
+          if (isReturningFromNewSite) {
+            try {
+              window.sessionStorage.setItem(storageKey, 'true');
+            } catch (error) {
+              // The return link still works for this page load without storage.
+            }
+            if (hasReturnParameter) searchParameters.delete(returnParameter);
 
             var cleanSearch = searchParameters.toString();
             window.history.replaceState(
@@ -35,14 +46,18 @@
             return;
           }
 
-          if (window.localStorage.getItem(storageKey) === 'true') return;
+          try {
+            if (window.sessionStorage.getItem(storageKey) === 'true') return;
+          } catch (error) {
+            // Continue to the landing page if session storage is unavailable.
+          }
 
-          // Store the marker before replacing the page, so later visits to the
-          // current website remain on comlogikph.com.
-          window.localStorage.setItem(storageKey, 'true');
+          // Direct visits stay directed to the landing page until the visitor
+          // uses its return button. The session marker then expires when the
+          // visitor closes this tab/window.
           window.location.replace('https://new.comlogikph.com/');
         } catch (error) {
-          // If storage is unavailable, keep the current website accessible.
+          // If browser URL APIs are unavailable, keep the current site accessible.
         }
       })();
     </script>
